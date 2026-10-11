@@ -176,7 +176,8 @@ body {
 
 .hero h1 span {
 
-    color: var(--blue);
+   color: var(--accent-blue);
+
 
 }
 
@@ -348,34 +349,39 @@ body {
 
     border-radius: 30px;
 
-    background: rgba(11, 15, 20, 0.85);
+    background: rgba(255, 255, 255, 0.88);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
 
-    border: 1px solid var(--border);
+    border: 1px solid rgba(45, 183, 163, 0.45);
 
     font-family: "JetBrains Mono", monospace;
 
     font-size: 10px;
 
+    font-weight: 500;
+
     letter-spacing: 1px;
 
     color: var(--text);
 
-    transition: 0.3s;
+    box-shadow: 0 4px 18px rgba(23, 43, 46, 0.08);
 
+    transition: 0.3s;
 }
+
 
 
 
 .tech-tag:hover {
 
-    border-color: var(--blue);
+    background: var(--accent);
 
-    color: var(--blue);
+    border-color: var(--accent);
+
+    color: white;
 
     transform: translateY(-4px);
-
 }
 
 
