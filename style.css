@@ -6,17 +6,24 @@
 :root {
     --background: #F3F6F6;
     --surface: #FFFFFF;
-    --surface-light: #EDF3F2;
+    --surface-light: #EAF1F2;
 
     --text: #172B2E;
     --muted: #6E8081;
 
+    /* Main accent */
     --accent: #2DB7A3;
     --accent-light: #67CFBF;
 
-    --border: #D5E2E0;
-}
+    /* Secondary accent */
+    --accent-blue: #79BFEA;
+    --accent-blue-light: #DCEFF9;
 
+    --border: #D5E2E0;
+
+    /* Dark technical elements */
+    --dark-chip: #183237;
+}
 * {
 
     margin: 0;
