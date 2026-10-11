@@ -4,17 +4,17 @@
 
 
 :root {
-    --background: #EEF7FB;
+    --background: #EAF6F7;
     --surface: #FFFFFF;
-    --surface-light: #F7FBFD;
+    --surface-light: #F5FBFB;
 
-    --text: #102231;
-    --muted: #6D7D8C;
+    --text: #143036;
+    --muted: #6F8589;
 
-    --accent: #18A7C9;
-    --accent-light: #55C7DE;
+    --accent: #28B8A6;
+    --accent-light: #68D1C4;
 
-    --border: #D6E6EE;
+    --border: #D2E7E5;
 }
 
 
