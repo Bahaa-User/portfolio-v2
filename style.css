@@ -11,184 +11,142 @@
     --text: #172B2E;
     --muted: #6E8081;
 
-    /* Main accent */
     --accent: #2DB7A3;
     --accent-light: #67CFBF;
 
-    /* Secondary accent */
-    --accent-blue: #79BFEA;
-    --accent-blue-light: #DCEFF9;
-
     --border: #D5E2E0;
 
-    /* Dark technical elements */
     --dark-chip: #183237;
 }
+
+
 * {
-
     margin: 0;
-
     padding: 0;
-
     box-sizing: border-box;
-
 }
 
 
 html {
-
     scroll-behavior: smooth;
-
 }
 
 
 body {
-
     background: var(--background);
-
     color: var(--text);
-
     font-family: "Inter", sans-serif;
-
     min-height: 100vh;
-
 }
 
 
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar {
-
     height: 90px;
-
     padding: 0 6%;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     border-bottom: 1px solid var(--border);
-
 }
 
 
 .logo {
-
     color: var(--text);
-
     text-decoration: none;
 
-    font-size: 18px;
-
-    font-weight: 700;
-
+    font-size: 24px;
+    font-weight: 800;
     letter-spacing: 1px;
-
-}
-.hero-content {
-
-    position: relative;
-
-}
-
-.hero-content::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-
-    height: 4px;
-
-    background: var(--accent);
-
-    top: -25px;
-
-    left: 0;
-
-    border-radius: 10px;
-
 }
 
 
 .logo span {
-
-    color: var(--accent-blue);
-
+    color: var(--accent);
 }
 
 
 .nav-links {
-
     display: flex;
-
     gap: 35px;
-
 }
 
 
 .nav-links a {
-
     color: var(--muted);
-
     text-decoration: none;
 
     font-size: 14px;
 
     transition: 0.3s;
-
 }
 
 
 .nav-links a:hover {
-
     color: var(--accent);
-
 }
 
 
+/* =========================
+   HERO
+========================= */
 
 .hero {
-
     min-height: calc(100vh - 90px);
 
     width: 88%;
-
     margin: auto;
 
     display: grid;
-
     grid-template-columns: 1.15fr 0.85fr;
-
     align-items: center;
 
     gap: 70px;
 
     padding: 70px 0;
-
 }
 
 
+.hero-content {
+    position: relative;
+}
+
+
+.hero-content::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 4px;
+
+    background: var(--accent);
+
+    top: -25px;
+    left: 0;
+
+    border-radius: 10px;
+}
+
 
 .hero-label {
-
     font-family: "JetBrains Mono", monospace;
 
-    color: var(--blue);
+    color: var(--accent);
 
     font-size: 12px;
-
     letter-spacing: 2px;
 
     margin-bottom: 25px;
-
 }
 
 
 .hero-name {
-
     font-size: clamp(85px, 9vw, 150px);
 
     line-height: 0.82;
@@ -200,21 +158,17 @@ body {
     color: var(--text);
 
     margin: 0;
-
 }
 
 
 .hero-name span {
-
     display: block;
 
-    color: var(--accent-blue);
-
+    color: var(--accent);
 }
 
 
 .hero-role {
-
     margin-top: 32px;
 
     font-size: clamp(26px, 2.4vw, 42px);
@@ -224,10 +178,10 @@ body {
     letter-spacing: -1px;
 
     color: var(--text);
-
 }
-.hero-description {
 
+
+.hero-description {
     color: var(--muted);
 
     max-width: 610px;
@@ -237,25 +191,23 @@ body {
     margin-top: 20px;
 
     font-size: 17px;
-
 }
 
 
+/* =========================
+   HERO BUTTONS
+========================= */
 
 .hero-buttons {
-
     margin-top: 35px;
 
     display: flex;
 
     gap: 15px;
-
 }
 
 
-
 .btn {
-
     text-decoration: none;
 
     padding: 14px 24px;
@@ -265,57 +217,52 @@ body {
     font-size: 14px;
 
     transition: 0.3s;
-
 }
-
 
 
 .btn-primary {
+    background: var(--accent);
 
-    background: var(--blue);
+    color: white;
 
-    color: #07111d;
+    border: 1px solid var(--accent);
 
     font-weight: 700;
-
 }
-
 
 
 .btn-primary:hover {
+    background: var(--accent-light);
 
-    background: var(--blue-light);
+    border-color: var(--accent-light);
 
     transform: translateY(-3px);
-
 }
 
 
-
 .btn-secondary {
-
     color: var(--text);
 
     border: 1px solid var(--border);
 
     background: var(--surface);
-
 }
-
 
 
 .btn-secondary:hover {
+    border-color: var(--accent);
 
-    border-color: var(--blue);
+    color: var(--accent);
 
     transform: translateY(-3px);
-
 }
 
 
+/* =========================
+   LOCATION
+========================= */
 
 .hero-location {
-
     margin-top: 50px;
 
     font-family: "JetBrains Mono", monospace;
@@ -325,24 +272,22 @@ body {
     font-size: 11px;
 
     letter-spacing: 1.5px;
-
 }
 
 
+/* =========================
+   HERO PHOTO
+========================= */
 
 .hero-visual {
-
     display: flex;
 
     justify-content: center;
-
 }
 
 
-
 .portrait-wrapper {
-
-    width: min(430px, 100%);
+    width: min(470px, 100%);
 
     height: 590px;
 
@@ -355,13 +300,10 @@ body {
     background: var(--surface);
 
     border: 1px solid var(--border);
-
 }
 
 
-
 .hero-photo {
-
     width: 100%;
 
     height: 100%;
@@ -371,28 +313,26 @@ body {
     object-position: center;
 
     transition: transform 0.5s ease;
-
 }
-
 
 
 .portrait-wrapper:hover .hero-photo {
-
     transform: scale(1.03);
-
 }
 
 
+/* =========================
+   FLOATING ROBOTICS TAGS
+========================= */
 
 .tech-tag {
-
     position: absolute;
 
     padding: 10px 14px;
 
     border-radius: 30px;
 
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.90);
 
     backdrop-filter: blur(12px);
 
@@ -406,18 +346,16 @@ body {
 
     letter-spacing: 1px;
 
-    color: var(--text);
+    color: #178E7D;
 
-    box-shadow: 0 4px 18px rgba(23, 43, 46, 0.08);
+    box-shadow:
+        0 4px 18px rgba(23, 43, 46, 0.08);
 
     transition: 0.3s;
 }
 
 
-
-
 .tech-tag:hover {
-
     background: var(--accent);
 
     border-color: var(--accent);
@@ -428,155 +366,157 @@ body {
 }
 
 
-
 .tag-hri {
-
     top: 12%;
-
     left: 5%;
-
 }
 
 
 .tag-control {
-
     top: 25%;
-
     right: 4%;
-
 }
 
 
 .tag-haptics {
-
     top: 47%;
-
     left: 3%;
-
 }
 
 
 .tag-embedded {
-
     bottom: 23%;
-
     right: 3%;
-
 }
 
 
 .tag-wearable {
-
     bottom: 8%;
-
     left: 6%;
-
-}
-.tag-hri,
-.tag-haptics,
-.tag-wearable {
-    color: #178E7D;
-    border-color: rgba(45, 183, 163, 0.45);
 }
 
-.tag-control,
-.tag-embedded {
-    color: #438DBB;
-    border-color: rgba(121, 191, 234, 0.55);
-}
 
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width: 950px) {
 
     .hero {
-
         grid-template-columns: 1fr;
 
         padding-top: 50px;
-
     }
 
 
     .hero-visual {
-
         margin-top: 20px;
-
     }
 
 
-    .hero h1 {
-
+    .hero-name {
         letter-spacing: -3px;
-
-    }
-
-}
-
-.logo {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: 800;
-}
-
-.logo span {
-    color: var(--accent);
-}
-
-@media (max-width: 650px) {
-
-    .navbar {
-
-        height: 75px;
-
-    }
-
-
-    .nav-links {
-
-        display: none;
-
-    }
-
-
-    .hero {
-
-        width: 90%;
-
-        padding: 45px 0;
-
-    }
-
-
-    .hero h1 {
-
-        font-size: 50px;
-
-        letter-spacing: -2px;
-
-    }
-
-
-    .hero-description {
-
-        font-size: 15px;
-
     }
 
 
     .portrait-wrapper {
+        width: min(520px, 100%);
+    }
+}
 
-        height: 470px;
 
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .navbar {
+        height: 75px;
+
+        padding: 0 5%;
+    }
+
+
+    .logo {
+        font-size: 19px;
+    }
+
+
+    .nav-links {
+        display: none;
+    }
+
+
+    .hero {
+        width: 90%;
+
+        padding: 45px 0;
+    }
+
+
+    .hero-content::before {
+        width: 120px;
+
+        height: 3px;
+    }
+
+
+    .hero-label {
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .hero-name {
+        font-size: 64px;
+
+        letter-spacing: -3px;
+    }
+
+
+    .hero-role {
+        font-size: 27px;
+
+        margin-top: 25px;
+    }
+
+
+    .hero-description {
+        font-size: 15px;
+
+        line-height: 1.7;
     }
 
 
     .hero-buttons {
-
         flex-direction: column;
 
         align-items: flex-start;
-
     }
 
+
+    .btn {
+        width: fit-content;
+    }
+
+
+    .portrait-wrapper {
+        height: 470px;
+
+        width: 100%;
+    }
+
+
+    .tech-tag {
+        font-size: 8px;
+
+        padding: 8px 11px;
+    }
+
+
+    .hero-location {
+        margin-top: 35px;
+    }
 }
