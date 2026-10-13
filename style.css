@@ -890,6 +890,30 @@ body {
 
 }
 
+
+.arc-b {
+    animation:
+        arcMovement 14s
+        linear
+        infinite;
+}
+
+
+@keyframes arcMovement {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(23deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(383deg);
+    }
+
+}
 /* =========================
    TABLET
 ========================= */
@@ -1013,4 +1037,85 @@ body {
     .hero-location {
         margin-top: 35px;
     }
+}
+@media (max-width: 950px) {
+
+    .hri-scene {
+        width: 560px;
+        height: 520px;
+
+        margin: auto;
+    }
+
+    .portrait-wrapper {
+        width: 360px;
+        height: 360px;
+    }
+
+    .human-figure {
+        width: 135px;
+
+        left: 2px;
+    }
+
+    .robot-arm {
+        width: 250px;
+
+        right: -25px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .hri-scene {
+        width: 330px;
+        height: 370px;
+    }
+
+
+    .portrait-wrapper {
+        width: 280px;
+        height: 280px;
+    }
+
+
+    .arc-a {
+        width: 315px;
+        height: 315px;
+    }
+
+
+    .arc-b {
+        width: 345px;
+        height: 345px;
+    }
+
+
+    .arc-c {
+        display: none;
+    }
+
+
+    .human-figure {
+        display: none;
+    }
+
+
+    .robot-arm {
+        width: 150px;
+        height: 190px;
+
+        right: -20px;
+        top: 60px;
+
+        opacity: 0.65;
+    }
+
+
+    .scene-node {
+        display: none;
+    }
+
 }
