@@ -8,26 +8,17 @@
 ========================================= */
 
 :root {
-
     --background: #F3F6F6;
-
     --surface: #FFFFFF;
-
     --surface-light: #EAF1F2;
 
-
     --text: #172B2E;
-
     --muted: #6E8081;
 
-
     --accent: #2DB7A3;
-
     --accent-light: #67CFBF;
 
-
     --border: #D5E2E0;
-
 }
 
 
@@ -36,33 +27,24 @@
 ========================================= */
 
 * {
-
     margin: 0;
-
     padding: 0;
-
     box-sizing: border-box;
-
 }
 
 
 html {
-
     scroll-behavior: smooth;
-
 }
 
 
 body {
-
     min-height: 100vh;
 
     background: var(--background);
-
     color: var(--text);
 
     font-family: "Inter", sans-serif;
-
 }
 
 
@@ -71,55 +53,43 @@ body {
 ========================================= */
 
 .navbar {
-
     height: 90px;
 
     padding: 0 6%;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     border-bottom: 1px solid var(--border);
-
 }
 
 
 .logo {
-
     color: var(--text);
 
     text-decoration: none;
 
     font-size: 24px;
-
     font-weight: 800;
 
     letter-spacing: 1px;
-
 }
 
 
 .logo span {
-
     color: var(--accent);
-
 }
 
 
 .nav-links {
-
     display: flex;
 
     gap: 35px;
-
 }
 
 
 .nav-links a {
-
     color: var(--muted);
 
     text-decoration: none;
@@ -127,14 +97,11 @@ body {
     font-size: 14px;
 
     transition: color 0.3s ease;
-
 }
 
 
 .nav-links a:hover {
-
     color: var(--accent);
-
 }
 
 
@@ -143,7 +110,6 @@ body {
 ========================================= */
 
 .hero {
-
     width: 88%;
 
     min-height: calc(100vh - 90px);
@@ -161,7 +127,6 @@ body {
     align-items: center;
 
     gap: 45px;
-
 }
 
 
@@ -170,39 +135,30 @@ body {
 ========================================= */
 
 .hero-content {
-
     position: relative;
 
     z-index: 10;
-
 }
 
 
 .hero-content::before {
-
     content: "";
 
     position: absolute;
 
     width: 180px;
-
     height: 4px;
 
     top: -25px;
-
     left: 0;
 
     border-radius: 20px;
 
     background: var(--accent);
-
 }
 
 
-/* small heading */
-
 .hero-label {
-
     margin-bottom: 25px;
 
     color: var(--accent);
@@ -212,14 +168,10 @@ body {
     font-size: 12px;
 
     letter-spacing: 2px;
-
 }
 
 
-/* main name */
-
 .hero-name {
-
     margin: 0;
 
     color: var(--text);
@@ -231,23 +183,17 @@ body {
     letter-spacing: -6px;
 
     line-height: 0.82;
-
 }
 
 
 .hero-name span {
-
     display: block;
 
     color: var(--accent);
-
 }
 
 
-/* professional title */
-
 .hero-role {
-
     margin-top: 32px;
 
     color: var(--text);
@@ -257,14 +203,10 @@ body {
     font-weight: 600;
 
     letter-spacing: -1px;
-
 }
 
 
-/* introduction */
-
 .hero-description {
-
     max-width: 620px;
 
     margin-top: 20px;
@@ -274,7 +216,6 @@ body {
     font-size: 17px;
 
     line-height: 1.75;
-
 }
 
 
@@ -283,18 +224,15 @@ body {
 ========================================= */
 
 .hero-buttons {
-
     display: flex;
 
     gap: 15px;
 
     margin-top: 35px;
-
 }
 
 
 .btn {
-
     padding: 14px 24px;
 
     border-radius: 50px;
@@ -308,12 +246,10 @@ body {
         background-color 0.3s ease,
         border-color 0.3s ease,
         color 0.3s ease;
-
 }
 
 
 .btn-primary {
-
     background: var(--accent);
 
     border: 1px solid var(--accent);
@@ -321,40 +257,33 @@ body {
     color: white;
 
     font-weight: 700;
-
 }
 
 
 .btn-primary:hover {
-
     background: var(--accent-light);
 
     border-color: var(--accent-light);
 
     transform: translateY(-3px);
-
 }
 
 
 .btn-secondary {
-
     background: var(--surface);
 
     border: 1px solid var(--border);
 
     color: var(--text);
-
 }
 
 
 .btn-secondary:hover {
-
     border-color: var(--accent);
 
     color: var(--accent);
 
     transform: translateY(-3px);
-
 }
 
 
@@ -363,7 +292,6 @@ body {
 ========================================= */
 
 .hero-location {
-
     margin-top: 50px;
 
     color: var(--muted);
@@ -373,7 +301,6 @@ body {
     font-size: 11px;
 
     letter-spacing: 1.5px;
-
 }
 
 
@@ -382,108 +309,49 @@ body {
 ========================================= */
 
 .hero-visual {
-
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     min-width: 0;
-
-}
-
-
-/*
-    Main container holding:
-    1. HRI illustration
-    2. portrait
-*/
-
-.hri-composition {
-
-    position: relative;
-
-    width: 640px;
-
-    height: 640px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
 }
 
 
 /* =========================================
-   HUMAN + ROBOT ARTWORK
+   HRI COMPOSITION
+========================================= */
+
+.hri-composition {
+    position: relative;
+
+    width: 560px;
+    height: 560px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   HRI BACKGROUND ARTWORK
 ========================================= */
 
 .hri-frame {
-
     position: absolute;
 
-    width: 100%;
+    width: 560px;
+    height: 560px;
 
-    height: 100%;
-
-    top: 50%;
-
-    left: 50%;
+    top: 0;
+    left: 0;
 
     object-fit: contain;
-
-    transform:
-        translate(-50%, -50%);
 
     z-index: 1;
 
     pointer-events: none;
 
-    opacity: 0.82;
-
-    filter:
-        drop-shadow(
-            0 12px 28px
-            rgba(45, 183, 163, 0.05)
-        );
-
-    animation:
-        frameFloat
-        7s
-        ease-in-out
-        infinite
-        alternate;
-
-}
-
-
-/*
-    Very small animation.
-    The artwork moves, portrait stays still.
-*/
-
-@keyframes frameFloat {
-
-    from {
-
-        transform:
-            translate(-50%, -50%)
-            translateY(2px);
-
-    }
-
-
-    to {
-
-        transform:
-            translate(-50%, -50%)
-            translateY(-5px);
-
-    }
-
+    opacity: 0.78;
 }
 
 
@@ -492,41 +360,33 @@ body {
 ========================================= */
 
 .portrait-wrapper {
+    position: absolute;
 
-    position: relative;
+    width: 340px;
+    height: 340px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
 
     z-index: 5;
 
-    width: 390px;
-
-    height: 390px;
+    overflow: hidden;
 
     border-radius: 50%;
 
-    overflow: hidden;
-
     background: white;
 
-    /*
-       Use this to fine-tune portrait position
-       relative to the HRI artwork.
-    */
-
-    transform:
-        translate(0px, 0px);
-
     box-shadow:
-        0 24px 60px rgba(23, 43, 46, 0.12),
-        0 0 0 7px rgba(255, 255, 255, 0.95),
-        0 0 0 8px rgba(45, 183, 163, 0.10);
-
+        0 22px 55px rgba(23, 43, 46, 0.12),
+        0 0 0 7px rgba(255, 255, 255, 0.96),
+        0 0 0 8px rgba(45, 183, 163, 0.12);
 }
 
 
 .hero-photo {
-
     width: 100%;
-
     height: 100%;
 
     object-fit: cover;
@@ -535,51 +395,45 @@ body {
 
     border-radius: 50%;
 
-    transition:
-        transform 0.55s ease;
-
+    transition: transform 0.5s ease;
 }
 
 
 .portrait-wrapper:hover .hero-photo {
-
     transform: scale(1.025);
-
 }
 
 
 /* =========================================
-   LAPTOP / SMALL DESKTOP
+   LARGE TABLET / SMALL LAPTOP
 ========================================= */
 
-@media (max-width: 1300px) {
+@media (max-width: 1250px) {
 
     .hero {
-
         grid-template-columns:
             minmax(0, 1fr)
-            minmax(450px, 0.9fr);
+            minmax(440px, 0.9fr);
 
         gap: 30px;
-
     }
 
 
     .hri-composition {
+        width: 500px;
+        height: 500px;
+    }
 
-        width: 560px;
 
-        height: 560px;
-
+    .hri-frame {
+        width: 500px;
+        height: 500px;
     }
 
 
     .portrait-wrapper {
-
-        width: 345px;
-
-        height: 345px;
-
+        width: 300px;
+        height: 300px;
     }
 
 }
@@ -592,45 +446,39 @@ body {
 @media (max-width: 950px) {
 
     .hero {
-
         grid-template-columns: 1fr;
 
         padding-top: 60px;
-
     }
 
 
     .hero-name {
-
         letter-spacing: -4px;
-
     }
 
 
     .hero-visual {
-
         margin-top: 50px;
-
     }
 
 
     .hri-composition {
-
-        width: 580px;
-
-        height: 580px;
+        width: 500px;
+        height: 500px;
 
         margin: auto;
+    }
 
+
+    .hri-frame {
+        width: 500px;
+        height: 500px;
     }
 
 
     .portrait-wrapper {
-
-        width: 350px;
-
-        height: 350px;
-
+        width: 300px;
+        height: 300px;
     }
 
 }
@@ -643,136 +491,105 @@ body {
 @media (max-width: 650px) {
 
     .navbar {
-
         height: 75px;
 
         padding: 0 5%;
-
     }
 
 
     .logo {
-
         font-size: 19px;
-
     }
 
 
     .nav-links {
-
         display: none;
-
     }
 
 
     .hero {
-
         width: 90%;
 
         padding: 50px 0;
 
         gap: 10px;
-
     }
 
 
     .hero-content::before {
-
         width: 120px;
-
         height: 3px;
-
     }
 
 
     .hero-label {
-
         font-size: 10px;
 
         letter-spacing: 1.4px;
-
     }
 
 
     .hero-name {
-
-        font-size:
-            clamp(
-                60px,
-                20vw,
-                82px
-            );
+        font-size: clamp(
+            60px,
+            20vw,
+            82px
+        );
 
         letter-spacing: -3px;
-
     }
 
 
     .hero-role {
-
         margin-top: 26px;
 
         font-size: 27px;
-
     }
 
 
     .hero-description {
-
         font-size: 15px;
 
         line-height: 1.7;
-
     }
 
 
     .hero-buttons {
-
         flex-direction: column;
 
         align-items: flex-start;
-
     }
 
 
     .hero-location {
-
         margin-top: 35px;
-
     }
 
 
     .hero-visual {
-
         margin-top: 35px;
 
         overflow: hidden;
-
     }
 
 
     .hri-composition {
-
-        width: 350px;
-
-        height: 350px;
-
-    }
-
-
-    .portrait-wrapper {
-
-        width: 220px;
-
-        height: 220px;
-
+        width: 330px;
+        height: 330px;
     }
 
 
     .hri-frame {
+        width: 330px;
+        height: 330px;
 
         opacity: 0.68;
+    }
 
+
+    .portrait-wrapper {
+        width: 205px;
+        height: 205px;
     }
 
 }
@@ -787,7 +604,6 @@ body {
     *,
     *::before,
     *::after {
-
         animation-duration: 0.01ms !important;
 
         animation-iteration-count: 1 !important;
@@ -795,7 +611,6 @@ body {
         transition-duration: 0.01ms !important;
 
         scroll-behavior: auto !important;
-
     }
 
 }
