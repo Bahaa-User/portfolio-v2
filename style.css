@@ -328,7 +328,89 @@ body {
 .portrait-wrapper:hover .hero-photo {
     transform: scale(1.03);
 }
+.orbit {
+    position: absolute;
 
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.orbit-1 {
+    width: 500px;
+    height: 500px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1.5px solid rgba(45, 183, 163, 0.18);
+}
+
+.orbit-2 {
+    width: 540px;
+    height: 540px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px dashed rgba(45, 183, 163, 0.14);
+}
+
+
+.orbit-node {
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    border: 4px solid rgba(255, 255, 255, 0.95);
+
+    box-shadow: 0 4px 14px rgba(23, 43, 46, 0.10);
+}
+
+
+.node-1 {
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.node-2 {
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+}
+
+.node-3 {
+    bottom: -8px;
+    left: 22%;
+}
+
+.node-4 {
+    top: 62%;
+    left: -10px;
+    transform: translateY(-50%);
+}
+
+
+.hero-specialties {
+    margin-top: 28px;
+
+    text-align: center;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    color: var(--muted);
+}
 
 /* =========================
    FLOATING ROBOTICS TAGS
