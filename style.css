@@ -396,53 +396,185 @@ body {
     }
 }
 
+/* ===================================
+   HUMAN ROBOT INTERACTION HERO SCENE
+=================================== */
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hri-scene {
+    position: relative;
+
+    width: 650px;
+    height: 570px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* =========================
-   HUMAN OUTLINE
+   PORTRAIT
 ========================= */
 
-.human-outline {
+.portrait-wrapper {
+    position: relative;
+
+    width: 400px;
+    height: 400px;
+
+    z-index: 10;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background: white;
+
+    box-shadow:
+        0 22px 55px rgba(23, 43, 46, 0.10),
+        0 0 0 1px rgba(45, 183, 163, 0.13);
+}
+
+
+.hero-photo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center top;
+
+    border-radius: 50%;
+
+    border: 7px solid white;
+
+    transition:
+        transform 0.55s ease,
+        box-shadow 0.55s ease;
+}
+
+
+.portrait-wrapper:hover .hero-photo {
+    transform: scale(1.025);
+}
+
+
+/* =========================
+   TECHNICAL ARCS
+========================= */
+
+.scene-arc {
     position: absolute;
 
-    width: 135px;
-    height: 245px;
+    top: 50%;
+    left: 50%;
 
-    left: 10px;
-    top: 160px;
+    border-radius: 50%;
 
-    z-index: 3;
+    pointer-events: none;
+}
 
-    stroke: rgba(45, 183, 163, 0.60);
 
-    stroke-width: 2;
+.arc-a {
+    width: 465px;
+    height: 465px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-7deg);
+
+    border:
+        1.4px solid
+        rgba(45, 183, 163, 0.26);
+}
+
+
+.arc-b {
+    width: 525px;
+    height: 525px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(23deg);
+
+    border-top:
+        1.5px dashed
+        rgba(45, 183, 163, 0.28);
+
+    border-right:
+        1px solid
+        rgba(45, 183, 163, 0.13);
+
+    border-bottom:
+        1px dashed
+        rgba(45, 183, 163, 0.13);
+
+    border-left:
+        1px solid transparent;
+}
+
+
+.arc-c {
+    width: 575px;
+    height: 575px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-34deg);
+
+    border-top:
+        1px solid
+        rgba(45, 183, 163, 0.10);
+
+    border-right:
+        1px solid
+        rgba(45, 183, 163, 0.08);
+
+    border-left:
+        1px solid transparent;
+
+    border-bottom:
+        1px solid transparent;
+}
+
+
+/* =========================
+   HUMAN
+========================= */
+
+.human-figure {
+    position: absolute;
+
+    width: 165px;
+    height: 300px;
+
+    left: -4px;
+    top: 145px;
+
+    z-index: 7;
 
     fill: none;
+
+    stroke: rgba(45, 183, 163, 0.52);
+
+    stroke-width: 2.2;
 
     stroke-linecap: round;
     stroke-linejoin: round;
 
-    opacity: 0.85;
+    opacity: 0.8;
 
-    animation: humanFloat 5s ease-in-out infinite alternate;
-}
-
-
-.human-node {
-    fill: var(--accent);
-    stroke: white;
-    stroke-width: 2;
-}
-
-
-@keyframes humanFloat {
-
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-6px);
-    }
+    filter:
+        drop-shadow(
+            0 8px 14px
+            rgba(45, 183, 163, 0.05)
+        );
 }
 
 
@@ -453,49 +585,147 @@ body {
 .robot-arm {
     position: absolute;
 
-    width: 245px;
-    height: 280px;
+    width: 305px;
+    height: 370px;
 
-    right: -12px;
-    top: 80px;
+    right: -47px;
+    top: 64px;
 
-    z-index: 3;
+    z-index: 8;
 
-    stroke: rgba(45, 183, 163, 0.68);
+    fill:
+        rgba(243, 246, 246, 0.78);
 
-    stroke-width: 3;
+    stroke:
+        rgba(45, 183, 163, 0.67);
 
-    fill: rgba(255, 255, 255, 0.45);
+    stroke-width: 2.3;
 
     stroke-linecap: round;
     stroke-linejoin: round;
 
-    opacity: 0.9;
+    filter:
+        drop-shadow(
+            0 10px 18px
+            rgba(23, 43, 46, 0.05)
+        );
 
-    transform-origin: 50% 80%;
+    transform-origin: 55% 85%;
 
-    animation: robotFloat 6s ease-in-out infinite alternate;
+    animation:
+        robotMotion 6s
+        ease-in-out
+        infinite alternate;
 }
 
 
-.robot-node {
-    fill: var(--accent);
+.joint {
+    fill:
+        rgba(255, 255, 255, 0.78);
 
-    stroke: white;
+    stroke:
+        rgba(45, 183, 163, 0.72);
+
+    stroke-width: 3;
+}
+
+
+.joint-inner {
+    fill: transparent;
+
+    stroke:
+        rgba(45, 183, 163, 0.62);
+
     stroke-width: 2;
 }
 
 
-@keyframes robotFloat {
+.arm-link {
+    fill: none;
+
+    stroke:
+        rgba(45, 183, 163, 0.62);
+
+    stroke-width: 16;
+
+    stroke-linecap: round;
+}
+
+
+.small-link {
+    stroke-width: 12;
+}
+
+
+.robot-hand,
+.robot-finger {
+    fill: none;
+
+    stroke:
+        rgba(45, 183, 163, 0.70);
+
+    stroke-width: 5;
+
+    stroke-linecap: round;
+}
+
+
+@keyframes robotMotion {
 
     from {
-        transform: rotate(0deg);
+        transform: rotate(-1deg);
     }
 
     to {
-        transform: rotate(2deg);
+        transform: rotate(1.8deg);
     }
+
 }
+
+
+/* =========================
+   SMALL TECHNICAL NODES
+========================= */
+
+.scene-node {
+    position: absolute;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    border:
+        3px solid
+        rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 3px 10px
+        rgba(45, 183, 163, 0.18);
+
+    z-index: 12;
+}
+
+
+.node-one {
+    top: 74px;
+    left: 55%;
+}
+
+
+.node-two {
+    right: 56px;
+    top: 255px;
+}
+
+
+.node-three {
+    left: 170px;
+    bottom: 57px;
+}
+
 
 
 /* =========================
@@ -640,7 +870,25 @@ body {
     }
 }
 
+.human-figure {
+    animation:
+        humanMotion 5s
+        ease-in-out
+        infinite alternate;
+}
 
+
+@keyframes humanMotion {
+
+    from {
+        transform: translateY(2px);
+    }
+
+    to {
+        transform: translateY(-4px);
+    }
+
+}
 
 /* =========================
    TABLET
