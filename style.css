@@ -334,71 +334,7 @@ body {
    FLOATING ROBOTICS TAGS
 ========================= */
 
-.tech-tag {
-    position: absolute;
 
-    padding: 10px 14px;
-
-    border-radius: 30px;
-
-    background: rgba(255, 255, 255, 0.90);
-
-    backdrop-filter: blur(12px);
-
-    border: 1px solid rgba(45, 183, 163, 0.45);
-
-    font-family: "JetBrains Mono", monospace;
-
-    font-size: 10px;
-
-    font-weight: 500;
-
-    letter-spacing: 1px;
-
-    color: #178E7D;
-
-    box-shadow:
-        0 4px 18px rgba(23, 43, 46, 0.08);
-
-    transition: 0.3s;
-}
-
-
-.tech-tag:hover {
-    background: var(--accent);
-
-    border-color: var(--accent);
-
-    color: white;
-
-    transform: translateY(-4px);
-}
-
-
-.tag-hri {
-    top: 10%;
-    left: -2%;
-}
-
-.tag-control {
-    top: 26%;
-    right: -8%;
-}
-
-.tag-haptics {
-    top: 55%;
-    left: -8%;
-}
-
-.tag-embedded {
-    bottom: 18%;
-    right: -10%;
-}
-
-.tag-wearable {
-    bottom: 6%;
-    left: 2%;
-}
 
 
 /* =========================
