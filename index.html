@@ -27,7 +27,6 @@
             BAHAA <span>NASR</span>
         </a>
 
-
         <nav class="nav-links">
 
             <a href="#work">Work</a>
@@ -51,6 +50,8 @@
         ========================== -->
 
         <section class="hero">
+
+            <!-- LEFT SIDE -->
 
             <div class="hero-content">
 
@@ -111,206 +112,425 @@
 
 
             <!-- =========================
-                 HERO IMAGE
+                 RIGHT SIDE — HRI SCENE
             ========================== -->
 
             <div class="hero-visual">
 
-    <div class="hri-scene">
-
-        <!-- BACKGROUND ARCS -->
-        <div class="scene-arc arc-a"></div>
-        <div class="scene-arc arc-b"></div>
-        <div class="scene-arc arc-c"></div>
+                <div class="hri-scene">
 
 
-        <!-- HUMAN OUTLINE -->
-        <svg
-            class="human-figure"
-            viewBox="0 0 170 300"
-            aria-hidden="true"
-        >
-            <!-- head -->
-            <path
-                d="
-                M75 34
-                C58 34 48 47 48 64
-                C48 80 58 92 73 95
-                L78 110
-                "
-            />
+                    <!-- =====================
+                         YOUR PHOTO
+                    ====================== -->
 
-            <!-- neck + back -->
-            <path
-                d="
-                M78 110
-                C68 126 64 145 65 170
-                C66 195 67 218 64 244
-                "
-            />
+                    <div class="portrait-wrapper">
 
-            <!-- chest -->
-            <path
-                d="
-                M79 111
-                C96 121 104 143 105 166
-                "
-            />
+                        <img
+                            src="assets/images/bahaa-hero.jpg"
+                            alt="Bahaa Nasr"
+                            class="hero-photo"
+                        >
 
-            <!-- left leg -->
-            <path
-                d="
-                M65 170
-                L58 243
-                L54 286
-                "
-            />
-
-            <!-- right leg -->
-            <path
-                d="
-                M82 171
-                L88 242
-                L93 286
-                "
-            />
-
-            <!-- shoulder reaching arm -->
-            <path
-                d="
-                M88 124
-                C103 132 112 142 122 153
-                C133 164 145 166 155 158
-                "
-            />
-
-            <!-- forearm / hand -->
-            <path
-                d="
-                M155 158
-                C160 154 163 151 166 148
-                "
-            />
-
-            <!-- hand fingers -->
-            <path d="M164 148 L170 143" />
-            <path d="M164 151 L171 148" />
-            <path d="M164 154 L171 153" />
-        </svg>
+                    </div>
 
 
-        <!-- MAIN PORTRAIT -->
-        <div class="portrait-wrapper">
 
-            <img
-                src="assets/images/bahaa-hero.jpg"
-                alt="Bahaa Nasr"
-                class="hero-photo"
-            >
+                    <!-- =====================
+                         HUMAN + ROBOT SVG
+                    ====================== -->
 
-        </div>
-
-
-        <!-- ROBOT ARM -->
-        <svg
-            class="robot-arm"
-            viewBox="0 0 330 390"
-            aria-hidden="true"
-        >
-
-            <!-- lower joint -->
-            <circle cx="165" cy="330" r="25" class="joint"></circle>
-            <circle cx="165" cy="330" r="10" class="joint-inner"></circle>
-
-            <!-- lower arm -->
-            <path
-                d="
-                M180 310
-                L220 238
-                "
-                class="arm-link"
-            />
-
-            <!-- elbow -->
-            <circle cx="228" cy="224" r="30" class="joint"></circle>
-            <circle cx="228" cy="224" r="12" class="joint-inner"></circle>
-
-            <!-- upper arm -->
-            <path
-                d="
-                M244 203
-                L270 137
-                "
-                class="arm-link"
-            />
-
-            <!-- wrist -->
-            <circle cx="275" cy="124" r="22" class="joint"></circle>
-            <circle cx="275" cy="124" r="8" class="joint-inner"></circle>
-
-            <!-- forearm to hand -->
-            <path
-                d="
-                M268 104
-                L238 80
-                "
-                class="arm-link small-link"
-            />
-
-            <!-- robotic palm -->
-            <path
-                d="
-                M234 77
-                C219 65 207 58 195 55
-                "
-                class="robot-hand"
-            />
-
-            <!-- fingers -->
-            <path d="M199 55 L177 39" class="robot-finger"></path>
-            <path d="M202 61 L178 50" class="robot-finger"></path>
-            <path d="M205 68 L181 62" class="robot-finger"></path>
-
-            <!-- fingertip circles -->
-            <circle cx="176" cy="39" r="4"></circle>
-            <circle cx="177" cy="50" r="4"></circle>
-            <circle cx="180" cy="62" r="4"></circle>
-
-        </svg>
+                    <svg
+                        class="hri-overlay"
+                        viewBox="0 0 700 560"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
 
 
-        <!-- DECORATIVE NODES -->
-        <span class="scene-node node-one"></span>
-        <span class="scene-node node-two"></span>
-        <span class="scene-node node-three"></span>
+                        <!-- =====================
+                             TECHNICAL ARCS
+                        ====================== -->
 
-    </div>
+                        <path
+                            class="technical-arc arc-solid"
+                            d="
+                                M145 425
+                                A245 245
+                                0 0 1
+                                563 126
+                            "
+                        />
 
-</div>
+
+                        <path
+                            class="technical-arc arc-dashed"
+                            d="
+                                M186 474
+                                A292 292
+                                0 0 1
+                                606 90
+                            "
+                        />
+
+
+                        <path
+                            class="technical-arc arc-faint"
+                            d="
+                                M225 505
+                                A325 325
+                                0 0 1
+                                642 131
+                            "
+                        />
+
+
+
+                        <!-- =====================
+                             HUMAN OUTLINE
+                        ====================== -->
+
+                        <g class="human-drawing">
+
+                            <!-- Head / profile -->
+
+                            <path
+                                d="
+                                    M145 177
+
+                                    C132 168
+                                    128 149
+                                    133 133
+
+                                    C138 116
+                                    152 105
+                                    169 108
+
+                                    C186 111
+                                    194 125
+                                    192 142
+
+                                    C190 156
+                                    181 166
+                                    171 172
+
+                                    L172 187
+                                "
+                            />
+
+
+                            <!-- Back / body -->
+
+                            <path
+                                d="
+                                    M161 187
+
+                                    C148 210
+                                    146 236
+                                    149 266
+
+                                    L143 342
+                                "
+                            />
+
+
+                            <!-- Chest -->
+
+                            <path
+                                d="
+                                    M173 187
+
+                                    C192 201
+                                    199 224
+                                    199 253
+                                "
+                            />
+
+
+                            <!-- Reaching upper arm -->
+
+                            <path
+                                d="
+                                    M186 212
+
+                                    C207 218
+                                    218 232
+                                    231 242
+
+                                    C244 252
+                                    259 251
+                                    272 243
+                                "
+                            />
+
+
+                            <!-- Forearm -->
+
+                            <path
+                                d="
+                                    M272 243
+
+                                    C281 238
+                                    288 230
+                                    295 222
+                                "
+                            />
+
+
+                            <!-- Hand / fingers -->
+
+                            <path d="M294 222 L306 213" />
+
+                            <path d="M296 225 L308 219" />
+
+                            <path d="M297 229 L309 226" />
+
+
+                            <!-- Front leg -->
+
+                            <path
+                                d="
+                                    M162 265
+                                    L158 342
+                                    L154 387
+                                "
+                            />
+
+
+                            <!-- Back leg -->
+
+                            <path
+                                d="
+                                    M180 266
+                                    L187 341
+                                    L191 387
+                                "
+                            />
+
+                        </g>
+
+
+
+                        <!-- =====================
+                             ROBOT ARM
+                        ====================== -->
+
+                        <g class="robot-drawing">
+
+
+                            <!-- BOTTOM JOINT -->
+
+                            <circle
+                                class="robot-joint"
+                                cx="575"
+                                cy="430"
+                                r="26"
+                            />
+
+                            <circle
+                                class="robot-joint-inner"
+                                cx="575"
+                                cy="430"
+                                r="10"
+                            />
+
+
+
+                            <!-- LOWER LINK -->
+
+                            <path
+                                class="robot-link"
+                                d="
+                                    M589 409
+                                    L624 347
+                                "
+                            />
+
+
+
+                            <!-- ELBOW -->
+
+                            <circle
+                                class="robot-joint"
+                                cx="632"
+                                cy="331"
+                                r="31"
+                            />
+
+                            <circle
+                                class="robot-joint-inner"
+                                cx="632"
+                                cy="331"
+                                r="12"
+                            />
+
+
+
+                            <!-- UPPER LINK -->
+
+                            <path
+                                class="robot-link"
+                                d="
+                                    M642 305
+                                    L658 239
+                                "
+                            />
+
+
+
+                            <!-- WRIST -->
+
+                            <circle
+                                class="robot-joint"
+                                cx="661"
+                                cy="220"
+                                r="22"
+                            />
+
+                            <circle
+                                class="robot-joint-inner"
+                                cx="661"
+                                cy="220"
+                                r="8"
+                            />
+
+
+
+                            <!-- SMALL FOREARM -->
+
+                            <path
+                                class="robot-link robot-link-small"
+                                d="
+                                    M653 204
+                                    L619 177
+                                "
+                            />
+
+
+
+                            <!-- HAND PALM -->
+
+                            <path
+                                class="robot-hand"
+                                d="
+                                    M619 177
+
+                                    C605 165
+                                    590 157
+                                    573 153
+                                "
+                            />
+
+
+
+                            <!-- FINGERS -->
+
+                            <path
+                                class="robot-finger"
+                                d="
+                                    M578 154
+                                    L553 136
+                                "
+                            />
+
+                            <path
+                                class="robot-finger"
+                                d="
+                                    M581 161
+                                    L553 149
+                                "
+                            />
+
+                            <path
+                                class="robot-finger"
+                                d="
+                                    M583 169
+                                    L555 162
+                                "
+                            />
+
+
+
+                            <!-- FINGER TIPS -->
+
+                            <circle
+                                class="finger-tip"
+                                cx="551"
+                                cy="135"
+                                r="4"
+                            />
+
+                            <circle
+                                class="finger-tip"
+                                cx="551"
+                                cy="149"
+                                r="4"
+                            />
+
+                            <circle
+                                class="finger-tip"
+                                cx="553"
+                                cy="162"
+                                r="4"
+                            />
+
+
+                        </g>
+
+
+
+                        <!-- =====================
+                             SMALL SYSTEM NODES
+                        ====================== -->
+
+                        <circle
+                            class="system-node"
+                            cx="228"
+                            cy="454"
+                            r="6"
+                        />
+
+
+                        <circle
+                            class="system-node"
+                            cx="575"
+                            cy="121"
+                            r="6"
+                        />
+
+
+                        <circle
+                            class="system-node small-node"
+                            cx="646"
+                            cy="455"
+                            r="5"
+                        />
+
+
+                    </svg>
+
+                </div>
+
+            </div>
+
         </section>
 
 
 
         <!-- =========================
-             PLACEHOLDER SECTIONS
-             We will build these next.
+             FUTURE SECTIONS
         ========================== -->
-
 
         <section id="work"></section>
 
-
         <section id="experience"></section>
-
 
         <section id="about"></section>
 
-
         <section id="contact"></section>
 
-
     </main>
-
 
 
     <script src="script.js"></script>
