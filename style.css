@@ -31,7 +31,6 @@
 }
 
 
-
 /* ======================================
    RESET
 ====================================== */
@@ -65,7 +64,6 @@ body {
     font-family: "Inter", sans-serif;
 
 }
-
 
 
 /* ======================================
@@ -140,7 +138,6 @@ body {
 }
 
 
-
 /* ======================================
    HERO LAYOUT
 ====================================== */
@@ -166,7 +163,6 @@ body {
     gap: 55px;
 
 }
-
 
 
 /* ======================================
@@ -274,7 +270,6 @@ body {
 }
 
 
-
 /* ======================================
    BUTTONS
 ====================================== */
@@ -355,7 +350,6 @@ body {
 }
 
 
-
 /* ======================================
    LOCATION
 ====================================== */
@@ -373,7 +367,6 @@ body {
     letter-spacing: 1.5px;
 
 }
-
 
 
 /* ======================================
@@ -408,7 +401,6 @@ body {
     justify-content: center;
 
 }
-
 
 
 /* ======================================
@@ -464,7 +456,6 @@ body {
 }
 
 
-
 /* ======================================
    HRI SVG SCENE
 ====================================== */
@@ -487,25 +478,7 @@ body {
 
     pointer-events: none;
 
-    transform:
-        translate(-50%, -50%);
-
-}
-
-
-/*
-CRITICAL:
-prevents SVG shapes from turning black
-*/
-
-.hri-overlay path {
-
-    fill: none;
-
-}
-
-
-.hri-overlay {
+    transform: translate(-50%, -50%);
 
     stroke-linecap: round;
 
@@ -513,6 +486,14 @@ prevents SVG shapes from turning black
 
 }
 
+
+/* prevents black SVG fills */
+
+.hri-overlay path {
+
+    fill: none;
+
+}
 
 
 /* ======================================
@@ -532,21 +513,18 @@ prevents SVG shapes from turning black
 
 .arc-dashed {
 
-    stroke:
-        rgba(45, 183, 163, 0.27);
+    stroke: rgba(45, 183, 163, 0.27);
 
     stroke-dasharray: 8 10;
 
-    animation:
-        dashFlow 15s linear infinite;
+    animation: dashFlow 15s linear infinite;
 
 }
 
 
 .arc-faint {
 
-    stroke:
-        rgba(45, 183, 163, 0.10);
+    stroke: rgba(45, 183, 163, 0.10);
 
 }
 
@@ -562,7 +540,6 @@ prevents SVG shapes from turning black
 }
 
 
-
 /* ======================================
    HUMAN DRAWING
 ====================================== */
@@ -571,14 +548,15 @@ prevents SVG shapes from turning black
 
     fill: none;
 
-    stroke:
-        rgba(45, 183, 163, 0.48);
+    stroke: rgba(45, 183, 163, 0.56);
 
-    stroke-width: 2;
+    stroke-width: 2.6;
 
     stroke-linecap: round;
 
     stroke-linejoin: round;
+
+    opacity: 0.95;
 
     animation:
         humanFloat
@@ -586,6 +564,17 @@ prevents SVG shapes from turning black
         ease-in-out
         infinite
         alternate;
+
+}
+
+
+.human-head {
+
+    fill: rgba(255, 255, 255, 0.22);
+
+    stroke: rgba(45, 183, 163, 0.60);
+
+    stroke-width: 2.6;
 
 }
 
@@ -608,7 +597,6 @@ prevents SVG shapes from turning black
 }
 
 
-
 /* ======================================
    ROBOT ARM
 ====================================== */
@@ -617,17 +605,15 @@ prevents SVG shapes from turning black
 
     fill: none;
 
-    stroke:
-        rgba(45, 183, 163, 0.70);
+    stroke: rgba(45, 183, 163, 0.78);
 
-    stroke-width: 2.3;
+    stroke-width: 2.4;
 
     stroke-linecap: round;
 
     stroke-linejoin: round;
 
-    transform-origin:
-        575px 430px;
+    transform-origin: 602px 398px;
 
     animation:
         robotFloat
@@ -641,11 +627,9 @@ prevents SVG shapes from turning black
 
 .robot-joint {
 
-    fill:
-        rgba(255, 255, 255, 0.86);
+    fill: rgba(255, 255, 255, 0.92);
 
-    stroke:
-        rgba(45, 183, 163, 0.73);
+    stroke: rgba(45, 183, 163, 0.78);
 
     stroke-width: 3;
 
@@ -656,10 +640,9 @@ prevents SVG shapes from turning black
 
     fill: none;
 
-    stroke:
-        rgba(45, 183, 163, 0.62);
+    stroke: rgba(45, 183, 163, 0.70);
 
-    stroke-width: 2;
+    stroke-width: 2.2;
 
 }
 
@@ -668,10 +651,11 @@ prevents SVG shapes from turning black
 
     fill: none;
 
-    stroke:
-        rgba(45, 183, 163, 0.56);
+    stroke: rgba(45, 183, 163, 0.62);
 
     stroke-width: 15;
+
+    stroke-linecap: round;
 
 }
 
@@ -687,8 +671,7 @@ prevents SVG shapes from turning black
 
     fill: none;
 
-    stroke:
-        rgba(45, 183, 163, 0.72);
+    stroke: rgba(45, 183, 163, 0.78);
 
     stroke-width: 5;
 
@@ -699,8 +682,7 @@ prevents SVG shapes from turning black
 
     fill: none;
 
-    stroke:
-        rgba(45, 183, 163, 0.72);
+    stroke: rgba(45, 183, 163, 0.78);
 
     stroke-width: 4;
 
@@ -711,8 +693,7 @@ prevents SVG shapes from turning black
 
     fill: white;
 
-    stroke:
-        rgba(45, 183, 163, 0.75);
+    stroke: rgba(45, 183, 163, 0.82);
 
     stroke-width: 2;
 
@@ -737,7 +718,6 @@ prevents SVG shapes from turning black
 }
 
 
-
 /* ======================================
    SYSTEM NODES
 ====================================== */
@@ -758,7 +738,6 @@ prevents SVG shapes from turning black
     opacity: 0.75;
 
 }
-
 
 
 /* ======================================
@@ -805,7 +784,6 @@ prevents SVG shapes from turning black
     }
 
 }
-
 
 
 /* ======================================
@@ -857,7 +835,6 @@ prevents SVG shapes from turning black
     }
 
 }
-
 
 
 /* ======================================
@@ -1001,21 +978,12 @@ prevents SVG shapes from turning black
     }
 
 
-    /*
-    On phones, remove human figure.
-    Keeps the page cleaner.
-    */
-
     .human-drawing {
 
         display: none;
 
     }
 
-
-    /*
-    Keep robot but make it subtle.
-    */
 
     .robot-drawing {
 
@@ -1038,7 +1006,6 @@ prevents SVG shapes from turning black
     }
 
 }
-
 
 
 /* ======================================
