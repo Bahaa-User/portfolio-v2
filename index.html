@@ -116,56 +116,90 @@
 
             <div class="hero-visual">
 
-    <div class="hri-visual">
+    <div class="hri-scene">
 
-        <!-- Decorative arcs -->
-        <div class="hri-arc arc-one"></div>
-        <div class="hri-arc arc-two"></div>
+        <!-- BACKGROUND ARCS -->
+        <div class="scene-arc arc-a"></div>
+        <div class="scene-arc arc-b"></div>
+        <div class="scene-arc arc-c"></div>
 
 
-        <!-- HUMAN SILHOUETTE -->
+        <!-- HUMAN OUTLINE -->
         <svg
-            class="human-outline"
-            viewBox="0 0 120 220"
+            class="human-figure"
+            viewBox="0 0 170 300"
             aria-hidden="true"
         >
-
-            <circle
-                cx="58"
-                cy="32"
-                r="18"
-            ></circle>
-
+            <!-- head -->
             <path
                 d="
-                    M48 50
-                    C42 70, 43 92, 46 108
-                    L37 143
-                    M68 50
-                    C75 71, 73 93, 70 108
-                    L78 143
-                    M46 79
-                    L24 104
-                    M70 79
-                    L93 103
-                    M47 108
-                    L44 178
-                    M69 108
-                    L72 178
+                M75 34
+                C58 34 48 47 48 64
+                C48 80 58 92 73 95
+                L78 110
                 "
-            ></path>
+            />
 
-            <circle
-                cx="96"
-                cy="104"
-                r="4"
-                class="human-node"
-            ></circle>
+            <!-- neck + back -->
+            <path
+                d="
+                M78 110
+                C68 126 64 145 65 170
+                C66 195 67 218 64 244
+                "
+            />
 
+            <!-- chest -->
+            <path
+                d="
+                M79 111
+                C96 121 104 143 105 166
+                "
+            />
+
+            <!-- left leg -->
+            <path
+                d="
+                M65 170
+                L58 243
+                L54 286
+                "
+            />
+
+            <!-- right leg -->
+            <path
+                d="
+                M82 171
+                L88 242
+                L93 286
+                "
+            />
+
+            <!-- shoulder reaching arm -->
+            <path
+                d="
+                M88 124
+                C103 132 112 142 122 153
+                C133 164 145 166 155 158
+                "
+            />
+
+            <!-- forearm / hand -->
+            <path
+                d="
+                M155 158
+                C160 154 163 151 166 148
+                "
+            />
+
+            <!-- hand fingers -->
+            <path d="M164 148 L170 143" />
+            <path d="M164 151 L171 148" />
+            <path d="M164 154 L171 153" />
         </svg>
 
 
-        <!-- PORTRAIT -->
+        <!-- MAIN PORTRAIT -->
         <div class="portrait-wrapper">
 
             <img
@@ -177,127 +211,78 @@
         </div>
 
 
-        <!-- ROBOTIC ARM -->
+        <!-- ROBOT ARM -->
         <svg
             class="robot-arm"
-            viewBox="0 0 240 260"
+            viewBox="0 0 330 390"
             aria-hidden="true"
         >
 
-            <!-- base -->
-            <rect
-                x="92"
-                y="215"
-                width="70"
-                height="16"
-                rx="5"
-            ></rect>
+            <!-- lower joint -->
+            <circle cx="165" cy="330" r="25" class="joint"></circle>
+            <circle cx="165" cy="330" r="10" class="joint-inner"></circle>
 
-            <rect
-                x="108"
-                y="190"
-                width="40"
-                height="25"
-                rx="5"
-            ></rect>
-
-
-            <!-- first joint -->
-            <circle
-                cx="128"
-                cy="180"
-                r="17"
-            ></circle>
-
-            <!-- arm segment 1 -->
+            <!-- lower arm -->
             <path
                 d="
-                    M128 163
-                    L167 121
+                M180 310
+                L220 238
                 "
-            ></path>
+                class="arm-link"
+            />
 
-            <!-- second joint -->
-            <circle
-                cx="172"
-                cy="115"
-                r="16"
-            ></circle>
+            <!-- elbow -->
+            <circle cx="228" cy="224" r="30" class="joint"></circle>
+            <circle cx="228" cy="224" r="12" class="joint-inner"></circle>
 
-            <!-- arm segment 2 -->
+            <!-- upper arm -->
             <path
                 d="
-                    M183 104
-                    L205 70
+                M244 203
+                L270 137
                 "
-            ></path>
+                class="arm-link"
+            />
 
-            <!-- wrist joint -->
-            <circle
-                cx="209"
-                cy="63"
-                r="11"
-            ></circle>
+            <!-- wrist -->
+            <circle cx="275" cy="124" r="22" class="joint"></circle>
+            <circle cx="275" cy="124" r="8" class="joint-inner"></circle>
 
-            <!-- gripper -->
+            <!-- forearm to hand -->
             <path
                 d="
-                    M218 57
-                    L230 49
-
-                    M218 68
-                    L231 76
-
-                    M211 52
-                    L218 57
-
-                    M211 74
-                    L218 68
+                M268 104
+                L238 80
                 "
-            ></path>
+                class="arm-link small-link"
+            />
 
-            <!-- interaction point -->
-            <circle
-                cx="229"
-                cy="62"
-                r="4"
-                class="robot-node"
-            ></circle>
+            <!-- robotic palm -->
+            <path
+                d="
+                M234 77
+                C219 65 207 58 195 55
+                "
+                class="robot-hand"
+            />
+
+            <!-- fingers -->
+            <path d="M199 55 L177 39" class="robot-finger"></path>
+            <path d="M202 61 L178 50" class="robot-finger"></path>
+            <path d="M205 68 L181 62" class="robot-finger"></path>
+
+            <!-- fingertip circles -->
+            <circle cx="176" cy="39" r="4"></circle>
+            <circle cx="177" cy="50" r="4"></circle>
+            <circle cx="180" cy="62" r="4"></circle>
 
         </svg>
 
 
-        <!-- interaction path -->
-        <svg
-            class="interaction-path"
-            viewBox="0 0 640 480"
-            aria-hidden="true"
-        >
-
-            <path
-                class="interaction-line"
-                d="
-                    M105 240
-                    C180 165, 240 150, 310 160
-                    C400 170, 470 200, 540 150
-                "
-            ></path>
-
-            <circle
-                cx="310"
-                cy="160"
-                r="5"
-                class="interaction-dot"
-            ></circle>
-
-            <circle
-                cx="540"
-                cy="150"
-                r="5"
-                class="interaction-dot"
-            ></circle>
-
-        </svg>
+        <!-- DECORATIVE NODES -->
+        <span class="scene-node node-one"></span>
+        <span class="scene-node node-two"></span>
+        <span class="scene-node node-three"></span>
 
     </div>
 
