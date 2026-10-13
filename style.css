@@ -3,1119 +3,1062 @@
 );
 
 
+/* ======================================
+   COLORS
+====================================== */
+
 :root {
+
     --background: #F3F6F6;
+
     --surface: #FFFFFF;
+
     --surface-light: #EAF1F2;
 
+
     --text: #172B2E;
+
     --muted: #6E8081;
 
+
     --accent: #2DB7A3;
+
     --accent-light: #67CFBF;
+
 
     --border: #D5E2E0;
 
-    --dark-chip: #183237;
 }
 
 
+
+/* ======================================
+   RESET
+====================================== */
+
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
+
 }
 
 
 html {
+
     scroll-behavior: smooth;
+
 }
 
 
 body {
-    background: var(--background);
-    color: var(--text);
-    font-family: "Inter", sans-serif;
+
     min-height: 100vh;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
 }
 
 
-/* =========================
+
+/* ======================================
    NAVBAR
-========================= */
+====================================== */
 
 .navbar {
+
     height: 90px;
+
     padding: 0 6%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     border-bottom: 1px solid var(--border);
+
 }
 
 
 .logo {
+
     color: var(--text);
+
     text-decoration: none;
 
     font-size: 24px;
+
     font-weight: 800;
+
     letter-spacing: 1px;
+
 }
 
 
 .logo span {
+
     color: var(--accent);
+
 }
 
 
 .nav-links {
+
     display: flex;
+
     gap: 35px;
+
 }
 
 
 .nav-links a {
+
     color: var(--muted);
+
     text-decoration: none;
 
     font-size: 14px;
 
-    transition: 0.3s;
+    transition: color 0.3s ease;
+
 }
 
 
 .nav-links a:hover {
+
     color: var(--accent);
+
 }
 
 
-/* =========================
-   HERO
-========================= */
+
+/* ======================================
+   HERO LAYOUT
+====================================== */
 
 .hero {
-    min-height: calc(100vh - 90px);
 
     width: 88%;
+
+    min-height: calc(100vh - 90px);
+
     margin: auto;
 
+    padding: 70px 0;
+
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(500px, 0.95fr);
+
     align-items: center;
 
-    gap: 70px;
+    gap: 55px;
 
-    padding: 70px 0;
 }
 
 
+
+/* ======================================
+   LEFT HERO CONTENT
+====================================== */
+
 .hero-content {
+
     position: relative;
+
+    z-index: 20;
+
 }
 
 
 .hero-content::before {
+
     content: "";
 
     position: absolute;
 
     width: 180px;
+
     height: 4px;
+
+    top: -25px;
+
+    left: 0;
+
+    border-radius: 20px;
 
     background: var(--accent);
 
-    top: -25px;
-    left: 0;
-
-    border-radius: 10px;
 }
 
 
 .hero-label {
-    font-family: "JetBrains Mono", monospace;
+
+    margin-bottom: 25px;
 
     color: var(--accent);
 
+    font-family: "JetBrains Mono", monospace;
+
     font-size: 12px;
+
     letter-spacing: 2px;
 
-    margin-bottom: 25px;
 }
 
 
 .hero-name {
-    font-size: clamp(85px, 9vw, 150px);
 
-    line-height: 0.82;
-
-    letter-spacing: -6px;
-
-    font-weight: 800;
+    margin: 0;
 
     color: var(--text);
 
-    margin: 0;
+    font-size: clamp(85px, 8.2vw, 145px);
+
+    font-weight: 800;
+
+    letter-spacing: -6px;
+
+    line-height: 0.82;
+
 }
 
 
 .hero-name span {
+
     display: block;
 
     color: var(--accent);
+
 }
 
 
 .hero-role {
+
     margin-top: 32px;
 
-    font-size: clamp(26px, 2.4vw, 42px);
+    color: var(--text);
+
+    font-size: clamp(26px, 2.25vw, 40px);
 
     font-weight: 600;
 
     letter-spacing: -1px;
 
-    color: var(--text);
 }
 
 
 .hero-description {
-    color: var(--muted);
 
-    max-width: 610px;
-
-    line-height: 1.75;
+    max-width: 620px;
 
     margin-top: 20px;
 
+    color: var(--muted);
+
     font-size: 17px;
+
+    line-height: 1.75;
+
 }
 
 
-/* =========================
-   HERO BUTTONS
-========================= */
+
+/* ======================================
+   BUTTONS
+====================================== */
 
 .hero-buttons {
-    margin-top: 35px;
 
     display: flex;
 
     gap: 15px;
+
+    margin-top: 35px;
+
 }
 
 
 .btn {
-    text-decoration: none;
 
     padding: 14px 24px;
 
     border-radius: 50px;
 
+    text-decoration: none;
+
     font-size: 14px;
 
-    transition: 0.3s;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+
 }
 
 
 .btn-primary {
-    background: var(--accent);
 
-    color: white;
+    background: var(--accent);
 
     border: 1px solid var(--accent);
 
+    color: white;
+
     font-weight: 700;
+
 }
 
 
 .btn-primary:hover {
+
     background: var(--accent-light);
 
     border-color: var(--accent-light);
 
     transform: translateY(-3px);
+
 }
 
 
 .btn-secondary {
-    color: var(--text);
+
+    background: var(--surface);
 
     border: 1px solid var(--border);
 
-    background: var(--surface);
+    color: var(--text);
+
 }
 
 
 .btn-secondary:hover {
+
     border-color: var(--accent);
 
     color: var(--accent);
 
     transform: translateY(-3px);
+
 }
 
 
-/* =========================
+
+/* ======================================
    LOCATION
-========================= */
+====================================== */
 
 .hero-location {
+
     margin-top: 50px;
 
-    font-family: "JetBrains Mono", monospace;
-
     color: var(--muted);
+
+    font-family: "JetBrains Mono", monospace;
 
     font-size: 11px;
 
     letter-spacing: 1.5px;
+
 }
 
 
-/* =========================
-   HRI HERO VISUAL
-========================= */
+
+/* ======================================
+   RIGHT HERO AREA
+====================================== */
 
 .hero-visual {
+
     display: flex;
 
-    justify-content: center;
     align-items: center;
+
+    justify-content: center;
+
+    min-width: 0;
+
 }
 
 
-.hri-visual {
+.hri-scene {
+
     position: relative;
 
-    width: 620px;
+    width: 660px;
+
     height: 560px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
 }
 
 
-/* =========================
+
+/* ======================================
    PORTRAIT
-========================= */
+====================================== */
 
 .portrait-wrapper {
-    width: 410px;
-    height: 410px;
 
     position: relative;
 
     z-index: 5;
 
-    border-radius: 50%;
-
-    overflow: hidden;
-
-    background: var(--surface);
-
-    box-shadow:
-        0 24px 60px rgba(23, 43, 46, 0.12),
-        0 0 0 1px rgba(45, 183, 163, 0.12);
-}
-
-
-.hero-photo {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center top;
-
-    border-radius: 50%;
-
-    border: 7px solid rgba(255, 255, 255, 0.95);
-
-    transition:
-        transform 0.6s ease,
-        filter 0.6s ease;
-}
-
-
-.portrait-wrapper:hover .hero-photo {
-    transform: scale(1.025);
-}
-
-
-/* =========================
-   DECORATIVE HRI ARCS
-========================= */
-
-.hri-arc {
-    position: absolute;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-}
-
-
-.arc-one {
-    width: 470px;
-    height: 470px;
-
-    border: 1.5px solid rgba(45, 183, 163, 0.28);
-
-    z-index: 1;
-}
-
-
-.arc-two {
-    width: 520px;
-    height: 520px;
-
-    border-top: 1px dashed rgba(45, 183, 163, 0.26);
-    border-right: 1px solid rgba(45, 183, 163, 0.12);
-    border-bottom: 1px dashed rgba(45, 183, 163, 0.18);
-    border-left: 1px solid transparent;
-
-    z-index: 1;
-
-    transform: rotate(-18deg);
-
-    animation: arcFloat 8s ease-in-out infinite alternate;
-}
-
-
-@keyframes arcFloat {
-
-    from {
-        transform: rotate(-18deg) scale(1);
-    }
-
-    to {
-        transform: rotate(-12deg) scale(1.015);
-    }
-}
-
-/* ===================================
-   HUMAN ROBOT INTERACTION HERO SCENE
-=================================== */
-
-.hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.hri-scene {
-    position: relative;
-
-    width: 650px;
-    height: 570px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* =========================
-   PORTRAIT
-========================= */
-
-.portrait-wrapper {
-    position: relative;
-
     width: 400px;
+
     height: 400px;
 
-    z-index: 10;
+    overflow: hidden;
 
     border-radius: 50%;
-
-    overflow: hidden;
 
     background: white;
 
     box-shadow:
         0 22px 55px rgba(23, 43, 46, 0.10),
-        0 0 0 1px rgba(45, 183, 163, 0.13);
+        0 0 0 1px rgba(45, 183, 163, 0.14);
+
 }
 
 
 .hero-photo {
+
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
-    object-position: center top;
 
-    border-radius: 50%;
+    object-position: center top;
 
     border: 7px solid white;
 
-    transition:
-        transform 0.55s ease,
-        box-shadow 0.55s ease;
+    border-radius: 50%;
+
+    transition: transform 0.6s ease;
+
 }
 
 
 .portrait-wrapper:hover .hero-photo {
+
     transform: scale(1.025);
+
 }
 
 
-/* =========================
-   TECHNICAL ARCS
-========================= */
 
-.scene-arc {
+/* ======================================
+   HRI SVG SCENE
+====================================== */
+
+.hri-overlay {
+
     position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-}
-
-
-.arc-a {
-    width: 465px;
-    height: 465px;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(-7deg);
-
-    border:
-        1.4px solid
-        rgba(45, 183, 163, 0.26);
-}
-
-
-.arc-b {
-    width: 525px;
-    height: 525px;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(23deg);
-
-    border-top:
-        1.5px dashed
-        rgba(45, 183, 163, 0.28);
-
-    border-right:
-        1px solid
-        rgba(45, 183, 163, 0.13);
-
-    border-bottom:
-        1px dashed
-        rgba(45, 183, 163, 0.13);
-
-    border-left:
-        1px solid transparent;
-}
-
-
-.arc-c {
-    width: 575px;
-    height: 575px;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(-34deg);
-
-    border-top:
-        1px solid
-        rgba(45, 183, 163, 0.10);
-
-    border-right:
-        1px solid
-        rgba(45, 183, 163, 0.08);
-
-    border-left:
-        1px solid transparent;
-
-    border-bottom:
-        1px solid transparent;
-}
-
-
-/* =========================
-   HUMAN
-========================= */
-
-.human-figure {
-    position: absolute;
-
-    width: 165px;
-    height: 300px;
-
-    left: -4px;
-    top: 145px;
-
-    z-index: 7;
-
-    fill: none;
-
-    stroke: rgba(45, 183, 163, 0.52);
-
-    stroke-width: 2.2;
-
-    stroke-linecap: round;
-    stroke-linejoin: round;
-
-    opacity: 0.8;
-
-    filter:
-        drop-shadow(
-            0 8px 14px
-            rgba(45, 183, 163, 0.05)
-        );
-}
-
-
-/* =========================
-   ROBOT ARM
-========================= */
-
-.robot-arm {
-    position: absolute;
-
-    width: 305px;
-    height: 370px;
-
-    right: -47px;
-    top: 64px;
 
     z-index: 8;
 
-    fill:
-        rgba(243, 246, 246, 0.78);
+    width: 700px;
 
-    stroke:
-        rgba(45, 183, 163, 0.67);
+    height: 560px;
 
-    stroke-width: 2.3;
+    top: 50%;
+
+    left: 50%;
+
+    overflow: visible;
+
+    pointer-events: none;
+
+    transform:
+        translate(-50%, -50%);
+
+}
+
+
+/*
+CRITICAL:
+prevents SVG shapes from turning black
+*/
+
+.hri-overlay path {
+
+    fill: none;
+
+}
+
+
+.hri-overlay {
 
     stroke-linecap: round;
+
     stroke-linejoin: round;
 
-    filter:
-        drop-shadow(
-            0 10px 18px
-            rgba(23, 43, 46, 0.05)
-        );
+}
 
-    transform-origin: 55% 85%;
+
+
+/* ======================================
+   TECHNICAL ARCS
+====================================== */
+
+.technical-arc {
+
+    fill: none;
+
+    stroke: rgba(45, 183, 163, 0.24);
+
+    stroke-width: 1.35;
+
+}
+
+
+.arc-dashed {
+
+    stroke:
+        rgba(45, 183, 163, 0.27);
+
+    stroke-dasharray: 8 10;
 
     animation:
-        robotMotion 6s
-        ease-in-out
-        infinite alternate;
+        dashFlow 15s linear infinite;
+
 }
 
 
-.joint {
-    fill:
-        rgba(255, 255, 255, 0.78);
+.arc-faint {
 
     stroke:
-        rgba(45, 183, 163, 0.72);
+        rgba(45, 183, 163, 0.10);
 
-    stroke-width: 3;
 }
 
 
-.joint-inner {
-    fill: transparent;
+@keyframes dashFlow {
 
-    stroke:
-        rgba(45, 183, 163, 0.62);
+    to {
 
-    stroke-width: 2;
+        stroke-dashoffset: -180;
+
+    }
+
 }
 
 
-.arm-link {
+
+/* ======================================
+   HUMAN DRAWING
+====================================== */
+
+.human-drawing {
+
     fill: none;
 
     stroke:
-        rgba(45, 183, 163, 0.62);
+        rgba(45, 183, 163, 0.48);
 
-    stroke-width: 16;
+    stroke-width: 2;
 
     stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    animation:
+        humanFloat
+        5s
+        ease-in-out
+        infinite
+        alternate;
+
 }
 
 
-.small-link {
-    stroke-width: 12;
+@keyframes humanFloat {
+
+    from {
+
+        transform: translateY(2px);
+
+    }
+
+
+    to {
+
+        transform: translateY(-4px);
+
+    }
+
 }
 
 
-.robot-hand,
-.robot-finger {
+
+/* ======================================
+   ROBOT ARM
+====================================== */
+
+.robot-drawing {
+
     fill: none;
 
     stroke:
         rgba(45, 183, 163, 0.70);
 
-    stroke-width: 5;
+    stroke-width: 2.3;
 
     stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    transform-origin:
+        575px 430px;
+
+    animation:
+        robotFloat
+        6s
+        ease-in-out
+        infinite
+        alternate;
+
 }
 
 
-@keyframes robotMotion {
+.robot-joint {
 
-    from {
-        transform: rotate(-1deg);
-    }
+    fill:
+        rgba(255, 255, 255, 0.86);
 
-    to {
-        transform: rotate(1.8deg);
-    }
+    stroke:
+        rgba(45, 183, 163, 0.73);
+
+    stroke-width: 3;
 
 }
 
 
-/* =========================
-   SMALL TECHNICAL NODES
-========================= */
+.robot-joint-inner {
 
-.scene-node {
-    position: absolute;
-
-    width: 13px;
-    height: 13px;
-
-    border-radius: 50%;
-
-    background: var(--accent);
-
-    border:
-        3px solid
-        rgba(255, 255, 255, 0.95);
-
-    box-shadow:
-        0 3px 10px
-        rgba(45, 183, 163, 0.18);
-
-    z-index: 12;
-}
-
-
-.node-one {
-    top: 74px;
-    left: 55%;
-}
-
-
-.node-two {
-    right: 56px;
-    top: 255px;
-}
-
-
-.node-three {
-    left: 170px;
-    bottom: 57px;
-}
-
-
-
-/* =========================
-   INTERACTION LINE
-========================= */
-
-.interaction-path {
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    top: 0;
-    left: 0;
-
-    z-index: 2;
-
-    pointer-events: none;
-}
-
-
-.interaction-line {
     fill: none;
 
-    stroke: rgba(45, 183, 163, 0.30);
+    stroke:
+        rgba(45, 183, 163, 0.62);
 
     stroke-width: 2;
 
-    stroke-dasharray: 7 9;
-
-    animation: interactionFlow 9s linear infinite;
 }
 
 
-.interaction-dot {
+.robot-link {
+
+    fill: none;
+
+    stroke:
+        rgba(45, 183, 163, 0.56);
+
+    stroke-width: 15;
+
+}
+
+
+.robot-link-small {
+
+    stroke-width: 10;
+
+}
+
+
+.robot-hand {
+
+    fill: none;
+
+    stroke:
+        rgba(45, 183, 163, 0.72);
+
+    stroke-width: 5;
+
+}
+
+
+.robot-finger {
+
+    fill: none;
+
+    stroke:
+        rgba(45, 183, 163, 0.72);
+
+    stroke-width: 4;
+
+}
+
+
+.finger-tip {
+
+    fill: white;
+
+    stroke:
+        rgba(45, 183, 163, 0.75);
+
+    stroke-width: 2;
+
+}
+
+
+@keyframes robotFloat {
+
+    from {
+
+        transform: rotate(-0.7deg);
+
+    }
+
+
+    to {
+
+        transform: rotate(1.3deg);
+
+    }
+
+}
+
+
+
+/* ======================================
+   SYSTEM NODES
+====================================== */
+
+.system-node {
+
     fill: var(--accent);
 
+    stroke: white;
+
+    stroke-width: 3;
+
+}
+
+
+.small-node {
+
     opacity: 0.75;
+
 }
 
 
-@keyframes interactionFlow {
 
-    to {
-        stroke-dashoffset: -120;
+/* ======================================
+   LARGE TABLET / SMALL LAPTOP
+====================================== */
+
+@media (max-width: 1250px) {
+
+    .hero {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(420px, 0.9fr);
+
+        gap: 30px;
+
     }
-}
-@media (max-width: 1100px) {
 
-    .hri-visual {
-        width: 520px;
+
+    .hri-scene {
+
+        width: 560px;
+
         height: 500px;
+
     }
+
+
+    .hri-overlay {
+
+        width: 600px;
+
+        height: 480px;
+
+    }
+
 
     .portrait-wrapper {
-        width: 360px;
-        height: 360px;
-    }
 
-    .arc-one {
-        width: 415px;
-        height: 415px;
-    }
+        width: 350px;
 
-    .arc-two {
-        width: 455px;
-        height: 455px;
-    }
+        height: 350px;
 
-    .human-outline {
-        width: 105px;
-        height: 200px;
-
-        left: 5px;
-        top: 150px;
-    }
-
-    .robot-arm {
-        width: 190px;
-        height: 230px;
-
-        right: -5px;
-        top: 90px;
-    }
-}
-
-
-@media (max-width: 950px) {
-
-    .hero {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-visual {
-        margin-top: 60px;
-    }
-
-    .hri-visual {
-        margin: auto;
-    }
-}
-
-
-@media (max-width: 650px) {
-
-    .hri-visual {
-        width: 340px;
-        height: 380px;
-    }
-
-    .portrait-wrapper {
-        width: 280px;
-        height: 280px;
-    }
-
-    .arc-one {
-        width: 310px;
-        height: 310px;
-    }
-
-    .arc-two {
-        width: 335px;
-        height: 335px;
-    }
-
-    .human-outline {
-        display: none;
-    }
-
-    .robot-arm {
-        width: 120px;
-        height: 160px;
-
-        right: -15px;
-        top: 70px;
-
-        opacity: 0.65;
-    }
-
-    .interaction-path {
-        display: none;
-    }
-}
-
-.human-figure {
-    animation:
-        humanMotion 5s
-        ease-in-out
-        infinite alternate;
-}
-
-
-@keyframes humanMotion {
-
-    from {
-        transform: translateY(2px);
-    }
-
-    to {
-        transform: translateY(-4px);
     }
 
 }
 
 
-.arc-b {
-    animation:
-        arcMovement 14s
-        linear
-        infinite;
-}
 
-
-@keyframes arcMovement {
-
-    from {
-        transform:
-            translate(-50%, -50%)
-            rotate(23deg);
-    }
-
-    to {
-        transform:
-            translate(-50%, -50%)
-            rotate(383deg);
-    }
-
-}
-/* =========================
+/* ======================================
    TABLET
-========================= */
+====================================== */
 
 @media (max-width: 950px) {
 
     .hero {
+
         grid-template-columns: 1fr;
 
-        padding-top: 50px;
-    }
+        padding-top: 60px;
 
-
-    .hero-visual {
-        margin-top: 20px;
     }
 
 
     .hero-name {
-        letter-spacing: -3px;
+
+        letter-spacing: -4px;
+
+    }
+
+
+    .hero-visual {
+
+        margin-top: 45px;
+
+    }
+
+
+    .hri-scene {
+
+        width: 600px;
+
+        height: 500px;
+
+        margin: auto;
+
     }
 
 
     .portrait-wrapper {
-        width: min(520px, 100%);
+
+        width: 360px;
+
+        height: 360px;
+
     }
+
 }
 
 
-/* =========================
+
+/* ======================================
    MOBILE
-========================= */
+====================================== */
 
 @media (max-width: 650px) {
 
     .navbar {
+
         height: 75px;
 
         padding: 0 5%;
+
     }
 
 
     .logo {
+
         font-size: 19px;
+
     }
 
 
     .nav-links {
+
         display: none;
+
     }
 
 
     .hero {
+
         width: 90%;
 
-        padding: 45px 0;
+        padding: 50px 0;
+
+        gap: 15px;
+
     }
 
 
     .hero-content::before {
+
         width: 120px;
 
         height: 3px;
+
     }
 
 
     .hero-label {
+
         font-size: 10px;
 
-        letter-spacing: 1.5px;
+        letter-spacing: 1.4px;
+
     }
 
 
     .hero-name {
-        font-size: 64px;
+
+        font-size: clamp(
+            60px,
+            20vw,
+            82px
+        );
 
         letter-spacing: -3px;
+
     }
 
 
     .hero-role {
+
+        margin-top: 26px;
+
         font-size: 27px;
 
-        margin-top: 25px;
     }
 
 
     .hero-description {
+
         font-size: 15px;
 
         line-height: 1.7;
+
     }
 
 
     .hero-buttons {
+
         flex-direction: column;
 
         align-items: flex-start;
-    }
 
-
-    .btn {
-        width: fit-content;
-    }
-
-
-    .portrait-wrapper {
-        height: 470px;
-
-        width: 100%;
-    }
-
-
-    .tech-tag {
-        font-size: 8px;
-
-        padding: 8px 11px;
     }
 
 
     .hero-location {
+
         margin-top: 35px;
+
     }
-}
-@media (max-width: 950px) {
+
+
+    .hero-visual {
+
+        margin-top: 35px;
+
+        overflow: hidden;
+
+    }
+
 
     .hri-scene {
-        width: 560px;
-        height: 520px;
 
-        margin: auto;
-    }
+        width: 350px;
 
-    .portrait-wrapper {
-        width: 360px;
-        height: 360px;
-    }
-
-    .human-figure {
-        width: 135px;
-
-        left: 2px;
-    }
-
-    .robot-arm {
-        width: 250px;
-
-        right: -25px;
-    }
-
-}
-
-
-@media (max-width: 650px) {
-
-    .hri-scene {
-        width: 330px;
         height: 370px;
+
     }
 
 
     .portrait-wrapper {
-        width: 280px;
-        height: 280px;
+
+        width: 275px;
+
+        height: 275px;
+
     }
 
 
-    .arc-a {
-        width: 315px;
-        height: 315px;
+    .hri-overlay {
+
+        width: 430px;
+
+        height: 350px;
+
     }
 
 
-    .arc-b {
-        width: 345px;
-        height: 345px;
-    }
+    /*
+    On phones, remove human figure.
+    Keeps the page cleaner.
+    */
 
+    .human-drawing {
 
-    .arc-c {
         display: none;
+
     }
 
 
-    .human-figure {
+    /*
+    Keep robot but make it subtle.
+    */
+
+    .robot-drawing {
+
+        opacity: 0.55;
+
+    }
+
+
+    .arc-faint {
+
         display: none;
+
     }
 
 
-    .robot-arm {
-        width: 150px;
-        height: 190px;
+    .system-node {
 
-        right: -20px;
-        top: 60px;
-
-        opacity: 0.65;
-    }
-
-
-    .scene-node {
         display: none;
+
+    }
+
+}
+
+
+
+/* ======================================
+   ACCESSIBILITY
+====================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
     }
 
 }
