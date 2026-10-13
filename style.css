@@ -3,9 +3,9 @@
 );
 
 
-/* ======================================
-   COLORS
-====================================== */
+/* =========================================
+   COLOR SYSTEM
+========================================= */
 
 :root {
 
@@ -31,9 +31,9 @@
 }
 
 
-/* ======================================
+/* =========================================
    RESET
-====================================== */
+========================================= */
 
 * {
 
@@ -66,9 +66,9 @@ body {
 }
 
 
-/* ======================================
+/* =========================================
    NAVBAR
-====================================== */
+========================================= */
 
 .navbar {
 
@@ -138,9 +138,9 @@ body {
 }
 
 
-/* ======================================
+/* =========================================
    HERO LAYOUT
-====================================== */
+========================================= */
 
 .hero {
 
@@ -150,30 +150,30 @@ body {
 
     margin: auto;
 
-    padding: 70px 0;
+    padding: 65px 0;
 
     display: grid;
 
     grid-template-columns:
         minmax(0, 1.05fr)
-        minmax(500px, 0.95fr);
+        minmax(520px, 0.95fr);
 
     align-items: center;
 
-    gap: 55px;
+    gap: 45px;
 
 }
 
 
-/* ======================================
+/* =========================================
    LEFT HERO CONTENT
-====================================== */
+========================================= */
 
 .hero-content {
 
     position: relative;
 
-    z-index: 20;
+    z-index: 10;
 
 }
 
@@ -199,6 +199,8 @@ body {
 }
 
 
+/* small heading */
+
 .hero-label {
 
     margin-bottom: 25px;
@@ -213,6 +215,8 @@ body {
 
 }
 
+
+/* main name */
 
 .hero-name {
 
@@ -240,13 +244,15 @@ body {
 }
 
 
+/* professional title */
+
 .hero-role {
 
     margin-top: 32px;
 
     color: var(--text);
 
-    font-size: clamp(26px, 2.25vw, 40px);
+    font-size: clamp(26px, 2.2vw, 40px);
 
     font-weight: 600;
 
@@ -254,6 +260,8 @@ body {
 
 }
 
+
+/* introduction */
 
 .hero-description {
 
@@ -270,9 +278,9 @@ body {
 }
 
 
-/* ======================================
+/* =========================================
    BUTTONS
-====================================== */
+========================================= */
 
 .hero-buttons {
 
@@ -350,9 +358,9 @@ body {
 }
 
 
-/* ======================================
+/* =========================================
    LOCATION
-====================================== */
+========================================= */
 
 .hero-location {
 
@@ -369,43 +377,119 @@ body {
 }
 
 
-/* ======================================
+/* =========================================
    RIGHT HERO AREA
-====================================== */
+========================================= */
 
 .hero-visual {
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
+
+    align-items: center;
 
     min-width: 0;
 
 }
 
 
-.hri-scene {
+/*
+    Main container holding:
+    1. HRI illustration
+    2. portrait
+*/
+
+.hri-composition {
 
     position: relative;
 
-    width: 660px;
+    width: 640px;
 
-    height: 560px;
+    height: 640px;
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
+
+    align-items: center;
 
 }
 
 
-/* ======================================
+/* =========================================
+   HUMAN + ROBOT ARTWORK
+========================================= */
+
+.hri-frame {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    top: 50%;
+
+    left: 50%;
+
+    object-fit: contain;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0.82;
+
+    filter:
+        drop-shadow(
+            0 12px 28px
+            rgba(45, 183, 163, 0.05)
+        );
+
+    animation:
+        frameFloat
+        7s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+/*
+    Very small animation.
+    The artwork moves, portrait stays still.
+*/
+
+@keyframes frameFloat {
+
+    from {
+
+        transform:
+            translate(-50%, -50%)
+            translateY(2px);
+
+    }
+
+
+    to {
+
+        transform:
+            translate(-50%, -50%)
+            translateY(-5px);
+
+    }
+
+}
+
+
+/* =========================================
    PORTRAIT
-====================================== */
+========================================= */
 
 .portrait-wrapper {
 
@@ -413,19 +497,28 @@ body {
 
     z-index: 5;
 
-    width: 400px;
+    width: 390px;
 
-    height: 400px;
-
-    overflow: hidden;
+    height: 390px;
 
     border-radius: 50%;
 
+    overflow: hidden;
+
     background: white;
 
+    /*
+       Use this to fine-tune portrait position
+       relative to the HRI artwork.
+    */
+
+    transform:
+        translate(0px, 0px);
+
     box-shadow:
-        0 22px 55px rgba(23, 43, 46, 0.10),
-        0 0 0 1px rgba(45, 183, 163, 0.14);
+        0 24px 60px rgba(23, 43, 46, 0.12),
+        0 0 0 7px rgba(255, 255, 255, 0.95),
+        0 0 0 8px rgba(45, 183, 163, 0.10);
 
 }
 
@@ -440,11 +533,10 @@ body {
 
     object-position: center top;
 
-    border: 7px solid white;
-
     border-radius: 50%;
 
-    transition: transform 0.6s ease;
+    transition:
+        transform 0.55s ease;
 
 }
 
@@ -456,339 +548,46 @@ body {
 }
 
 
-/* ======================================
-   HRI SVG SCENE
-====================================== */
-
-.hri-overlay {
-
-    position: absolute;
-
-    z-index: 8;
-
-    width: 700px;
-
-    height: 560px;
-
-    top: 50%;
-
-    left: 50%;
-
-    overflow: visible;
-
-    pointer-events: none;
-
-    transform: translate(-50%, -50%);
-
-    stroke-linecap: round;
-
-    stroke-linejoin: round;
-
-}
-
-
-/* prevents black SVG fills */
-
-.hri-overlay path {
-
-    fill: none;
-
-}
-
-
-/* ======================================
-   TECHNICAL ARCS
-====================================== */
-
-.technical-arc {
-
-    fill: none;
-
-    stroke: rgba(45, 183, 163, 0.24);
-
-    stroke-width: 1.35;
-
-}
-
-
-.arc-dashed {
-
-    stroke: rgba(45, 183, 163, 0.27);
-
-    stroke-dasharray: 8 10;
-
-    animation: dashFlow 15s linear infinite;
-
-}
-
-
-.arc-faint {
-
-    stroke: rgba(45, 183, 163, 0.10);
-
-}
-
-
-@keyframes dashFlow {
-
-    to {
-
-        stroke-dashoffset: -180;
-
-    }
-
-}
-
-
-/* ======================================
-   HUMAN DRAWING
-====================================== */
-
-.human-drawing {
-
-    fill: none;
-
-    stroke: rgba(45, 183, 163, 0.56);
-
-    stroke-width: 2.6;
-
-    stroke-linecap: round;
-
-    stroke-linejoin: round;
-
-    opacity: 0.95;
-
-    animation:
-        humanFloat
-        5s
-        ease-in-out
-        infinite
-        alternate;
-
-}
-
-
-.human-head {
-
-    fill: rgba(255, 255, 255, 0.22);
-
-    stroke: rgba(45, 183, 163, 0.60);
-
-    stroke-width: 2.6;
-
-}
-
-
-@keyframes humanFloat {
-
-    from {
-
-        transform: translateY(2px);
-
-    }
-
-
-    to {
-
-        transform: translateY(-4px);
-
-    }
-
-}
-
-
-/* ======================================
-   ROBOT ARM
-====================================== */
-
-.robot-drawing {
-
-    fill: none;
-
-    stroke: rgba(45, 183, 163, 0.78);
-
-    stroke-width: 2.4;
-
-    stroke-linecap: round;
-
-    stroke-linejoin: round;
-
-    transform-origin: 602px 398px;
-
-    animation:
-        robotFloat
-        6s
-        ease-in-out
-        infinite
-        alternate;
-
-}
-
-
-.robot-joint {
-
-    fill: rgba(255, 255, 255, 0.92);
-
-    stroke: rgba(45, 183, 163, 0.78);
-
-    stroke-width: 3;
-
-}
-
-
-.robot-joint-inner {
-
-    fill: none;
-
-    stroke: rgba(45, 183, 163, 0.70);
-
-    stroke-width: 2.2;
-
-}
-
-
-.robot-link {
-
-    fill: none;
-
-    stroke: rgba(45, 183, 163, 0.62);
-
-    stroke-width: 15;
-
-    stroke-linecap: round;
-
-}
-
-
-.robot-link-small {
-
-    stroke-width: 10;
-
-}
-
-
-.robot-hand {
-
-    fill: none;
-
-    stroke: rgba(45, 183, 163, 0.78);
-
-    stroke-width: 5;
-
-}
-
-
-.robot-finger {
-
-    fill: none;
-
-    stroke: rgba(45, 183, 163, 0.78);
-
-    stroke-width: 4;
-
-}
-
-
-.finger-tip {
-
-    fill: white;
-
-    stroke: rgba(45, 183, 163, 0.82);
-
-    stroke-width: 2;
-
-}
-
-
-@keyframes robotFloat {
-
-    from {
-
-        transform: rotate(-0.7deg);
-
-    }
-
-
-    to {
-
-        transform: rotate(1.3deg);
-
-    }
-
-}
-
-
-/* ======================================
-   SYSTEM NODES
-====================================== */
-
-.system-node {
-
-    fill: var(--accent);
-
-    stroke: white;
-
-    stroke-width: 3;
-
-}
-
-
-.small-node {
-
-    opacity: 0.75;
-
-}
-
-
-/* ======================================
-   LARGE TABLET / SMALL LAPTOP
-====================================== */
-
-@media (max-width: 1250px) {
+/* =========================================
+   LAPTOP / SMALL DESKTOP
+========================================= */
+
+@media (max-width: 1300px) {
 
     .hero {
 
         grid-template-columns:
             minmax(0, 1fr)
-            minmax(420px, 0.9fr);
+            minmax(450px, 0.9fr);
 
         gap: 30px;
 
     }
 
 
-    .hri-scene {
+    .hri-composition {
 
         width: 560px;
 
-        height: 500px;
-
-    }
-
-
-    .hri-overlay {
-
-        width: 600px;
-
-        height: 480px;
+        height: 560px;
 
     }
 
 
     .portrait-wrapper {
 
-        width: 350px;
+        width: 345px;
 
-        height: 350px;
+        height: 345px;
 
     }
 
 }
 
 
-/* ======================================
+/* =========================================
    TABLET
-====================================== */
+========================================= */
 
 @media (max-width: 950px) {
 
@@ -810,16 +609,16 @@ body {
 
     .hero-visual {
 
-        margin-top: 45px;
+        margin-top: 50px;
 
     }
 
 
-    .hri-scene {
+    .hri-composition {
 
-        width: 600px;
+        width: 580px;
 
-        height: 500px;
+        height: 580px;
 
         margin: auto;
 
@@ -828,18 +627,18 @@ body {
 
     .portrait-wrapper {
 
-        width: 360px;
+        width: 350px;
 
-        height: 360px;
+        height: 350px;
 
     }
 
 }
 
 
-/* ======================================
+/* =========================================
    MOBILE
-====================================== */
+========================================= */
 
 @media (max-width: 650px) {
 
@@ -872,7 +671,7 @@ body {
 
         padding: 50px 0;
 
-        gap: 15px;
+        gap: 10px;
 
     }
 
@@ -897,11 +696,12 @@ body {
 
     .hero-name {
 
-        font-size: clamp(
-            60px,
-            20vw,
-            82px
-        );
+        font-size:
+            clamp(
+                60px,
+                20vw,
+                82px
+            );
 
         letter-spacing: -3px;
 
@@ -951,66 +751,36 @@ body {
     }
 
 
-    .hri-scene {
+    .hri-composition {
 
         width: 350px;
-
-        height: 370px;
-
-    }
-
-
-    .portrait-wrapper {
-
-        width: 275px;
-
-        height: 275px;
-
-    }
-
-
-    .hri-overlay {
-
-        width: 430px;
 
         height: 350px;
 
     }
 
 
-    .human-drawing {
+    .portrait-wrapper {
 
-        display: none;
+        width: 220px;
 
-    }
-
-
-    .robot-drawing {
-
-        opacity: 0.55;
+        height: 220px;
 
     }
 
 
-    .arc-faint {
+    .hri-frame {
 
-        display: none;
-
-    }
-
-
-    .system-node {
-
-        display: none;
+        opacity: 0.68;
 
     }
 
 }
 
 
-/* ======================================
+/* =========================================
    ACCESSIBILITY
-====================================== */
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1022,9 +792,9 @@ body {
 
         animation-iteration-count: 1 !important;
 
-        scroll-behavior: auto !important;
-
         transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
 
     }
 
