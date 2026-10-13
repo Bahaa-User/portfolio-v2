@@ -276,33 +276,50 @@ body {
 
 
 /* =========================
-   HERO PHOTO
+   HRI HERO VISUAL
 ========================= */
 
 .hero-visual {
     display: flex;
+
     justify-content: center;
     align-items: center;
 }
 
 
-.portrait-wrapper {
-    width: 460px;
-    height: 460px;
-
+.hri-visual {
     position: relative;
 
-    border-radius: 50%;
-
-    overflow: visible;
-
-    background: transparent;
+    width: 620px;
+    height: 560px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
-    margin-left: auto;
+
+/* =========================
+   PORTRAIT
+========================= */
+
+.portrait-wrapper {
+    width: 410px;
+    height: 410px;
+
+    position: relative;
+
+    z-index: 5;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background: var(--surface);
+
+    box-shadow:
+        0 24px 60px rgba(23, 43, 46, 0.12),
+        0 0 0 1px rgba(45, 183, 163, 0.12);
 }
 
 
@@ -315,121 +332,313 @@ body {
 
     border-radius: 50%;
 
-    border: 6px solid rgba(255, 255, 255, 0.85);
+    border: 7px solid rgba(255, 255, 255, 0.95);
 
-    box-shadow:
-        0 20px 50px rgba(23, 43, 46, 0.12),
-        0 0 0 1px rgba(45, 183, 163, 0.18);
-
-    transition: transform 0.5s ease;
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
 }
 
 
 .portrait-wrapper:hover .hero-photo {
-    transform: scale(1.03);
+    transform: scale(1.025);
 }
-..orbit-inner,
-.orbit-outer {
+
+
+/* =========================
+   DECORATIVE HRI ARCS
+========================= */
+
+.hri-arc {
     position: absolute;
 
     border-radius: 50%;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
 
     pointer-events: none;
 }
 
-.orbit-inner {
-    width: 500px;
-    height: 500px;
 
-    border: 1.3px solid rgba(45, 183, 163, 0.14);
-}
+.arc-one {
+    width: 470px;
+    height: 470px;
 
-.orbit-outer {
-    width: 560px;
-    height: 560px;
+    border: 1.5px solid rgba(45, 183, 163, 0.28);
 
-    border: 1.3px solid rgba(45, 183, 163, 0.14);
+    z-index: 1;
 }
 
 
-.icon-badge {
+.arc-two {
+    width: 520px;
+    height: 520px;
+
+    border-top: 1px dashed rgba(45, 183, 163, 0.26);
+    border-right: 1px solid rgba(45, 183, 163, 0.12);
+    border-bottom: 1px dashed rgba(45, 183, 163, 0.18);
+    border-left: 1px solid transparent;
+
+    z-index: 1;
+
+    transform: rotate(-18deg);
+
+    animation: arcFloat 8s ease-in-out infinite alternate;
+}
+
+
+@keyframes arcFloat {
+
+    from {
+        transform: rotate(-18deg) scale(1);
+    }
+
+    to {
+        transform: rotate(-12deg) scale(1.015);
+    }
+}
+
+
+/* =========================
+   HUMAN OUTLINE
+========================= */
+
+.human-outline {
     position: absolute;
 
-    width: 58px;
-    height: 58px;
+    width: 135px;
+    height: 245px;
 
-    border-radius: 50%;
+    left: 10px;
+    top: 160px;
 
-    background: rgba(255, 255, 255, 0.96);
+    z-index: 3;
 
-    border: 1px solid rgba(45, 183, 163, 0.28);
+    stroke: rgba(45, 183, 163, 0.60);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow:
-        0 10px 25px rgba(23, 43, 46, 0.08);
-
-    transition: 0.3s ease;
-}
-
-
-.icon-badge:hover {
-    border-color: rgba(45, 183, 163, 0.55);
-
-    box-shadow:
-        0 14px 30px rgba(23, 43, 46, 0.12);
-}
-
-
-.icon-symbol {
-    width: 24px;
-    height: 24px;
-
-    stroke: var(--accent);
-
-    stroke-width: 1.7;
+    stroke-width: 2;
 
     fill: none;
 
     stroke-linecap: round;
     stroke-linejoin: round;
+
+    opacity: 0.85;
+
+    animation: humanFloat 5s ease-in-out infinite alternate;
 }
 
 
-.badge-top {
-    top: -79px;
-    left: 50%;
-    transform: translateX(-50%);
+.human-node {
+    fill: var(--accent);
+    stroke: white;
+    stroke-width: 2;
 }
 
-.badge-right {
-    top: 50%;
-    right: -79px;
-    transform: translateY(-50%);
+
+@keyframes humanFloat {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-6px);
+    }
 }
 
-.badge-left {
-    top: 50%;
-    left: -79px;
-    transform: translateY(-50%);
-}
 
-.badge-bottom {
-    bottom: -79px;
-    left: 50%;
-    transform: translateX(-50%);
-}
 /* =========================
-   FLOATING ROBOTICS TAGS
+   ROBOT ARM
 ========================= */
 
+.robot-arm {
+    position: absolute;
+
+    width: 245px;
+    height: 280px;
+
+    right: -12px;
+    top: 80px;
+
+    z-index: 3;
+
+    stroke: rgba(45, 183, 163, 0.68);
+
+    stroke-width: 3;
+
+    fill: rgba(255, 255, 255, 0.45);
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    opacity: 0.9;
+
+    transform-origin: 50% 80%;
+
+    animation: robotFloat 6s ease-in-out infinite alternate;
+}
+
+
+.robot-node {
+    fill: var(--accent);
+
+    stroke: white;
+    stroke-width: 2;
+}
+
+
+@keyframes robotFloat {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(2deg);
+    }
+}
+
+
+/* =========================
+   INTERACTION LINE
+========================= */
+
+.interaction-path {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+.interaction-line {
+    fill: none;
+
+    stroke: rgba(45, 183, 163, 0.30);
+
+    stroke-width: 2;
+
+    stroke-dasharray: 7 9;
+
+    animation: interactionFlow 9s linear infinite;
+}
+
+
+.interaction-dot {
+    fill: var(--accent);
+
+    opacity: 0.75;
+}
+
+
+@keyframes interactionFlow {
+
+    to {
+        stroke-dashoffset: -120;
+    }
+}
+@media (max-width: 1100px) {
+
+    .hri-visual {
+        width: 520px;
+        height: 500px;
+    }
+
+    .portrait-wrapper {
+        width: 360px;
+        height: 360px;
+    }
+
+    .arc-one {
+        width: 415px;
+        height: 415px;
+    }
+
+    .arc-two {
+        width: 455px;
+        height: 455px;
+    }
+
+    .human-outline {
+        width: 105px;
+        height: 200px;
+
+        left: 5px;
+        top: 150px;
+    }
+
+    .robot-arm {
+        width: 190px;
+        height: 230px;
+
+        right: -5px;
+        top: 90px;
+    }
+}
+
+
+@media (max-width: 950px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+        margin-top: 60px;
+    }
+
+    .hri-visual {
+        margin: auto;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .hri-visual {
+        width: 340px;
+        height: 380px;
+    }
+
+    .portrait-wrapper {
+        width: 280px;
+        height: 280px;
+    }
+
+    .arc-one {
+        width: 310px;
+        height: 310px;
+    }
+
+    .arc-two {
+        width: 335px;
+        height: 335px;
+    }
+
+    .human-outline {
+        display: none;
+    }
+
+    .robot-arm {
+        width: 120px;
+        height: 160px;
+
+        right: -15px;
+        top: 70px;
+
+        opacity: 0.65;
+    }
+
+    .interaction-path {
+        display: none;
+    }
+}
 
 
 
