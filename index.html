@@ -116,61 +116,192 @@
 
             <div class="hero-visual">
 
-    <div class="portrait-wrapper">
+    <div class="hri-visual">
 
-        <img
-            src="assets/images/bahaa-hero.jpg"
-            alt="Bahaa Nasr"
-            class="hero-photo"
+        <!-- Decorative arcs -->
+        <div class="hri-arc arc-one"></div>
+        <div class="hri-arc arc-two"></div>
+
+
+        <!-- HUMAN SILHOUETTE -->
+        <svg
+            class="human-outline"
+            viewBox="0 0 120 220"
+            aria-hidden="true"
         >
 
-        <div class="orbit-inner"></div>
-        <div class="orbit-outer"></div>
+            <circle
+                cx="58"
+                cy="32"
+                r="18"
+            ></circle>
 
-       <div class="icon-badge badge-top">
-    <svg viewBox="0 0 24 24" class="icon-symbol">
-        <rect x="7" y="7" width="10" height="10" rx="1"></rect>
-        <path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"></path>
-    </svg>
-</div>
+            <path
+                d="
+                    M48 50
+                    C42 70, 43 92, 46 108
+                    L37 143
+                    M68 50
+                    C75 71, 73 93, 70 108
+                    L78 143
+                    M46 79
+                    L24 104
+                    M70 79
+                    L93 103
+                    M47 108
+                    L44 178
+                    M69 108
+                    L72 178
+                "
+            ></path>
 
-<div class="icon-badge badge-right">
-    <svg viewBox="0 0 24 24" class="icon-symbol">
-        <circle cx="6" cy="18" r="1.4"></circle>
-        <circle cx="10.5" cy="13.5" r="1.4"></circle>
-        <circle cx="15.5" cy="9" r="1.4"></circle>
-        <path d="M7.1 16.9l2.3-2.3"></path>
-        <path d="M11.7 12.4l2.8-2.4"></path>
-        <path d="M16.8 7.8l1.8-1.8"></path>
-        <path d="M18.6 6h2"></path>
-        <path d="M20.6 6v2"></path>
-    </svg>
-</div>
+            <circle
+                cx="96"
+                cy="104"
+                r="4"
+                class="human-node"
+            ></circle>
 
-<div class="icon-badge badge-left">
-    <svg viewBox="0 0 24 24" class="icon-symbol">
-        <circle cx="7" cy="12" r="1.7"></circle>
-        <path d="M10.5 12h1.5"></path>
-        <path d="M15 9c2 1.4 2 4.6 0 6"></path>
-        <path d="M17.5 7c3 2.4 3 7.6 0 10"></path>
-    </svg>
-</div>
+        </svg>
 
-<div class="icon-badge badge-bottom">
-    <svg viewBox="0 0 24 24" class="icon-symbol">
-        <circle cx="12" cy="5.5" r="1.5"></circle>
-        <circle cx="5.5" cy="18" r="1.5"></circle>
-        <circle cx="18.5" cy="18" r="1.5"></circle>
-        <circle cx="12" cy="12" r="1.5"></circle>
-        <path d="M12 7v3"></path>
-        <path d="M10.8 13l-4 3"></path>
-        <path d="M13.2 13l4 3"></path>
-    </svg>
+
+        <!-- PORTRAIT -->
+        <div class="portrait-wrapper">
+
+            <img
+                src="assets/images/bahaa-hero.jpg"
+                alt="Bahaa Nasr"
+                class="hero-photo"
+            >
+
+        </div>
+
+
+        <!-- ROBOTIC ARM -->
+        <svg
+            class="robot-arm"
+            viewBox="0 0 240 260"
+            aria-hidden="true"
+        >
+
+            <!-- base -->
+            <rect
+                x="92"
+                y="215"
+                width="70"
+                height="16"
+                rx="5"
+            ></rect>
+
+            <rect
+                x="108"
+                y="190"
+                width="40"
+                height="25"
+                rx="5"
+            ></rect>
+
+
+            <!-- first joint -->
+            <circle
+                cx="128"
+                cy="180"
+                r="17"
+            ></circle>
+
+            <!-- arm segment 1 -->
+            <path
+                d="
+                    M128 163
+                    L167 121
+                "
+            ></path>
+
+            <!-- second joint -->
+            <circle
+                cx="172"
+                cy="115"
+                r="16"
+            ></circle>
+
+            <!-- arm segment 2 -->
+            <path
+                d="
+                    M183 104
+                    L205 70
+                "
+            ></path>
+
+            <!-- wrist joint -->
+            <circle
+                cx="209"
+                cy="63"
+                r="11"
+            ></circle>
+
+            <!-- gripper -->
+            <path
+                d="
+                    M218 57
+                    L230 49
+
+                    M218 68
+                    L231 76
+
+                    M211 52
+                    L218 57
+
+                    M211 74
+                    L218 68
+                "
+            ></path>
+
+            <!-- interaction point -->
+            <circle
+                cx="229"
+                cy="62"
+                r="4"
+                class="robot-node"
+            ></circle>
+
+        </svg>
+
+
+        <!-- interaction path -->
+        <svg
+            class="interaction-path"
+            viewBox="0 0 640 480"
+            aria-hidden="true"
+        >
+
+            <path
+                class="interaction-line"
+                d="
+                    M105 240
+                    C180 165, 240 150, 310 160
+                    C400 170, 470 200, 540 150
+                "
+            ></path>
+
+            <circle
+                cx="310"
+                cy="160"
+                r="5"
+                class="interaction-dot"
+            ></circle>
+
+            <circle
+                cx="540"
+                cy="150"
+                r="5"
+                class="interaction-dot"
+            ></circle>
+
+        </svg>
+
     </div>
-    </div>
 
 </div>
-
         </section>
 
 
