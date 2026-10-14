@@ -248,21 +248,45 @@ body {
     letter-spacing: -1px;
 
 }
-.hero-credential {
+.hero-credentials {
     margin-top: 12px;
 
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
 
-    gap: 8px;
+    gap: 6px;
 
     font-family: "JetBrains Mono", monospace;
 
     font-size: 11px;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.6px;
 
     color: var(--muted);
+}
+
+
+.credential-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+.credential-degree {
+    color: var(--text);
+    font-weight: 500;
+}
+
+
+.credential-current .credential-degree {
+    color: var(--accent);
+}
+
+
+.credential-divider {
+    color: var(--border);
 }
 
 
