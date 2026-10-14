@@ -10,6 +10,7 @@
 :root {
     --background: #F3F6F6;
     --surface: #FFFFFF;
+    --surface-light: #EAF1F2;
 
     --text: #172B2E;
     --muted: #6E8081;
@@ -83,7 +84,6 @@ body {
 
 .nav-links {
     display: flex;
-
     gap: 35px;
 }
 
@@ -504,51 +504,85 @@ body {
 
     line-height: 1.8;
 }
+
+
 /* =========================================
-   FEATURED PROJECT
+   PROJECT GRID
 ========================================= */
 
-.featured-project {
-    margin-top: 100px;
-
-    padding-top: 55px;
-
-    border-top: 1px solid var(--border);
+.projects-grid {
+    margin-top: 85px;
 
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.15fr)
-        minmax(340px, 0.85fr);
+        repeat(2, minmax(0, 1fr));
 
-    gap: 75px;
-
-    align-items: center;
+    gap: 36px;
 }
 
 
 /* =========================================
-   PROJECT MEDIA
+   PROJECT CARD
 ========================================= */
 
-.project-media {
+.project-card {
+    position: relative;
+
+    min-width: 0;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border: 1px solid var(--border);
+
+    border-radius: 24px;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.project-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(45, 183, 163, 0.45);
+
+    box-shadow:
+        0 20px 45px
+        rgba(23, 43, 46, 0.08);
+}
+
+
+/* =========================================
+   PROJECT IMAGE
+========================================= */
+
+.project-card-image {
     position: relative;
 
     display: block;
 
-    overflow: hidden;
-
-    border-radius: 22px;
-
-    background: var(--surface);
+    width: 100%;
 
     aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    background: var(--surface-light);
 
     text-decoration: none;
 }
 
 
-.project-image {
+.project-card-image img {
     display: block;
 
     width: 100%;
@@ -557,97 +591,60 @@ body {
     object-fit: cover;
 
     transition:
-        transform 0.7s ease,
-        filter 0.7s ease;
+        transform 0.65s ease;
 }
 
 
-.project-media:hover .project-image {
-    transform: scale(1.035);
+.project-card:hover .project-card-image img {
+    transform: scale(1.045);
 }
 
 
 /* =========================================
-   IMAGE HOVER
+   PROJECT NUMBER
 ========================================= */
 
-.project-media-overlay {
+.project-number {
     position: absolute;
 
-    right: 20px;
-    bottom: 20px;
+    top: 20px;
+    left: 20px;
 
-    padding: 12px 17px;
+    width: 44px;
+    height: 44px;
 
     display: flex;
     align-items: center;
+    justify-content: center;
 
-    gap: 10px;
+    border-radius: 50%;
 
-    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.93);
 
-    background: rgba(255, 255, 255, 0.92);
-
-    color: var(--text);
-
-    font-size: 12px;
-    font-weight: 600;
-
-    backdrop-filter: blur(10px);
-
-    transform: translateY(8px);
-
-    opacity: 0;
-
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
-}
-
-
-.project-media:hover .project-media-overlay {
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-
-/* =========================================
-   PROJECT INFORMATION
-========================================= */
-
-.project-info {
-    max-width: 470px;
-}
-
-
-.project-topline {
-    display: flex;
-    align-items: baseline;
-
-    margin-bottom: 25px;
-}
-
-
-.project-index {
     color: var(--accent);
 
-    font-family: "JetBrains Mono", monospace;
-
-    font-size: 26px;
-
-    font-weight: 500;
-}
-
-
-.project-count {
-    margin-left: 5px;
-
-    color: var(--muted);
+    border: 1px solid rgba(45, 183, 163, 0.18);
 
     font-family: "JetBrains Mono", monospace;
 
     font-size: 11px;
+    font-weight: 500;
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================================
+   PROJECT CONTENT
+========================================= */
+
+.project-card-content {
+    flex: 1;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -655,16 +652,16 @@ body {
    PROJECT META
 ========================================= */
 
-.project-meta {
-    margin-bottom: 16px;
+.project-card-meta {
+    margin-bottom: 14px;
 
     color: var(--accent);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 10px;
+    font-size: 9px;
 
-    letter-spacing: 1.6px;
+    letter-spacing: 1.4px;
 }
 
 
@@ -672,102 +669,106 @@ body {
    PROJECT TITLE
 ========================================= */
 
-.project-title {
+.project-card-content h3 {
     color: var(--text);
 
-    font-size: clamp(32px, 3vw, 48px);
+    font-size: clamp(26px, 2vw, 34px);
 
-    line-height: 1.05;
+    line-height: 1.08;
 
-    letter-spacing: -2px;
+    letter-spacing: -1.4px;
 
     font-weight: 700;
 }
 
 
 /* =========================================
-   PROJECT SUMMARY
+   PROJECT DESCRIPTION
 ========================================= */
 
-.project-summary {
-    margin-top: 22px;
+.project-card-content p {
+    margin-top: 16px;
 
     color: var(--muted);
 
-    font-size: 15px;
+    font-size: 14px;
 
-    line-height: 1.8;
+    line-height: 1.75;
 }
 
 
 /* =========================================
-   TECHNOLOGIES
+   PROJECT TOOLS
 ========================================= */
 
-.project-technologies {
-    margin-top: 25px;
+.project-card-tools {
+    margin-top: 22px;
 
     display: flex;
-
     flex-wrap: wrap;
 
-    gap: 8px;
+    gap: 7px;
 }
 
 
-.project-technologies span {
-    padding: 7px 11px;
+.project-card-tools span {
+    padding: 6px 10px;
 
     border: 1px solid var(--border);
 
     border-radius: 50px;
 
+    background: var(--background);
+
     color: var(--muted);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 0.5px;
-
-    background: rgba(255, 255, 255, 0.45);
 }
 
 
 /* =========================================
-   PROJECT LINK
+   VIEW PROJECT
 ========================================= */
 
-.project-link {
-    width: fit-content;
+.project-card-link {
+    margin-top: 30px;
 
-    margin-top: 32px;
+    padding-top: 22px;
 
     display: flex;
-    align-items: center;
 
-    gap: 11px;
+    align-items: center;
+    justify-content: space-between;
 
     color: var(--text);
 
     text-decoration: none;
 
-    font-size: 14px;
+    font-size: 13px;
 
     font-weight: 600;
+
+    border-top: 1px solid var(--border);
 }
 
 
-.project-link span {
+.project-card-link span {
     color: var(--accent);
+
+    font-size: 18px;
 
     transition: transform 0.3s ease;
 }
 
 
-.project-link:hover span {
+.project-card-link:hover span {
     transform: translateX(6px);
 }
+
 
 /* =========================================
    LAPTOP
@@ -786,6 +787,11 @@ body {
 
     .artwork-wrapper {
         width: min(580px, 100%);
+    }
+
+
+    .projects-grid {
+        gap: 28px;
     }
 
 }
@@ -843,18 +849,16 @@ body {
     .work-intro p {
         max-width: 600px;
     }
-    .featured-project {
-            grid-template-columns: 1fr;
-        
-            gap: 45px;
-        
-            margin-top: 75px;
-        }
-        
-        
-        .project-info {
-            max-width: 650px;
-        }
+
+
+    .projects-grid {
+        gap: 24px;
+    }
+
+
+    .project-card-content {
+        padding: 25px;
+    }
 
 }
 
@@ -998,35 +1002,44 @@ body {
     .work-intro p {
         font-size: 14px;
     }
-    .featured-project {
-                margin-top: 60px;
-            
-                padding-top: 40px;
-            
-                gap: 32px;
-            }
-            
-            
-            .project-media {
-                border-radius: 16px;
-            }
-            
-            
-            .project-title {
-                font-size: 34px;
-            
-                letter-spacing: -1.5px;
-            }
-            
-            
-            .project-summary {
-                font-size: 14px;
-            }
-            
-            
-            .project-media-overlay {
-                display: none;
-            }
+
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+
+        margin-top: 55px;
+
+        gap: 25px;
+    }
+
+
+    .project-card {
+        border-radius: 18px;
+    }
+
+
+    .project-card-content {
+        padding: 24px;
+    }
+
+
+    .project-card-content h3 {
+        font-size: 28px;
+    }
+
+
+    .project-card-link {
+        padding-top: 22px;
+    }
+
+
+    .project-number {
+        top: 15px;
+        left: 15px;
+
+        width: 40px;
+        height: 40px;
+    }
 
 }
 
