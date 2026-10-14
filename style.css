@@ -248,6 +248,33 @@ body {
     letter-spacing: -1px;
 
 }
+.hero-credential {
+    margin-top: 12px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 11px;
+    letter-spacing: 0.8px;
+
+    color: var(--muted);
+}
+
+
+.credential-degree {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+
+.credential-divider {
+    color: var(--border);
+}
 
 
 .hero-description {
