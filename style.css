@@ -40,10 +40,8 @@ html {
 
 body {
     min-height: 100vh;
-
     background: var(--background);
     color: var(--text);
-
     font-family: "Inter", sans-serif;
 }
 
@@ -54,7 +52,6 @@ body {
 
 .navbar {
     height: 90px;
-
     padding: 0 6%;
 
     display: flex;
@@ -67,12 +64,10 @@ body {
 
 .logo {
     color: var(--text);
-
     text-decoration: none;
 
     font-size: 24px;
     font-weight: 800;
-
     letter-spacing: 1px;
 }
 
@@ -90,9 +85,7 @@ body {
 
 .nav-links a {
     color: var(--muted);
-
     text-decoration: none;
-
     font-size: 14px;
 
     transition: color 0.3s ease;
@@ -110,11 +103,9 @@ body {
 
 .hero {
     width: 88%;
-
     min-height: calc(100vh - 90px);
 
     margin: auto;
-
     padding: 65px 0;
 
     display: grid;
@@ -124,18 +115,12 @@ body {
         minmax(500px, 0.98fr);
 
     align-items: center;
-
     gap: 40px;
 }
 
 
-/* =========================================
-   HERO LEFT SIDE
-========================================= */
-
 .hero-content {
     position: relative;
-
     z-index: 5;
 }
 
@@ -152,7 +137,6 @@ body {
     left: 0;
 
     background: var(--accent);
-
     border-radius: 20px;
 }
 
@@ -170,8 +154,6 @@ body {
 
 
 .hero-name {
-    margin: 0;
-
     color: var(--text);
 
     font-size: clamp(85px, 8.2vw, 145px);
@@ -186,7 +168,6 @@ body {
 
 .hero-name span {
     display: block;
-
     color: var(--accent);
 }
 
@@ -203,10 +184,6 @@ body {
     letter-spacing: -1px;
 }
 
-
-/* =========================================
-   HERO CREDENTIALS
-========================================= */
 
 .hero-credentials {
     margin-top: 12px;
@@ -236,7 +213,6 @@ body {
 
 .credential-degree {
     color: var(--accent);
-
     font-weight: 500;
 }
 
@@ -245,10 +221,6 @@ body {
     color: var(--border);
 }
 
-
-/* =========================================
-   HERO DESCRIPTION
-========================================= */
 
 .hero-description {
     max-width: 620px;
@@ -262,10 +234,6 @@ body {
     line-height: 1.75;
 }
 
-
-/* =========================================
-   BUTTONS
-========================================= */
 
 .hero-buttons {
     display: flex;
@@ -331,10 +299,6 @@ body {
 }
 
 
-/* =========================================
-   LOCATION
-========================================= */
-
 .hero-location {
     margin-top: 50px;
 
@@ -348,10 +312,6 @@ body {
 }
 
 
-/* =========================================
-   HERO RIGHT SIDE
-========================================= */
-
 .hero-visual {
     display: flex;
 
@@ -361,10 +321,6 @@ body {
     min-width: 0;
 }
 
-
-/* =========================================
-   HRI ARTWORK
-========================================= */
 
 .artwork-wrapper {
     position: relative;
@@ -398,22 +354,7 @@ body {
 
 
 /* =========================================
-   SELECTED WORK
-========================================= */
-
-.work-section {
-    width: 88%;
-
-    margin: 0 auto;
-
-    padding: 110px 0 100px;
-
-    border-top: 1px solid var(--border);
-}
-
-
-/* =========================================
-   SECTION HEADING
+   SHARED SECTION HEADING
 ========================================= */
 
 .section-heading {
@@ -455,8 +396,433 @@ body {
 
 
 /* =========================================
-   WORK INTRO
+   RESEARCH SECTION
 ========================================= */
+
+.research-section {
+    width: 88%;
+
+    margin: 0 auto;
+
+    padding: 110px 0;
+
+    border-top: 1px solid var(--border);
+}
+
+
+.research-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(380px, 0.9fr)
+        minmax(0, 1.1fr);
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+
+.research-content {
+    min-width: 0;
+}
+
+
+.research-eyebrow {
+    margin-bottom: 18px;
+
+    color: var(--accent);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    letter-spacing: 1.8px;
+}
+
+
+.research-title {
+    max-width: 600px;
+
+    color: var(--text);
+
+    font-size: clamp(38px, 3.4vw, 56px);
+
+    line-height: 1.02;
+
+    letter-spacing: -2.8px;
+
+    font-weight: 700;
+}
+
+
+.research-title span {
+    display: block;
+    color: var(--accent);
+}
+
+
+.research-details {
+    margin-top: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    color: var(--muted);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+.research-description {
+    max-width: 570px;
+
+    margin-top: 25px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+.research-tags {
+    margin-top: 24px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.research-tags span {
+    padding: 7px 11px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    color: var(--muted);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 0.4px;
+}
+
+
+.research-publication {
+    max-width: 380px;
+
+    margin-top: 28px;
+
+    padding: 16px 18px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.55);
+}
+
+
+.publication-dot {
+    width: 9px;
+    height: 9px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 0 5px
+        rgba(45, 183, 163, 0.12);
+}
+
+
+.research-publication > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.research-publication strong {
+    color: var(--text);
+
+    font-size: 12px;
+}
+
+
+.research-publication > div > span {
+    color: var(--muted);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 9px;
+}
+
+
+.research-link {
+    width: fit-content;
+
+    margin-top: 28px;
+
+    padding-bottom: 6px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.research-link span {
+    color: var(--accent);
+
+    font-size: 18px;
+
+    transition: transform 0.3s ease;
+}
+
+
+.research-link:hover {
+    color: var(--accent);
+
+    border-color: var(--accent);
+}
+
+
+.research-link:hover span {
+    transform: translateX(5px);
+}
+
+
+.research-visuals {
+    min-width: 0;
+}
+
+
+.research-main-image {
+    position: relative;
+
+    width: 100%;
+    height: 480px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    background: var(--surface);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.research-main-image:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(45, 183, 163, 0.45);
+
+    box-shadow:
+        0 18px 40px
+        rgba(23, 43, 46, 0.07);
+}
+
+
+.research-main-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transition: transform 0.6s ease;
+}
+
+
+.research-main-image:hover img {
+    transform: scale(1.02);
+}
+
+
+.research-image-label {
+    position: absolute;
+
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+
+    padding: 10px 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid rgba(213, 226, 224, 0.85);
+
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    backdrop-filter: blur(10px);
+
+    color: var(--text);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+.research-image-label span:last-child {
+    color: var(--accent);
+}
+
+
+.research-gallery {
+    margin-top: 14px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+.research-thumbnail {
+    position: relative;
+
+    min-width: 0;
+
+    height: 135px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: var(--surface);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.research-thumbnail:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(45, 183, 163, 0.45);
+}
+
+
+.research-thumbnail img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transition: transform 0.5s ease;
+}
+
+
+.research-thumbnail:hover img {
+    transform: scale(1.04);
+}
+
+
+.research-thumbnail span {
+    position: absolute;
+
+    left: 7px;
+    right: 7px;
+    bottom: 7px;
+
+    padding: 6px 5px;
+
+    border-radius: 6px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    color: var(--text);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 7px;
+
+    text-align: center;
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* =========================================
+   SELECTED PROJECTS
+========================================= */
+
+.work-section {
+    width: 88%;
+
+    margin: 0 auto;
+
+    padding: 110px 0 100px;
+
+    border-top: 1px solid var(--border);
+}
+
 
 .work-intro {
     display: grid;
@@ -506,10 +872,6 @@ body {
 }
 
 
-/* =========================================
-   PROJECT GRID
-========================================= */
-
 .projects-grid {
     margin-top: 85px;
 
@@ -521,10 +883,6 @@ body {
     gap: 36px;
 }
 
-
-/* =========================================
-   PROJECT CARD
-========================================= */
 
 .project-card {
     position: relative;
@@ -561,10 +919,6 @@ body {
 }
 
 
-/* =========================================
-   PROJECT IMAGE
-========================================= */
-
 .project-card-image {
     position: relative;
 
@@ -590,8 +944,7 @@ body {
 
     object-fit: cover;
 
-    transition:
-        transform 0.65s ease;
+    transition: transform 0.65s ease;
 }
 
 
@@ -599,10 +952,6 @@ body {
     transform: scale(1.045);
 }
 
-
-/* =========================================
-   PROJECT NUMBER
-========================================= */
 
 .project-number {
     position: absolute;
@@ -634,10 +983,6 @@ body {
 }
 
 
-/* =========================================
-   PROJECT CONTENT
-========================================= */
-
 .project-card-content {
     flex: 1;
 
@@ -647,10 +992,6 @@ body {
     flex-direction: column;
 }
 
-
-/* =========================================
-   PROJECT META
-========================================= */
 
 .project-card-meta {
     margin-bottom: 14px;
@@ -665,10 +1006,6 @@ body {
 }
 
 
-/* =========================================
-   PROJECT TITLE
-========================================= */
-
 .project-card-content h3 {
     color: var(--text);
 
@@ -682,10 +1019,6 @@ body {
 }
 
 
-/* =========================================
-   PROJECT DESCRIPTION
-========================================= */
-
 .project-card-content p {
     margin-top: 16px;
 
@@ -696,10 +1029,6 @@ body {
     line-height: 1.75;
 }
 
-
-/* =========================================
-   PROJECT TOOLS
-========================================= */
 
 .project-card-tools {
     margin-top: 22px;
@@ -729,10 +1058,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-
-/* =========================================
-   VIEW PROJECT
-========================================= */
 
 .project-card-link {
     margin-top: 30px;
@@ -790,6 +1115,20 @@ body {
     }
 
 
+    .research-layout {
+        grid-template-columns:
+            minmax(330px, 0.9fr)
+            minmax(0, 1.1fr);
+
+        gap: 45px;
+    }
+
+
+    .research-main-image {
+        height: 420px;
+    }
+
+
     .projects-grid {
         gap: 28px;
     }
@@ -824,6 +1163,35 @@ body {
         width: min(620px, 95%);
 
         margin: auto;
+    }
+
+
+    .research-section {
+        width: 90%;
+
+        padding: 85px 0;
+    }
+
+
+    .research-layout {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .research-title {
+        max-width: 700px;
+    }
+
+
+    .research-description {
+        max-width: 650px;
+    }
+
+
+    .research-main-image {
+        height: 500px;
     }
 
 
@@ -964,13 +1332,6 @@ body {
     }
 
 
-    .work-section {
-        width: 90%;
-
-        padding: 70px 0 60px;
-    }
-
-
     .section-heading {
         margin-bottom: 32px;
 
@@ -984,6 +1345,57 @@ body {
 
     .section-line {
         width: 42px;
+    }
+
+
+    .research-section {
+        width: 90%;
+
+        padding: 70px 0;
+    }
+
+
+    .research-layout {
+        gap: 35px;
+    }
+
+
+    .research-title {
+        font-size: 38px;
+
+        letter-spacing: -2px;
+    }
+
+
+    .research-description {
+        font-size: 14px;
+    }
+
+
+    .research-main-image {
+        height: 390px;
+
+        border-radius: 16px;
+    }
+
+
+    .research-gallery {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    .research-thumbnail {
+        height: 150px;
+    }
+
+
+    .work-section {
+        width: 90%;
+
+        padding: 70px 0 60px;
     }
 
 
