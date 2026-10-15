@@ -40,8 +40,10 @@ html {
 
 body {
     min-height: 100vh;
+
     background: var(--background);
     color: var(--text);
+
     font-family: "Inter", sans-serif;
 }
 
@@ -52,6 +54,7 @@ body {
 
 .navbar {
     height: 90px;
+
     padding: 0 6%;
 
     display: flex;
@@ -64,10 +67,12 @@ body {
 
 .logo {
     color: var(--text);
+
     text-decoration: none;
 
     font-size: 24px;
     font-weight: 800;
+
     letter-spacing: 1px;
 }
 
@@ -79,13 +84,16 @@ body {
 
 .nav-links {
     display: flex;
+
     gap: 35px;
 }
 
 
 .nav-links a {
     color: var(--muted);
+
     text-decoration: none;
+
     font-size: 14px;
 
     transition: color 0.3s ease;
@@ -103,9 +111,11 @@ body {
 
 .hero {
     width: 88%;
+
     min-height: calc(100vh - 90px);
 
     margin: auto;
+
     padding: 65px 0;
 
     display: grid;
@@ -115,12 +125,18 @@ body {
         minmax(500px, 0.98fr);
 
     align-items: center;
+
     gap: 40px;
 }
 
 
+/* =========================================
+   HERO LEFT SIDE
+========================================= */
+
 .hero-content {
     position: relative;
+
     z-index: 5;
 }
 
@@ -137,6 +153,7 @@ body {
     left: 0;
 
     background: var(--accent);
+
     border-radius: 20px;
 }
 
@@ -149,11 +166,18 @@ body {
     font-family: "JetBrains Mono", monospace;
 
     font-size: 12px;
+
     letter-spacing: 2px;
 }
 
 
+/* =========================================
+   HERO NAME
+========================================= */
+
 .hero-name {
+    margin: 0;
+
     color: var(--text);
 
     font-size: clamp(85px, 8.2vw, 145px);
@@ -168,9 +192,14 @@ body {
 
 .hero-name span {
     display: block;
+
     color: var(--accent);
 }
 
+
+/* =========================================
+   HERO ROLE
+========================================= */
 
 .hero-role {
     margin-top: 32px;
@@ -185,20 +214,27 @@ body {
 }
 
 
+/* =========================================
+   HERO CREDENTIALS
+========================================= */
+
 .hero-credentials {
-    margin-top: 12px;
+    margin-top: 15px;
 
     display: flex;
     flex-direction: column;
 
-    gap: 6px;
+    gap: 8px;
+
+    color: var(--muted);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 11px;
-    letter-spacing: 0.6px;
+    font-size: 13px;
 
-    color: var(--muted);
+    line-height: 1.5;
+
+    letter-spacing: 0.35px;
 }
 
 
@@ -213,7 +249,8 @@ body {
 
 .credential-degree {
     color: var(--accent);
-    font-weight: 500;
+
+    font-weight: 600;
 }
 
 
@@ -222,10 +259,14 @@ body {
 }
 
 
+/* =========================================
+   HERO DESCRIPTION
+========================================= */
+
 .hero-description {
     max-width: 620px;
 
-    margin-top: 20px;
+    margin-top: 22px;
 
     color: var(--muted);
 
@@ -234,6 +275,10 @@ body {
     line-height: 1.75;
 }
 
+
+/* =========================================
+   HERO BUTTONS
+========================================= */
 
 .hero-buttons {
     display: flex;
@@ -299,6 +344,10 @@ body {
 }
 
 
+/* =========================================
+   HERO LOCATION
+========================================= */
+
 .hero-location {
     margin-top: 50px;
 
@@ -306,11 +355,17 @@ body {
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 11px;
+    font-size: 13px;
 
-    letter-spacing: 1.5px;
+    font-weight: 500;
+
+    letter-spacing: 1.4px;
 }
 
+
+/* =========================================
+   HERO RIGHT SIDE
+========================================= */
 
 .hero-visual {
     display: flex;
@@ -361,13 +416,15 @@ body {
     display: flex;
     align-items: center;
 
-    gap: 16px;
+    gap: 18px;
 
-    margin-bottom: 45px;
+    margin-bottom: 50px;
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 11px;
+    font-size: 13px;
+
+    font-weight: 500;
 
     letter-spacing: 2px;
 }
@@ -376,7 +433,7 @@ body {
 .section-number {
     color: var(--accent);
 
-    font-weight: 500;
+    font-weight: 600;
 }
 
 
@@ -391,12 +448,14 @@ body {
 
 
 .section-label {
-    color: var(--muted);
+    color: #586D70;
+
+    font-weight: 500;
 }
 
 
 /* =========================================
-   RESEARCH SECTION
+   UNDERGRADUATE RESEARCH
 ========================================= */
 
 .research-section {
@@ -409,6 +468,10 @@ body {
     border-top: 1px solid var(--border);
 }
 
+
+/* =========================================
+   RESEARCH LAYOUT
+========================================= */
 
 .research-layout {
     display: grid;
@@ -423,27 +486,36 @@ body {
 }
 
 
+/* =========================================
+   RESEARCH LEFT SIDE
+========================================= */
+
 .research-content {
     min-width: 0;
 }
 
 
 .research-eyebrow {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 
     color: var(--accent);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 13px;
 
-    letter-spacing: 1.8px;
+    font-weight: 600;
+
+    letter-spacing: 1.7px;
 }
 
 
+/* =========================================
+   RESEARCH TITLE
+========================================= */
+
 .research-title {
-    max-width: 600px;
+    max-width: 620px;
 
     color: var(--text);
 
@@ -459,53 +531,68 @@ body {
 
 .research-title span {
     display: block;
+
     color: var(--accent);
 }
 
 
+/* =========================================
+   RESEARCH DETAILS
+========================================= */
+
 .research-details {
-    margin-top: 24px;
+    margin-top: 28px;
 
     display: flex;
     flex-direction: column;
 
-    gap: 6px;
+    gap: 8px;
 
     color: var(--muted);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 10px;
+    font-size: 12px;
+
+    font-weight: 500;
 
     line-height: 1.6;
 }
 
 
-.research-description {
-    max-width: 570px;
+/* =========================================
+   RESEARCH DESCRIPTION
+========================================= */
 
-    margin-top: 25px;
+.research-description {
+    max-width: 580px;
+
+    margin-top: 27px;
 
     color: var(--muted);
 
-    font-size: 15px;
+    font-size: 16px;
 
     line-height: 1.8;
 }
 
 
+/* =========================================
+   RESEARCH TAGS
+========================================= */
+
 .research-tags {
-    margin-top: 24px;
+    margin-top: 26px;
 
     display: flex;
     flex-wrap: wrap;
 
-    gap: 8px;
+    gap: 9px;
 }
 
 
 .research-tags span {
-    padding: 7px 11px;
+    padding: 8px 13px;
 
     border: 1px solid var(--border);
 
@@ -517,23 +604,43 @@ body {
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 8px;
+    font-size: 10px;
 
-    letter-spacing: 0.4px;
+    font-weight: 500;
+
+    letter-spacing: 0.35px;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
 }
 
 
+.research-tags span:hover {
+    color: var(--accent);
+
+    border-color: var(--accent);
+
+    background: var(--surface);
+}
+
+
+/* =========================================
+   RESEARCH MANUSCRIPT
+========================================= */
+
 .research-publication {
-    max-width: 380px;
+    max-width: 430px;
 
-    margin-top: 28px;
+    margin-top: 30px;
 
-    padding: 16px 18px;
+    padding: 18px 20px;
 
     display: flex;
     align-items: center;
 
-    gap: 14px;
+    gap: 15px;
 
     border: 1px solid var(--border);
 
@@ -544,8 +651,8 @@ body {
 
 
 .publication-dot {
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
 
     flex-shrink: 0;
 
@@ -563,37 +670,45 @@ body {
     display: flex;
     flex-direction: column;
 
-    gap: 3px;
+    gap: 4px;
 }
 
 
 .research-publication strong {
     color: var(--text);
 
-    font-size: 12px;
+    font-size: 14px;
+
+    font-weight: 700;
 }
 
 
 .research-publication > div > span {
+    margin-top: 2px;
+
     color: var(--muted);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 9px;
+    font-size: 11px;
 }
 
+
+/* =========================================
+   VIEW RESEARCH
+========================================= */
 
 .research-link {
     width: fit-content;
 
-    margin-top: 28px;
+    margin-top: 30px;
 
     padding-bottom: 6px;
 
     display: flex;
     align-items: center;
 
-    gap: 12px;
+    gap: 13px;
 
     border-bottom: 1px solid var(--border);
 
@@ -601,7 +716,8 @@ body {
 
     text-decoration: none;
 
-    font-size: 14px;
+    font-size: 15px;
+
     font-weight: 600;
 
     transition:
@@ -613,7 +729,7 @@ body {
 .research-link span {
     color: var(--accent);
 
-    font-size: 18px;
+    font-size: 19px;
 
     transition: transform 0.3s ease;
 }
@@ -627,14 +743,22 @@ body {
 
 
 .research-link:hover span {
-    transform: translateX(5px);
+    transform: translateX(6px);
 }
 
+
+/* =========================================
+   RESEARCH RIGHT SIDE
+========================================= */
 
 .research-visuals {
     min-width: 0;
 }
 
+
+/* =========================================
+   MAIN RESEARCH IMAGE
+========================================= */
 
 .research-main-image {
     position: relative;
@@ -691,6 +815,10 @@ body {
 }
 
 
+/* =========================================
+   MAIN IMAGE LABEL
+========================================= */
+
 .research-image-label {
     position: absolute;
 
@@ -698,7 +826,7 @@ body {
     right: 16px;
     bottom: 16px;
 
-    padding: 10px 13px;
+    padding: 12px 14px;
 
     display: flex;
     align-items: center;
@@ -708,17 +836,19 @@ body {
 
     border-radius: 9px;
 
-    background: rgba(255, 255, 255, 0.92);
-
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.93);
 
     color: var(--text);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 8px;
+    font-size: 10px;
+
+    font-weight: 600;
 
     letter-spacing: 1px;
+
+    backdrop-filter: blur(10px);
 }
 
 
@@ -726,6 +856,10 @@ body {
     color: var(--accent);
 }
 
+
+/* =========================================
+   SUPPORTING RESEARCH GALLERY
+========================================= */
 
 .research-gallery {
     margin-top: 14px;
@@ -739,12 +873,16 @@ body {
 }
 
 
+/* =========================================
+   RESEARCH THUMBNAILS
+========================================= */
+
 .research-thumbnail {
     position: relative;
 
     min-width: 0;
 
-    height: 135px;
+    height: 150px;
 
     overflow: hidden;
 
@@ -756,7 +894,8 @@ body {
 
     transition:
         transform 0.3s ease,
-        border-color 0.3s ease;
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 
@@ -764,6 +903,10 @@ body {
     transform: translateY(-4px);
 
     border-color: rgba(45, 183, 163, 0.45);
+
+    box-shadow:
+        0 12px 25px
+        rgba(23, 43, 46, 0.06);
 }
 
 
@@ -784,24 +927,32 @@ body {
 }
 
 
+/* =========================================
+   THUMBNAIL CAPTIONS
+========================================= */
+
 .research-thumbnail span {
     position: absolute;
 
-    left: 7px;
-    right: 7px;
-    bottom: 7px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
 
-    padding: 6px 5px;
+    padding: 8px 6px;
 
-    border-radius: 6px;
+    border-radius: 7px;
 
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.94);
 
     color: var(--text);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 7px;
+    font-size: 10px;
+
+    font-weight: 600;
+
+    line-height: 1.25;
 
     text-align: center;
 
@@ -823,6 +974,10 @@ body {
     border-top: 1px solid var(--border);
 }
 
+
+/* =========================================
+   WORK INTRO
+========================================= */
 
 .work-intro {
     display: grid;
@@ -872,6 +1027,10 @@ body {
 }
 
 
+/* =========================================
+   PROJECT GRID
+========================================= */
+
 .projects-grid {
     margin-top: 85px;
 
@@ -883,6 +1042,10 @@ body {
     gap: 36px;
 }
 
+
+/* =========================================
+   PROJECT CARD
+========================================= */
 
 .project-card {
     position: relative;
@@ -919,6 +1082,10 @@ body {
 }
 
 
+/* =========================================
+   PROJECT IMAGE
+========================================= */
+
 .project-card-image {
     position: relative;
 
@@ -953,6 +1120,10 @@ body {
 }
 
 
+/* =========================================
+   PROJECT NUMBER
+========================================= */
+
 .project-number {
     position: absolute;
 
@@ -977,11 +1148,16 @@ body {
     font-family: "JetBrains Mono", monospace;
 
     font-size: 11px;
+
     font-weight: 500;
 
     backdrop-filter: blur(10px);
 }
 
+
+/* =========================================
+   PROJECT CONTENT
+========================================= */
 
 .project-card-content {
     flex: 1;
@@ -993,6 +1169,10 @@ body {
 }
 
 
+/* =========================================
+   PROJECT META
+========================================= */
+
 .project-card-meta {
     margin-bottom: 14px;
 
@@ -1000,11 +1180,15 @@ body {
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 9px;
+    font-size: 10px;
 
-    letter-spacing: 1.4px;
+    letter-spacing: 1.3px;
 }
 
+
+/* =========================================
+   PROJECT TITLE
+========================================= */
 
 .project-card-content h3 {
     color: var(--text);
@@ -1019,6 +1203,10 @@ body {
 }
 
 
+/* =========================================
+   PROJECT DESCRIPTION
+========================================= */
+
 .project-card-content p {
     margin-top: 16px;
 
@@ -1029,6 +1217,10 @@ body {
     line-height: 1.75;
 }
 
+
+/* =========================================
+   PROJECT TOOLS
+========================================= */
 
 .project-card-tools {
     margin-top: 22px;
@@ -1041,7 +1233,7 @@ body {
 
 
 .project-card-tools span {
-    padding: 6px 10px;
+    padding: 7px 10px;
 
     border: 1px solid var(--border);
 
@@ -1053,11 +1245,15 @@ body {
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 8px;
+    font-size: 9px;
 
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
 }
 
+
+/* =========================================
+   VIEW PROJECT
+========================================= */
 
 .project-card-link {
     margin-top: 30px;
@@ -1129,6 +1325,11 @@ body {
     }
 
 
+    .research-thumbnail {
+        height: 135px;
+    }
+
+
     .projects-grid {
         gap: 28px;
     }
@@ -1192,6 +1393,11 @@ body {
 
     .research-main-image {
         height: 500px;
+    }
+
+
+    .research-thumbnail {
+        height: 150px;
     }
 
 
@@ -1297,9 +1503,9 @@ body {
 
 
     .hero-credentials {
-        font-size: 10px;
+        font-size: 11px;
 
-        gap: 5px;
+        gap: 6px;
     }
 
 
@@ -1319,6 +1525,8 @@ body {
 
     .hero-location {
         margin-top: 35px;
+
+        font-size: 11px;
     }
 
 
@@ -1337,9 +1545,9 @@ body {
 
         gap: 11px;
 
-        font-size: 9px;
+        font-size: 10px;
 
-        letter-spacing: 1.5px;
+        letter-spacing: 1.4px;
     }
 
 
@@ -1360,10 +1568,20 @@ body {
     }
 
 
+    .research-eyebrow {
+        font-size: 10px;
+    }
+
+
     .research-title {
         font-size: 38px;
 
         letter-spacing: -2px;
+    }
+
+
+    .research-details {
+        font-size: 10px;
     }
 
 
@@ -1372,10 +1590,41 @@ body {
     }
 
 
+    .research-tags span {
+        font-size: 9px;
+    }
+
+
+    .research-publication {
+        max-width: 100%;
+    }
+
+
+    .research-publication strong {
+        font-size: 13px;
+    }
+
+
+    .research-publication > div > span {
+        font-size: 10px;
+    }
+
+
     .research-main-image {
         height: 390px;
 
         border-radius: 16px;
+    }
+
+
+    .research-image-label {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+
+        padding: 10px;
+
+        font-size: 8px;
     }
 
 
@@ -1388,7 +1637,12 @@ body {
 
 
     .research-thumbnail {
-        height: 150px;
+        height: 155px;
+    }
+
+
+    .research-thumbnail span {
+        font-size: 9px;
     }
 
 
