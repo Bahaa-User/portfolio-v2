@@ -759,6 +759,10 @@ body {
 
 .research-visuals {
     min-width: 0;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
 }
 
 
@@ -770,7 +774,8 @@ body {
     position: relative;
 
     width: 100%;
-    height: 480px;
+    max-width: 680px;
+    height: 560px;
 
     display: flex;
     align-items: center;
@@ -817,9 +822,8 @@ body {
 
 
 .research-main-image:hover img {
-    transform: scale(1.02);
+    transform: scale(1.015);
 }
-
 
 /* =========================================
    MAIN IMAGE LABEL
@@ -863,107 +867,6 @@ body {
 }
 
 
-/* =========================================
-   SUPPORTING RESEARCH GALLERY
-========================================= */
-
-.research-gallery {
-    margin-top: 14px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 12px;
-}
-
-
-/* =========================================
-   RESEARCH THUMBNAILS
-========================================= */
-
-.research-thumbnail {
-    position: relative;
-
-    min-width: 0;
-
-    height: 150px;
-
-    overflow: hidden;
-
-    border: 1px solid var(--border);
-
-    border-radius: 12px;
-
-    background: var(--surface);
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-
-.research-thumbnail:hover {
-    transform: translateY(-4px);
-
-    border-color: rgba(45, 183, 163, 0.45);
-
-    box-shadow:
-        0 12px 25px
-        rgba(23, 43, 46, 0.06);
-}
-
-
-.research-thumbnail img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    transition: transform 0.5s ease;
-}
-
-
-.research-thumbnail:hover img {
-    transform: scale(1.04);
-}
-
-
-/* =========================================
-   THUMBNAIL CAPTIONS
-========================================= */
-
-.research-thumbnail span {
-    position: absolute;
-
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-
-    padding: 8px 6px;
-
-    border-radius: 7px;
-
-    background: rgba(255, 255, 255, 0.94);
-
-    color: var(--text);
-
-    font-family: "JetBrains Mono", monospace;
-
-    font-size: 10px;
-
-    font-weight: 600;
-
-    line-height: 1.25;
-
-    text-align: center;
-
-    backdrop-filter: blur(8px);
-}
 
 
 /* =========================================
@@ -1327,13 +1230,11 @@ body {
 
 
     .research-main-image {
-        height: 420px;
-    }
+    height: 500px;
+    max-width: 620px;
+}
 
 
-    .research-thumbnail {
-        height: 135px;
-    }
 
 
     .projects-grid {
@@ -1398,13 +1299,13 @@ body {
 
 
     .research-main-image {
-        height: 500px;
+    width: 100%;
+    max-width: 680px;
+    height: 520px;
     }
 
 
-    .research-thumbnail {
-        height: 150px;
-    }
+
 
 
     .work-section {
@@ -1618,7 +1519,8 @@ body {
 
     .research-main-image {
         height: 390px;
-
+        width: 100%;
+        max-width: 100%;
         border-radius: 16px;
     }
 
@@ -1634,22 +1536,7 @@ body {
     }
 
 
-    .research-gallery {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 10px;
-    }
-
-
-    .research-thumbnail {
-        height: 155px;
-    }
-
-
-    .research-thumbnail span {
-        font-size: 9px;
-    }
+    
 
 
     .work-section {
