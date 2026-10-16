@@ -1,11 +1,11 @@
 @import url(
-    "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
 );
 
 
-/* =========================================
-   COLORS
-========================================= */
+/* =========================================================
+   ROOT
+========================================================= */
 
 :root {
     --background: #F3F6F6;
@@ -13,7 +13,7 @@
     --surface-light: #EAF1F2;
 
     --text: #172B2E;
-    --muted: #6E8081;
+    --muted: #60777A;
 
     --accent: #2DB7A3;
     --accent-light: #67CFBF;
@@ -22,9 +22,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    RESET
-========================================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -32,11 +32,9 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
     min-height: 100vh;
@@ -47,10 +45,18 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+img {
+    max-width: 100%;
+}
 
-/* =========================================
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
    NAVBAR
-========================================= */
+========================================================= */
 
 .navbar {
     height: 90px;
@@ -64,7 +70,6 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
-
 .logo {
     color: var(--text);
 
@@ -76,18 +81,15 @@ body {
     letter-spacing: 1px;
 }
 
-
 .logo span {
     color: var(--accent);
 }
 
-
 .nav-links {
     display: flex;
-
-    gap: 35px;
+    align-items: center;
+    gap: 36px;
 }
-
 
 .nav-links a {
     color: var(--muted);
@@ -95,51 +97,43 @@ body {
     text-decoration: none;
 
     font-size: 14px;
+    font-weight: 500;
 
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
 }
-
 
 .nav-links a:hover {
     color: var(--accent);
 }
 
 
-/* =========================================
+/* =========================================================
    HERO
-========================================= */
+========================================================= */
 
 .hero {
     width: 88%;
-
     min-height: calc(100vh - 90px);
 
-    margin: auto;
+    margin: 0 auto;
 
-    padding: 65px 0;
+    padding: 70px 0 65px;
 
     display: grid;
 
     grid-template-columns:
         minmax(0, 1.02fr)
-        minmax(500px, 0.98fr);
+        minmax(480px, 0.98fr);
 
     align-items: center;
 
-    gap: 40px;
+    gap: 50px;
 }
-
-
-/* =========================================
-   HERO LEFT SIDE
-========================================= */
 
 .hero-content {
     position: relative;
-
     z-index: 5;
 }
-
 
 .hero-content::before {
     content: "";
@@ -149,7 +143,7 @@ body {
     width: 180px;
     height: 4px;
 
-    top: -25px;
+    top: -27px;
     left: 0;
 
     background: var(--accent);
@@ -157,23 +151,18 @@ body {
     border-radius: 20px;
 }
 
-
 .hero-label {
-    margin-bottom: 25px;
+    margin-bottom: 28px;
 
     color: var(--accent);
 
     font-family: "JetBrains Mono", monospace;
 
     font-size: 12px;
+    font-weight: 500;
 
-    letter-spacing: 2px;
+    letter-spacing: 2.2px;
 }
-
-
-/* =========================================
-   HERO NAME
-========================================= */
 
 .hero-name {
     margin: 0;
@@ -189,20 +178,14 @@ body {
     letter-spacing: -6px;
 }
 
-
 .hero-name span {
     display: block;
 
     color: var(--accent);
 }
 
-
-/* =========================================
-   HERO ROLE
-========================================= */
-
 .hero-role {
-    margin-top: 32px;
+    margin-top: 34px;
 
     color: var(--text);
 
@@ -210,16 +193,18 @@ body {
 
     font-weight: 600;
 
-    letter-spacing: -1px;
+    line-height: 1.1;
+
+    letter-spacing: -1.2px;
 }
 
 
-/* =========================================
+/* =========================================================
    HERO CREDENTIALS
-========================================= */
+========================================================= */
 
 .hero-credentials {
-    margin-top: 15px;
+    margin-top: 18px;
 
     display: flex;
     flex-direction: column;
@@ -230,22 +215,20 @@ body {
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 13px;
+    font-size: 12px;
 
     line-height: 1.5;
 
-    letter-spacing: 0.35px;
+    letter-spacing: 0.5px;
 }
-
 
 .credential-item {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 
-    gap: 7px;
+    gap: 8px;
 }
-
 
 .credential-degree {
     color: var(--accent);
@@ -253,20 +236,19 @@ body {
     font-weight: 600;
 }
 
-
 .credential-divider {
-    color: var(--border);
+    color: #B7C9C7;
 }
 
 
-/* =========================================
+/* =========================================================
    HERO DESCRIPTION
-========================================= */
+========================================================= */
 
 .hero-description {
-    max-width: 620px;
+    max-width: 650px;
 
-    margin-top: 22px;
+    margin-top: 23px;
 
     color: var(--muted);
 
@@ -276,21 +258,20 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    HERO BUTTONS
-========================================= */
+========================================================= */
 
 .hero-buttons {
     display: flex;
 
     gap: 15px;
 
-    margin-top: 35px;
+    margin-top: 36px;
 }
 
-
 .btn {
-    padding: 14px 24px;
+    padding: 14px 25px;
 
     border-radius: 50px;
 
@@ -298,13 +279,14 @@ body {
 
     font-size: 14px;
 
+    font-weight: 500;
+
     transition:
         transform 0.3s ease,
         background-color 0.3s ease,
         border-color 0.3s ease,
         color 0.3s ease;
 }
-
 
 .btn-primary {
     background: var(--accent);
@@ -316,7 +298,6 @@ body {
     font-weight: 700;
 }
 
-
 .btn-primary:hover {
     background: var(--accent-light);
 
@@ -325,7 +306,6 @@ body {
     transform: translateY(-3px);
 }
 
-
 .btn-secondary {
     background: var(--surface);
 
@@ -333,7 +313,6 @@ body {
 
     color: var(--text);
 }
-
 
 .btn-secondary:hover {
     border-color: var(--accent);
@@ -344,9 +323,9 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    HERO LOCATION
-========================================= */
+========================================================= */
 
 .hero-location {
     margin-top: 50px;
@@ -355,27 +334,26 @@ body {
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: 500;
 
-    letter-spacing: 1.4px;
+    letter-spacing: 1.7px;
 }
 
 
-/* =========================================
-   HERO RIGHT SIDE
-========================================= */
+/* =========================================================
+   HERO VISUAL
+========================================================= */
 
 .hero-visual {
+    min-width: 0;
+
     display: flex;
 
     justify-content: center;
     align-items: center;
-
-    min-width: 0;
 }
-
 
 .artwork-wrapper {
     position: relative;
@@ -386,10 +364,7 @@ body {
 
     justify-content: center;
     align-items: center;
-
-    background: transparent;
 }
-
 
 .hero-artwork {
     display: block;
@@ -402,131 +377,123 @@ body {
     transition: transform 0.6s ease;
 }
 
-
 .artwork-wrapper:hover .hero-artwork {
     transform: scale(1.015);
 }
 
 
-/* =========================================
-   SHARED SECTION HEADING
-========================================= */
+/* =========================================================
+   RESEARCH SECTION
+========================================================= */
+
+.research-section {
+    width: 93%;
+
+    margin: 0 auto;
+
+    padding: 90px 0 125px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
 
 .section-heading {
     display: flex;
     align-items: center;
 
-    gap: 20px;
+    gap: 18px;
 
-    margin-bottom: 54px;
+    margin-bottom: 58px;
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 15px;
+    font-size: 13px;
+
+    font-weight: 500;
+
+    letter-spacing: 2.5px;
+}
+
+.section-number {
+    color: var(--accent);
+
+    font-weight: 600;
+}
+
+.section-line {
+    width: 75px;
+    height: 1px;
+
+    display: block;
+
+    background: var(--accent);
+}
+
+.section-label {
+    color: var(--muted);
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   RESEARCH LAYOUT
+========================================================= */
+
+.research-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.88fr)
+        minmax(0, 1.12fr);
+
+    gap: 75px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   RESEARCH CONTENT
+========================================================= */
+
+.research-content {
+    padding-top: 5px;
+
+    max-width: 700px;
+}
+
+.research-eyebrow {
+    margin-bottom: 25px;
+
+    color: var(--accent);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 13px;
 
     font-weight: 600;
 
     letter-spacing: 2px;
 }
 
-
-.section-number {
-    color: var(--accent);
-
-    font-weight: 700;
-}
-
-
-.section-line {
-    display: block;
-
-    width: 72px;
-    height: 1px;
-
-    background: var(--accent);
-}
-
-
-.section-label {
-    color: #4F6669;
-
-    font-weight: 600;
-}
-
-/* =========================================
-   UNDERGRADUATE RESEARCH
-========================================= */
-
-.research-section {
-    width: 88%;
-
-    margin: 0 auto;
-
-    padding: 110px 0;
-
-    border-top: 1px solid var(--border);
-}
-
-
-/* =========================================
-   RESEARCH LAYOUT
-========================================= */
-
-.research-layout {
-    display: grid;
-
-    grid-template-columns:
-        minmax(380px, 0.9fr)
-        minmax(0, 1.1fr);
-
-    gap: 70px;
-
-    align-items: start;
-}
-
-
-/* =========================================
-   RESEARCH LEFT SIDE
-========================================= */
-
-.research-content {
-    min-width: 0;
-}
-
-
-.research-eyebrow {
-    margin-bottom: 22px;
-
-    color: var(--accent);
-
-    font-family: "JetBrains Mono", monospace;
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    letter-spacing: 1.6px;
-}
-
-
-/* =========================================
-   RESEARCH TITLE
-========================================= */
-
 .research-title {
-    max-width: 620px;
+    max-width: 680px;
 
     color: var(--text);
 
-    font-size: clamp(38px, 3.4vw, 56px);
-
-    line-height: 1.02;
-
-    letter-spacing: -2.8px;
+    font-size: clamp(48px, 4.1vw, 70px);
 
     font-weight: 700;
-}
 
+    line-height: 0.99;
+
+    letter-spacing: -3.2px;
+}
 
 .research-title span {
     display: block;
@@ -535,67 +502,70 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    RESEARCH DETAILS
-========================================= */
+========================================================= */
 
 .research-details {
-    margin-top: 30px;
+    margin-top: 38px;
 
     display: flex;
     flex-direction: column;
 
-    gap: 10px;
+    gap: 9px;
 
     color: var(--muted);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 14px;
-
-    font-weight: 500;
+    font-size: 13px;
 
     line-height: 1.6;
-}
 
+    letter-spacing: 0.5px;
+}
 
 .research-details div:first-child {
     color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 16px;
 
     font-weight: 600;
 }
 
 
-/* =========================================
+/* =========================================================
    RESEARCH DESCRIPTION
-========================================= */
+========================================================= */
 
 .research-description {
-    max-width: 580px;
+    max-width: 680px;
 
-    margin-top: 27px;
+    margin-top: 35px;
 
     color: var(--muted);
 
     font-size: 16px;
 
-    line-height: 1.8;
+    line-height: 1.85;
 }
 
 
-/* =========================================
+/* =========================================================
    RESEARCH TAGS
-========================================= */
+========================================================= */
 
 .research-tags {
-    margin-top: 26px;
+    margin-top: 28px;
 
     display: flex;
+
     flex-wrap: wrap;
 
     gap: 9px;
 }
-
 
 .research-tags span {
     padding: 8px 13px;
@@ -604,7 +574,7 @@ body {
 
     border-radius: 50px;
 
-    background: rgba(255, 255, 255, 0.55);
+    background: var(--surface);
 
     color: var(--muted);
 
@@ -612,111 +582,85 @@ body {
 
     font-size: 10px;
 
-    font-weight: 500;
-
-    letter-spacing: 0.35px;
-
-    transition:
-        color 0.3s ease,
-        border-color 0.3s ease,
-        background-color 0.3s ease;
+    letter-spacing: 0.5px;
 }
 
 
-.research-tags span:hover {
-    color: var(--accent);
-
-    border-color: var(--accent);
-
-    background: var(--surface);
-}
-
-
-/* =========================================
-   RESEARCH MANUSCRIPT
-========================================= */
+/* =========================================================
+   RESEARCH PUBLICATION
+========================================================= */
 
 .research-publication {
-    max-width: 430px;
+    max-width: 560px;
 
-    margin-top: 30px;
+    margin-top: 38px;
 
-    padding: 18px 20px;
+    padding: 20px 23px;
 
     display: flex;
+
     align-items: center;
 
-    gap: 15px;
+    gap: 16px;
+
+    background: rgba(255, 255, 255, 0.75);
 
     border: 1px solid var(--border);
 
-    border-radius: 14px;
-
-    background: rgba(255, 255, 255, 0.55);
+    border-radius: 17px;
 }
 
-
 .publication-dot {
-    width: 10px;
-    height: 10px;
+    flex: 0 0 auto;
 
-    flex-shrink: 0;
+    width: 13px;
+    height: 13px;
 
     border-radius: 50%;
 
     background: var(--accent);
 
     box-shadow:
-        0 0 0 5px
-        rgba(45, 183, 163, 0.12);
+        0 0 0 7px rgba(45, 183, 163, 0.12);
 }
-
-
-.research-publication > div {
-    display: flex;
-    flex-direction: column;
-
-    gap: 4px;
-}
-
 
 .research-publication strong {
+    display: block;
+
     color: var(--text);
 
-    font-size: 14px;
+    font-size: 15px;
 
     font-weight: 700;
 }
 
+.research-publication span:not(.publication-dot) {
+    display: block;
 
-.research-publication > div > span {
-    margin-top: 2px;
+    margin-top: 4px;
 
     color: var(--muted);
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 11px;
+    font-size: 10px;
+
+    letter-spacing: 0.5px;
 }
 
 
-/* =========================================
-   VIEW RESEARCH
-========================================= */
+/* =========================================================
+   RESEARCH LINK
+========================================================= */
 
 .research-link {
-    width: fit-content;
+    margin-top: 32px;
 
-    margin-top: 30px;
+    display: inline-flex;
 
-    padding-bottom: 6px;
-
-    display: flex;
     align-items: center;
 
-    gap: 13px;
-
-    border-bottom: 1px solid var(--border);
+    gap: 15px;
 
     color: var(--text);
 
@@ -724,125 +668,98 @@ body {
 
     font-size: 15px;
 
-    font-weight: 600;
-
-    transition:
-        color 0.3s ease,
-        border-color 0.3s ease;
+    font-weight: 700;
 }
-
 
 .research-link span {
     color: var(--accent);
 
-    font-size: 19px;
+    font-size: 25px;
 
     transition: transform 0.3s ease;
 }
 
-
-.research-link:hover {
-    color: var(--accent);
-
-    border-color: var(--accent);
-}
-
-
 .research-link:hover span {
-    transform: translateX(6px);
+    transform: translateX(7px);
 }
 
 
-/* =========================================
-   RESEARCH RIGHT SIDE
-========================================= */
+/* =========================================================
+   RESEARCH VISUALS
+========================================================= */
 
 .research-visuals {
     min-width: 0;
 }
 
 
-/* =========================================
+/* =========================================================
    MAIN RESEARCH IMAGE
-========================================= */
+========================================================= */
 
 .research-main-image {
     position: relative;
 
-    width: 100%;
-    height: 480px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
-    border: 1px solid var(--border);
-
-    border-radius: 22px;
-
-    background: var(--surface);
-
-    text-decoration: none;
-
-    transition:
-        transform 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-
-.research-main-image:hover {
-    transform: translateY(-5px);
-
-    border-color: rgba(45, 183, 163, 0.45);
-
-    box-shadow:
-        0 18px 40px
-        rgba(23, 43, 46, 0.07);
-}
-
-
-.research-main-image img {
     display: block;
 
     width: 100%;
+
+    aspect-ratio: 1.28 / 1;
+
+    overflow: hidden;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 25px;
+
+    text-decoration: none;
+}
+
+.research-main-image img {
+    width: 100%;
     height: 100%;
+
+    display: block;
 
     object-fit: contain;
 
     transition: transform 0.6s ease;
 }
 
-
 .research-main-image:hover img {
-    transform: scale(1.02);
+    transform: scale(1.025);
 }
 
 
-/* =========================================
+/* =========================================================
    MAIN IMAGE LABEL
-========================================= */
+========================================================= */
 
 .research-image-label {
     position: absolute;
 
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
 
-    padding: 12px 14px;
+    min-height: 48px;
+
+    padding: 0 18px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
-    border: 1px solid rgba(213, 226, 224, 0.85);
+    background: rgba(255, 255, 255, 0.94);
 
-    border-radius: 9px;
+    border: 1px solid rgba(213, 226, 224, 0.95);
 
-    background: rgba(255, 255, 255, 0.93);
+    border-radius: 13px;
+
+    backdrop-filter: blur(10px);
 
     color: var(--text);
 
@@ -853,50 +770,40 @@ body {
     font-weight: 600;
 
     letter-spacing: 1px;
-
-    backdrop-filter: blur(10px);
 }
-
 
 .research-image-label span:last-child {
     color: var(--accent);
 }
 
 
-/* =========================================
-   SUPPORTING RESEARCH GALLERY
-========================================= */
+/* =========================================================
+   SUPPORTING RESEARCH IMAGES
+   2 × 2 INSTEAD OF FOUR TINY IMAGES
+========================================================= */
 
 .research-gallery {
-    margin-top: 14px;
+    margin-top: 18px;
 
     display: grid;
 
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    gap: 12px;
+    gap: 18px;
 }
-
-
-/* =========================================
-   RESEARCH THUMBNAILS
-========================================= */
 
 .research-thumbnail {
     position: relative;
 
     min-width: 0;
 
-    height: 150px;
-
     overflow: hidden;
+
+    background: var(--surface);
 
     border: 1px solid var(--border);
 
-    border-radius: 12px;
-
-    background: var(--surface);
+    border-radius: 17px;
 
     transition:
         transform 0.3s ease,
@@ -904,53 +811,35 @@ body {
         box-shadow 0.3s ease;
 }
 
-
 .research-thumbnail:hover {
     transform: translateY(-4px);
 
-    border-color: rgba(45, 183, 163, 0.45);
+    border-color: rgba(45, 183, 163, 0.5);
 
     box-shadow:
-        0 12px 25px
-        rgba(23, 43, 46, 0.06);
+        0 14px 30px rgba(23, 43, 46, 0.08);
 }
-
 
 .research-thumbnail img {
     display: block;
 
     width: 100%;
-    height: 100%;
 
-    object-fit: contain;
+    aspect-ratio: 1.55 / 1;
 
-    transition: transform 0.5s ease;
+    object-fit: cover;
+
+    background: var(--surface-light);
 }
-
-
-.research-thumbnail:hover img {
-    transform: scale(1.04);
-}
-
-
-/* =========================================
-   THUMBNAIL CAPTIONS
-========================================= */
 
 .research-thumbnail span {
-    position: absolute;
+    display: block;
 
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-
-    padding: 8px 6px;
-
-    border-radius: 7px;
-
-    background: rgba(255, 255, 255, 0.94);
+    padding: 13px 15px;
 
     color: var(--text);
+
+    background: var(--surface);
 
     font-family: "JetBrains Mono", monospace;
 
@@ -958,17 +847,13 @@ body {
 
     font-weight: 600;
 
-    line-height: 1.25;
-
-    text-align: center;
-
-    backdrop-filter: blur(8px);
+    letter-spacing: 0.3px;
 }
 
 
-/* =========================================
-   SELECTED PROJECTS
-========================================= */
+/* =========================================================
+   SELECTED WORK
+========================================================= */
 
 .work-section {
     width: 88%;
@@ -981,9 +866,9 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    WORK INTRO
-========================================= */
+========================================================= */
 
 .work-intro {
     display: grid;
@@ -996,7 +881,6 @@ body {
 
     gap: 90px;
 }
-
 
 .work-intro h2 {
     max-width: 760px;
@@ -1012,13 +896,11 @@ body {
     font-weight: 700;
 }
 
-
 .work-intro h2 span {
     display: block;
 
     color: var(--accent);
 }
-
 
 .work-intro p {
     max-width: 420px;
@@ -1033,9 +915,9 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    PROJECT GRID
-========================================= */
+========================================================= */
 
 .projects-grid {
     margin-top: 85px;
@@ -1049,14 +931,15 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    PROJECT CARD
-========================================= */
+========================================================= */
 
 .project-card {
     position: relative;
 
     min-width: 0;
+
     min-height: 100%;
 
     display: flex;
@@ -1076,21 +959,19 @@ body {
         box-shadow 0.35s ease;
 }
 
-
 .project-card:hover {
     transform: translateY(-7px);
 
     border-color: rgba(45, 183, 163, 0.45);
 
     box-shadow:
-        0 20px 45px
-        rgba(23, 43, 46, 0.08);
+        0 20px 45px rgba(23, 43, 46, 0.08);
 }
 
 
-/* =========================================
+/* =========================================================
    PROJECT IMAGE
-========================================= */
+========================================================= */
 
 .project-card-image {
     position: relative;
@@ -1108,7 +989,6 @@ body {
     text-decoration: none;
 }
 
-
 .project-card-image img {
     display: block;
 
@@ -1120,15 +1000,14 @@ body {
     transition: transform 0.65s ease;
 }
 
-
 .project-card:hover .project-card-image img {
     transform: scale(1.045);
 }
 
 
-/* =========================================
+/* =========================================================
    PROJECT NUMBER
-========================================= */
+========================================================= */
 
 .project-number {
     position: absolute;
@@ -1154,16 +1033,15 @@ body {
     font-family: "JetBrains Mono", monospace;
 
     font-size: 11px;
-
     font-weight: 500;
 
     backdrop-filter: blur(10px);
 }
 
 
-/* =========================================
+/* =========================================================
    PROJECT CONTENT
-========================================= */
+========================================================= */
 
 .project-card-content {
     flex: 1;
@@ -1174,11 +1052,6 @@ body {
     flex-direction: column;
 }
 
-
-/* =========================================
-   PROJECT META
-========================================= */
-
 .project-card-meta {
     margin-bottom: 14px;
 
@@ -1186,15 +1059,10 @@ body {
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 10px;
+    font-size: 9px;
 
-    letter-spacing: 1.3px;
+    letter-spacing: 1.4px;
 }
-
-
-/* =========================================
-   PROJECT TITLE
-========================================= */
 
 .project-card-content h3 {
     color: var(--text);
@@ -1208,11 +1076,6 @@ body {
     font-weight: 700;
 }
 
-
-/* =========================================
-   PROJECT DESCRIPTION
-========================================= */
-
 .project-card-content p {
     margin-top: 16px;
 
@@ -1223,11 +1086,6 @@ body {
     line-height: 1.75;
 }
 
-
-/* =========================================
-   PROJECT TOOLS
-========================================= */
-
 .project-card-tools {
     margin-top: 22px;
 
@@ -1237,9 +1095,8 @@ body {
     gap: 7px;
 }
 
-
 .project-card-tools span {
-    padding: 7px 10px;
+    padding: 6px 10px;
 
     border: 1px solid var(--border);
 
@@ -1251,15 +1108,10 @@ body {
 
     font-family: "JetBrains Mono", monospace;
 
-    font-size: 9px;
+    font-size: 8px;
 
-    letter-spacing: 0.4px;
+    letter-spacing: 0.5px;
 }
-
-
-/* =========================================
-   VIEW PROJECT
-========================================= */
 
 .project-card-link {
     margin-top: 30px;
@@ -1282,7 +1134,6 @@ body {
     border-top: 1px solid var(--border);
 }
 
-
 .project-card-link span {
     color: var(--accent);
 
@@ -1291,80 +1142,58 @@ body {
     transition: transform 0.3s ease;
 }
 
-
 .project-card-link:hover span {
     transform: translateX(6px);
 }
 
 
-/* =========================================
+/* =========================================================
    LAPTOP
-========================================= */
+========================================================= */
 
 @media (max-width: 1250px) {
 
     .hero {
         grid-template-columns:
             minmax(0, 1fr)
-            minmax(430px, 0.9fr);
+            minmax(420px, 0.9fr);
 
-        gap: 25px;
+        gap: 30px;
     }
-
 
     .artwork-wrapper {
-        width: min(580px, 100%);
+        width: min(590px, 100%);
     }
-
 
     .research-layout {
-        grid-template-columns:
-            minmax(330px, 0.9fr)
-            minmax(0, 1.1fr);
-
-        gap: 45px;
+        gap: 50px;
     }
 
-
-    .research-main-image {
-        height: 420px;
+    .research-title {
+        font-size: clamp(44px, 4vw, 62px);
     }
-
-
-    .research-thumbnail {
-        height: 135px;
-    }
-
 
     .projects-grid {
         gap: 28px;
     }
-
 }
 
 
-/* =========================================
+/* =========================================================
    TABLET
-========================================= */
+========================================================= */
 
 @media (max-width: 950px) {
 
     .hero {
         grid-template-columns: 1fr;
 
-        padding-top: 60px;
+        padding-top: 65px;
     }
-
-
-    .hero-name {
-        letter-spacing: -4px;
-    }
-
 
     .hero-visual {
         margin-top: 45px;
     }
-
 
     .artwork-wrapper {
         width: min(620px, 95%);
@@ -1373,39 +1202,36 @@ body {
     }
 
 
+    /* Research becomes vertical */
+
     .research-section {
         width: 90%;
 
-        padding: 85px 0;
+        padding: 85px 0 100px;
     }
-
 
     .research-layout {
         grid-template-columns: 1fr;
 
-        gap: 45px;
+        gap: 60px;
     }
 
+    .research-content {
+        max-width: 750px;
+    }
 
     .research-title {
-        max-width: 700px;
+        max-width: 760px;
+
+        font-size: clamp(48px, 7vw, 66px);
+    }
+
+    .research-visuals {
+        width: 100%;
     }
 
 
-    .research-description {
-        max-width: 650px;
-    }
-
-
-    .research-main-image {
-        height: 500px;
-    }
-
-
-    .research-thumbnail {
-        height: 150px;
-    }
-
+    /* Work */
 
     .work-section {
         width: 90%;
@@ -1413,39 +1239,33 @@ body {
         padding: 85px 0 75px;
     }
 
-
     .work-intro {
         grid-template-columns: 1fr;
 
         gap: 30px;
     }
 
-
     .work-intro h2 {
         max-width: 700px;
     }
-
 
     .work-intro p {
         max-width: 600px;
     }
 
-
     .projects-grid {
         gap: 24px;
     }
 
-
     .project-card-content {
         padding: 25px;
     }
-
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
 @media (max-width: 650px) {
 
@@ -1455,16 +1275,16 @@ body {
         padding: 0 5%;
     }
 
-
     .logo {
         font-size: 19px;
     }
-
 
     .nav-links {
         display: none;
     }
 
+
+    /* Hero */
 
     .hero {
         width: 90%;
@@ -1474,32 +1294,25 @@ body {
         gap: 10px;
     }
 
-
     .hero-content::before {
         width: 120px;
 
         height: 3px;
     }
 
-
     .hero-label {
+        margin-bottom: 22px;
+
         font-size: 10px;
 
         letter-spacing: 1.4px;
     }
 
-
     .hero-name {
-        font-size:
-            clamp(
-                60px,
-                20vw,
-                82px
-            );
+        font-size: clamp(60px, 20vw, 82px);
 
         letter-spacing: -3px;
     }
-
 
     .hero-role {
         margin-top: 26px;
@@ -1507,13 +1320,11 @@ body {
         font-size: 27px;
     }
 
-
     .hero-credentials {
-        font-size: 11px;
+        font-size: 10px;
 
         gap: 6px;
     }
-
 
     .hero-description {
         font-size: 15px;
@@ -1521,136 +1332,147 @@ body {
         line-height: 1.7;
     }
 
-
     .hero-buttons {
         flex-direction: column;
 
         align-items: flex-start;
     }
 
-
     .hero-location {
         margin-top: 35px;
 
-        font-size: 11px;
+        font-size: 10px;
     }
-
 
     .hero-visual {
         margin-top: 30px;
     }
-
 
     .artwork-wrapper {
         width: 100%;
     }
 
 
+    /* Research */
+
+    .research-section {
+        width: 90%;
+
+        padding: 70px 0 85px;
+    }
+
     .section-heading {
-        margin-bottom: 32px;
+        margin-bottom: 38px;
 
         gap: 11px;
 
         font-size: 10px;
 
-        letter-spacing: 1.4px;
+        letter-spacing: 1.5px;
     }
-
 
     .section-line {
         width: 42px;
     }
 
-
-    .research-section {
-        width: 90%;
-
-        padding: 70px 0;
-    }
-
-
-    .research-layout {
-        gap: 35px;
-    }
-
-
     .research-eyebrow {
-        font-size: 10px;
-    }
+        margin-bottom: 20px;
 
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+    }
 
     .research-title {
-        font-size: 38px;
+        font-size: 42px;
+
+        line-height: 1;
 
         letter-spacing: -2px;
     }
 
-
     .research-details {
+        margin-top: 28px;
+
         font-size: 10px;
     }
 
-
-    .research-description {
+    .research-details div:first-child {
         font-size: 14px;
     }
 
+    .research-description {
+        margin-top: 25px;
+
+        font-size: 14px;
+
+        line-height: 1.75;
+    }
+
+    .research-tags {
+        margin-top: 23px;
+
+        gap: 7px;
+    }
 
     .research-tags span {
-        font-size: 9px;
-    }
+        padding: 7px 10px;
 
+        font-size: 8px;
+    }
 
     .research-publication {
-        max-width: 100%;
-    }
+        margin-top: 28px;
 
+        padding: 17px 18px;
+    }
 
     .research-publication strong {
         font-size: 13px;
     }
 
-
-    .research-publication > div > span {
-        font-size: 10px;
+    .research-publication span:not(.publication-dot) {
+        font-size: 9px;
     }
 
+    .research-link {
+        margin-top: 25px;
+
+        font-size: 14px;
+    }
+
+
+    /* Research images */
 
     .research-main-image {
-        height: 390px;
-
-        border-radius: 16px;
+        aspect-ratio: 1 / 1;
+        border-radius: 20px;
     }
 
-
     .research-image-label {
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
 
-        padding: 10px;
+        min-height: 43px;
+
+        padding: 0 13px;
 
         font-size: 8px;
     }
 
-
     .research-gallery {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
 
-        gap: 10px;
+        gap: 13px;
+    }
+
+    .research-thumbnail img {
+        aspect-ratio: 1.6 / 1;
     }
 
 
-    .research-thumbnail {
-        height: 155px;
-    }
-
-
-    .research-thumbnail span {
-        font-size: 9px;
-    }
-
+    /* Work */
 
     .work-section {
         width: 90%;
@@ -1658,11 +1480,9 @@ body {
         padding: 70px 0 60px;
     }
 
-
     .work-intro {
         gap: 24px;
     }
-
 
     .work-intro h2 {
         font-size: 40px;
@@ -1670,11 +1490,9 @@ body {
         letter-spacing: -2px;
     }
 
-
     .work-intro p {
         font-size: 14px;
     }
-
 
     .projects-grid {
         grid-template-columns: 1fr;
@@ -1684,26 +1502,21 @@ body {
         gap: 25px;
     }
 
-
     .project-card {
         border-radius: 18px;
     }
-
 
     .project-card-content {
         padding: 24px;
     }
 
-
     .project-card-content h3 {
         font-size: 28px;
     }
 
-
     .project-card-link {
         padding-top: 22px;
     }
-
 
     .project-number {
         top: 15px;
@@ -1712,13 +1525,12 @@ body {
         width: 40px;
         height: 40px;
     }
-
 }
 
 
-/* =========================================
-   ACCESSIBILITY
-========================================= */
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1733,5 +1545,4 @@ body {
 
         scroll-behavior: auto !important;
     }
-
 }
