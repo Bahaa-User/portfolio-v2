@@ -476,8 +476,8 @@ body {
     display: grid;
 
     grid-template-columns:
-        minmax(380px, 0.9fr)
-        minmax(0, 1.1fr);
+        minmax(0, 0.9fr)
+        minmax(520px, 1.1fr);
 
     gap: 70px;
 
@@ -588,14 +588,15 @@ body {
 ========================================= */
 
 .research-tags {
-    margin-top: 26px;
+    margin-top: 18px;
 
     display: flex;
     flex-wrap: wrap;
 
+    justify-content: center;
+
     gap: 9px;
 }
-
 
 .research-tags span {
     padding: 8px 13px;
@@ -639,7 +640,7 @@ body {
 .research-publication {
     max-width: 430px;
 
-    margin-top: 30px;
+    margin-top: 38px;
 
     padding: 18px 20px;
 
@@ -707,9 +708,9 @@ body {
 .research-link {
     width: fit-content;
 
-    margin-top: 30px;
+    margin: 45px auto 0;
 
-    padding-bottom: 6px;
+    padding-bottom: 7px;
 
     display: flex;
     align-items: center;
@@ -730,7 +731,6 @@ body {
         color 0.3s ease,
         border-color 0.3s ease;
 }
-
 
 .research-link span {
     color: var(--accent);
@@ -761,8 +761,8 @@ body {
     min-width: 0;
 
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+    justify-content: column;
+    align-items: stretch;
 }
 
 
@@ -775,7 +775,8 @@ body {
 
     width: 100%;
     max-width: 680px;
-    height: 560px;
+    height: 550px;
+    margin: 0 auto;
 
     display: flex;
     align-items: center;
@@ -1232,6 +1233,7 @@ body {
     .research-main-image {
     height: 500px;
     max-width: 620px;
+    margin: 0 auto;
 }
 
 
@@ -1302,6 +1304,7 @@ body {
     width: 100%;
     max-width: 680px;
     height: 520px;
+    margin: 0 auto;
     }
 
 
@@ -1521,6 +1524,7 @@ body {
         height: 390px;
         width: 100%;
         max-width: 100%;
+        margin: 0 auto
         border-radius: 16px;
     }
 
