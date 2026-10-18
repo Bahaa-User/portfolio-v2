@@ -1,0 +1,1132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wearable Soft Robotics Research | Bahaa Nasr</title>
+
+    <meta
+        name="description"
+        content="Undergraduate research by Bahaa Nasr on wearable 3D-printed soft pressure sensing for augmented reality-driven grasp rehabilitation."
+    >
+
+    <link rel="stylesheet" href="../style.css?v=5">
+
+    <style>
+        /* =====================================
+           RESEARCH CASE STUDY
+        ===================================== */
+
+        .case-page {
+            width: 88%;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 45px 0 100px;
+        }
+
+        .case-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 42px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+
+        .case-back:hover {
+            color: var(--accent);
+        }
+
+        .case-kicker {
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.8px;
+            line-height: 1.8;
+        }
+
+        .case-title {
+            max-width: 1050px;
+            margin-bottom: 25px;
+            color: var(--text);
+            font-size: clamp(42px, 6vw, 82px);
+            line-height: 1.02;
+            letter-spacing: -0.055em;
+            font-weight: 800;
+        }
+
+        .case-title span {
+            color: var(--accent);
+        }
+
+        .case-intro {
+            max-width: 850px;
+            margin-bottom: 35px;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.85;
+        }
+
+        .case-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 35px;
+            margin-bottom: 42px;
+        }
+
+        .case-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .case-meta-label {
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .case-meta-value {
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =====================================
+           HERO IMAGE
+        ===================================== */
+
+        .case-hero-figure {
+            position: relative;
+            margin: 0 0 90px;
+            padding: 20px;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+        }
+
+        .case-hero-figure img {
+            display: block;
+            width: 100%;
+            max-height: 760px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 12px;
+        }
+
+        .case-figure-caption {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 17px 5px 2px;
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            line-height: 1.7;
+            letter-spacing: 0.7px;
+        }
+
+        .case-figure-caption span:last-child {
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* =====================================
+           CONTENT SECTIONS
+        ===================================== */
+
+        .case-section {
+            padding: 65px 0;
+            border-top: 1px solid var(--border);
+            scroll-margin-top: 30px;
+        }
+
+        .case-section-heading {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .case-section-number {
+            color: var(--accent);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .case-section-heading h2 {
+            color: var(--text);
+            font-size: clamp(28px, 3.3vw, 43px);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+        }
+
+        .case-copy {
+            max-width: 900px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .case-copy p + p {
+            margin-top: 18px;
+        }
+
+        .case-copy ul {
+            margin-top: 18px;
+            padding-left: 22px;
+        }
+
+        .case-copy li {
+            padding-left: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* =====================================
+           SYSTEM PIPELINE
+        ===================================== */
+
+        .case-pipeline {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 35px;
+        }
+
+        .case-pipeline-item {
+            min-width: 0;
+            padding: 22px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+        }
+
+        .case-pipeline-index {
+            display: block;
+            margin-bottom: 14px;
+            color: var(--accent);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+        }
+
+        .case-pipeline-item h3 {
+            margin-bottom: 8px;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .case-pipeline-item p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* =====================================
+           TECHNICAL IMAGE + TEXT
+        ===================================== */
+
+        .case-feature {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            align-items: center;
+            gap: 55px;
+            margin-top: 35px;
+        }
+
+        .case-feature + .case-feature {
+            margin-top: 65px;
+        }
+
+        .case-feature.case-reverse .case-feature-visual {
+            order: 2;
+        }
+
+        .case-feature.case-reverse .case-feature-content {
+            order: 1;
+        }
+
+        .case-feature-visual {
+            min-width: 0;
+            padding: 15px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        .case-feature-visual img {
+            display: block;
+            width: 100%;
+            max-height: 440px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .case-feature-visual figcaption {
+            padding: 14px 5px 2px;
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .case-feature-content h3 {
+            margin-bottom: 16px;
+            color: var(--text);
+            font-size: clamp(23px, 2.5vw, 32px);
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+        }
+
+        .case-feature-content p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .case-feature-content p + p {
+            margin-top: 14px;
+        }
+
+        /* =====================================
+           TECHNOLOGY TAGS
+        ===================================== */
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 25px;
+        }
+
+        .case-tags span {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+        }
+
+        /* =====================================
+           TECHNICAL SUMMARY
+        ===================================== */
+
+        .case-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .case-summary-card {
+            padding: 23px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .case-summary-card h3 {
+            margin-bottom: 10px;
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        .case-summary-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* =====================================
+           MANUSCRIPT STATUS
+        ===================================== */
+
+        .case-status {
+            display: flex;
+            align-items: flex-start;
+            gap: 17px;
+            max-width: 650px;
+            margin-top: 25px;
+            padding: 23px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .case-status-dot {
+            flex-shrink: 0;
+            width: 11px;
+            height: 11px;
+            margin-top: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 6px rgba(45, 183, 163, 0.12);
+        }
+
+        .case-status h3 {
+            margin-bottom: 5px;
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        .case-status p {
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* =====================================
+           BOTTOM NAVIGATION
+        ===================================== */
+
+        .case-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .case-bottom-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+
+        .case-bottom-link:hover {
+            color: var(--accent);
+        }
+
+        .case-bottom-link span {
+            color: var(--accent);
+        }
+
+        .case-footer {
+            padding: 25px 6%;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (max-width: 1000px) {
+            .case-page {
+                width: 90%;
+            }
+
+            .case-feature {
+                gap: 30px;
+            }
+
+            .case-pipeline {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            .case-page {
+                padding-top: 30px;
+                padding-bottom: 65px;
+            }
+
+            .case-back {
+                margin-bottom: 30px;
+            }
+
+            .case-title {
+                font-size: clamp(38px, 10vw, 56px);
+                letter-spacing: -2px;
+            }
+
+            .case-intro {
+                font-size: 15px;
+            }
+
+            .case-meta {
+                gap: 20px;
+            }
+
+            .case-hero-figure {
+                margin-bottom: 55px;
+                padding: 10px;
+                border-radius: 17px;
+            }
+
+            .case-figure-caption {
+                font-size: 9px;
+            }
+
+            .case-section {
+                padding: 45px 0;
+            }
+
+            .case-section-heading {
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .case-section-heading h2 {
+                font-size: 29px;
+            }
+
+            .case-copy {
+                font-size: 14px;
+            }
+
+            .case-pipeline {
+                grid-template-columns: 1fr;
+            }
+
+            .case-pipeline-item {
+                padding: 18px;
+            }
+
+            .case-feature {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .case-feature.case-reverse .case-feature-visual,
+            .case-feature.case-reverse .case-feature-content {
+                order: initial;
+            }
+
+            .case-feature-content h3 {
+                font-size: 25px;
+            }
+
+            .case-feature-content p {
+                font-size: 14px;
+            }
+
+            .case-summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <a href="../index.html" class="logo">
+            BAHAA <span>NASR</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html#research">Research</a>
+            <a href="../index.html#work">Work</a>
+            <a href="../index.html#experience">Experience</a>
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <main class="case-page">
+
+        <a href="../index.html#research" class="case-back">
+            <span aria-hidden="true">←</span>
+            Back to Portfolio
+        </a>
+
+
+        <!-- =====================================
+             RESEARCH INTRODUCTION
+        ===================================== -->
+
+        <section aria-labelledby="case-title">
+
+            <p class="case-kicker">
+                UNDERGRADUATE RESEARCH · 2024–2026
+            </p>
+
+            <h1 class="case-title" id="case-title">
+                Wearable 3D-Printed Soft Sensors for
+                <span>Augmented Reality-Driven Rehabilitation</span>
+            </h1>
+
+            <p class="case-intro">
+                Development of a wearable soft robotic sensing platform
+                designed to measure grasp pressure and provide feedback
+                through an augmented reality interface. The system brings
+                together a 3D-printed pneumatic sensing chamber, embedded
+                electronics, wireless data transmission and a Unity-based
+                feedback environment.
+            </p>
+
+            <div class="case-meta">
+
+                <div class="case-meta-item">
+                    <span class="case-meta-label">Institution</span>
+                    <span class="case-meta-value">
+                        Lebanese American University
+                    </span>
+                </div>
+
+                <div class="case-meta-item">
+                    <span class="case-meta-label">Supervisor</span>
+                    <span class="case-meta-value">
+                        Dr. Charbel Dalely Tawk
+                    </span>
+                </div>
+
+                <div class="case-meta-item">
+                    <span class="case-meta-label">Research period</span>
+                    <span class="case-meta-value">2024–2026</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SYSTEM OVERVIEW
+        ===================================== -->
+
+        <figure class="case-hero-figure">
+
+            <img
+                src="../assets/images/Overall%20System.png"
+                alt="Overview of the wearable soft pressure-sensing system, embedded electronics, pneumatic chamber and augmented reality feedback interface"
+                fetchpriority="high"
+            >
+
+            <figcaption class="case-figure-caption">
+                <span>COMPLETE SYSTEM OVERVIEW</span>
+                <span>FIG. 01</span>
+            </figcaption>
+
+        </figure>
+
+
+        <!-- =====================================
+             PROJECT OBJECTIVE
+        ===================================== -->
+
+        <section class="case-section" id="objective">
+
+            <div class="case-section-heading">
+                <span class="case-section-number">01</span>
+                <h2>Project objective</h2>
+            </div>
+
+            <div class="case-copy">
+
+                <p>
+                    The project focuses on developing a wearable soft
+                    pressure-sensing system for grasp rehabilitation.
+                    A pneumatic chamber deforms under contact, while a
+                    pressure sensor and embedded electronics support
+                    pressure measurement and wireless data transmission.
+                </p>
+
+                <p>
+                    The intended feedback workflow connects the measured
+                    pressure to a Unity-based augmented reality interface,
+                    providing a visual indication of grasp pressure.
+                </p>
+
+            </div>
+
+            <div class="case-pipeline">
+
+                <article class="case-pipeline-item">
+                    <span class="case-pipeline-index">01 / SENSING</span>
+                    <h3>Soft pneumatic chamber</h3>
+                    <p>
+                        A 3D-printed chamber forms the soft sensing element.
+                    </p>
+                </article>
+
+                <article class="case-pipeline-item">
+                    <span class="case-pipeline-index">02 / MEASUREMENT</span>
+                    <h3>Pressure sensor</h3>
+                    <p>
+                        The sensor converts pneumatic pressure into an
+                        electrical signal.
+                    </p>
+                </article>
+
+                <article class="case-pipeline-item">
+                    <span class="case-pipeline-index">03 / EMBEDDED</span>
+                    <h3>ESP32-C3</h3>
+                    <p>
+                        The microcontroller supports acquisition and
+                        wireless transmission of pressure data.
+                    </p>
+                </article>
+
+                <article class="case-pipeline-item">
+                    <span class="case-pipeline-index">04 / FEEDBACK</span>
+                    <h3>Unity AR interface</h3>
+                    <p>
+                        The interface presents grasp-pressure feedback
+                        for the rehabilitation workflow.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SOFT SENSOR DESIGN
+        ===================================== -->
+
+        <section class="case-section" id="sensor-design">
+
+            <div class="case-section-heading">
+                <span class="case-section-number">02</span>
+                <h2>Soft sensor design and fabrication</h2>
+            </div>
+
+            <div class="case-copy">
+
+                <p>
+                    The sensing element uses a 3D-printed pneumatic
+                    chamber. Its CAD geometry defines the chamber
+                    structure and provides the basis for integrating
+                    the pneumatic connection and the pressure-sensing
+                    hardware.
+                </p>
+
+            </div>
+
+            <div class="case-feature">
+
+                <figure class="case-feature-visual">
+
+                    <img
+                        src="../assets/images/Chamber.png"
+                        alt="CAD model of the 3D-printed soft pneumatic sensing chamber"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 02 — Soft sensing chamber CAD design
+                    </figcaption>
+
+                </figure>
+
+                <div class="case-feature-content">
+
+                    <h3>3D-printed pneumatic chamber</h3>
+
+                    <p>
+                        The chamber is the soft mechanical component
+                        of the sensing system. Its geometry is designed
+                        to support pressure sensing during contact.
+                    </p>
+
+                    <p>
+                        The CAD model provides the starting point for
+                        fabrication and subsequent integration with
+                        the pressure sensor.
+                    </p>
+
+                    <div class="case-tags">
+                        <span>CAD Design</span>
+                        <span>Soft Robotics</span>
+                        <span>3D Printing</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FINITE ELEMENT ANALYSIS
+        ===================================== -->
+
+        <section class="case-section" id="fea">
+
+            <div class="case-section-heading">
+                <span class="case-section-number">03</span>
+                <h2>Finite element analysis</h2>
+            </div>
+
+            <div class="case-feature case-reverse">
+
+                <figure class="case-feature-visual">
+
+                    <img
+                        src="../assets/images/Ansys.png"
+                        alt="ANSYS finite element analysis image of the sensing chamber"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 03 — ANSYS simulation of the sensing chamber
+                    </figcaption>
+
+                </figure>
+
+                <div class="case-feature-content">
+
+                    <h3>Simulation and engineering analysis</h3>
+
+                    <p>
+                        ANSYS was used as part of the engineering analysis
+                        of the sensing chamber. The simulation image
+                        documents the analysis workflow associated with
+                        the designed geometry.
+                    </p>
+
+                    <p>
+                        Specific material properties, boundary conditions,
+                        numerical outputs and validation conclusions can
+                        be added here when the corresponding simulation
+                        results are ready to present.
+                    </p>
+
+                    <div class="case-tags">
+                        <span>ANSYS</span>
+                        <span>Finite Element Analysis</span>
+                        <span>Mechanical Design</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ELECTRONICS AND SENSING
+        ===================================== -->
+
+        <section class="case-section" id="electronics">
+
+            <div class="case-section-heading">
+                <span class="case-section-number">04</span>
+                <h2>Embedded electronics and sensing</h2>
+            </div>
+
+            <div class="case-copy">
+
+                <p>
+                    The electronics integrate the pressure sensor, an
+                    ESP32-C3 Mini microcontroller and a compact LiPo
+                    battery. The sensing circuit provides the interface
+                    between the pneumatic sensing element and the
+                    embedded acquisition system.
+                </p>
+
+            </div>
+
+            <div class="case-feature">
+
+                <figure class="case-feature-visual">
+
+                    <img
+                        src="../assets/images/Connections.png"
+                        alt="Pressure-sensing circuit showing the ESP32-C3 Mini, pressure sensor, battery and electrical connections"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 04 — Pressure-sensing circuit and connections
+                    </figcaption>
+
+                </figure>
+
+                <div class="case-feature-content">
+
+                    <h3>Pressure acquisition circuit</h3>
+
+                    <p>
+                        The circuit diagram identifies the pressure sensor,
+                        microcontroller connections, power supply and
+                        signal wiring used in the sensing setup.
+                    </p>
+
+                    <p>
+                        The ESP32-C3 provides the embedded platform for
+                        processing the sensor signal and transmitting
+                        pressure data wirelessly.
+                    </p>
+
+                    <div class="case-tags">
+                        <span>ESP32-C3</span>
+                        <span>Pressure Sensing</span>
+                        <span>Embedded Systems</span>
+                        <span>Wi-Fi</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="case-feature case-reverse">
+
+                <figure class="case-feature-visual">
+
+                    <img
+                        src="../assets/images/Pack.png"
+                        alt="CAD assembly of the wearable electronics pack"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 05 — Wearable electronics pack integration
+                    </figcaption>
+
+                </figure>
+
+                <div class="case-feature-content">
+
+                    <h3>Wearable electronics integration</h3>
+
+                    <p>
+                        The electronics pack brings the battery and
+                        microcontroller into a compact wearable assembly.
+                        The CAD design documents how the components are
+                        arranged within the enclosure.
+                    </p>
+
+                    <p>
+                        This integration supports the goal of a wearable
+                        sensing platform rather than a permanently
+                        bench-mounted circuit.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             AUGMENTED REALITY FEEDBACK
+        ===================================== -->
+
+        <section class="case-section" id="ar-feedback">
+
+            <div class="case-section-heading">
+                <span class="case-section-number">05</span>
+                <h2>Augmented reality feedback</h2>
+            </div>
+
+            <div class="case-copy">
+
+                <p>
+                    The system overview illustrates a Unity-based
+                    augmented reality feedback interface for grasp
+                    pressure. The visual concept presents pressure
+                    feedback using a graded indicator, helping
+                    communicate whether a grasp is too light,
+                    appropriate or too heavy.
+                </p>
+
+                <p>
+                    The interface is intended to connect sensor
+                    measurements with visual feedback in the
+                    rehabilitation workflow. The exact interaction
+                    design, calibration method and evaluation
+                    results should be documented alongside the
+                    corresponding implementation and test evidence.
+                </p>
+
+            </div>
+
+            <div class="case-summary-grid">
+
+                <article class="case-summary-card">
+                    <h3>Pressure feedback</h3>
+                    <p>
+                        A visual scale communicates different grasp-pressure
+                        levels.
+                    </p>
+                </article>
+
+                <article class="case-summary-card">
+                    <h3>Wireless data</h3>
+                    <p>
+                        The embedded platform is designed to transmit
+                        pressure measurements wirelessly.
+                    </p>
+                </article>
+
+                <article class="case-summary-card">
+                    <h3>AR environment</h3>
+                    <p>
+                        Unity provides the interface for presenting
+                        pressure-related feedback.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             TECHNICAL SUMMARY
+        ===================================== -->
+
+        <section class="case-section" id="technical-summary">
+
+            <div class="case-section-heading">
+                <span class="case-section-number">06</span>
+                <h2>Technical summary</h2>
+            </div>
+
+            <div class="case-summary-grid">
+
+                <article class="case-summary-card">
+                    <h3>Mechanical design</h3>
+                    <p>
+                        CAD design and 3D-printed soft pneumatic
+                        sensing chamber.
+                    </p>
+                </article>
+
+                <article class="case-summary-card">
+                    <h3>Simulation</h3>
+                    <p>
+                        ANSYS finite element analysis as part of
+                        the engineering design workflow.
+                    </p>
+                </article>
+
+                <article class="case-summary-card">
+                    <h3>Embedded sensing</h3>
+                    <p>
+                        Pressure sensor, ESP32-C3 Mini, battery
+                        and wireless data transmission.
+                    </p>
+                </article>
+
+                <article class="case-summary-card">
+                    <h3>Wearable integration</h3>
+                    <p>
+                        CAD-designed electronics pack for the
+                        sensing hardware.
+                    </p>
+                </article>
+
+                <article class="case-summary-card">
+                    <h3>AR feedback</h3>
+                    <p>
+                        Unity-based visual representation of
+                        grasp-pressure feedback.
+                    </p>
+                </article>
+
+                <article class="case-summary-card">
+                    <h3>Research documentation</h3>
+                    <p>
+                        Technical documentation and manuscript
+                        preparation.
+                    </p>
+                </article>
+
+            </div>
+
+            <div class="case-status">
+
+                <span class="case-status-dot"></span>
+
+                <div>
+                    <h3>Research manuscript</h3>
+                    <p>
+                        In preparation · 2026
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             RETURN TO PORTFOLIO
+        ===================================== -->
+
+        <div class="case-bottom">
+
+            <a
+                href="../index.html#research"
+                class="case-bottom-link"
+            >
+                <span>←</span>
+                Back to Research Overview
+            </a>
+
+            <a
+                href="../index.html#work"
+                class="case-bottom-link"
+            >
+                Explore Selected Work
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer class="case-footer">
+        BAHAA NASR · ROBOTICS, MECHATRONICS & AI
+    </footer>
+
+</body>
+</html>
