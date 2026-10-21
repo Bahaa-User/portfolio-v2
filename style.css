@@ -736,7 +736,8 @@ a {
 .project-card-image img.blinker-card-image {
     object-fit: contain;
     object-position: center;
-    background: #EAF1F2;
+    padding: 14px;
+    background: var(--surface-light);
 }
 
 .project-card:hover .project-card-image img {
