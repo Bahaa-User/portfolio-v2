@@ -721,6 +721,10 @@ a {
     background: var(--surface-light);
     text-decoration: none;
 }
+/* BLINKER ONLY */
+.project-card:first-child .project-card-image {
+    aspect-ratio: 4 / 3;
+}
 
 .project-card-image img {
     display: block;
