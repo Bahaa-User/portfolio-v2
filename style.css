@@ -729,6 +729,15 @@ a {
     object-fit: cover;
     transition: transform 0.65s ease;
 }
+/* =========================================
+   BLINKER CARD IMAGE
+========================================= */
+
+.project-card-image img.blinker-card-image {
+    object-fit: contain;
+    object-position: center;
+    background: #EAF1F2;
+}
 
 .project-card:hover .project-card-image img {
     transform: scale(1.045);
