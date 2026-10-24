@@ -418,7 +418,6 @@ a {
 
 /* =========================================
    RESEARCH TAGS
-   Keep these with the research text.
 ========================================= */
 
 .research-tags {
@@ -500,7 +499,6 @@ a {
 
 /* =========================================
    VIEW RESEARCH
-   Centered underneath the manuscript.
 ========================================= */
 
 .research-link {
@@ -620,8 +618,7 @@ a {
     color: var(--accent);
 }
 
-/* Hide the four supporting images on the homepage.
-   Keep their HTML if you want to reuse them later. */
+/* Hide supporting images on the homepage */
 
 .research-gallery,
 .research-thumbnail {
@@ -680,6 +677,7 @@ a {
     margin-top: 85px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
     gap: 36px;
 }
 
@@ -690,6 +688,7 @@ a {
 .project-card {
     position: relative;
     min-width: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -703,13 +702,14 @@ a {
 }
 
 .project-card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-5px);
     border-color: rgba(45, 183, 163, 0.45);
     box-shadow: 0 20px 45px rgba(23, 43, 46, 0.08);
 }
 
 /* =========================================
    PROJECT IMAGE
+   All cards use the same aspect ratio.
 ========================================= */
 
 .project-card-image {
@@ -717,13 +717,10 @@ a {
     display: block;
     width: 100%;
     aspect-ratio: 16 / 10;
+    flex-shrink: 0;
     overflow: hidden;
     background: var(--surface-light);
     text-decoration: none;
-}
-/* BLINKER ONLY */
-.project-card:first-child .project-card-image {
-    aspect-ratio: 4 / 3;
 }
 
 .project-card-image img {
@@ -731,21 +728,24 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 0.65s ease;
 }
-/* =========================================
-   BLINKER CARD IMAGE
-========================================= */
+
+/* BLINKER IMAGE
+   Uses the enhanced landscape image.
+   Keep the same dimensions as other cards.
+*/
 
 .project-card-image img.blinker-card-image {
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
-    padding: 14px;
+    padding: 0;
     background: var(--surface-light);
 }
 
 .project-card:hover .project-card-image img {
-    transform: scale(1.045);
+    transform: scale(1.035);
 }
 
 /* =========================================
@@ -777,6 +777,7 @@ a {
 
 .project-card-content {
     flex: 1;
+    min-width: 0;
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -787,13 +788,14 @@ a {
     color: var(--accent);
     font-family: "JetBrains Mono", monospace;
     font-size: 10px;
+    line-height: 1.7;
     letter-spacing: 1.3px;
 }
 
 .project-card-content h3 {
     color: var(--text);
     font-size: clamp(26px, 2vw, 34px);
-    line-height: 1.08;
+    line-height: 1.12;
     letter-spacing: -1.4px;
     font-weight: 700;
 }
@@ -824,15 +826,17 @@ a {
     color: var(--muted);
     font-family: "JetBrains Mono", monospace;
     font-size: 9px;
+    line-height: 1.5;
     letter-spacing: 0.4px;
 }
 
 /* =========================================
    VIEW PROJECT
+   Align the link at the bottom of each card.
 ========================================= */
 
 .project-card-link {
-    margin-top: 30px;
+    margin-top: auto;
     padding-top: 22px;
     display: flex;
     align-items: center;
@@ -1157,12 +1161,18 @@ a {
 
     .projects-grid {
         grid-template-columns: 1fr;
+        align-items: stretch;
         margin-top: 55px;
         gap: 25px;
     }
 
     .project-card {
+        height: 100%;
         border-radius: 18px;
+    }
+
+    .project-card-image {
+        aspect-ratio: 16 / 10;
     }
 
     .project-card-content {
