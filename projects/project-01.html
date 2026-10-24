@@ -1,32 +1,1510 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BLINKER | Assistive Robotics — Bahaa Nasr</title>
 
     <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
+        name="description"
+        content="BLINKER is a six-wheel assistive rover developed to support visually impaired individuals navigating university environments."
     >
 
-    <title>Project | Bahaa Nasr</title>
+    <link rel="stylesheet" href="../style.css?v=5">
 
+    <style>
+        /* =====================================
+           BLINKER CASE STUDY
+        ===================================== */
+
+        .blinker-page {
+            width: 88%;
+            max-width: 1500px;
+            margin: auto;
+            padding: 35px 0 90px;
+        }
+
+        .blinker-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            color: var(--muted);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .blinker-back:hover,
+        .blinker-bottom a:hover {
+            color: var(--accent);
+        }
+
+        .blinker-kicker {
+            margin-bottom: 18px;
+            color: var(--accent);
+            font: 600 12px/1.8 "JetBrains Mono", monospace;
+            letter-spacing: 1.7px;
+        }
+
+        .blinker-title {
+            max-width: 1100px;
+            margin-bottom: 24px;
+            font-size: clamp(42px, 6vw, 78px);
+            line-height: 1.03;
+            letter-spacing: -0.055em;
+            font-weight: 800;
+        }
+
+        .blinker-title span {
+            color: var(--accent);
+        }
+
+        .blinker-intro {
+            max-width: 900px;
+            margin-bottom: 30px;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.85;
+        }
+
+        .blinker-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 42px;
+            margin-bottom: 40px;
+        }
+
+        .blinker-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .blinker-meta-label {
+            color: var(--muted);
+            font: 10px "JetBrains Mono", monospace;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+        }
+
+        .blinker-meta-value {
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =====================================
+           FIGURES
+        ===================================== */
+
+        .blinker-figure {
+            min-width: 0;
+            margin: 0;
+            padding: 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        .blinker-figure img {
+            display: block;
+            width: 100%;
+            max-height: 560px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 10px;
+        }
+
+        .blinker-figure figcaption {
+            padding: 13px 5px 3px;
+            color: var(--muted);
+            font: 11px/1.7 "JetBrains Mono", monospace;
+        }
+
+        .blinker-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 80px;
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+        }
+
+        .blinker-hero > img {
+            display: block;
+            width: 100%;
+            height: 430px;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .blinker-hero-copy {
+            padding: 12px;
+        }
+
+        .blinker-hero-copy h2 {
+            margin-bottom: 15px;
+            font-size: clamp(26px, 3vw, 38px);
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .blinker-hero-copy p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        /* =====================================
+           SECTIONS
+        ===================================== */
+
+        .blinker-section {
+            padding: 65px 0;
+            border-top: 1px solid var(--border);
+            scroll-margin-top: 25px;
+        }
+
+        .blinker-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .blinker-number {
+            flex-shrink: 0;
+            padding-top: 5px;
+            color: var(--accent);
+            font: 12px "JetBrains Mono", monospace;
+        }
+
+        .blinker-heading h2 {
+            font-size: clamp(28px, 3.2vw, 42px);
+            line-height: 1.15;
+            letter-spacing: -1.4px;
+        }
+
+        .blinker-copy {
+            max-width: 950px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .blinker-copy p + p {
+            margin-top: 16px;
+        }
+
+        .blinker-feature {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            align-items: center;
+            gap: 42px;
+            margin-top: 32px;
+        }
+
+        .blinker-feature + .blinker-feature {
+            margin-top: 55px;
+        }
+
+        .blinker-feature.reverse .blinker-figure {
+            order: 2;
+        }
+
+        .blinker-feature.reverse .blinker-feature-copy {
+            order: 1;
+        }
+
+        .blinker-feature-copy h3 {
+            margin-bottom: 14px;
+            font-size: clamp(23px, 2.5vw, 32px);
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+        }
+
+        .blinker-feature-copy p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .blinker-feature-copy p + p {
+            margin-top: 13px;
+        }
+
+        /* =====================================
+           TAGS
+        ===================================== */
+
+        .blinker-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .blinker-tags span {
+            padding: 7px 11px;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            font: 10px "JetBrains Mono", monospace;
+        }
+
+        /* =====================================
+           CHALLENGES / OUTCOMES
+        ===================================== */
+
+        .blinker-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .blinker-info-card {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .blinker-info-card h3 {
+            margin-bottom: 9px;
+            font-size: 15px;
+        }
+
+        .blinker-info-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* =====================================
+           VIDEO GALLERY
+        ===================================== */
+
+        .blinker-video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 32px;
+        }
+
+        .blinker-video-card {
+            min-width: 0;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .blinker-video-card video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #172B2E;
+            object-fit: contain;
+        }
+
+        .blinker-video-caption {
+            padding: 17px 19px 20px;
+        }
+
+        .blinker-video-caption h3 {
+            margin-bottom: 7px;
+            font-size: 16px;
+        }
+
+        .blinker-video-caption p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.75;
+        }
+
+        /* =====================================
+           CONTRIBUTIONS
+        ===================================== */
+
+        .blinker-contributions {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .blinker-contribution {
+            padding: 23px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .blinker-contribution h3 {
+            margin-bottom: 9px;
+            font-size: 16px;
+        }
+
+        .blinker-contribution p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        /* =====================================
+           TEAM / FINAL NAVIGATION
+        ===================================== */
+
+        .blinker-team {
+            margin-top: 30px;
+        }
+
+        .blinker-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 35px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .blinker-bottom a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .blinker-bottom span {
+            color: var(--accent);
+        }
+
+        .blinker-footer {
+            padding: 24px 6%;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font: 10px "JetBrains Mono", monospace;
+            letter-spacing: 1px;
+        }
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (max-width: 1000px) {
+            .blinker-page {
+                width: 90%;
+            }
+
+            .blinker-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .blinker-hero > img {
+                height: 400px;
+            }
+
+            .blinker-feature {
+                gap: 25px;
+            }
+
+            .blinker-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            .blinker-page {
+                padding-top: 25px;
+                padding-bottom: 60px;
+            }
+
+            .blinker-back {
+                margin-bottom: 28px;
+            }
+
+            .blinker-title {
+                font-size: clamp(37px, 10vw, 55px);
+                letter-spacing: -2px;
+            }
+
+            .blinker-intro {
+                font-size: 15px;
+            }
+
+            .blinker-meta {
+                gap: 18px;
+            }
+
+            .blinker-hero {
+                gap: 20px;
+                margin-bottom: 50px;
+                padding: 12px;
+                border-radius: 18px;
+            }
+
+            .blinker-hero > img {
+                height: 320px;
+            }
+
+            .blinker-hero-copy {
+                padding: 8px;
+            }
+
+            .blinker-section {
+                padding: 45px 0;
+            }
+
+            .blinker-heading {
+                gap: 12px;
+            }
+
+            .blinker-heading h2 {
+                font-size: 29px;
+            }
+
+            .blinker-copy {
+                font-size: 14px;
+            }
+
+            .blinker-feature,
+            .blinker-video-grid,
+            .blinker-contributions {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .blinker-feature.reverse .blinker-figure,
+            .blinker-feature.reverse .blinker-feature-copy {
+                order: initial;
+            }
+
+            .blinker-feature-copy h3 {
+                font-size: 25px;
+            }
+
+            .blinker-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .blinker-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
-    <h1>Project 01</h1>
+    <!-- NAVIGATION -->
 
-    <p>
-        Full project case study coming next.
-    </p>
+    <header class="navbar">
 
-    <a href="../index.html#work">
-        ← Back to Projects
-    </a>
+        <a href="../index.html" class="logo">
+            BAHAA <span>NASR</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html#research">Research</a>
+            <a href="../index.html#work">Work</a>
+            <a href="../index.html#experience">Experience</a>
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <main class="blinker-page">
+
+        <a href="../index.html#work" class="blinker-back">
+            <span aria-hidden="true">←</span>
+            Back to Selected Work
+        </a>
+
+
+        <!-- =====================================
+             PROJECT INTRODUCTION
+        ===================================== -->
+
+        <section aria-labelledby="blinker-title">
+
+            <p class="blinker-kicker">
+                ASSISTIVE ROBOTICS · ENGINEERING DAY · APRIL 2024
+            </p>
+
+            <h1 class="blinker-title" id="blinker-title">
+                BLINKER — Robotic Assistant for
+                <span>Visually Impaired Navigation</span>
+            </h1>
+
+            <p class="blinker-intro">
+                BLINKER is a six-wheel assistive rover developed to help
+                visually impaired individuals navigate familiar university
+                environments. It combines mechanical design, obstacle
+                detection, embedded control, and a leash-based directional
+                interface to support mobility and spatial awareness.
+            </p>
+
+            <div class="blinker-meta">
+
+                <div class="blinker-meta-item">
+                    <span class="blinker-meta-label">Project date</span>
+                    <span class="blinker-meta-value">April 2024</span>
+                </div>
+
+                <div class="blinker-meta-item">
+                    <span class="blinker-meta-label">Institution</span>
+                    <span class="blinker-meta-value">
+                        Lebanese American University
+                    </span>
+                </div>
+
+                <div class="blinker-meta-item">
+                    <span class="blinker-meta-label">Project type</span>
+                    <span class="blinker-meta-value">
+                        Engineering Day Project
+                    </span>
+                </div>
+
+                <div class="blinker-meta-item">
+                    <span class="blinker-meta-label">Supervisor</span>
+                    <span class="blinker-meta-value">
+                        Dr. Charbel Tawk
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             REAL ROVER
+        ===================================== -->
+
+        <section class="blinker-hero">
+
+            <img
+                src="../assets/images/blinker/blinker-rover.jpg"
+                alt="Physical BLINKER six-wheel assistive rover prototype"
+                fetchpriority="high"
+            >
+
+            <div class="blinker-hero-copy">
+
+                <p class="blinker-kicker">THE PHYSICAL PROTOTYPE</p>
+
+                <h2>Engineering for greater independence</h2>
+
+                <p>
+                    The project was inspired by the mobility challenges
+                    experienced by visually impaired students navigating
+                    a university campus. The team developed BLINKER as a
+                    robotic assistant concept intended to detect obstacles
+                    and provide directional guidance.
+                </p>
+
+                <p style="margin-top: 14px;">
+                    The rover was presented during the university's
+                    Engineering Day, demonstrating a multidisciplinary
+                    approach to accessibility-focused engineering.
+                </p>
+
+                <div class="blinker-tags">
+                    <span>Assistive Robotics</span>
+                    <span>Embedded Control</span>
+                    <span>Human-Centered Design</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             MOTIVATION
+        ===================================== -->
+
+        <section class="blinker-section" id="motivation">
+
+            <div class="blinker-heading">
+                <span class="blinker-number">01</span>
+                <h2>Motivation and problem definition</h2>
+            </div>
+
+            <div class="blinker-copy">
+
+                <p>
+                    The project was inspired by the experience of
+                    assisting visually impaired colleagues during
+                    their first experiences navigating the university
+                    campus. This highlighted the importance of
+                    independent mobility, accessibility, confidence,
+                    and inclusion in educational environments.
+                </p>
+
+                <p>
+                    BLINKER was conceived as a service-dog-like rover
+                    for familiar campus routes. Its intended functions
+                    included detecting obstacles, distinguishing
+                    potential stair hazards, and interpreting
+                    directional input from the user through a leash.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             MECHANICAL DESIGN
+        ===================================== -->
+
+        <section class="blinker-section" id="mechanical-design">
+
+            <div class="blinker-heading">
+                <span class="blinker-number">02</span>
+                <h2>Mechanical design and kinematics</h2>
+            </div>
+
+            <div class="blinker-copy">
+
+                <p>
+                    The rover's mechanical structure was developed in
+                    SolidWorks, with attention to chassis geometry,
+                    component arrangement, wheel configuration, and
+                    the ability to negotiate changes in terrain.
+                </p>
+
+                <p>
+                    The design process included stair-climbing
+                    considerations and mechanical analysis to
+                    investigate structural behavior and rover motion.
+                </p>
+
+            </div>
+
+            <div class="blinker-feature">
+
+                <figure class="blinker-figure">
+
+                    <img
+                        src="../assets/images/blinker/blinker-cad-design.jpg"
+                        alt="SolidWorks CAD model of the BLINKER six-wheel rover"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 01 — Rover mechanical design in CAD
+                    </figcaption>
+
+                </figure>
+
+                <div class="blinker-feature-copy">
+
+                    <h3>Designing the rover platform</h3>
+
+                    <p>
+                        The CAD model defines the main chassis,
+                        wheel arrangement, upper sensor housing,
+                        and supporting mechanical structure.
+                    </p>
+
+                    <p>
+                        Mechanical design was developed alongside
+                        component integration and manufacturing
+                        considerations.
+                    </p>
+
+                    <div class="blinker-tags">
+                        <span>SolidWorks</span>
+                        <span>CAD</span>
+                        <span>Robotics Kinematics</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="blinker-feature reverse">
+
+                <figure class="blinker-figure">
+
+                    <img
+                        src="../assets/images/blinker/blinker-stair-motion-simulation.png"
+                        alt="CAD motion simulation showing the rover traversing a stair-like obstacle"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 02 — Stair-traversal motion simulation
+                    </figcaption>
+
+                </figure>
+
+                <div class="blinker-feature-copy">
+
+                    <h3>Stair-climbing geometry</h3>
+
+                    <p>
+                        The motion simulation illustrates the
+                        rover's wheel and chassis geometry while
+                        negotiating a step.
+                    </p>
+
+                    <p>
+                        The stair-climbing concept was a key
+                        mechanical design consideration because
+                        the rover was intended to operate across
+                        campus pathways and changes in elevation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="blinker-feature">
+
+                <figure class="blinker-figure">
+
+                    <img
+                        src="../assets/images/blinker/blinker-stress-analysis.jpg"
+                        alt="Mechanical stress or deformation analysis of a BLINKER structural component"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 03 — Structural analysis visualization
+                    </figcaption>
+
+                </figure>
+
+                <div class="blinker-feature-copy">
+
+                    <h3>Structural analysis</h3>
+
+                    <p>
+                        The engineering analysis supported
+                        investigation of the mechanical component
+                        under its modeled loading conditions.
+                    </p>
+
+                    <p>
+                        Specific stress, deformation, or safety-factor
+                        values should be reported only after checking
+                        the original simulation results and settings.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             MANUFACTURING
+        ===================================== -->
+
+        <section class="blinker-section" id="manufacturing">
+
+            <div class="blinker-heading">
+                <span class="blinker-number">03</span>
+                <h2>Manufacturing and assembly</h2>
+            </div>
+
+            <div class="blinker-copy">
+
+                <p>
+                    After the mechanical design stage, the team
+                    fabricated and assembled the prototype using
+                    laser cutting, 3D printing, and manual workshop
+                    processes including cutting, bending, drilling,
+                    and mechanical assembly.
+                </p>
+
+                <p>
+                    This stage translated the CAD concept into a
+                    physical rover and required coordination between
+                    the mechanical structure, wheel assemblies,
+                    sensor mounts, and electronic components.
+                </p>
+
+            </div>
+
+            <div class="blinker-feature">
+
+                <figure class="blinker-figure">
+
+                    <img
+                        src="../assets/images/blinker/blinker-laser-cutting.png"
+                        alt="Laser-cutting process used during BLINKER rover fabrication"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 04 — Laser-cut component fabrication
+                    </figcaption>
+
+                </figure>
+
+                <div class="blinker-feature-copy">
+
+                    <h3>From design to fabrication</h3>
+
+                    <p>
+                        Laser cutting was part of the manufacturing
+                        workflow used to produce structural parts.
+                        Additional manual fabrication and assembly
+                        were required to integrate the rover.
+                    </p>
+
+                    <div class="blinker-tags">
+                        <span>Laser Cutting</span>
+                        <span>3D Printing</span>
+                        <span>Mechanical Assembly</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="blinker-feature reverse">
+
+                <figure class="blinker-figure">
+
+                    <img
+                        src="../assets/images/blinker/blinker-manufacturing-team.png"
+                        alt="Engineering team presenting fabricated metal components during the manufacturing process"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 05 — Manufacturing and team collaboration
+                    </figcaption>
+
+                </figure>
+
+                <div class="blinker-feature-copy">
+
+                    <h3>Fabrication and integration</h3>
+
+                    <p>
+                        The fabrication stage involved producing
+                        and assembling the structural components
+                        needed to bring the rover design to life.
+                    </p>
+
+                    <p>
+                        The project required a multidisciplinary
+                        team to coordinate design, fabrication,
+                        electronics, and software integration.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="blinker-feature">
+
+                <figure class="blinker-figure">
+
+                    <img
+                        src="../assets/images/blinker/blinker-team.jpg"
+                        alt="BLINKER project team at the Engineering Day exhibition"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 06 — BLINKER team at Engineering Day
+                    </figcaption>
+
+                </figure>
+
+                <div class="blinker-feature-copy">
+
+                    <h3>Engineering Day presentation</h3>
+
+                    <p>
+                        The completed prototype was presented at
+                        Lebanese American University's Engineering
+                        Day event. The project proposal records
+                        the team's participation in the university
+                        exhibition.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ELECTRONICS
+        ===================================== -->
+
+        <section class="blinker-section" id="electronics">
+
+            <div class="blinker-heading">
+                <span class="blinker-number">04</span>
+                <h2>Electronics and obstacle detection</h2>
+            </div>
+
+            <div class="blinker-copy">
+
+                <p>
+                    The documented electrical architecture included
+                    NI myRIO, an Arduino board, six DC motors with
+                    encoders, infrared sensors, H-bridge motor drivers,
+                    and a buzzer.
+                </p>
+
+                <p>
+                    The upper and lower infrared sensors were
+                    positioned to detect different environmental
+                    hazards. The control logic used sensor readings
+                    to help determine whether the rover should
+                    continue, turn, or stop.
+                </p>
+
+            </div>
+
+            <div class="blinker-feature">
+
+                <figure class="blinker-figure">
+
+                    <img
+                        src="../assets/images/blinker/blinker-control-hardware.png"
+                        alt="BLINKER control hardware and embedded electronics"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 07 — Embedded control hardware
+                    </figcaption>
+
+                </figure>
+
+                <div class="blinker-feature-copy">
+
+                    <h3>Embedded control architecture</h3>
+
+                    <p>
+                        NI myRIO and LabVIEW were used in the
+                        embedded control system. Motor actuation,
+                        sensor feedback, and directional inputs
+                        were brought together to coordinate rover
+                        behavior.
+                    </p>
+
+                    <div class="blinker-tags">
+                        <span>NI myRIO</span>
+                        <span>LabVIEW</span>
+                        <span>DC Motors</span>
+                        <span>IR Sensors</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="blinker-feature reverse">
+
+                <figure class="blinker-figure">
+
+                    <img
+                        src="../assets/images/blinker/blinker-control-code.png"
+                        alt="LabVIEW control logic diagram for BLINKER rover motion and sensor feedback"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 08 — LabVIEW control logic
+                    </figcaption>
+
+                </figure>
+
+                <div class="blinker-feature-copy">
+
+                    <h3>State-based motion control</h3>
+
+                    <p>
+                        The control logic organizes rover behavior
+                        into states such as idle, forward, backward,
+                        left, right, brake, and off.
+                    </p>
+
+                    <p>
+                        Sensor conditions determine whether a
+                        requested movement can proceed or whether
+                        the rover must respond to a detected obstacle.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             LEASH AND DIRECTIONAL CONTROL
+        ===================================== -->
+
+        <section class="blinker-section" id="directional-control">
+
+            <div class="blinker-heading">
+                <span class="blinker-number">05</span>
+                <h2>Leash-based directional guidance</h2>
+            </div>
+
+            <div class="blinker-copy">
+
+                <p>
+                    BLINKER uses a leash-based interface to allow
+                    directional input while maintaining a controlled
+                    distance between the user and the rover.
+                </p>
+
+                <p>
+                    An encoder tracks leash rotation and helps
+                    estimate how much leash has been extended.
+                    An inertial measurement unit provides
+                    inclination-related information used to
+                    interpret the user's directional intent.
+                </p>
+
+            </div>
+
+            <div class="blinker-feature">
+
+                <figure class="blinker-figure">
+
+                    <img
+                        src="../assets/images/blinker/blinker-control-hardware.png"
+                        alt="Embedded hardware associated with the rover's control system"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 09 — Embedded hardware integration
+                    </figcaption>
+
+                </figure>
+
+                <div class="blinker-feature-copy">
+
+                    <h3>Interpreting user movement</h3>
+
+                    <p>
+                        The leash interface provides an alternative
+                        to conventional joystick-style input.
+                        Its encoder and IMU-related logic were
+                        designed to translate leash movement
+                        into directional commands.
+                    </p>
+
+                    <p>
+                        This interface was intended to support
+                        a more natural interaction between the
+                        user and the assistive rover.
+                    </p>
+
+                    <div class="blinker-tags">
+                        <span>IMU</span>
+                        <span>Encoder</span>
+                        <span>LabVIEW</span>
+                        <span>Directional Control</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             TESTING VIDEOS
+        ===================================== -->
+
+        <section class="blinker-section" id="demonstrations">
+
+            <div class="blinker-heading">
+                <span class="blinker-number">06</span>
+                <h2>Prototype demonstrations</h2>
+            </div>
+
+            <div class="blinker-copy">
+
+                <p>
+                    The following recordings document the rover's
+                    development, navigation trials, stair testing,
+                    and manufacturing activities.
+                </p>
+
+            </div>
+
+            <div class="blinker-video-grid">
+
+                <article class="blinker-video-card">
+
+                    <video controls preload="metadata" playsinline>
+                        <source
+                            src="../assets/videos/blinker/blinker-campus-navigation.mp4"
+                            type="video/mp4"
+                        >
+                        Your browser does not support HTML video.
+                    </video>
+
+                    <div class="blinker-video-caption">
+                        <h3>Campus navigation</h3>
+                        <p>
+                            Demonstration footage of the rover
+                            navigating a campus environment.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="blinker-video-card">
+
+                    <video controls preload="metadata" playsinline>
+                        <source
+                            src="../assets/videos/blinker/blinker-stair-climbing.mp4"
+                            type="video/mp4"
+                        >
+                        Your browser does not support HTML video.
+                    </video>
+
+                    <div class="blinker-video-caption">
+                        <h3>Stair-climbing demonstration</h3>
+                        <p>
+                            Footage documenting the rover's
+                            stair-related mobility testing.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="blinker-video-card">
+
+                    <video controls preload="metadata" playsinline>
+                        <source
+                            src="../assets/videos/blinker/blinker-earlier-testing.mp4"
+                            type="video/mp4"
+                        >
+                        Your browser does not support HTML video.
+                    </video>
+
+                    <div class="blinker-video-caption">
+                        <h3>Earlier prototype testing</h3>
+                        <p>
+                            Earlier testing footage documenting
+                            the prototype development process.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="blinker-video-card">
+
+                    <video controls preload="metadata" playsinline>
+                        <source
+                            src="../assets/videos/blinker/blinker-stair-testing-2.mp4"
+                            type="video/mp4"
+                        >
+                        Your browser does not support HTML video.
+                    </video>
+
+                    <div class="blinker-video-caption">
+                        <h3>Additional stair testing</h3>
+                        <p>
+                            Additional footage of the rover
+                            during stair-related trials.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="blinker-video-card">
+
+                    <video controls preload="metadata" playsinline>
+                        <source
+                            src="../assets/videos/blinker/blinker-manufacturing-designing.mp4"
+                            type="video/mp4"
+                        >
+                        Your browser does not support HTML video.
+                    </video>
+
+                    <div class="blinker-video-caption">
+                        <h3>Manufacturing and design</h3>
+                        <p>
+                            Footage documenting aspects of
+                            the manufacturing and design process.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="blinker-video-card">
+
+                    <video controls preload="metadata" playsinline>
+                        <source
+                            src="../assets/videos/blinker/blinker-laser-cutting.mp4"
+                            type="video/mp4"
+                        >
+                        Your browser does not support HTML video.
+                    </video>
+
+                    <div class="blinker-video-caption">
+                        <h3>Laser-cutting process</h3>
+                        <p>
+                            Manufacturing footage from the
+                            fabrication stage.
+                        </p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CHALLENGES
+        ===================================== -->
+
+        <section class="blinker-section" id="challenges">
+
+            <div class="blinker-heading">
+                <span class="blinker-number">07</span>
+                <h2>Engineering challenges</h2>
+            </div>
+
+            <div class="blinker-cards">
+
+                <article class="blinker-info-card">
+                    <h3>Sensor limitations</h3>
+                    <p>
+                        The infrared sensing range was approximately
+                        20 cm, and performance could be affected by
+                        direct sunlight and elevated temperatures.
+                    </p>
+                </article>
+
+                <article class="blinker-info-card">
+                    <h3>Mechanical stability</h3>
+                    <p>
+                        The rover required a chassis and wheel
+                        configuration designed to support balance
+                        and stair-related mobility.
+                    </p>
+                </article>
+
+                <article class="blinker-info-card">
+                    <h3>Control integration</h3>
+                    <p>
+                        Sensor readings, motor commands, and
+                        leash-based directional inputs had to
+                        be coordinated within the control system.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PERSONAL CONTRIBUTIONS
+        ===================================== -->
+
+        <section class="blinker-section" id="contributions">
+
+            <div class="blinker-heading">
+                <span class="blinker-number">08</span>
+                <h2>My engineering contributions</h2>
+            </div>
+
+            <div class="blinker-copy">
+
+                <p>
+                    I contributed across the project's mechanical,
+                    electronic, and software development workflow,
+                    working with a multidisciplinary team to deliver
+                    the physical rover prototype.
+                </p>
+
+            </div>
+
+            <div class="blinker-contributions">
+
+                <article class="blinker-contribution">
+                    <h3>Mechanical design</h3>
+                    <p>
+                        Contributed to SolidWorks modeling,
+                        chassis development, component arrangement,
+                        and mechanical considerations for
+                        stair-climbing capability.
+                    </p>
+                </article>
+
+                <article class="blinker-contribution">
+                    <h3>Manufacturing and assembly</h3>
+                    <p>
+                        Participated in laser cutting, 3D printing,
+                        manual cutting, bending, drilling, and
+                        assembly of the rover structure.
+                    </p>
+                </article>
+
+                <article class="blinker-contribution">
+                    <h3>Obstacle detection</h3>
+                    <p>
+                        Integrated infrared sensors into the
+                        obstacle-detection workflow.
+                    </p>
+                </article>
+
+                <article class="blinker-contribution">
+                    <h3>Embedded control</h3>
+                    <p>
+                        Developed the NI myRIO and LabVIEW-based
+                        control system, integrating sensors,
+                        motor actuation, and feedback.
+                    </p>
+                </article>
+
+                <article class="blinker-contribution">
+                    <h3>Leash and IMU interface</h3>
+                    <p>
+                        Designed and implemented the leash-based
+                        directional mechanism using an encoder
+                        and IMU-related measurements.
+                    </p>
+                </article>
+
+                <article class="blinker-contribution">
+                    <h3>System integration</h3>
+                    <p>
+                        Worked with teammates to integrate
+                        mechanical, electronic, and software
+                        components into a functional prototype.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             OUTCOMES
+        ===================================== -->
+
+        <section class="blinker-section" id="outcomes">
+
+            <div class="blinker-heading">
+                <span class="blinker-number">09</span>
+                <h2>Outcomes and impact</h2>
+            </div>
+
+            <div class="blinker-copy">
+
+                <p>
+                    BLINKER brought together mechanical fabrication,
+                    embedded control, obstacle sensing, and
+                    directional guidance in an assistive robotics
+                    prototype presented during Engineering Day
+                    at Lebanese American University.
+                </p>
+
+                <p>
+                    The project demonstrates how multidisciplinary
+                    engineering can address accessibility challenges
+                    and explore new approaches to independent
+                    mobility in familiar educational environments.
+                </p>
+
+            </div>
+
+            <figure class="blinker-figure blinker-team">
+
+                <img
+                    src="../assets/images/blinker/blinker-team.jpg"
+                    alt="BLINKER team presenting the project at Engineering Day"
+                    loading="lazy"
+                >
+
+                <figcaption>
+                    BLINKER — Engineering Day project presentation
+                </figcaption>
+
+            </figure>
+
+        </section>
+
+
+        <!-- =====================================
+             RETURN TO PORTFOLIO
+        ===================================== -->
+
+        <div class="blinker-bottom">
+
+            <a href="../index.html#work">
+                <span>←</span>
+                Back to Selected Work
+            </a>
+
+            <a href="../index.html#research">
+                Explore Undergraduate Research
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer class="blinker-footer">
+        BAHAA NASR · ASSISTIVE ROBOTICS · EMBEDDED CONTROL
+    </footer>
 
 </body>
-
 </html>
