@@ -1489,86 +1489,337 @@
         </section>
 
 
+        
         <!-- =====================================
-             08 — TESTING AND VALIDATION
+             08 — SIMULATION, TESTING AND VALIDATION
         ===================================== -->
-
+        
         <section class="eps-section" id="validation">
-
+        
             <div class="eps-heading">
                 <span class="eps-number">08</span>
-                <h2>Simulation, testing and validation</h2>
+                <h2>Simulation, testing and system validation</h2>
             </div>
-
+        
             <div class="eps-copy">
-
+        
                 <p>
-                    Following the mechanical, sensing,
-                    and control-development stages,
-                    engineering analysis and experimental
-                    evaluation were used to assess
-                    the system.
+                    Validation was performed across the mechanical,
+                    sensing, and control subsystems to evaluate
+                    their individual behavior and their integration
+                    within the overall steering-assistance system.
                 </p>
-
+        
                 <p>
-                    Structural simulation supported
-                    the evaluation of modeled mechanical
-                    components under specified loading
-                    conditions. Sensor calibration,
-                    troubleshooting, and experimental
-                    steering-response evaluation
-                    formed part of the development process.
+                    The evaluation process combined finite element
+                    analysis, sensor calibration, encoder measurements,
+                    fuzzy-controller evaluation, and experimental
+                    system integration. Each stage addressed a
+                    different aspect of the EPS development process,
+                    from structural behavior to intelligent
+                    assistance generation and physical implementation.
                 </p>
-
+        
             </div>
-
-
+        
+        
+            <!-- =====================================
+                 08.1 — MECHANICAL VALIDATION
+            ===================================== -->
+        
             <div class="eps-feature">
-
+        
                 <figure class="eps-figure">
-
+        
                     <img
-                        src="../assets/images/eps/eps-factor-of-safety.png"
-                        alt="Factor of safety distribution in the EPS go-kart chassis"
+                        src="../assets/images/eps/eps-torsional-strain-analysis.png"
+                        alt="Finite element strain distribution along the steering shaft"
                         loading="lazy"
                     >
-
+        
                     <figcaption>
-                        FIG. 14 — Structural factor-of-safety analysis
+                        FIG. 14 — Steering-shaft torsional strain distribution
                     </figcaption>
-
+        
                 </figure>
-
+        
                 <div class="eps-feature-copy">
-
-                    <h3>Structural validation</h3>
-
+        
+                    <p class="eps-kicker">
+                        08.1 · MECHANICAL VALIDATION
+                    </p>
+        
+                    <h3>Structural and deformation analysis</h3>
+        
                     <p>
-                        Finite element analysis was used
-                        to investigate the structural
-                        response of the modeled chassis
-                        under the specified loading
+                        Finite element analysis was used to investigate
+                        the structural response of the steering
+                        components under the specified loading
                         and boundary conditions.
                     </p>
-
+        
                     <p>
-                        The reported minimum factor
-                        of safety was approximately
-                        3.308 for the analyzed
-                        configuration.
+                        The strain distribution provides insight
+                        into how mechanical deformation develops
+                        along the steering shaft and supports
+                        the evaluation of the torque-sensing region.
                     </p>
-
+        
                     <p>
-                        This result is specific
-                        to the simulation assumptions
-                        and loading conditions.
+                        This analysis complemented the mechanical
+                        design process and helped assess the
+                        suitability of the shaft configuration
+                        for the sensing arrangement.
                     </p>
-
+        
                 </div>
-
+        
             </div>
-
+        
+        
+            <!-- =====================================
+                 08.2 — SENSOR VALIDATION
+            ===================================== -->
+        
+            <div class="eps-feature reverse">
+        
+                <figure class="eps-figure">
+        
+                    <img
+                        src="../assets/images/eps/eps-steering-angle-encoder-response.png"
+                        alt="Recorded steering-angle encoder response"
+                        loading="lazy"
+                    >
+        
+                    <figcaption>
+                        FIG. 15 — Measured rotary-encoder response
+                    </figcaption>
+        
+                </figure>
+        
+                <div class="eps-feature-copy">
+        
+                    <p class="eps-kicker">
+                        08.2 · SENSOR VALIDATION
+                    </p>
+        
+                    <h3>Steering-angle measurement and signal acquisition</h3>
+        
+                    <p>
+                        The incremental rotary encoder was evaluated
+                        through recorded measurements as the
+                        steering mechanism was rotated through
+                        different angular positions.
+                    </p>
+        
+                    <p>
+                        The resulting signal demonstrates the
+                        encoder's response to changes in
+                        steering position and provides
+                        measurement data for the control system.
+                    </p>
+        
+                    <p>
+                        Sensor calibration and signal acquisition
+                        were essential to obtaining meaningful
+                        steering-input information for subsequent
+                        controller evaluation.
+                    </p>
+        
+                </div>
+        
+            </div>
+        
+        
+            <!-- =====================================
+                 08.3 — INTELLIGENT CONTROL VALIDATION
+            ===================================== -->
+        
+            <div class="eps-feature">
+        
+                <figure class="eps-figure">
+        
+                    <img
+                        src="../assets/images/eps/eps-fuzzy-control-surface.png"
+                        alt="Fuzzy-logic controller surface showing assist torque against velocity and steering angle"
+                        loading="lazy"
+                    >
+        
+                    <figcaption>
+                        FIG. 16 — Fuzzy-controller assist-torque response surface
+                    </figcaption>
+        
+                </figure>
+        
+                <div class="eps-feature-copy">
+        
+                    <p class="eps-kicker">
+                        08.3 · INTELLIGENT CONTROL VALIDATION
+                    </p>
+        
+                    <h3>Fuzzy-inference evaluation</h3>
+        
+                    <p>
+                        The fuzzy controller was evaluated through
+                        its generated control surface, illustrating
+                        the relationship between operating inputs
+                        and the resulting assist-torque output.
+                    </p>
+        
+                    <p>
+                        The developed rule base incorporated
+                        combinations of vehicle velocity,
+                        steering torque, yaw rate, and steering
+                        angle to determine the appropriate
+                        assistance response.
+                    </p>
+        
+                    <p>
+                        The controller's response was refined
+                        to balance steering assistance with
+                        stability-related considerations
+                        across different operating conditions.
+                    </p>
+        
+                </div>
+        
+            </div>
+        
+        
+            <!-- =====================================
+                 08.4 — PID AND EMBEDDED CONTROL
+            ===================================== -->
+        
+            <div class="eps-feature reverse">
+        
+                <figure class="eps-figure">
+        
+                    <img
+                        src="../assets/images/eps/eps-control-architecture-detailed.png"
+                        alt="Hybrid fuzzy-logic and PID motor-current control architecture"
+                        loading="lazy"
+                    >
+        
+                    <figcaption>
+                        FIG. 17 — Embedded control and closed-loop architecture
+                    </figcaption>
+        
+                </figure>
+        
+                <div class="eps-feature-copy">
+        
+                    <p class="eps-kicker">
+                        08.4 · EMBEDDED CONTROL VALIDATION
+                    </p>
+        
+                    <h3>Motor-current regulation and feedback integration</h3>
+        
+                    <p>
+                        The lower-level control architecture
+                        converts the desired assist torque
+                        into a motor-current reference.
+                        A PID controller uses the difference
+                        between the reference and measured
+                        motor current to generate the
+                        motor-control command.
+                    </p>
+        
+                    <p>
+                        This architecture connects the
+                        intelligent fuzzy controller
+                        to the physical actuation subsystem
+                        through a feedback-based regulation loop.
+                    </p>
+        
+                    <p>
+                        The implementation and integration
+                        of these control functions formed
+                        an important part of the embedded
+                        system development and testing process.
+                    </p>
+        
+                </div>
+        
+            </div>
+        
+        
+            <!-- =====================================
+                 08.5 — OVERALL SYSTEM VALIDATION
+            ===================================== -->
+        
+            <div class="eps-section" style="padding-bottom: 0; border-top: none;">
+        
+                <div class="eps-heading">
+                    <span class="eps-number">08.5</span>
+                    <h2>Overall system integration</h2>
+                </div>
+        
+                <div class="eps-copy">
+        
+                    <p>
+                        The final validation stage focused on bringing
+                        the mechanical, electronic, sensing, and
+                        control subsystems together within the
+                        motorized go-kart prototype.
+                    </p>
+        
+                    <p>
+                        The integrated platform provided a physical
+                        environment for evaluating component
+                        compatibility, sensor feedback, controller
+                        integration, and steering-system operation.
+                        This represented the transition from
+                        individual subsystem development to
+                        an integrated mechatronic prototype.
+                    </p>
+        
+                </div>
+        
+                <div class="eps-cards">
+        
+                    <article class="eps-card">
+        
+                        <h3>Mechanical integration</h3>
+        
+                        <p>
+                            Steering assembly, mechanical linkages,
+                            chassis, and actuator interfaces
+                            were incorporated into the kart.
+                        </p>
+        
+                    </article>
+        
+                    <article class="eps-card">
+        
+                        <h3>Sensor integration</h3>
+        
+                        <p>
+                            Torque, steering-angle, and motor-current
+                            sensing were incorporated into
+                            the system architecture.
+                        </p>
+        
+                    </article>
+        
+                    <article class="eps-card">
+        
+                        <h3>Intelligent control</h3>
+        
+                        <p>
+                            Fuzzy-logic assistance generation
+                            and PID-based current regulation
+                            formed the proposed hybrid
+                            control strategy.
+                        </p>
+        
+                    </article>
+        
+                </div>
+        
+            </div>
+        
         </section>
+
 
 
         <!-- =====================================
