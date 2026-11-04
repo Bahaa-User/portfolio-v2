@@ -9,14 +9,13 @@
     <title>Intelligent Electric Power Steering | Bahaa Nasr</title>
 
     <meta name="description"
-        content="An intelligent electric power steering project combining fuzzy logic, PID control, embedded systems, sensor instrumentation and mechatronic prototyping.">
+        content="Intelligent Electric Power Steering project combining fuzzy logic, PID control, embedded systems, sensing and mechatronic prototyping.">
 
     <link rel="stylesheet" href="../style.css?v=5">
 
     <style>
-
         /* =====================================
-           EPS PAGE
+           PAGE LAYOUT
         ===================================== */
 
         .eps-page {
@@ -30,30 +29,30 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 38px;
+            margin-bottom: 40px;
             color: var(--muted);
-            text-decoration: none;
             font-size: 14px;
+            text-decoration: none;
         }
 
-        .eps-back:hover {
+        .eps-back:hover,
+        .eps-bottom a:hover {
             color: var(--accent);
         }
 
         .eps-kicker {
-            margin-bottom: 17px;
+            margin-bottom: 18px;
             color: var(--accent);
-            font: 600 11px/1.8 "JetBrains Mono", monospace;
+            font: 600 12px/1.8 "JetBrains Mono", monospace;
             letter-spacing: 1.7px;
         }
 
         .eps-title {
-            max-width: 1000px;
-            margin-bottom: 23px;
-            color: var(--text);
-            font-size: clamp(42px, 5.5vw, 76px);
+            max-width: 1100px;
+            margin-bottom: 24px;
+            font-size: clamp(42px, 6vw, 78px);
             line-height: 1.03;
-            letter-spacing: -3.5px;
+            letter-spacing: -0.055em;
             font-weight: 800;
         }
 
@@ -63,33 +62,30 @@
 
         .eps-intro {
             max-width: 950px;
+            margin-bottom: 30px;
             color: var(--muted);
-            font-size: 16px;
-            line-height: 1.9;
-            text-align: justify;
+            font-size: 17px;
+            line-height: 1.85;
         }
-
-        /* =====================================
-           PROJECT METADATA
-        ===================================== */
 
         .eps-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px 45px;
-            margin: 30px 0 45px;
+            gap: 24px 42px;
+            margin-bottom: 45px;
         }
 
         .eps-meta-item {
             display: flex;
             flex-direction: column;
-            gap: 7px;
+            gap: 6px;
         }
 
         .eps-meta-label {
             color: var(--muted);
             font: 10px "JetBrains Mono", monospace;
-            letter-spacing: 1px;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
         }
 
         .eps-meta-value {
@@ -105,27 +101,25 @@
         .eps-hero {
             display: grid;
             grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-            gap: 40px;
             align-items: center;
-            margin-bottom: 85px;
+            gap: 40px;
+            margin-bottom: 80px;
         }
 
         .eps-hero-image {
+            align-self: center;
             margin: 0;
             padding: 10px;
             height: fit-content;
-            align-self: center;
-        
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 22px;
         }
-        
+
         .eps-hero-image img {
             display: block;
             width: 100%;
             height: auto;
-            aspect-ratio: auto;
             object-fit: contain;
             border-radius: 13px;
         }
@@ -133,7 +127,7 @@
         .eps-hero-image figcaption {
             padding: 14px 5px 4px;
             color: var(--muted);
-            font: 10px/1.7 "JetBrains Mono", monospace;
+            font: 11px/1.7 "JetBrains Mono", monospace;
         }
 
         .eps-hero-copy h2 {
@@ -143,65 +137,51 @@
             letter-spacing: -1.5px;
         }
 
-        .eps-hero-copy p {
+        .eps-hero-copy > p:not(.eps-kicker) {
             color: var(--muted);
             font-size: 15px;
             line-height: 1.9;
             text-align: justify;
         }
 
-        .eps-hero-copy p + p {
+        .eps-hero-copy > p + p {
             margin-top: 14px;
         }
 
         /* =====================================
-           TAGS
+           FIGURES
         ===================================== */
 
-        .eps-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
-        .eps-tags span {
-            padding: 7px 11px;
+        .eps-figure {
+            min-width: 0;
+            margin: 0;
+            padding: 14px;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 40px;
-            color: var(--muted);
-            font: 10px "JetBrains Mono", monospace;
+            border-radius: 20px;
         }
 
-        /* =====================================
-           TECHNICAL HIGHLIGHTS
-        ===================================== */
-
-        .eps-highlights {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-            margin-bottom: 85px;
-        }
-
-        .eps-highlight {
-            padding: 22px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 15px;
-        }
-
-        .eps-highlight strong {
+        .eps-figure img {
             display: block;
-            margin-bottom: 8px;
-            color: var(--accent);
-            font-size: 17px;
+            width: 100%;
+            max-height: 560px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 10px;
         }
 
-        .eps-highlight span {
+        .eps-figure figcaption {
+            padding: 13px 5px 3px;
             color: var(--muted);
-            font: 10px/1.7 "JetBrains Mono", monospace;
+            font: 11px/1.7 "JetBrains Mono", monospace;
+        }
+
+        .eps-figure-wide {
+            margin-top: 32px;
+        }
+
+        .eps-figure-wide img {
+            max-height: 650px;
         }
 
         /* =====================================
@@ -214,29 +194,28 @@
             scroll-margin-top: 25px;
         }
 
-        .eps-section-heading {
+        .eps-heading {
             display: flex;
             align-items: flex-start;
-            gap: 17px;
+            gap: 16px;
             margin-bottom: 28px;
         }
 
-        .eps-section-number {
-            padding-top: 6px;
+        .eps-number {
             flex-shrink: 0;
+            padding-top: 5px;
             color: var(--accent);
             font: 12px "JetBrains Mono", monospace;
         }
 
-        .eps-section-heading h2 {
-            color: var(--text);
-            font-size: clamp(29px, 3.3vw, 43px);
+        .eps-heading h2 {
+            font-size: clamp(28px, 3.2vw, 42px);
             line-height: 1.15;
-            letter-spacing: -1.5px;
+            letter-spacing: -1.4px;
         }
 
         .eps-copy {
-            max-width: 1000px;
+            max-width: 950px;
             color: var(--muted);
             font-size: 15px;
             line-height: 1.9;
@@ -248,52 +227,15 @@
         }
 
         /* =====================================
-           FIGURES
-        ===================================== */
-
-        .eps-figure {
-            min-width: 0;
-            margin: 0;
-            padding: 13px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            overflow: hidden;
-        }
-
-        .eps-figure img {
-            display: block;
-            width: 100%;
-            max-height: 570px;
-            object-fit: contain;
-            object-position: center;
-            border-radius: 10px;
-        }
-
-        .eps-figure figcaption {
-            padding: 13px 5px 3px;
-            color: var(--muted);
-            font: 10px/1.8 "JetBrains Mono", monospace;
-        }
-
-        .eps-figure-wide {
-            margin-top: 30px;
-        }
-
-        .eps-figure-wide img {
-            max-height: 650px;
-        }
-
-        /* =====================================
-           FEATURE LAYOUT
+           IMAGE AND TEXT LAYOUT
         ===================================== */
 
         .eps-feature {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 42px;
             align-items: center;
-            margin-top: 35px;
+            gap: 42px;
+            margin-top: 32px;
         }
 
         .eps-feature + .eps-feature {
@@ -310,8 +252,7 @@
 
         .eps-feature-copy h3 {
             margin-bottom: 14px;
-            color: var(--text);
-            font-size: clamp(23px, 2.5vw, 33px);
+            font-size: clamp(23px, 2.5vw, 32px);
             line-height: 1.2;
             letter-spacing: -0.8px;
         }
@@ -328,56 +269,138 @@
         }
 
         /* =====================================
-           ARCHITECTURE
+           TAGS
         ===================================== */
 
-        .eps-architecture {
-            margin-top: 32px;
+        .eps-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
         }
 
-        .eps-architecture img {
-            max-height: none;
+        .eps-tags span {
+            padding: 7px 11px;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            font: 10px "JetBrains Mono", monospace;
         }
 
         /* =====================================
-           FUZZY RULE BASE
+           VIDEO
         ===================================== */
 
-        .eps-rule-figure img {
-            max-height: 600px;
+        .eps-video-section {
+            margin-bottom: 80px;
+        }
+
+        .eps-video-heading {
+            max-width: 850px;
+            margin-bottom: 28px;
+        }
+
+        .eps-video-heading h2 {
+            margin-bottom: 12px;
+            font-size: clamp(30px, 3.5vw, 44px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+        }
+
+        .eps-video-heading > p:last-child {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .eps-video {
+            margin: 0;
+            padding: 12px;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+        }
+
+        .eps-video video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: contain;
+            background: #172B2E;
+            border-radius: 13px;
+        }
+
+        .eps-video figcaption {
+            padding: 15px 7px 5px;
+            color: var(--muted);
+            font: 11px/1.7 "JetBrains Mono", monospace;
         }
 
         /* =====================================
-           RESULTS
+           TECHNICAL CARDS
         ===================================== */
 
-        .eps-results {
+        .eps-cards {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
+            gap: 15px;
             margin-top: 30px;
         }
 
-        .eps-result {
+        .eps-card {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .eps-card h3 {
+            margin-bottom: 9px;
+            font-size: 16px;
+        }
+
+        .eps-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* =====================================
+           CHALLENGES
+        ===================================== */
+
+        .eps-challenges {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .eps-challenge {
             padding: 23px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 16px;
         }
 
-        .eps-result h3 {
-            margin-bottom: 10px;
+        .eps-challenge h3 {
+            margin-bottom: 9px;
             font-size: 16px;
         }
 
-        .eps-result p {
+        .eps-challenge p {
             color: var(--muted);
-            font-size: 13px;
-            line-height: 1.8;
+            font-size: 14px;
+            line-height: 1.85;
+            text-align: justify;
         }
 
         /* =====================================
-           CONTRIBUTIONS
+           PERSONAL CONTRIBUTIONS
         ===================================== */
 
         .eps-contributions {
@@ -407,11 +430,11 @@
         }
 
         /* =====================================
-           OUTCOME
+           OUTCOMES
         ===================================== */
 
         .eps-outcome {
-            padding: 30px;
+            padding: 28px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 18px;
@@ -433,7 +456,7 @@
             flex-wrap: wrap;
             justify-content: space-between;
             gap: 20px;
-            margin-top: 45px;
+            margin-top: 35px;
             padding-top: 28px;
             border-top: 1px solid var(--border);
         }
@@ -446,10 +469,6 @@
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
-        }
-
-        .eps-bottom a:hover {
-            color: var(--accent);
         }
 
         .eps-bottom span {
@@ -475,16 +494,15 @@
             }
 
             .eps-hero {
-                grid-template-columns: 1fr 1fr;
                 gap: 25px;
-            }
-
-            .eps-highlights {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             .eps-feature {
                 gap: 25px;
+            }
+
+            .eps-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
         }
@@ -496,17 +514,21 @@
                 padding-bottom: 60px;
             }
 
+            .eps-back {
+                margin-bottom: 28px;
+            }
+
             .eps-title {
                 font-size: clamp(37px, 10vw, 55px);
                 letter-spacing: -2px;
             }
 
             .eps-intro {
-                font-size: 14px;
+                font-size: 15px;
             }
 
             .eps-meta {
-                gap: 20px;
+                gap: 18px;
             }
 
             .eps-hero {
@@ -515,36 +537,36 @@
                 margin-bottom: 55px;
             }
 
-            .eps-hero-image img {
-                aspect-ratio: 4 / 3;
-            }
-
             .eps-hero-copy h2 {
                 font-size: 30px;
             }
 
-            .eps-highlights {
-                gap: 10px;
-                margin-bottom: 55px;
+            .eps-video-section {
+                margin-bottom: 50px;
             }
 
-            .eps-highlight {
-                padding: 16px;
+            .eps-video-heading h2 {
+                font-size: 30px;
             }
 
-            .eps-highlight strong {
-                font-size: 15px;
+            .eps-video {
+                padding: 7px;
+                border-radius: 16px;
+            }
+
+            .eps-video video {
+                border-radius: 10px;
             }
 
             .eps-section {
                 padding: 45px 0;
             }
 
-            .eps-section-heading {
+            .eps-heading {
                 gap: 12px;
             }
 
-            .eps-section-heading h2 {
+            .eps-heading h2 {
                 font-size: 29px;
             }
 
@@ -553,6 +575,7 @@
             }
 
             .eps-feature,
+            .eps-challenges,
             .eps-contributions {
                 grid-template-columns: 1fr;
                 gap: 22px;
@@ -567,13 +590,8 @@
                 font-size: 25px;
             }
 
-            .eps-results {
+            .eps-cards {
                 grid-template-columns: 1fr;
-            }
-
-            .eps-figure {
-                padding: 8px;
-                border-radius: 14px;
             }
 
             .eps-bottom {
@@ -584,26 +602,21 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-
             *,
             *::before,
             *::after {
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
-
         }
 
     </style>
-
 </head>
 
 
 <body>
 
-    <!-- =====================================
-         NAVIGATION
-    ===================================== -->
+    <!-- NAVIGATION -->
 
     <header class="navbar">
 
@@ -637,7 +650,7 @@
         <section id="introduction">
 
             <p class="eps-kicker">
-                FINAL YEAR PROJECT · SEPTEMBER 2025 – MAY 2026
+                MECHATRONICS · INTELLIGENT CONTROL · FINAL YEAR PROJECT
             </p>
 
             <h1 class="eps-title">
@@ -646,7 +659,7 @@
             </h1>
 
             <p class="eps-intro">
-                Designed and developed an intelligent Electric Power Steering
+                Designed and developed an Intelligent Electric Power Steering
                 (EPS) system as part of a four-member engineering team.
                 The project integrated mechanical design, electronic sensing,
                 embedded control, and intelligent steering assistance into
@@ -658,22 +671,22 @@
             <div class="eps-meta">
 
                 <div class="eps-meta-item">
-                    <span class="eps-meta-label">PROJECT PERIOD</span>
+                    <span class="eps-meta-label">Project period</span>
                     <span class="eps-meta-value">September 2025 – May 2026</span>
                 </div>
 
                 <div class="eps-meta-item">
-                    <span class="eps-meta-label">INSTITUTION</span>
+                    <span class="eps-meta-label">Institution</span>
                     <span class="eps-meta-value">Lebanese American University</span>
                 </div>
 
                 <div class="eps-meta-item">
-                    <span class="eps-meta-label">PROJECT TYPE</span>
+                    <span class="eps-meta-label">Project type</span>
                     <span class="eps-meta-value">Final Year Project</span>
                 </div>
 
                 <div class="eps-meta-item">
-                    <span class="eps-meta-label">TEAM</span>
+                    <span class="eps-meta-label">Team</span>
                     <span class="eps-meta-value">Four-member engineering team</span>
                 </div>
 
@@ -683,7 +696,7 @@
 
 
         <!-- =====================================
-             HERO — FINAL PROTOTYPE FIRST
+             PROJECT HERO
         ===================================== -->
 
         <section class="eps-hero">
@@ -706,7 +719,7 @@
             <div class="eps-hero-copy">
 
                 <p class="eps-kicker">
-                    MECHATRONICS · INTELLIGENT CONTROL · EMBEDDED SYSTEMS
+                    INTELLIGENT MECHATRONIC SYSTEMS
                 </p>
 
                 <h2>
@@ -720,12 +733,11 @@
                 </p>
 
                 <p>
-                    Driver-related inputs were processed to determine
-                    the required assist torque, while a feedback-based
-                    control loop regulated the electric motor response.
-                    The work extended from sensor development and
-                    controller design to embedded integration and
-                    physical prototype assembly.
+                    Driver-related inputs were processed to determine the
+                    required assist torque, while a feedback-based control
+                    loop regulated the electric motor response. The work
+                    extended from sensor development and controller design
+                    to embedded integration and physical prototype assembly.
                 </p>
 
                 <div class="eps-tags">
@@ -743,76 +755,91 @@
 
 
         <!-- =====================================
-             TECHNICAL HIGHLIGHTS
+             01 — MOTIVATION
         ===================================== -->
 
-        <section class="eps-highlights">
+        <section class="eps-section" id="motivation">
 
-            <div class="eps-highlight">
-                <strong>Fuzzy Logic</strong>
-                <span>ADAPTIVE ASSIST-TORQUE DECISION</span>
+            <div class="eps-heading">
+                <span class="eps-number">01</span>
+                <h2>Motivation and problem definition</h2>
             </div>
 
-            <div class="eps-highlight">
-                <strong>PID</strong>
-                <span>MOTOR-CURRENT REGULATION</span>
-            </div>
+            <div class="eps-copy">
 
-            <div class="eps-highlight">
-                <strong>TI C2000</strong>
-                <span>EMBEDDED CONTROL PLATFORM</span>
-            </div>
+                <p>
+                    The project was motivated by the growing demand
+                    for adaptive, energy-efficient, and responsive
+                    steering technologies in modern vehicles.
+                    Conventional steering-assist strategies often
+                    rely on predefined control characteristics
+                    that cannot fully accommodate changing
+                    operating conditions.
+                </p>
 
-            <div class="eps-highlight">
-                <strong>Multi-sensor</strong>
-                <span>TORQUE · ANGLE · CURRENT</span>
+                <p>
+                    Our objective was to investigate an intelligent
+                    control approach capable of dynamically
+                    regulating steering assistance according
+                    to driver input and vehicle-related operating
+                    conditions while maintaining mechanical
+                    functionality and driver control.
+                </p>
+
+                <p>
+                    The project therefore combined mechanical
+                    development with sensor instrumentation
+                    and a hybrid intelligent-control architecture
+                    to explore an adaptive steering-assistance
+                    proof of concept.
+                </p>
+
             </div>
 
         </section>
 
 
         <!-- =====================================
-             01 — SYSTEM ARCHITECTURE
+             02 — SYSTEM OVERVIEW
         ===================================== -->
 
-        <section class="eps-section" id="architecture">
+        <section class="eps-section" id="system-overview">
 
-            <div class="eps-section-heading">
-                <span class="eps-section-number">01</span>
-                <h2>System architecture and control strategy</h2>
+            <div class="eps-heading">
+                <span class="eps-number">02</span>
+                <h2>System overview and architecture</h2>
             </div>
 
             <div class="eps-copy">
 
                 <p>
-                    The EPS architecture combines high-level intelligent
-                    assistance generation with low-level motor-current
-                    regulation. Driver-related inputs and operating
-                    conditions are processed by a fuzzy-logic controller,
-                    which determines the required steering-assist torque.
+                    The EPS system was organized around four
+                    interconnected functions: input sensing,
+                    intelligent assistance generation,
+                    motor actuation, and feedback regulation.
                 </p>
 
                 <p>
-                    The assist-torque command is converted into a motor
-                    current reference. A PID controller then regulates
-                    motor current by comparing the reference with measured
-                    current feedback and generating the corresponding
-                    motor-control signal.
+                    Steering-related measurements and operating
+                    inputs were used by the fuzzy-logic controller
+                    to determine the desired assist torque.
+                    This command was then passed to the
+                    lower-level motor-control subsystem.
                 </p>
 
             </div>
 
 
-            <figure class="eps-figure eps-figure-wide eps-architecture">
+            <figure class="eps-figure eps-figure-wide">
 
                 <img
-                    src="../assets/images/eps/eps-control-architecture-detailed.png"
-                    alt="Detailed EPS control architecture showing signal conditioning, fuzzy logic, torque-to-current conversion, PID control and feedback"
+                    src="../assets/images/eps/eps-electrical-architecture.png"
+                    alt="EPS electrical architecture showing controller, sensors, motor driver, assist motor and power supplies"
                     loading="lazy"
                 >
 
                 <figcaption>
-                    FIG. 01 — Hybrid fuzzy-logic and PID control architecture
+                    FIG. 01 — Electrical architecture of the EPS system
                 </figcaption>
 
             </figure>
@@ -823,39 +850,38 @@
                 <figure class="eps-figure">
 
                     <img
-                        src="../assets/images/eps/eps-electrical-architecture.png"
-                        alt="EPS electrical architecture showing controller, motor driver, assist motor, sensors and power supplies"
+                        src="../assets/images/eps/eps-control-architecture-overview.png"
+                        alt="High-level EPS control flow from inputs through intelligent control to steering actuation"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        FIG. 02 — Electrical architecture and hardware integration
+                        FIG. 02 — High-level control and actuation flow
                     </figcaption>
 
                 </figure>
 
-
                 <div class="eps-feature-copy">
 
-                    <h3>From sensing to actuation</h3>
+                    <h3>Coordinating the subsystems</h3>
 
                     <p>
-                        The electrical architecture connects the sensing
-                        subsystem, embedded controller, motor-driver
-                        electronics, assist motor, and steering mechanism.
+                        The architecture separates the high-level
+                        steering-assistance decision from the
+                        lower-level motor-control process.
                     </p>
 
                     <p>
-                        The integration of these elements allows the
-                        controller's decisions to be translated into
-                        physical motor assistance.
+                        This modular approach connects the sensing,
+                        decision-making, actuation, and feedback
+                        components into one mechatronic system.
                     </p>
 
                     <div class="eps-tags">
-                        <span>TI C2000</span>
-                        <span>Motor Driver</span>
-                        <span>Current Feedback</span>
-                        <span>PWM</span>
+                        <span>Sensing</span>
+                        <span>Control</span>
+                        <span>Actuation</span>
+                        <span>Feedback</span>
                     </div>
 
                 </div>
@@ -866,33 +892,33 @@
 
 
         <!-- =====================================
-             02 — MECHANICAL DESIGN
+             03 — MECHANICAL DESIGN
         ===================================== -->
 
         <section class="eps-section" id="mechanical-design">
 
-            <div class="eps-section-heading">
-                <span class="eps-section-number">02</span>
-                <h2>Mechanical design and system integration</h2>
+            <div class="eps-heading">
+                <span class="eps-number">03</span>
+                <h2>Mechanical design and kinematics</h2>
             </div>
 
             <div class="eps-copy">
 
                 <p>
-                    Mechanical development began with CAD modeling
-                    of the steering assembly and supporting go-kart
-                    structure. The original automotive steering concept
-                    required adaptation to a compact prototype that
-                    could be manufactured and assembled using the
-                    available resources.
+                    Mechanical development began with the design
+                    of the steering assembly and supporting
+                    go-kart structure. SolidWorks was used
+                    to develop the chassis geometry, steering
+                    components, mechanical linkages, and
+                    component interfaces.
                 </p>
 
                 <p>
-                    This process involved refining the chassis geometry,
-                    steering-column arrangement, mechanical linkages,
-                    component mounts, and custom transmission interfaces.
-                    The mechanical design provided the physical foundation
-                    for integrating the sensing and control subsystems.
+                    A major challenge was adapting the original
+                    full-scale automotive steering concept
+                    to a compact, manufacturable kart platform
+                    while preserving the essential steering
+                    functionality required by the project.
                 </p>
 
             </div>
@@ -904,7 +930,7 @@
 
                     <img
                         src="../assets/images/eps/eps-chassis-cad.png"
-                        alt="SolidWorks CAD model of the go-kart chassis and seating arrangement"
+                        alt="SolidWorks CAD model of the EPS go-kart chassis"
                         loading="lazy"
                     >
 
@@ -916,19 +942,27 @@
 
                 <div class="eps-feature-copy">
 
-                    <h3>Chassis and structural arrangement</h3>
+                    <h3>Chassis design and geometry</h3>
 
                     <p>
                         The chassis model established the physical
-                        platform for the steering assembly, seating
-                        arrangement, and mechanical component integration.
+                        platform for the steering assembly,
+                        seating arrangement, and mechanical
+                        component integration.
                     </p>
 
                     <p>
-                        CAD development supported the transition
-                        from the initial automotive concept to a
-                        manufacturable kart-scale platform.
+                        The CAD development supported the
+                        evaluation of component positioning,
+                        structural arrangement, and the
+                        feasibility of the overall prototype.
                     </p>
+
+                    <div class="eps-tags">
+                        <span>SolidWorks</span>
+                        <span>CAD Assembly</span>
+                        <span>Mechanical Design</span>
+                    </div>
 
                 </div>
 
@@ -941,7 +975,7 @@
 
                     <img
                         src="../assets/images/eps/eps-steering-assembly-cad.png"
-                        alt="CAD model of steering wheel, steering column and wheel linkages"
+                        alt="CAD model of the EPS steering assembly and mechanical linkages"
                         loading="lazy"
                     >
 
@@ -956,19 +990,94 @@
                     <h3>Steering mechanism development</h3>
 
                     <p>
-                        The steering assembly was modeled to investigate
-                        the mechanical transmission of driver input
-                        through the steering column and linkage.
+                        The steering assembly was modeled
+                        to investigate the transmission
+                        of driver input through the steering
+                        column and mechanical linkage.
                     </p>
 
                     <p>
-                        During prototype adaptation, the original
-                        full-scale automotive steering concept
-                        was modified to a simpler linkage arrangement
+                        During prototype adaptation, the
+                        initial steering concept was modified
+                        to a simpler linkage arrangement
                         suitable for the manufactured kart.
                     </p>
 
                 </div>
+
+            </div>
+
+            <div class="eps-feature">
+
+                <figure class="eps-figure">
+
+                    <img
+                        src="../assets/images/eps/eps-early-kart-prototype.jpg"
+                        alt="Early physical development stage of the EPS kart"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 05 — Initial kart prototype
+                    </figcaption>
+
+                </figure>
+
+                <div class="eps-feature-copy">
+
+                    <h3>Adapting the design for implementation</h3>
+
+                    <p>
+                        The transition from CAD to a physical
+                        platform required modifications
+                        to the mechanical arrangement,
+                        component interfaces, and steering
+                        linkage.
+                    </p>
+
+                    <p>
+                        This design evolution was an important
+                        part of translating the original
+                        engineering concept into a prototype
+                        that could be manufactured and tested.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             04 — MANUFACTURING
+        ===================================== -->
+
+        <section class="eps-section" id="manufacturing">
+
+            <div class="eps-heading">
+                <span class="eps-number">04</span>
+                <h2>Manufacturing and prototype development</h2>
+            </div>
+
+            <div class="eps-copy">
+
+                <p>
+                    After the mechanical design stage,
+                    the team proceeded with manufacturing,
+                    component preparation, and physical assembly.
+                    The development process involved machining,
+                    welding, drilling, mechanical fitting,
+                    and additive manufacturing.
+                </p>
+
+                <p>
+                    Particular attention was given to the
+                    alignment of steering components,
+                    mechanical interfaces, and the integration
+                    of the electronic hardware with the
+                    physical platform.
+                </p>
 
             </div>
 
@@ -979,32 +1088,38 @@
 
                     <img
                         src="../assets/images/eps/eps-early-kart-prototype.jpg"
-                        alt="Early physical development stage of the EPS go-kart prototype"
+                        alt="Physical kart prototype during mechanical development"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        FIG. 05 — Early prototype and mechanical integration
+                        FIG. 06 — Mechanical prototype development
                     </figcaption>
 
                 </figure>
 
                 <div class="eps-feature-copy">
 
-                    <h3>From CAD to physical assembly</h3>
+                    <h3>Fabrication and assembly</h3>
 
                     <p>
-                        Prototype development required adapting
-                        the initial design to the existing kart
-                        platform, aligning mechanical components,
-                        and integrating the steering mechanism.
+                        Manufacturing activities translated
+                        the mechanical design into physical
+                        components and assemblies.
+                    </p>
+
+                    <p>
+                        The process required iterative fitting,
+                        mechanical adjustment, and coordination
+                        between the steering structure and
+                        supporting chassis.
                     </p>
 
                     <div class="eps-tags">
-                        <span>SolidWorks</span>
                         <span>Machining</span>
                         <span>Welding</span>
-                        <span>Mechanical Assembly</span>
+                        <span>Drilling</span>
+                        <span>3D Printing</span>
                     </div>
 
                 </div>
@@ -1015,31 +1130,33 @@
 
 
         <!-- =====================================
-             03 — SENSING
+             05 — SENSING
         ===================================== -->
 
         <section class="eps-section" id="sensing">
 
-            <div class="eps-section-heading">
-                <span class="eps-section-number">03</span>
-                <h2>Sensor instrumentation and feedback</h2>
+            <div class="eps-heading">
+                <span class="eps-number">05</span>
+                <h2>Sensor instrumentation and signal acquisition</h2>
             </div>
 
             <div class="eps-copy">
 
                 <p>
-                    Reliable steering assistance depends on acquiring
-                    meaningful information about driver input and
-                    system response. The project integrated custom
-                    torque sensing using strain gauges, steering-angle
-                    measurement using a rotary encoder, and electric-motor
-                    current feedback.
+                    The intelligent steering-assistance system
+                    relies on acquiring information about
+                    driver input and actuator response.
+                    The project incorporated torque measurement
+                    using strain gauges, steering-angle
+                    measurement using an incremental rotary
+                    encoder, and motor-current feedback.
                 </p>
 
                 <p>
-                    These measurements provide the information required
-                    by the control architecture to interpret steering
-                    demand and regulate the electric assist mechanism.
+                    These sensing components form the
+                    instrumentation layer connecting
+                    the mechanical steering system
+                    to the electronic control architecture.
                 </p>
 
             </div>
@@ -1051,31 +1168,32 @@
 
                     <img
                         src="../assets/images/eps/eps-strain-gauge-closeup.jpg"
-                        alt="Strain gauge and signal-conditioning electronics installed on the steering shaft"
+                        alt="Strain gauge installed on the steering shaft"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        FIG. 06 — Strain-gauge torque sensing installation
+                        FIG. 07 — Custom strain-gauge torque sensor
                     </figcaption>
 
                 </figure>
 
                 <div class="eps-feature-copy">
 
-                    <h3>Custom steering-torque sensing</h3>
+                    <h3>Steering-torque measurement</h3>
 
                     <p>
-                        A strain gauge was integrated into a machined
-                        aluminum steering-shaft extension to investigate
-                        torsional deformation associated with applied
-                        steering torque.
+                        A strain gauge was integrated into
+                        a machined aluminum steering-shaft
+                        extension to investigate torsional
+                        deformation under applied steering
+                        torque.
                     </p>
 
                     <p>
-                        The sensor signal was conditioned and calibrated
-                        to provide torque-related information for the
-                        intelligent-control system.
+                        The measured signal was conditioned
+                        and calibrated to obtain torque-related
+                        information for the control system.
                     </p>
 
                     <div class="eps-tags">
@@ -1100,26 +1218,26 @@
                     >
 
                     <figcaption>
-                        FIG. 07 — Torsional strain distribution in the steering shaft
+                        FIG. 08 — Torsional strain analysis
                     </figcaption>
 
                 </figure>
 
                 <div class="eps-feature-copy">
 
-                    <h3>Mechanical analysis of the sensing region</h3>
+                    <h3>Analyzing the sensing region</h3>
 
                     <p>
-                        Structural simulation was used to investigate
-                        the strain distribution along the steering
-                        shaft under the modeled loading conditions.
+                        Structural simulation was used
+                        to investigate the strain distribution
+                        along the steering shaft under
+                        the modeled loading conditions.
                     </p>
 
                     <p>
-                        This analysis supports the mechanical
-                        understanding of the torque-sensing
-                        arrangement and its integration into
-                        the steering system.
+                        This analysis supported the
+                        mechanical evaluation of the
+                        custom torque-sensing arrangement.
                     </p>
 
                 </div>
@@ -1133,12 +1251,12 @@
 
                     <img
                         src="../assets/images/eps/eps-rotary-encoder-closeup.jpg"
-                        alt="Rotary encoder installed on the steering mechanism"
+                        alt="Rotary encoder integrated into the steering mechanism"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        FIG. 08 — Rotary encoder installation
+                        FIG. 09 — Rotary encoder integration
                     </figcaption>
 
                 </figure>
@@ -1148,16 +1266,17 @@
                     <h3>Steering-angle measurement</h3>
 
                     <p>
-                        An incremental rotary encoder was integrated
-                        into the steering mechanism to measure angular
-                        displacement and provide steering-position
+                        An incremental rotary encoder was
+                        integrated into the steering mechanism
+                        to measure angular displacement
+                        and provide steering-position
                         information.
                     </p>
 
                     <p>
-                        Encoder measurements were used in the
-                        steering-input measurement and control
-                        development process.
+                        The encoder output was used
+                        during the steering-input measurement
+                        and control-development process.
                     </p>
 
                     <div class="eps-tags">
@@ -1175,12 +1294,12 @@
 
                 <img
                     src="../assets/images/eps/eps-steering-angle-encoder-response.png"
-                    alt="Recorded encoder response showing changes in measured steering angle"
+                    alt="Recorded steering-angle encoder response"
                     loading="lazy"
                 >
 
                 <figcaption>
-                    FIG. 09 — Recorded steering-angle encoder response
+                    FIG. 10 — Steering-angle encoder response
                 </figcaption>
 
             </figure>
@@ -1189,39 +1308,42 @@
 
 
         <!-- =====================================
-             04 — INTELLIGENT CONTROL
+             06 — INTELLIGENT CONTROL
         ===================================== -->
 
         <section class="eps-section" id="intelligent-control">
 
-            <div class="eps-section-heading">
-                <span class="eps-section-number">04</span>
+            <div class="eps-heading">
+                <span class="eps-number">06</span>
                 <h2>Intelligent fuzzy-logic control</h2>
             </div>
 
             <div class="eps-copy">
 
                 <p>
-                    The intelligent-control component of the project
-                    is a fuzzy-logic controller designed to determine
-                    the appropriate steering-assist torque according
+                    The central intelligent-control component
+                    of the project is a fuzzy-logic controller
+                    designed to determine the appropriate
+                    steering-assist torque according
                     to driver input and operating conditions.
                 </p>
 
                 <p>
-                    The controller uses four input variables:
-                    vehicle velocity, steering torque, yaw rate,
-                    and steering angle. These inputs are processed
-                    through membership functions and a rule base
-                    to determine the assist-torque output.
+                    Unlike a fixed assistance strategy,
+                    fuzzy inference uses combinations
+                    of input variables and a linguistic
+                    rule base to generate the desired
+                    assist-torque output.
                 </p>
 
                 <p>
-                    The rule base was developed and refined to account
-                    for steering demand while considering stability-related
-                    operating conditions. The resulting fuzzy output
-                    provides the torque command for the lower-level
-                    motor-control loop.
+                    The four controller inputs documented
+                    in the project are vehicle velocity,
+                    steering torque, yaw rate, and
+                    steering angle. These inputs are
+                    processed through membership functions
+                    and the rule base to determine the
+                    controller response.
                 </p>
 
             </div>
@@ -1233,42 +1355,46 @@
 
                     <img
                         src="../assets/images/eps/eps-fuzzy-control-surface.png"
-                        alt="Three-dimensional fuzzy logic control surface showing assist torque as a function of velocity and steering angle"
+                        alt="Three-dimensional fuzzy-logic control surface showing assist torque against velocity and steering angle"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        FIG. 10 — Fuzzy-logic assist-torque control surface
+                        FIG. 11 — Fuzzy-logic assist-torque control surface
                     </figcaption>
 
                 </figure>
 
                 <div class="eps-feature-copy">
 
-                    <h3>Adaptive steering assistance</h3>
+                    <h3>Adaptive assist-torque generation</h3>
 
                     <p>
-                        The control surface visualizes how the fuzzy
-                        controller maps operating conditions to
-                        assist-torque decisions.
+                        The control surface illustrates
+                        the relationship between operating
+                        conditions and the resulting
+                        assist-torque output.
                     </p>
 
                     <p>
-                        Assistance is adjusted according to the
-                        combination of input conditions rather than
-                        relying on a single fixed response.
+                        The controller was designed to
+                        provide assistance according
+                        to the combination of input
+                        conditions rather than applying
+                        one fixed response.
                     </p>
 
                     <p>
-                        This approach allows the controller to
-                        balance steering effort with stability-related
-                        considerations.
+                        This allows the control strategy
+                        to consider steering effort
+                        alongside stability-related
+                        operating conditions.
                     </p>
 
                     <div class="eps-tags">
                         <span>Fuzzy Inference</span>
                         <span>Membership Functions</span>
-                        <span>Adaptive Assistance</span>
+                        <span>Adaptive Control</span>
                     </div>
 
                 </div>
@@ -1278,23 +1404,23 @@
 
             <div class="eps-feature reverse">
 
-                <figure class="eps-figure eps-rule-figure">
+                <figure class="eps-figure">
 
                     <img
                         src="../assets/images/eps/eps-fuzzy-rule-base.png"
-                        alt="Fuzzy logic rule base mapping velocity, torque, yaw rate and steering angle to assist torque"
+                        alt="Fuzzy-logic rule base mapping velocity, torque, yaw rate and steering angle to assist torque"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        FIG. 11 — Fuzzy-controller rule base
+                        FIG. 12 — Fuzzy-controller rule base
                     </figcaption>
 
                 </figure>
 
                 <div class="eps-feature-copy">
 
-                    <h3>Rule-based decision making</h3>
+                    <h3>Rule-base development and refinement</h3>
 
                     <p>
                         The rule base translates combinations
@@ -1303,17 +1429,18 @@
                     </p>
 
                     <p>
-                        For example, low-speed steering may require
-                        greater assistance, whereas high-speed
-                        operation combined with elevated yaw
-                        conditions calls for more conservative
+                        For example, low-speed steering
+                        may require greater assistance,
+                        whereas high-speed conditions
+                        combined with elevated yaw
+                        require more conservative
                         assistance.
                     </p>
 
                     <p>
-                        The final rule set was refined to balance
-                        steering comfort, responsiveness, and
-                        stability considerations.
+                        The rules were refined to balance
+                        steering comfort, responsiveness,
+                        and stability considerations.
                     </p>
 
                 </div>
@@ -1324,77 +1451,80 @@
 
 
         <!-- =====================================
-             05 — EMBEDDED SYSTEMS
+             07 — EMBEDDED CONTROL
         ===================================== -->
 
         <section class="eps-section" id="embedded-control">
 
-            <div class="eps-section-heading">
-                <span class="eps-section-number">05</span>
-                <h2>Embedded systems and motor control</h2>
+            <div class="eps-heading">
+                <span class="eps-number">07</span>
+                <h2>Embedded systems and PID motor control</h2>
             </div>
 
             <div class="eps-copy">
 
                 <p>
-                    The control strategy was implemented around
-                    the TI TMS320F28379D microcontroller, which
-                    formed the core of the embedded control platform.
-                    The embedded architecture connects sensor
-                    acquisition, control computation, and motor-driver
-                    commands.
+                    The intelligent-control strategy was
+                    developed around the TI TMS320F28379D
+                    microcontroller. The embedded platform
+                    connects sensor acquisition, controller
+                    computation, and motor-driver commands.
                 </p>
 
                 <p>
-                    The fuzzy controller determines the desired
-                    steering-assist torque. This command is converted
-                    into a motor-current reference. A PID controller
-                    then regulates motor current using feedback
-                    from the current-sensing subsystem.
+                    The fuzzy controller generates
+                    the desired assist torque. This
+                    command is converted into a motor-current
+                    reference using the motor torque constant.
+                    A PID controller then regulates motor
+                    current by comparing the reference
+                    with measured current feedback.
                 </p>
 
             </div>
 
 
-            <figure class="eps-figure eps-figure-wide eps-architecture">
+            <figure class="eps-figure eps-figure-wide">
 
                 <img
-                    src="../assets/images/eps/eps-electrical-architecture.png"
-                    alt="Embedded EPS hardware architecture showing controller, motor driver, assist motor and current feedback"
+                    src="../assets/images/eps/eps-control-architecture-detailed.png"
+                    alt="Detailed EPS control architecture showing fuzzy logic, torque-to-current conversion, PID current regulation and feedback"
                     loading="lazy"
                 >
 
                 <figcaption>
-                    FIG. 12 — Embedded hardware and electrical architecture
+                    FIG. 13 — Detailed hybrid fuzzy-logic and PID control architecture
                 </figcaption>
 
             </figure>
 
 
-            <div class="eps-results">
+            <div class="eps-cards">
 
-                <article class="eps-result">
-                    <h3>High-level control</h3>
+                <article class="eps-card">
+                    <h3>01 · Intelligent control</h3>
                     <p>
-                        Fuzzy inference evaluates the input conditions
-                        and generates the required steering-assist torque.
+                        Fuzzy inference evaluates the input
+                        conditions and generates the
+                        desired steering-assist torque.
                     </p>
                 </article>
 
-                <article class="eps-result">
-                    <h3>Current reference</h3>
+                <article class="eps-card">
+                    <h3>02 · Current reference</h3>
                     <p>
-                        The assist-torque command is converted
-                        into a desired motor-current reference.
+                        The assist-torque command is
+                        converted into a desired
+                        motor-current reference.
                     </p>
                 </article>
 
-                <article class="eps-result">
-                    <h3>Closed-loop regulation</h3>
+                <article class="eps-card">
+                    <h3>03 · PID regulation</h3>
                     <p>
-                        PID control compares the current reference
-                        with measured motor current and regulates
-                        the motor-drive command.
+                        PID control compares the reference
+                        with measured motor current
+                        and regulates the motor-drive command.
                     </p>
                 </article>
 
@@ -1406,35 +1536,34 @@
                 <figure class="eps-figure">
 
                     <img
-                        src="../assets/images/eps/eps-control-architecture-overview.png"
-                        alt="High-level fuzzy logic and PID control architecture from sensor inputs to steering actuation"
+                        src="../assets/images/eps/eps-electrical-architecture.png"
+                        alt="Embedded electrical hardware showing controller, motor driver, sensors and assist motor"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        FIG. 13 — High-level control and actuation flow
+                        FIG. 14 — Embedded hardware integration
                     </figcaption>
 
                 </figure>
 
                 <div class="eps-feature-copy">
 
-                    <h3>Closing the control loop</h3>
+                    <h3>Hardware–software integration</h3>
 
                     <p>
-                        The motor-current feedback loop links
-                        the embedded controller to the physical
-                        actuator. The PID controller regulates
-                        the motor response according to the
-                        current reference generated by the
-                        higher-level controller.
+                        The embedded architecture links
+                        the microcontroller with the
+                        sensing subsystem, motor driver,
+                        and steering actuator.
                     </p>
 
                     <p>
-                        This separation between intelligent
-                        assistance generation and low-level
-                        current regulation is a key feature
-                        of the hybrid control architecture.
+                        The separation between high-level
+                        intelligent assistance generation
+                        and lower-level motor-current
+                        regulation is a key feature
+                        of the hybrid architecture.
                     </p>
 
                     <div class="eps-tags">
@@ -1453,31 +1582,34 @@
 
 
         <!-- =====================================
-             06 — VALIDATION
+             08 — TESTING AND VALIDATION
         ===================================== -->
 
         <section class="eps-section" id="validation">
 
-            <div class="eps-section-heading">
-                <span class="eps-section-number">06</span>
-                <h2>Simulation and engineering validation</h2>
+            <div class="eps-heading">
+                <span class="eps-number">08</span>
+                <h2>Simulation, testing and validation</h2>
             </div>
 
             <div class="eps-copy">
 
                 <p>
-                    Engineering analysis and experimental evaluation
-                    supported the assessment of the mechanical
-                    structure, sensing arrangement, and steering
-                    response.
+                    Engineering analysis and experimental
+                    evaluation were used throughout the
+                    development process to assess the
+                    mechanical structure, sensor arrangement,
+                    and steering response.
                 </p>
 
                 <p>
-                    Structural simulation was used to investigate
-                    the behavior of the modeled components under
-                    specified loading conditions. Sensor calibration,
-                    troubleshooting, and experimental testing were
-                    also part of the system-development process.
+                    Structural simulation supported
+                    the assessment of the modeled
+                    mechanical components under
+                    specified loading conditions.
+                    Sensor calibration and controller
+                    testing formed part of the
+                    system-development workflow.
                 </p>
 
             </div>
@@ -1489,38 +1621,39 @@
 
                     <img
                         src="../assets/images/eps/eps-factor-of-safety.png"
-                        alt="Factor of safety distribution in the simulated go-kart chassis"
+                        alt="Factor of safety distribution in the EPS go-kart chassis"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        FIG. 14 — Structural factor-of-safety analysis
+                        FIG. 15 — Structural factor-of-safety analysis
                     </figcaption>
 
                 </figure>
 
                 <div class="eps-feature-copy">
 
-                    <h3>Structural assessment</h3>
+                    <h3>Structural validation</h3>
 
                     <p>
-                        Finite element analysis was used to
-                        investigate the structural response
-                        of the modeled chassis under the
-                        specified loading and boundary conditions.
+                        Finite element analysis was used
+                        to investigate the structural
+                        response of the modeled chassis
+                        under the specified loading
+                        and boundary conditions.
                     </p>
 
                     <p>
-                        The reported minimum factor of safety
-                        was approximately 3.308 for the
-                        analyzed configuration.
+                        The reported minimum factor
+                        of safety was approximately
+                        3.308 for the analyzed
+                        configuration.
                     </p>
 
                     <p>
-                        This result is specific to the simulation
-                        assumptions and loading conditions and
-                        should not be interpreted as a complete
-                        validation of the physical vehicle.
+                        This result is specific
+                        to the simulation assumptions
+                        and loading conditions.
                     </p>
 
                 </div>
@@ -1531,48 +1664,229 @@
 
 
         <!-- =====================================
-             07 — FINAL PROTOTYPE
+             09 — ENGINEERING CHALLENGES
         ===================================== -->
 
-        <section class="eps-section" id="prototype">
+        <section class="eps-section" id="challenges">
 
-            <div class="eps-section-heading">
-                <span class="eps-section-number">07</span>
-                <h2>Final prototype and project outcome</h2>
+            <div class="eps-heading">
+                <span class="eps-number">09</span>
+                <h2>Engineering challenges</h2>
+            </div>
+
+            <div class="eps-copy">
+
+                <p>
+                    Developing the EPS prototype required
+                    resolving challenges across mechanical,
+                    electronic, and control domains.
+                    The integration of these subsystems
+                    required iterative design modifications,
+                    calibration, and troubleshooting.
+                </p>
+
+            </div>
+
+
+            <div class="eps-challenges">
+
+                <article class="eps-challenge">
+                    <h3>Mechanical redesign</h3>
+                    <p>
+                        Adapting the initial automotive
+                        steering concept to a compact,
+                        manufacturable kart platform
+                        required redesigning the
+                        mechanical arrangement and
+                        steering linkages.
+                    </p>
+                </article>
+
+                <article class="eps-challenge">
+                    <h3>Torque-sensor development</h3>
+                    <p>
+                        Developing a custom strain-gauge
+                        sensing arrangement required
+                        mechanical preparation, sensor
+                        integration, signal conditioning,
+                        and calibration.
+                    </p>
+                </article>
+
+                <article class="eps-challenge">
+                    <h3>Signal acquisition</h3>
+                    <p>
+                        Acquiring meaningful steering
+                        and torque measurements required
+                        coordinating sensor installation,
+                        calibration, and electronic
+                        signal processing.
+                    </p>
+                </article>
+
+                <article class="eps-challenge">
+                    <h3>Hardware–software integration</h3>
+                    <p>
+                        Integrating sensing hardware,
+                        embedded computation, motor
+                        electronics, and control logic
+                        required coordinating several
+                        interconnected subsystems.
+                    </p>
+                </article>
+
+                <article class="eps-challenge">
+                    <h3>Controller refinement</h3>
+                    <p>
+                        Refining the fuzzy rule base
+                        and PID regulation required
+                        evaluating the relationship
+                        between steering assistance,
+                        responsiveness, and stability.
+                    </p>
+                </article>
+
+                <article class="eps-challenge">
+                    <h3>Prototype integration</h3>
+                    <p>
+                        Combining the mechanical
+                        steering structure with
+                        sensors, wiring, and actuator
+                        electronics required iterative
+                        fitting and system-level
+                        troubleshooting.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             10 — PERSONAL CONTRIBUTIONS
+        ===================================== -->
+
+        <section class="eps-section" id="contributions">
+
+            <div class="eps-heading">
+                <span class="eps-number">10</span>
+                <h2>My engineering contributions</h2>
+            </div>
+
+            <div class="eps-copy">
+
+                <p>
+                    As part of a four-member engineering
+                    team, I contributed across the
+                    mechanical, electronic, and control
+                    development workflow. My involvement
+                    covered design, sensing, embedded
+                    integration, manufacturing, and
+                    experimental evaluation.
+                </p>
+
+            </div>
+
+
+            <div class="eps-contributions">
+
+                <article class="eps-contribution">
+                    <h3>Mechanical design</h3>
+                    <p>
+                        Contributed to SolidWorks modeling,
+                        chassis development, steering
+                        mechanisms, mechanical linkages,
+                        and custom component interfaces.
+                    </p>
+                </article>
+
+                <article class="eps-contribution">
+                    <h3>Intelligent control</h3>
+                    <p>
+                        Contributed to the development
+                        and implementation of the hybrid
+                        fuzzy-logic/PID control strategy
+                        using MATLAB and Simulink.
+                    </p>
+                </article>
+
+                <article class="eps-contribution">
+                    <h3>Sensor instrumentation</h3>
+                    <p>
+                        Contributed to strain-gauge
+                        torque sensing, rotary-encoder
+                        angle measurement, and
+                        motor-current feedback integration.
+                    </p>
+                </article>
+
+                <article class="eps-contribution">
+                    <h3>Embedded systems</h3>
+                    <p>
+                        Worked on integrating the TI C2000
+                        microcontroller, motor-driver
+                        electronics, sensing hardware,
+                        and control system.
+                    </p>
+                </article>
+
+                <article class="eps-contribution">
+                    <h3>Manufacturing and prototyping</h3>
+                    <p>
+                        Participated in turning, welding,
+                        drilling, mechanical fitting,
+                        additive manufacturing, and
+                        physical prototype assembly.
+                    </p>
+                </article>
+
+                <article class="eps-contribution">
+                    <h3>Testing and validation</h3>
+                    <p>
+                        Participated in system integration,
+                        calibration, troubleshooting,
+                        and experimental evaluation
+                        of steering response and
+                        control behavior.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             11 — OUTCOMES
+        ===================================== -->
+
+        <section class="eps-section" id="outcomes">
+
+            <div class="eps-heading">
+                <span class="eps-number">11</span>
+                <h2>Outcomes and engineering impact</h2>
             </div>
 
             <div class="eps-copy">
 
                 <p>
                     The project culminated in the development
-                    and assembly of a motorized go-kart prototype
-                    incorporating the mechanical steering system,
-                    sensing hardware, and embedded control electronics.
+                    and assembly of a motorized go-kart
+                    prototype incorporating mechanical
+                    steering, sensing hardware, and
+                    embedded control electronics.
                 </p>
 
                 <p>
-                    The prototype provided a physical platform
-                    for system integration, calibration,
-                    troubleshooting, and evaluation of the
-                    steering-assistance approach.
+                    A hybrid fuzzy-logic/PID control
+                    architecture was developed to explore
+                    adaptive steering assistance, supported
+                    by sensor instrumentation, simulation,
+                    calibration, and experimental testing.
                 </p>
 
             </div>
-
-
-            <figure class="eps-figure eps-figure-wide">
-
-                <img
-                    src="../assets/images/eps/eps-team-prototype.jpg"
-                    alt="EPS project team standing with the completed red go-kart prototype"
-                    loading="lazy"
-                >
-
-                <figcaption>
-                    FIG. 15 — Completed EPS prototype and engineering team
-                </figcaption>
-
-            </figure>
 
 
             <div class="eps-feature">
@@ -1580,13 +1894,52 @@
                 <figure class="eps-figure">
 
                     <img
-                        src="../assets/images/eps/eps-poster-presentation.jpg"
-                        alt="Presenting the Intelligent Electric Power Steering project poster"
+                        src="../assets/images/eps/eps-team-prototype.jpg"
+                        alt="EPS engineering team with the completed motorized go-kart prototype"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        EPS — Final project poster presentation
+                        FIG. 16 — Completed prototype and engineering team
+                    </figcaption>
+
+                </figure>
+
+                <div class="eps-feature-copy">
+
+                    <h3>From concept to integrated prototype</h3>
+
+                    <p>
+                        The final prototype brought together
+                        the mechanical steering structure,
+                        sensing components, electrical
+                        hardware, and control architecture.
+                    </p>
+
+                    <p>
+                        The project provided practical
+                        experience in integrating
+                        intelligent control with
+                        physical mechatronic systems.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="eps-feature reverse">
+
+                <figure class="eps-figure">
+
+                    <img
+                        src="../assets/images/eps/eps-poster-presentation.jpg"
+                        alt="Presenting the Intelligent Electric Power Steering final year project poster"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        EPS — Final year project poster presentation
                     </figcaption>
 
                 </figure>
@@ -1596,174 +1949,22 @@
                     <h3>Presenting the engineering work</h3>
 
                     <p>
-                        The project was presented through a
-                        technical poster communicating its
-                        objectives, methodology, mechanical
-                        development, electrical architecture,
-                        and intelligent-control strategy.
+                        The project was presented through
+                        a technical poster communicating
+                        its objectives, methodology,
+                        mechanical development, electrical
+                        architecture, and intelligent
+                        control strategy.
                     </p>
 
                     <p>
-                        The presentation provided an opportunity
-                        to communicate the multidisciplinary
-                        engineering process and demonstrate
-                        the completed prototype.
+                        The presentation brought together
+                        the project's multidisciplinary
+                        engineering work and its
+                        physical prototype.
                     </p>
 
                 </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================
-             08 — PERSONAL CONTRIBUTIONS
-        ===================================== -->
-
-        <section class="eps-section" id="contributions">
-
-            <div class="eps-section-heading">
-                <span class="eps-section-number">08</span>
-                <h2>My engineering contributions</h2>
-            </div>
-
-            <div class="eps-copy">
-
-                <p>
-                    As part of a four-member engineering team,
-                    I contributed across mechanical development,
-                    sensing, intelligent control, embedded
-                    integration, and experimental evaluation.
-                </p>
-
-            </div>
-
-
-            <div class="eps-contributions">
-
-                <article class="eps-contribution">
-
-                    <h3>Intelligent control systems</h3>
-
-                    <p>
-                        Contributed to the development and
-                        implementation of the hybrid
-                        fuzzy-logic/PID control strategy
-                        using MATLAB and Simulink.
-                    </p>
-
-                </article>
-
-
-                <article class="eps-contribution">
-
-                    <h3>Sensor instrumentation</h3>
-
-                    <p>
-                        Contributed to the development and
-                        integration of strain-gauge torque
-                        sensing, rotary-encoder angle
-                        measurement, and motor-current feedback.
-                    </p>
-
-                </article>
-
-
-                <article class="eps-contribution">
-
-                    <h3>Embedded systems integration</h3>
-
-                    <p>
-                        Worked on integrating the TI C2000
-                        microcontroller, motor-driver electronics,
-                        sensing hardware, and control system.
-                    </p>
-
-                </article>
-
-
-                <article class="eps-contribution">
-
-                    <h3>Mechanical and CAD development</h3>
-
-                    <p>
-                        Contributed to SolidWorks modeling,
-                        steering mechanisms, chassis geometry,
-                        mechanical linkages, and custom
-                        component interfaces.
-                    </p>
-
-                </article>
-
-
-                <article class="eps-contribution">
-
-                    <h3>Manufacturing and prototyping</h3>
-
-                    <p>
-                        Participated in turning, welding,
-                        drilling, mechanical fitting,
-                        additive manufacturing, and
-                        prototype assembly.
-                    </p>
-
-                </article>
-
-
-                <article class="eps-contribution">
-
-                    <h3>Testing and validation</h3>
-
-                    <p>
-                        Participated in system integration,
-                        sensor calibration, troubleshooting,
-                        and experimental evaluation of
-                        steering response and control behavior.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================
-             09 — ENGINEERING OUTCOME
-        ===================================== -->
-
-        <section class="eps-section" id="outcomes">
-
-            <div class="eps-section-heading">
-                <span class="eps-section-number">09</span>
-                <h2>Engineering outcome</h2>
-            </div>
-
-            <div class="eps-outcome">
-
-                <p>
-                    The Intelligent Electric Power Steering project
-                    demonstrated the integration of mechanical
-                    engineering, sensor instrumentation,
-                    embedded electronics, and intelligent
-                    control within a physical motorized
-                    go-kart prototype.
-                </p>
-
-                <p>
-                    Through the combination of fuzzy-logic
-                    decision-making and PID motor-current
-                    regulation, the project explored an
-                    adaptive approach to steering assistance.
-                </p>
-
-                <p>
-                    The development process provided practical
-                    experience in mechatronic system architecture,
-                    signal acquisition, control implementation,
-                    hardware integration, and engineering validation.
-                </p>
 
             </div>
 
