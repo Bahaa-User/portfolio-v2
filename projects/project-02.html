@@ -1325,158 +1325,180 @@
         </section>
 
 
+        
         <!-- =====================================
-             07 — EMBEDDED SYSTEMS
+             07 — EMBEDDED SYSTEMS AND PID CONTROL
         ===================================== -->
-
+        
         <section class="eps-section" id="embedded-control">
-
+        
             <div class="eps-heading">
                 <span class="eps-number">07</span>
                 <h2>Embedded systems and PID motor control</h2>
             </div>
-
+        
             <div class="eps-copy">
-
+        
                 <p>
-                    Once the intelligent-control strategy
-                    was established, the next stage
-                    focused on connecting the controller
-                    to the physical actuator through
-                    an embedded control architecture.
+                    Following the development of the intelligent fuzzy-logic
+                    controller, the next stage focused on implementing
+                    the control strategy within an embedded architecture
+                    capable of regulating the physical steering-assist motor.
                 </p>
-
+        
                 <p>
-                    The project used the TI TMS320F28379D
-                    microcontroller as its embedded
-                    processing platform. The architecture
-                    connects sensor acquisition,
-                    control computation, and motor-driver
-                    commands.
+                    The project employed the TI TMS320F28379D microcontroller
+                    as its embedded processing platform. MATLAB/Simulink
+                    was used to develop and integrate the fuzzy-logic
+                    controller and the lower-level PID current-control loop.
                 </p>
-
-                <p>
-                    The fuzzy controller generates
-                    the desired assist torque.
-                    This command is converted into
-                    a motor-current reference using
-                    the motor torque constant.
-                    A PID controller then regulates
-                    motor current using measured
-                    current feedback.
-                </p>
-
+        
             </div>
-
-
+        
+        
+            <!-- CONTROL LOOP -->
+        
             <figure class="eps-figure eps-figure-wide">
-
+        
                 <img
-                    src="../assets/images/eps/eps-control-architecture-detailed.png"
-                    alt="Detailed EPS control architecture showing fuzzy logic, torque-to-current conversion, PID current regulation and feedback"
+                    src="../assets/images/eps/eps-fuzzy-pid-control-loop.png"
+                    alt="Hybrid fuzzy-logic and PID motor-current control loop"
                     loading="lazy"
                 >
-
+        
                 <figcaption>
-                    FIG. 12 — Hybrid fuzzy-logic and PID control architecture
+                    FIG. 12 — Hybrid fuzzy-logic and PID control-loop architecture
                 </figcaption>
-
+        
             </figure>
-
-
-            <div class="eps-cards">
-
-                <article class="eps-card">
-
-                    <h3>01 · Intelligent control</h3>
-
+        
+        
+            <div class="eps-feature">
+        
+                <div class="eps-feature-copy">
+        
+                    <p class="eps-kicker">
+                        07.1 · TWO-LAYER CONTROL ARCHITECTURE
+                    </p>
+        
+                    <h3>From intelligent decisions to motor actuation</h3>
+        
                     <p>
-                        Fuzzy inference evaluates
-                        the input conditions and
-                        generates the desired
+                        The high-level fuzzy controller processes four
+                        operating inputs: applied steering torque,
+                        steering angle, vehicle velocity, and yaw rate.
+                        Based on these inputs, it determines the desired
                         steering-assist torque.
                     </p>
-
-                </article>
-
-                <article class="eps-card">
-
-                    <h3>02 · Current reference</h3>
-
+        
                     <p>
-                        The assist-torque command
-                        is converted into a desired
-                        motor-current reference.
+                        This torque command is converted into a desired
+                        motor-current reference using the motor torque
+                        constant. The lower-level PID controller compares
+                        this reference with the measured motor current
+                        and generates a corrective control signal.
                     </p>
-
-                </article>
-
-                <article class="eps-card">
-
-                    <h3>03 · PID regulation</h3>
-
+        
                     <p>
-                        PID control compares
-                        the reference with measured
-                        motor current and regulates
-                        the motor-drive command.
+                        The resulting PWM command regulates the motor
+                        through the driver electronics, while current
+                        feedback closes the control loop.
                     </p>
-
-                </article>
-
-            </div>
-
-
-            <div class="eps-feature">
-
+        
+                    <div class="eps-tags">
+                        <span>Fuzzy Inference</span>
+                        <span>PID Regulation</span>
+                        <span>Motor Current</span>
+                        <span>PWM</span>
+                        <span>Closed-Loop Control</span>
+                    </div>
+        
+                </div>
+        
                 <figure class="eps-figure">
-
+        
                     <img
                         src="../assets/images/eps/eps-electrical-architecture.png"
-                        alt="Embedded electrical hardware showing controller, motor driver, sensors and assist motor"
+                        alt="EPS electrical hardware architecture"
                         loading="lazy"
                     >
-
+        
                     <figcaption>
-                        FIG. 13 — Embedded hardware integration
+                        EPS — Electrical and hardware architecture
                     </figcaption>
-
+        
                 </figure>
-
+        
+            </div>
+        
+        
+            <!-- SIMULINK IMPLEMENTATION -->
+        
+            <div class="eps-feature reverse">
+        
+                <figure class="eps-figure">
+        
+                    <img
+                        src="../assets/images/eps/eps-simulink-embedded-implementation.png"
+                        alt="MATLAB Simulink embedded implementation of the EPS controller"
+                        loading="lazy"
+                    >
+        
+                    <figcaption>
+                        FIG. 13 — MATLAB/Simulink embedded control implementation
+                    </figcaption>
+        
+                </figure>
+        
                 <div class="eps-feature-copy">
-
-                    <h3>Hardware–software integration</h3>
-
-                    <p>
-                        The embedded architecture links
-                        the microcontroller with the
-                        sensing subsystem, motor driver,
-                        and steering actuator.
+        
+                    <p class="eps-kicker">
+                        07.2 · MODEL-BASED IMPLEMENTATION
                     </p>
-
+        
+                    <h3>MATLAB/Simulink and TI C2000 integration</h3>
+        
                     <p>
-                        Separating high-level intelligent
-                        assistance generation from
-                        lower-level motor-current regulation
-                        is a key feature of the hybrid
-                        control architecture.
+                        The complete control model was organized into
+                        functional blocks covering input acquisition,
+                        signal conditioning, fuzzy inference,
+                        current-reference generation, and PID regulation.
                     </p>
-
+        
+                    <p>
+                        Analog signals from the torque and current
+                        sensing circuits were acquired through the
+                        microcontroller's ADC interfaces. Calibration
+                        and signal-processing blocks prepared the
+                        measurements for controller execution.
+                    </p>
+        
+                    <p>
+                        The model was integrated with the TI
+                        TMS320F28379D platform, enabling embedded
+                        implementation of the control algorithm,
+                        including PWM generation and GPIO-based
+                        motor-driver control.
+                    </p>
+        
                     <div class="eps-tags">
-                        <span>TI C2000</span>
                         <span>MATLAB</span>
                         <span>Simulink</span>
-                        <span>PID</span>
-                        <span>PWM</span>
+                        <span>TI TMS320F28379D</span>
+                        <span>ADC</span>
+                        <span>GPIO</span>
+                        <span>Embedded Coder</span>
                     </div>
-
+        
                 </div>
-
+        
             </div>
-
+        
         </section>
+        
 
 
+        
         
         <!-- =====================================
              08 — SIMULATION, TESTING AND VALIDATION
@@ -1492,20 +1514,18 @@
             <div class="eps-copy">
         
                 <p>
-                    Validation was performed across the mechanical,
-                    sensing, and control subsystems to evaluate
-                    their individual behavior and their integration
-                    within the overall steering-assistance system.
+                    The validation process addressed the mechanical,
+                    sensing, and control subsystems developed throughout
+                    the project. Structural simulations, sensor
+                    calibration, controller evaluation, and experimental
+                    testing were used to investigate the behavior
+                    of the individual components and their integration.
                 </p>
         
                 <p>
-                    The evaluation process combined finite element
-                    analysis, sensor calibration, encoder measurements,
-                    fuzzy-controller evaluation, and experimental
-                    system integration. Each stage addressed a
-                    different aspect of the EPS development process,
-                    from structural behavior to intelligent
-                    assistance generation and physical implementation.
+                    The evaluation progressed from mechanical analysis
+                    and signal acquisition to intelligent-control
+                    implementation and physical system integration.
                 </p>
         
             </div>
@@ -1520,13 +1540,13 @@
                 <figure class="eps-figure">
         
                     <img
-                        src="../assets/images/eps/eps-torsional-strain-analysis.png"
-                        alt="Finite element strain distribution along the steering shaft"
+                        src="../assets/images/eps/eps-factor-of-safety.png"
+                        alt="Finite element factor-of-safety distribution of the EPS chassis"
                         loading="lazy"
                     >
         
                     <figcaption>
-                        FIG. 14 —  Chassis factor-of-safety analysis
+                        FIG. 14 — Chassis factor-of-safety analysis
                     </figcaption>
         
                 </figure>
@@ -1537,27 +1557,27 @@
                         08.1 · MECHANICAL VALIDATION
                     </p>
         
-                    <h3>Structural and deformation analysis</h3>
+                    <h3>Structural integrity assessment</h3>
         
                     <p>
-                        Finite element analysis was used to investigate
-                        the structural response of the steering
-                        components under the specified loading
-                        and boundary conditions.
+                        Finite element analysis was performed
+                        to evaluate the structural behavior
+                        of the go-kart chassis under specified
+                        loading and boundary conditions.
                     </p>
         
                     <p>
-                        The strain distribution provides insight
-                        into how mechanical deformation develops
-                        along the steering shaft and supports
-                        the evaluation of the torque-sensing region.
+                        The analysis considered driver-related
+                        loading and the mechanical loads
+                        associated with the steering assembly.
                     </p>
         
                     <p>
-                        This analysis complemented the mechanical
-                        design process and helped assess the
-                        suitability of the shaft configuration
-                        for the sensing arrangement.
+                        The reported minimum factor of safety
+                        was approximately 3.308 for the analyzed
+                        configuration, providing an indication
+                        of the structural margin under the
+                        modeled conditions.
                     </p>
         
                 </div>
@@ -1575,12 +1595,12 @@
         
                     <img
                         src="../assets/images/eps/eps-steering-angle-encoder-response.png"
-                        alt="Recorded steering-angle encoder response"
+                        alt="Measured steering-angle encoder response"
                         loading="lazy"
                     >
         
                     <figcaption>
-                        FIG. 15 — Measured rotary-encoder response
+                        FIG. 15 — Steering-angle encoder response
                     </figcaption>
         
                 </figure>
@@ -1591,27 +1611,27 @@
                         08.2 · SENSOR VALIDATION
                     </p>
         
-                    <h3>Steering-angle measurement and signal acquisition</h3>
+                    <h3>Steering-angle measurement</h3>
         
                     <p>
                         The incremental rotary encoder was evaluated
-                        through recorded measurements as the
-                        steering mechanism was rotated through
-                        different angular positions.
+                        by recording its output as the steering
+                        mechanism was rotated through different
+                        angular positions.
                     </p>
         
                     <p>
-                        The resulting signal demonstrates the
-                        encoder's response to changes in
-                        steering position and provides
-                        measurement data for the control system.
+                        The recorded signal illustrates the
+                        variation in encoder output during
+                        clockwise and counterclockwise
+                        steering movements.
                     </p>
         
                     <p>
-                        Sensor calibration and signal acquisition
-                        were essential to obtaining meaningful
-                        steering-input information for subsequent
-                        controller evaluation.
+                        These measurements supported the
+                        steering-position acquisition process
+                        and provided input information
+                        for the intelligent controller.
                     </p>
         
                 </div>
@@ -1620,145 +1640,43 @@
         
         
             <!-- =====================================
-                 08.3 — INTELLIGENT CONTROL VALIDATION
-            ===================================== -->
-        
-            <div class="eps-feature">
-        
-                <figure class="eps-figure">
-        
-                    <img
-                        src="../assets/images/eps/eps-fuzzy-control-surface.png"
-                        alt="Fuzzy-logic controller surface showing assist torque against velocity and steering angle"
-                        loading="lazy"
-                    >
-        
-                    <figcaption>
-                        FIG. 16 — Fuzzy-controller assist-torque response surface
-                    </figcaption>
-        
-                </figure>
-        
-                <div class="eps-feature-copy">
-        
-                    <p class="eps-kicker">
-                        08.3 · INTELLIGENT CONTROL VALIDATION
-                    </p>
-        
-                    <h3>Fuzzy-inference evaluation</h3>
-        
-                    <p>
-                        The fuzzy controller was evaluated through
-                        its generated control surface, illustrating
-                        the relationship between operating inputs
-                        and the resulting assist-torque output.
-                    </p>
-        
-                    <p>
-                        The developed rule base incorporated
-                        combinations of vehicle velocity,
-                        steering torque, yaw rate, and steering
-                        angle to determine the appropriate
-                        assistance response.
-                    </p>
-        
-                    <p>
-                        The controller's response was refined
-                        to balance steering assistance with
-                        stability-related considerations
-                        across different operating conditions.
-                    </p>
-        
-                </div>
-        
-            </div>
-        
-        
-            <!-- =====================================
-                 08.4 — PID AND EMBEDDED CONTROL
-            ===================================== -->
-        
-            <div class="eps-feature reverse">
-        
-                <figure class="eps-figure">
-        
-                    <img
-                        src="../assets/images/eps/eps-control-architecture-detailed.png"
-                        alt="Hybrid fuzzy-logic and PID motor-current control architecture"
-                        loading="lazy"
-                    >
-        
-                    <figcaption>
-                        FIG. 17 — Embedded control and closed-loop architecture
-                    </figcaption>
-        
-                </figure>
-        
-                <div class="eps-feature-copy">
-        
-                    <p class="eps-kicker">
-                        08.4 · EMBEDDED CONTROL VALIDATION
-                    </p>
-        
-                    <h3>Motor-current regulation and feedback integration</h3>
-        
-                    <p>
-                        The lower-level control architecture
-                        converts the desired assist torque
-                        into a motor-current reference.
-                        A PID controller uses the difference
-                        between the reference and measured
-                        motor current to generate the
-                        motor-control command.
-                    </p>
-        
-                    <p>
-                        This architecture connects the
-                        intelligent fuzzy controller
-                        to the physical actuation subsystem
-                        through a feedback-based regulation loop.
-                    </p>
-        
-                    <p>
-                        The implementation and integration
-                        of these control functions formed
-                        an important part of the embedded
-                        system development and testing process.
-                    </p>
-        
-                </div>
-        
-            </div>
-        
-        
-            <!-- =====================================
-                 08.5 — OVERALL SYSTEM VALIDATION
+                 08.3 — CONTROL IMPLEMENTATION
             ===================================== -->
         
             <div class="eps-section" style="padding-bottom: 0; border-top: none;">
         
                 <div class="eps-heading">
-                    <span class="eps-number">08.5</span>
-                    <h2>Overall system integration</h2>
+        
+                    <span class="eps-number">08.3</span>
+        
+                    <h2>Control implementation and integration</h2>
+        
                 </div>
         
                 <div class="eps-copy">
         
                     <p>
-                        The final validation stage focused on bringing
-                        the mechanical, electronic, sensing, and
-                        control subsystems together within the
-                        motorized go-kart prototype.
+                        The control-development process brought
+                        together the fuzzy-logic decision layer
+                        and the PID-based motor-current regulation
+                        loop within a unified embedded architecture.
                     </p>
         
                     <p>
-                        The integrated platform provided a physical
-                        environment for evaluating component
-                        compatibility, sensor feedback, controller
-                        integration, and steering-system operation.
-                        This represented the transition from
-                        individual subsystem development to
-                        an integrated mechatronic prototype.
+                        The fuzzy controller was evaluated by
+                        varying its input conditions and observing
+                        the corresponding assist-torque output.
+                        The PID subsystem was developed to regulate
+                        the motor-current reference using
+                        current-sensor feedback.
+                    </p>
+        
+                    <p>
+                        The integrated model was deployed
+                        to the TI C2000 microcontroller,
+                        connecting the control algorithm
+                        with sensor acquisition, motor-driver
+                        commands, and physical actuation.
                     </p>
         
                 </div>
@@ -1767,37 +1685,37 @@
         
                     <article class="eps-card">
         
-                        <h3>Mechanical integration</h3>
+                        <h3>Intelligent decision-making</h3>
         
                         <p>
-                            Steering assembly, mechanical linkages,
-                            chassis, and actuator interfaces
-                            were incorporated into the kart.
+                            The fuzzy controller evaluated
+                            operating conditions and generated
+                            adaptive steering-assist commands.
                         </p>
         
                     </article>
         
                     <article class="eps-card">
         
-                        <h3>Sensor integration</h3>
+                        <h3>Closed-loop regulation</h3>
         
                         <p>
-                            Torque, steering-angle, and motor-current
-                            sensing were incorporated into
-                            the system architecture.
+                            The PID controller compared desired
+                            and measured motor current to
+                            generate corrective motor commands.
                         </p>
         
                     </article>
         
                     <article class="eps-card">
         
-                        <h3>Intelligent control</h3>
+                        <h3>Embedded implementation</h3>
         
                         <p>
-                            Fuzzy-logic assistance generation
-                            and PID-based current regulation
-                            formed the proposed hybrid
-                            control strategy.
+                            The TI C2000 platform connected
+                            controller execution, sensor
+                            acquisition, and motor-driver
+                            interfaces.
                         </p>
         
                     </article>
@@ -1806,7 +1724,61 @@
         
             </div>
         
+        
+            <!-- =====================================
+                 08.4 — OVERALL SYSTEM INTEGRATION
+            ===================================== -->
+        
+            <div class="eps-section" style="padding-bottom: 0; border-top: none;">
+        
+                <div class="eps-heading">
+        
+                    <span class="eps-number">08.4</span>
+        
+                    <h2>Overall system integration</h2>
+        
+                </div>
+        
+                <div class="eps-copy">
+        
+                    <p>
+                        The final development stage focused on
+                        integrating the mechanical steering
+                        structure, sensing components, embedded
+                        electronics, and intelligent control
+                        architecture into the physical
+                        go-kart prototype.
+                    </p>
+        
+                    <p>
+                        This stage brought together the
+                        different engineering disciplines
+                        involved in the project, demonstrating
+                        the transition from individual
+                        component development to an
+                        integrated mechatronic platform.
+                    </p>
+        
+                </div>
+        
+                <figure class="eps-figure eps-figure-wide">
+        
+                    <img
+                        src="../assets/images/eps/eps-team-prototype.jpg"
+                        alt="Engineering team with the completed EPS go-kart prototype"
+                        loading="lazy"
+                    >
+        
+                    <figcaption>
+                        FIG. 16 — Integrated EPS prototype
+                    </figcaption>
+        
+                </figure>
+        
+            </div>
+        
         </section>
+
 
 
 
