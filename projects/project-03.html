@@ -1,0 +1,2148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Machine Learning for Building Cooling Load Prediction | Bahaa Nasr</title>
+
+    <meta name="description" content="Machine learning engineering project exploring building cooling-load prediction through regression, gradient descent, model optimization, PCA and anomaly detection.">
+
+    <link rel="stylesheet" href="../style.css?v=5">
+
+    <style>
+
+        /* =====================================
+           PAGE FOUNDATION
+        ===================================== */
+
+        .ml-page {
+            width: 88%;
+            max-width: 1500px;
+            margin: auto;
+            padding: 35px 0 90px;
+        }
+
+        .ml-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            color: var(--muted);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .ml-back:hover,
+        .ml-bottom a:hover {
+            color: var(--accent);
+        }
+
+        .ml-kicker {
+            margin-bottom: 17px;
+            color: var(--accent);
+            font: 600 11px/1.8 "JetBrains Mono", monospace;
+            letter-spacing: 1.6px;
+        }
+
+        .ml-title {
+            max-width: 1100px;
+            margin-bottom: 23px;
+            font-size: clamp(42px, 5.5vw, 76px);
+            line-height: 1.03;
+            letter-spacing: -3.5px;
+            font-weight: 800;
+        }
+
+        .ml-title span {
+            color: var(--accent);
+        }
+
+        .ml-intro {
+            max-width: 950px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .ml-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 42px;
+            margin: 30px 0 45px;
+        }
+
+        .ml-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .ml-meta-label {
+            color: var(--muted);
+            font: 10px "JetBrains Mono", monospace;
+            letter-spacing: 1px;
+        }
+
+        .ml-meta-value {
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =====================================
+           HERO
+        ===================================== */
+
+        .ml-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 85px;
+        }
+
+        .ml-hero-visual {
+            min-width: 0;
+            padding: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+        }
+
+        .ml-hero-visual img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 13px;
+        }
+
+        .ml-hero-visual figcaption {
+            padding: 14px 5px 4px;
+            color: var(--muted);
+            font: 10px/1.7 "JetBrains Mono", monospace;
+        }
+
+        .ml-hero-copy h2 {
+            margin-bottom: 18px;
+            font-size: clamp(29px, 3vw, 42px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+        }
+
+        .ml-hero-copy > p:not(.ml-kicker) {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .ml-hero-copy > p + p {
+            margin-top: 14px;
+        }
+
+        /* =====================================
+           SECTION STRUCTURE
+        ===================================== */
+
+        .ml-section {
+            padding: 65px 0;
+            border-top: 1px solid var(--border);
+            scroll-margin-top: 25px;
+        }
+
+        .ml-subsection {
+            padding-top: 50px;
+        }
+
+        .ml-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .ml-number {
+            flex-shrink: 0;
+            padding-top: 6px;
+            color: var(--accent);
+            font: 12px "JetBrains Mono", monospace;
+        }
+
+        .ml-heading h2 {
+            color: var(--text);
+            font-size: clamp(29px, 3.2vw, 43px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+        }
+
+        .ml-copy {
+            max-width: 1000px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .ml-copy p + p {
+            margin-top: 16px;
+        }
+
+        /* =====================================
+           FIGURES
+        ===================================== */
+
+        .ml-figure {
+            min-width: 0;
+            margin: 0;
+            padding: 13px;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .ml-figure img {
+            display: block;
+            width: 100%;
+            max-height: 570px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 10px;
+        }
+
+        .ml-figure figcaption {
+            padding: 13px 5px 3px;
+            color: var(--muted);
+            font: 10px/1.8 "JetBrains Mono", monospace;
+        }
+
+        .ml-figure-wide {
+            margin-top: 32px;
+        }
+
+        .ml-figure-wide img {
+            max-height: 650px;
+        }
+
+        /* =====================================
+           IMAGE + TEXT LAYOUT
+        ===================================== */
+
+        .ml-feature {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: center;
+            gap: 42px;
+            margin-top: 35px;
+        }
+
+        .ml-feature + .ml-feature {
+            margin-top: 55px;
+        }
+
+        .ml-feature.reverse .ml-figure {
+            order: 2;
+        }
+
+        .ml-feature.reverse .ml-feature-copy {
+            order: 1;
+        }
+
+        .ml-feature-copy h3 {
+            margin-bottom: 14px;
+            color: var(--text);
+            font-size: clamp(23px, 2.5vw, 33px);
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+        }
+
+        .ml-feature-copy p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .ml-feature-copy p + p {
+            margin-top: 13px;
+        }
+
+        /* =====================================
+           TECHNOLOGY TAGS
+        ===================================== */
+
+        .ml-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .ml-tags span {
+            padding: 7px 11px;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            font: 10px "JetBrains Mono", monospace;
+        }
+
+        /* =====================================
+           RESULT CARDS
+        ===================================== */
+
+        .ml-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .ml-card {
+            padding: 23px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .ml-card h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .ml-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .ml-metric {
+            margin-bottom: 9px;
+            color: var(--accent);
+            font: 700 30px "JetBrains Mono", monospace;
+        }
+
+        /* =====================================
+           TECHNICAL TABLE
+        ===================================== */
+
+        .ml-table-wrapper {
+            width: 100%;
+            margin-top: 30px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+        }
+
+        .ml-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .ml-table th,
+        .ml-table td {
+            padding: 15px 18px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .ml-table th {
+            color: var(--text);
+            background: var(--surface-light);
+            font-weight: 700;
+        }
+
+        .ml-table td {
+            color: var(--muted);
+        }
+
+        .ml-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ml-table strong {
+            color: var(--text);
+        }
+
+        /* =====================================
+           CHALLENGES / CONTRIBUTIONS
+        ===================================== */
+
+        .ml-challenges,
+        .ml-contributions {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .ml-challenge,
+        .ml-contribution {
+            padding: 23px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .ml-challenge h3,
+        .ml-contribution h3 {
+            margin-bottom: 9px;
+            font-size: 16px;
+        }
+
+        .ml-challenge p,
+        .ml-contribution p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.85;
+            text-align: justify;
+        }
+
+        /* =====================================
+           OUTCOMES
+        ===================================== */
+
+        .ml-outcome {
+            padding: 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .ml-outcome p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .ml-outcome p + p {
+            margin-top: 15px;
+        }
+
+        /* =====================================
+           BOTTOM NAVIGATION
+        ===================================== */
+
+        .ml-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 45px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .ml-bottom a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .ml-bottom span {
+            color: var(--accent);
+        }
+
+        .ml-footer {
+            padding: 24px 6%;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font: 10px "JetBrains Mono", monospace;
+            letter-spacing: 1px;
+        }
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (max-width: 1000px) {
+
+            .ml-page {
+                width: 90%;
+            }
+
+            .ml-hero {
+                gap: 25px;
+            }
+
+            .ml-feature {
+                gap: 25px;
+            }
+
+            .ml-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .ml-page {
+                padding-top: 25px;
+                padding-bottom: 60px;
+            }
+
+            .ml-title {
+                font-size: clamp(37px, 10vw, 55px);
+                letter-spacing: -2px;
+            }
+
+            .ml-intro {
+                font-size: 14px;
+            }
+
+            .ml-meta {
+                gap: 20px;
+            }
+
+            .ml-hero {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 55px;
+            }
+
+            .ml-hero-copy h2 {
+                font-size: 30px;
+            }
+
+            .ml-section {
+                padding: 45px 0;
+            }
+
+            .ml-heading {
+                gap: 12px;
+            }
+
+            .ml-heading h2 {
+                font-size: 29px;
+            }
+
+            .ml-copy {
+                font-size: 14px;
+            }
+
+            .ml-feature,
+            .ml-challenges,
+            .ml-contributions {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .ml-feature.reverse .ml-figure,
+            .ml-feature.reverse .ml-feature-copy {
+                order: initial;
+            }
+
+            .ml-feature-copy h3 {
+                font-size: 25px;
+            }
+
+            .ml-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .ml-figure {
+                padding: 8px;
+                border-radius: 14px;
+            }
+
+            .ml-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .ml-table th,
+            .ml-table td {
+                padding: 12px;
+                white-space: nowrap;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =====================================
+         NAVIGATION
+    ===================================== -->
+
+    <header class="navbar">
+
+        <a href="../index.html" class="logo">
+            BAHAA <span>NASR</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html#research">Research</a>
+            <a href="../index.html#work">Work</a>
+            <a href="../index.html#experience">Experience</a>
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <main class="ml-page">
+
+        <a href="../index.html#work" class="ml-back">
+            <span>←</span>
+            Back to Selected Work
+        </a>
+
+
+        <!-- =====================================
+             PROJECT INTRODUCTION
+        ===================================== -->
+
+        <section id="introduction">
+
+            <p class="ml-kicker">
+                MACHINE LEARNING ENGINEERING PROJECT · 2026
+            </p>
+
+            <h1 class="ml-title">
+                Machine Learning for
+                <span>Building Cooling Load Prediction</span>
+            </h1>
+
+            <p class="ml-intro">
+                Developed and evaluated multiple machine learning
+                regression models to predict building cooling loads
+                from architectural and geometric design parameters.
+                The project investigated how data-driven predictive
+                techniques can capture relationships between
+                building characteristics and cooling demand,
+                supporting preliminary HVAC design assessment
+                and building-performance analysis.
+            </p>
+
+            <div class="ml-meta">
+
+                <div class="ml-meta-item">
+                    <span class="ml-meta-label">PROJECT PERIOD</span>
+                    <span class="ml-meta-value">2026</span>
+                </div>
+
+                <div class="ml-meta-item">
+                    <span class="ml-meta-label">INSTITUTION</span>
+                    <span class="ml-meta-value">Lebanese American University</span>
+                </div>
+
+                <div class="ml-meta-item">
+                    <span class="ml-meta-label">PROJECT TYPE</span>
+                    <span class="ml-meta-value">Machine Learning Engineering</span>
+                </div>
+
+                <div class="ml-meta-item">
+                    <span class="ml-meta-label">TEAM</span>
+                    <span class="ml-meta-value">Four-member engineering team</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PROJECT HERO
+        ===================================== -->
+
+        <section class="ml-hero">
+
+            <figure class="ml-hero-visual">
+
+                <img
+                    src="../assets/images/ml/ml-actual-vs-predicted.png"
+                    alt="Actual versus predicted building cooling-load values"
+                    loading="eager"
+                >
+
+                <figcaption>
+                    ML — Predictive model performance
+                </figcaption>
+
+            </figure>
+
+
+            <div class="ml-hero-copy">
+
+                <p class="ml-kicker">
+                    MACHINE LEARNING · PREDICTIVE MODELING · HVAC
+                </p>
+
+                <h2>
+                    Turning building characteristics into predictive engineering insight.
+                </h2>
+
+                <p>
+                    The project explored supervised machine learning
+                    as an alternative approach to estimating building
+                    cooling requirements from architectural and
+                    geometric parameters.
+                </p>
+
+                <p>
+                    Multiple regression algorithms were implemented
+                    and compared, alongside gradient-descent
+                    optimization, cross-validation, dimensionality
+                    reduction, and anomaly detection.
+                </p>
+
+                <div class="ml-tags">
+                    <span>Python</span>
+                    <span>Scikit-learn</span>
+                    <span>Regression</span>
+                    <span>Gradient Descent</span>
+                    <span>PCA</span>
+                    <span>HVAC</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             01 — MOTIVATION
+        ===================================== -->
+
+        <section class="ml-section" id="motivation">
+
+            <div class="ml-heading">
+                <span class="ml-number">01</span>
+                <h2>Motivation and problem definition</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    The project was motivated by the increasing role
+                    of artificial intelligence and data-driven
+                    techniques in building energy management
+                    and HVAC engineering.
+                </p>
+
+                <p>
+                    Traditional cooling-load calculations require
+                    detailed evaluation of heat transfer, building
+                    geometry, solar gains, and numerous interacting
+                    design variables. These relationships can
+                    introduce considerable complexity when
+                    evaluating alternative building configurations.
+                </p>
+
+                <p>
+                    Machine learning offers an alternative approach
+                    by learning relationships from existing
+                    building-performance datasets. The objective
+                    was to investigate whether predictive models
+                    could estimate cooling demand accurately
+                    enough to support preliminary building-design
+                    decisions.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             02 — DATASET
+        ===================================== -->
+
+        <section class="ml-section" id="dataset">
+
+            <div class="ml-heading">
+                <span class="ml-number">02</span>
+                <h2>Dataset and prediction framework</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    The study used the UCI Energy Efficiency
+                    dataset, consisting of 768 simulated
+                    residential building configurations.
+                    Each configuration was represented by
+                    eight architectural and geometric input
+                    features.
+                </p>
+
+                <p>
+                    The input variables included relative
+                    compactness, surface area, wall area,
+                    roof area, overall height, orientation,
+                    glazing area, and glazing-area distribution.
+                    These variables formed the input space
+                    for the supervised regression models.
+                </p>
+
+                <p>
+                    The prediction task focused on estimating
+                    the building cooling load (Y2) from
+                    the eight input features.
+                </p>
+
+            </div>
+
+
+            <div class="ml-cards">
+
+                <article class="ml-card">
+
+                    <div class="ml-metric">768</div>
+
+                    <h3>Building configurations</h3>
+
+                    <p>
+                        Simulated residential building
+                        configurations used to develop
+                        and evaluate predictive models.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <div class="ml-metric">08</div>
+
+                    <h3>Input features</h3>
+
+                    <p>
+                        Architectural and geometric
+                        parameters describing each
+                        building configuration.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <div class="ml-metric">Y2</div>
+
+                    <h3>Prediction target</h3>
+
+                    <p>
+                        Building cooling load,
+                        used as the regression
+                        target variable.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             03 — EXPLORATORY DATA ANALYSIS
+        ===================================== -->
+
+        <section class="ml-section" id="exploration">
+
+            <div class="ml-heading">
+                <span class="ml-number">03</span>
+                <h2>Exploratory data analysis</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    Before model development, exploratory
+                    data analysis was conducted to understand
+                    the distribution of the building features
+                    and their relationships with cooling load.
+                </p>
+
+                <p>
+                    Descriptive statistics, histograms,
+                    boxplots, correlation analysis, and
+                    feature-target visualizations were
+                    used to investigate the dataset,
+                    identify distribution patterns,
+                    and examine the relationships
+                    between architectural parameters
+                    and cooling demand.
+                </p>
+
+                <p>
+                    This stage provided an initial
+                    understanding of the data and
+                    helped motivate the investigation
+                    of nonlinear regression algorithms.
+                </p>
+
+            </div>
+
+
+            <div class="ml-feature">
+
+                <figure class="ml-figure">
+
+                    <img
+                        src="../assets/images/ml/ml-feature-distributions.png"
+                        alt="Distribution histograms of building dataset features"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 01 — Exploratory feature distributions
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="ml-feature-copy">
+
+                    <h3>Understanding the dataset</h3>
+
+                    <p>
+                        Feature distributions were examined
+                        to understand the range, variability,
+                        and statistical behavior of the
+                        building parameters.
+                    </p>
+
+                    <p>
+                        Histograms and boxplots provided
+                        an overview of the data and helped
+                        identify unusual observations
+                        requiring further investigation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="ml-feature reverse">
+
+                <figure class="ml-figure">
+
+                    <img
+                        src="../assets/images/ml/ml-feature-target-relationships.png"
+                        alt="Relationships between architectural features and building cooling load"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 02 — Feature-to-cooling-load relationships
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="ml-feature-copy">
+
+                    <h3>Investigating feature relationships</h3>
+
+                    <p>
+                        Feature-target visualizations
+                        were used to examine how
+                        individual building parameters
+                        relate to cooling demand.
+                    </p>
+
+                    <p>
+                        The observed relationships
+                        motivated the comparison
+                        of linear and nonlinear
+                        predictive models.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             04 — PREPROCESSING
+        ===================================== -->
+
+        <section class="ml-section" id="preprocessing">
+
+            <div class="ml-heading">
+                <span class="ml-number">04</span>
+                <h2>Data preprocessing and baseline modeling</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    Following the exploratory analysis,
+                    the dataset was prepared for supervised
+                    learning. The development workflow
+                    incorporated train-test splitting,
+                    feature standardization, and
+                    algorithm-appropriate preprocessing.
+                </p>
+
+                <p>
+                    A linear regression model was
+                    implemented as an initial predictive
+                    baseline. This provided a reference
+                    against which more flexible regression
+                    methods could be evaluated.
+                </p>
+
+                <p>
+                    The project also involved manually
+                    implementing linear regression
+                    and polynomial regression models,
+                    including iterative parameter
+                    optimization through gradient descent.
+                </p>
+
+            </div>
+
+
+            <div class="ml-feature">
+
+                <figure class="ml-figure">
+
+                    <img
+                        src="../assets/images/ml/ml-training-validation-loss.png"
+                        alt="Training and validation loss curves for regression model optimization"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 03 — Training and validation loss during gradient descent
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="ml-feature-copy">
+
+                    <h3>Gradient-descent optimization</h3>
+
+                    <p>
+                        Gradient descent was implemented
+                        to iteratively update model
+                        parameters and minimize
+                        the prediction error.
+                    </p>
+
+                    <p>
+                        Both linear and polynomial
+                        regression were manually
+                        trained, providing practical
+                        experience with optimization,
+                        convergence behavior,
+                        and model complexity.
+                    </p>
+
+                    <div class="ml-tags">
+                        <span>Linear Regression</span>
+                        <span>Polynomial Regression</span>
+                        <span>Gradient Descent</span>
+                        <span>Feature Scaling</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             05 — ADVANCED REGRESSION MODELS
+        ===================================== -->
+
+        <section class="ml-section" id="regression-models">
+
+            <div class="ml-heading">
+                <span class="ml-number">05</span>
+                <h2>Advanced regression models</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    After establishing the baseline,
+                    multiple supervised regression
+                    algorithms were implemented
+                    and compared to investigate
+                    their ability to model the
+                    relationship between building
+                    characteristics and cooling demand.
+                </p>
+
+                <p>
+                    The model selection covered
+                    approaches with different
+                    levels of flexibility and
+                    complexity, allowing the
+                    investigation of linear,
+                    nonlinear, tree-based,
+                    distance-based, and
+                    kernel-based regression.
+                </p>
+
+            </div>
+
+
+            <div class="ml-cards">
+
+                <article class="ml-card">
+
+                    <h3>Linear models</h3>
+
+                    <p>
+                        Linear Regression,
+                        Polynomial Regression,
+                        and Ridge Regression
+                        were used to investigate
+                        linear relationships,
+                        nonlinear transformations,
+                        and regularization.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <h3>Tree-based models</h3>
+
+                    <p>
+                        Decision Tree and
+                        Random Forest regression
+                        were implemented to
+                        capture nonlinear
+                        relationships and
+                        feature interactions.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <h3>Distance and kernel models</h3>
+
+                    <p>
+                        K-Nearest Neighbors
+                        and Support Vector
+                        Regression were used
+                        to explore alternative
+                        predictive approaches.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="ml-copy" style="margin-top:30px;">
+
+                <p>
+                    The comparison of these algorithms
+                    enabled the evaluation of different
+                    modeling strategies and their
+                    suitability for predicting
+                    building cooling loads.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             06 — MODEL OPTIMIZATION
+        ===================================== -->
+
+        <section class="ml-section" id="optimization">
+
+            <div class="ml-heading">
+                <span class="ml-number">06</span>
+                <h2>Model optimization and regularization</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    Model optimization focused on
+                    investigating how algorithm
+                    parameters and model complexity
+                    influence predictive performance.
+                </p>
+
+                <p>
+                    The project incorporated Ridge
+                    regularization, gradient-descent
+                    optimization, and hyperparameter
+                    evaluation to investigate
+                    the balance between model
+                    flexibility and generalization.
+                </p>
+
+                <p>
+                    Different KNN configurations
+                    were evaluated to determine
+                    how the neighborhood size
+                    influenced prediction accuracy.
+                </p>
+
+            </div>
+
+
+            <div class="ml-feature">
+
+                <figure class="ml-figure">
+
+                    <img
+                        src="../assets/images/ml/ml-knn-hyperparameter-tuning.png"
+                        alt="K-nearest neighbors hyperparameter tuning results"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 04 — KNN hyperparameter optimization
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="ml-feature-copy">
+
+                    <h3>Evaluating model configurations</h3>
+
+                    <p>
+                        Different KNN configurations
+                        were evaluated to investigate
+                        the influence of the neighborhood
+                        parameter on regression performance.
+                    </p>
+
+                    <p>
+                        This stage demonstrated the
+                        importance of hyperparameter
+                        selection when developing
+                        predictive models and
+                        comparing their performance.
+                    </p>
+
+                    <div class="ml-tags">
+                        <span>Hyperparameter Tuning</span>
+                        <span>Ridge Regression</span>
+                        <span>Model Optimization</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             07 — PCA AND ANOMALY DETECTION
+        ===================================== -->
+
+        <section class="ml-section" id="dimensionality-reduction">
+
+            <div class="ml-heading">
+                <span class="ml-number">07</span>
+                <h2>Dimensionality reduction and anomaly detection</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    Beyond predictive modeling,
+                    the project investigated
+                    the structure of the original
+                    feature space through
+                    Principal Component Analysis.
+                </p>
+
+                <p>
+                    PCA was applied to examine
+                    feature redundancy and reduce
+                    the dimensionality of the
+                    original eight-variable dataset.
+                    The analysis investigated how
+                    much of the original dataset
+                    variance could be retained
+                    using a smaller number
+                    of principal components.
+                </p>
+
+                <p>
+                    PCA-based reconstruction-error
+                    analysis was also implemented
+                    to identify unusual building
+                    configurations and investigate
+                    their influence on predictive
+                    modeling.
+                </p>
+
+            </div>
+
+
+            <!-- PCA EXPLAINED VARIANCE -->
+
+            <div class="ml-feature">
+
+                <figure class="ml-figure">
+
+                    <img
+                        src="../assets/images/ml/ml-pca-explained-variance.png"
+                        alt="PCA cumulative explained variance"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 05 — PCA explained-variance analysis
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="ml-feature-copy">
+
+                    <h3>Principal Component Analysis</h3>
+
+                    <p>
+                        PCA reduced the original
+                        eight input features to
+                        five principal components
+                        while retaining 99.28%
+                        of the total dataset variance.
+                    </p>
+
+                    <p>
+                        This demonstrated that
+                        a reduced representation
+                        could preserve most
+                        of the information contained
+                        in the original feature space.
+                    </p>
+
+                    <div class="ml-tags">
+                        <span>PCA</span>
+                        <span>Dimensionality Reduction</span>
+                        <span>Feature Redundancy</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PCA FEATURE CONTRIBUTION -->
+
+            <div class="ml-feature reverse">
+
+                <figure class="ml-figure">
+
+                    <img
+                        src="../assets/images/ml/ml-pca-feature-contribution.png"
+                        alt="Contribution of original features to principal components"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 06 — PCA feature contribution analysis
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="ml-feature-copy">
+
+                    <h3>Interpreting the principal components</h3>
+
+                    <p>
+                        The PCA contribution analysis
+                        was used to investigate how
+                        the original building features
+                        contribute to the reduced
+                        representation.
+                    </p>
+
+                    <p>
+                        This provided insight into
+                        the structure of the dataset
+                        and the information retained
+                        after dimensionality reduction.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ANOMALY DETECTION -->
+
+            <div class="ml-feature">
+
+                <figure class="ml-figure">
+
+                    <img
+                        src="../assets/images/ml/ml-pca-anomaly-detection.png"
+                        alt="PCA-based anomaly detection results"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 07 — PCA-based anomaly detection
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="ml-feature-copy">
+
+                    <h3>Identifying unusual configurations</h3>
+
+                    <p>
+                        PCA-based reconstruction-error
+                        analysis was implemented
+                        to identify building configurations
+                        that differed from the dominant
+                        patterns in the dataset.
+                    </p>
+
+                    <p>
+                        Eight unusual configurations
+                        were identified for further
+                        investigation, allowing the
+                        analysis to extend beyond
+                        prediction accuracy to
+                        data quality and structure.
+                    </p>
+
+                    <div class="ml-tags">
+                        <span>Anomaly Detection</span>
+                        <span>Reconstruction Error</span>
+                        <span>Unsupervised Analysis</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             08 — VALIDATION
+        ===================================== -->
+
+        <section class="ml-section" id="validation">
+
+            <div class="ml-heading">
+                <span class="ml-number">08</span>
+                <h2>Model evaluation and validation</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    The predictive models were
+                    evaluated using multiple
+                    regression-performance metrics
+                    to investigate their accuracy
+                    and generalization behavior.
+                </p>
+
+                <p>
+                    Mean Absolute Error (MAE),
+                    Mean Squared Error (MSE),
+                    Root Mean Squared Error (RMSE),
+                    and the coefficient of
+                    determination (R²) were used
+                    to assess prediction performance.
+                </p>
+
+                <p>
+                    Training and testing performance,
+                    residual distributions, and
+                    five-fold cross-validation
+                    were also investigated to
+                    assess model generalization
+                    and the potential influence
+                    of overfitting.
+                </p>
+
+            </div>
+
+
+            <!-- ACTUAL VS PREDICTED -->
+
+            <figure class="ml-figure ml-figure-wide">
+
+                <img
+                    src="../assets/images/ml/ml-actual-vs-predicted.png"
+                    alt="Actual versus predicted cooling-load comparison"
+                    loading="lazy"
+                >
+
+                <figcaption>
+                    FIG. 08 — Actual versus predicted cooling-load values
+                </figcaption>
+
+            </figure>
+
+
+            <!-- PERFORMANCE METRICS -->
+
+            <div class="ml-cards">
+
+                <article class="ml-card">
+
+                    <div class="ml-metric">0.966</div>
+
+                    <h3>SVR — Test R²</h3>
+
+                    <p>
+                        Best coefficient of determination
+                        on the fixed train-test split.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <div class="ml-metric">3.170</div>
+
+                    <h3>SVR — Test MSE</h3>
+
+                    <p>
+                        Mean Squared Error achieved
+                        by Support Vector Regression
+                        on the fixed test split.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <div class="ml-metric">0.9726</div>
+
+                    <h3>Random Forest — CV R²</h3>
+
+                    <p>
+                        Highest average coefficient
+                        of determination obtained
+                        through five-fold cross-validation.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <!-- MODEL COMPARISON -->
+
+            <div class="ml-subsection">
+
+                <div class="ml-heading">
+                    <span class="ml-number">08.1</span>
+                    <h2>Comparative model performance</h2>
+                </div>
+
+                <div class="ml-copy">
+
+                    <p>
+                        Support Vector Regression
+                        achieved the strongest
+                        performance on the fixed
+                        train-test split, while
+                        Random Forest achieved
+                        the highest average R²
+                        during five-fold
+                        cross-validation.
+                    </p>
+
+                    <p>
+                        These results highlight
+                        the importance of considering
+                        the validation strategy
+                        when comparing machine
+                        learning algorithms.
+                    </p>
+
+                </div>
+
+
+                <div class="ml-table-wrapper">
+
+                    <table class="ml-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Evaluation procedure</th>
+                                <th>Best model</th>
+                                <th>R²</th>
+                                <th>MSE</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Fixed train-test split</td>
+                                <td><strong>SVR</strong></td>
+                                <td>0.966</td>
+                                <td>3.170</td>
+                            </tr>
+
+                            <tr>
+                                <td>Five-fold cross-validation</td>
+                                <td><strong>Random Forest</strong></td>
+                                <td>0.9726</td>
+                                <td>Not specified</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             09 — ENGINEERING INTERPRETATION
+        ===================================== -->
+
+        <section class="ml-section" id="engineering-interpretation">
+
+            <div class="ml-heading">
+                <span class="ml-number">09</span>
+                <h2>Engineering interpretation and applications</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    Beyond statistical prediction,
+                    the project investigated how
+                    machine learning outputs
+                    could be interpreted in
+                    the context of building
+                    thermal performance.
+                </p>
+
+                <p>
+                    The analysis identified
+                    surface area, relative
+                    compactness, overall height,
+                    and roof area among the
+                    influential parameters
+                    in cooling-load prediction.
+                </p>
+
+                <p>
+                    Understanding these relationships
+                    connects predictive modeling
+                    with the physical characteristics
+                    of buildings and their potential
+                    cooling requirements.
+                </p>
+
+                <p>
+                    The resulting models can support
+                    preliminary HVAC cooling-load
+                    estimation, comparison of
+                    alternative building configurations,
+                    and early-stage building
+                    energy analysis.
+                </p>
+
+            </div>
+
+
+            <div class="ml-cards">
+
+                <article class="ml-card">
+
+                    <h3>Preliminary HVAC estimation</h3>
+
+                    <p>
+                        Predictive models can
+                        support preliminary
+                        cooling-demand estimation
+                        from building design
+                        parameters.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <h3>Building design assessment</h3>
+
+                    <p>
+                        Data-driven predictions
+                        can help compare alternative
+                        architectural and geometric
+                        building configurations.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <h3>Data-driven engineering</h3>
+
+                    <p>
+                        Machine learning can
+                        complement conventional
+                        building-performance
+                        analysis and engineering
+                        decision-making.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             10 — PERSONAL CONTRIBUTIONS
+        ===================================== -->
+
+        <section class="ml-section" id="contributions">
+
+            <div class="ml-heading">
+                <span class="ml-number">10</span>
+                <h2>Personal contributions and engineering challenges</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    As part of a four-member
+                    engineering team, I contributed
+                    to the development and evaluation
+                    of the machine learning workflow,
+                    covering data preparation,
+                    predictive modeling,
+                    optimization, and
+                    engineering interpretation.
+                </p>
+
+            </div>
+
+
+            <div class="ml-contributions">
+
+                <article class="ml-contribution">
+
+                    <h3>Data preparation and exploration</h3>
+
+                    <p>
+                        Analyzed the UCI Energy
+                        Efficiency dataset using
+                        descriptive statistics,
+                        histograms, boxplots,
+                        correlation analysis,
+                        and feature-target
+                        visualizations.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-contribution">
+
+                    <h3>Machine learning development</h3>
+
+                    <p>
+                        Implemented and compared
+                        Linear Regression,
+                        Polynomial Regression,
+                        Ridge Regression,
+                        Decision Trees,
+                        Random Forest,
+                        KNN, and SVR.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-contribution">
+
+                    <h3>Optimization and preprocessing</h3>
+
+                    <p>
+                        Contributed to train-test
+                        splitting, feature
+                        standardization, manual
+                        gradient-descent implementation,
+                        and hyperparameter evaluation.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-contribution">
+
+                    <h3>Dimensionality reduction</h3>
+
+                    <p>
+                        Applied PCA to investigate
+                        feature redundancy,
+                        reduce dimensionality,
+                        and examine the
+                        retained dataset variance.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-contribution">
+
+                    <h3>Model evaluation</h3>
+
+                    <p>
+                        Evaluated predictive
+                        performance through
+                        MAE, MSE, RMSE, R²,
+                        residual analysis,
+                        and five-fold
+                        cross-validation.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-contribution">
+
+                    <h3>Engineering interpretation</h3>
+
+                    <p>
+                        Investigated how building
+                        geometry, surface area,
+                        compactness, height,
+                        and glazing characteristics
+                        influence cooling-load
+                        predictions.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="ml-subsection">
+
+                <div class="ml-heading">
+                    <span class="ml-number">10.1</span>
+                    <h2>Challenges faced</h2>
+                </div>
+
+
+                <div class="ml-challenges">
+
+                    <article class="ml-challenge">
+
+                        <h3>Nonlinear relationships</h3>
+
+                        <p>
+                            Modeling complex
+                            interactions between
+                            building geometry,
+                            envelope characteristics,
+                            and cooling demand.
+                        </p>
+
+                    </article>
+
+
+                    <article class="ml-challenge">
+
+                        <h3>Model selection</h3>
+
+                        <p>
+                            Comparing regression
+                            algorithms with different
+                            levels of flexibility,
+                            complexity, and
+                            predictive accuracy.
+                        </p>
+
+                    </article>
+
+
+                    <article class="ml-challenge">
+
+                        <h3>Overfitting and generalization</h3>
+
+                        <p>
+                            Balancing prediction
+                            accuracy against
+                            generalization to
+                            previously unseen
+                            building configurations.
+                        </p>
+
+                    </article>
+
+
+                    <article class="ml-challenge">
+
+                        <h3>Feature scaling</h3>
+
+                        <p>
+                            Applying appropriate
+                            preprocessing methods
+                            while avoiding
+                            information leakage
+                            between training
+                            and testing data.
+                        </p>
+
+                    </article>
+
+
+                    <article class="ml-challenge">
+
+                        <h3>Dimensionality reduction</h3>
+
+                        <p>
+                            Evaluating whether
+                            reducing the original
+                            feature space improved
+                            computational efficiency
+                            or prediction performance.
+                        </p>
+
+                    </article>
+
+
+                    <article class="ml-challenge">
+
+                        <h3>Anomaly detection</h3>
+
+                        <p>
+                            Distinguishing unusual
+                            but valid building
+                            configurations from
+                            potentially problematic
+                            observations.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             11 — OUTCOMES
+        ===================================== -->
+
+        <section class="ml-section" id="outcomes">
+
+            <div class="ml-heading">
+                <span class="ml-number">11</span>
+                <h2>Outcomes and conclusions</h2>
+            </div>
+
+            <div class="ml-copy">
+
+                <p>
+                    The project successfully
+                    developed and evaluated
+                    multiple machine learning
+                    regression models for
+                    building cooling-load
+                    prediction using 768
+                    simulated residential
+                    building configurations.
+                </p>
+
+                <p>
+                    Support Vector Regression
+                    achieved a test R² of 0.966
+                    and an MSE of 3.170 on the
+                    fixed train-test split,
+                    while Random Forest achieved
+                    the strongest average R²
+                    of 0.9726 through five-fold
+                    cross-validation.
+                </p>
+
+                <p>
+                    The study also demonstrated
+                    the application of gradient
+                    descent, hyperparameter
+                    optimization, PCA-based
+                    dimensionality reduction,
+                    and anomaly detection
+                    within a unified predictive
+                    modeling workflow.
+                </p>
+
+            </div>
+
+
+            <div class="ml-cards">
+
+                <article class="ml-card">
+
+                    <div class="ml-metric">7</div>
+
+                    <h3>Regression algorithms</h3>
+
+                    <p>
+                        Multiple linear,
+                        nonlinear, tree-based,
+                        distance-based, and
+                        kernel-based regression
+                        approaches evaluated.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <div class="ml-metric">99.28%</div>
+
+                    <h3>Variance retained</h3>
+
+                    <p>
+                        Five principal components
+                        retained 99.28% of
+                        the original dataset
+                        variance.
+                    </p>
+
+                </article>
+
+
+                <article class="ml-card">
+
+                    <div class="ml-metric">8</div>
+
+                    <h3>Unusual configurations</h3>
+
+                    <p>
+                        Building configurations
+                        identified through
+                        PCA-based anomaly
+                        detection.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="ml-outcome" style="margin-top:25px;">
+
+                <p>
+                    Overall, the project demonstrated
+                    how machine learning can
+                    complement conventional HVAC
+                    engineering methods by providing
+                    data-driven predictions,
+                    identifying influential
+                    building characteristics,
+                    and supporting preliminary
+                    building-performance analysis.
+                </p>
+
+                <p>
+                    It provided practical experience
+                    in the complete predictive
+                    modeling workflow, from
+                    exploratory data analysis
+                    and algorithm implementation
+                    to optimization, validation,
+                    and engineering interpretation.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             BOTTOM NAVIGATION
+        ===================================== -->
+
+        <div class="ml-bottom">
+
+            <a href="project-02.html">
+                <span>←</span>
+                Previous Project: Intelligent EPS
+            </a>
+
+            <a href="project-04.html">
+                Explore Next Project
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+    ===================================== -->
+
+    <footer class="ml-footer">
+        BAHAA NASR · MACHINE LEARNING · PREDICTIVE ENGINEERING
+    </footer>
+
+
+</body>
+
+</html>
