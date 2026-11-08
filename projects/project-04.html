@@ -1,0 +1,2469 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Closed-Loop Water Level Control | Bahaa Nasr</title>
+
+    <meta name="description"
+        content="Closed-loop water level control engineering project integrating mathematical modeling, PID control, MATLAB Simulink simulation, stability analysis and embedded hardware implementation.">
+
+    <link rel="stylesheet" href="../style.css?v=5">
+
+    <style>
+
+        /* =====================================
+           PAGE FOUNDATION
+        ===================================== */
+
+        .water-page {
+            width: 88%;
+            max-width: 1500px;
+            margin: auto;
+            padding: 35px 0 90px;
+        }
+
+        .water-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            color: var(--muted);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .water-back:hover,
+        .water-bottom a:hover {
+            color: var(--accent);
+        }
+
+        .water-kicker {
+            margin-bottom: 17px;
+            color: var(--accent);
+            font: 600 11px/1.8 "JetBrains Mono", monospace;
+            letter-spacing: 1.6px;
+        }
+
+        .water-title {
+            max-width: 1100px;
+            margin-bottom: 23px;
+            font-size: clamp(42px, 5.5vw, 76px);
+            line-height: 1.03;
+            letter-spacing: -3.5px;
+            font-weight: 800;
+        }
+
+        .water-title span {
+            color: var(--accent);
+        }
+
+        .water-intro {
+            max-width: 950px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .water-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 42px;
+            margin: 30px 0 45px;
+        }
+
+        .water-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .water-meta-label {
+            color: var(--muted);
+            font: 10px "JetBrains Mono", monospace;
+            letter-spacing: 1px;
+        }
+
+        .water-meta-value {
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =====================================
+           HERO
+        ===================================== */
+
+        .water-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 85px;
+        }
+
+        .water-hero-visual {
+            min-width: 0;
+            padding: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+        }
+
+        .water-hero-visual img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 13px;
+        }
+
+        .water-hero-visual figcaption {
+            padding: 14px 5px 4px;
+            color: var(--muted);
+            font: 10px/1.7 "JetBrains Mono", monospace;
+        }
+
+        .water-hero-copy h2 {
+            margin-bottom: 18px;
+            font-size: clamp(29px, 3vw, 42px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+        }
+
+        .water-hero-copy > p:not(.water-kicker) {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .water-hero-copy > p + p {
+            margin-top: 14px;
+        }
+
+        /* =====================================
+           SECTIONS
+        ===================================== */
+
+        .water-section {
+            padding: 65px 0;
+            border-top: 1px solid var(--border);
+            scroll-margin-top: 25px;
+        }
+
+        .water-subsection {
+            padding-top: 48px;
+        }
+
+        .water-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .water-number {
+            flex-shrink: 0;
+            padding-top: 6px;
+            color: var(--accent);
+            font: 12px "JetBrains Mono", monospace;
+        }
+
+        .water-heading h2 {
+            color: var(--text);
+            font-size: clamp(29px, 3.2vw, 43px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+        }
+
+        .water-copy {
+            max-width: 1000px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .water-copy p + p {
+            margin-top: 16px;
+        }
+
+        /* =====================================
+           FIGURES
+        ===================================== */
+
+        .water-figure {
+            min-width: 0;
+            margin: 0;
+            padding: 13px;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .water-figure img {
+            display: block;
+            width: 100%;
+            max-height: 570px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 10px;
+        }
+
+        .water-figure figcaption {
+            padding: 13px 5px 3px;
+            color: var(--muted);
+            font: 10px/1.8 "JetBrains Mono", monospace;
+        }
+
+        .water-wide {
+            margin-top: 32px;
+        }
+
+        .water-wide img {
+            max-height: 650px;
+        }
+
+        /* =====================================
+           IMAGE AND TEXT LAYOUT
+        ===================================== */
+
+        .water-feature {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: center;
+            gap: 42px;
+            margin-top: 35px;
+        }
+
+        .water-feature + .water-feature {
+            margin-top: 55px;
+        }
+
+        .water-feature.reverse .water-figure {
+            order: 2;
+        }
+
+        .water-feature.reverse .water-feature-copy {
+            order: 1;
+        }
+
+        .water-feature-copy h3 {
+            margin-bottom: 14px;
+            color: var(--text);
+            font-size: clamp(23px, 2.5vw, 33px);
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+        }
+
+        .water-feature-copy p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .water-feature-copy p + p {
+            margin-top: 13px;
+        }
+
+        /* =====================================
+           TAGS
+        ===================================== */
+
+        .water-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .water-tags span {
+            padding: 7px 11px;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            font: 10px "JetBrains Mono", monospace;
+        }
+
+        /* =====================================
+           TECHNICAL CARDS
+        ===================================== */
+
+        .water-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .water-card {
+            padding: 23px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .water-card h3 {
+            margin-bottom: 10px;
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        .water-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .water-metric {
+            margin-bottom: 9px;
+            color: var(--accent);
+            font: 700 29px "JetBrains Mono", monospace;
+        }
+
+        /* =====================================
+           PID GAIN CARDS
+        ===================================== */
+
+        .water-gain {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .water-gain h3 {
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .water-gain p {
+            margin-top: 13px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .water-gain-values {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .water-gain-values span {
+            padding: 8px 10px;
+            background: var(--surface-light);
+            border-radius: 8px;
+            color: var(--text);
+            font: 11px "JetBrains Mono", monospace;
+        }
+
+        .water-gain.selected {
+            border-color: rgba(45, 183, 163, 0.65);
+        }
+
+        /* =====================================
+           VIDEO
+        ===================================== */
+
+        .water-video {
+            margin-top: 35px;
+            padding: 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        .water-video video {
+            display: block;
+            width: 100%;
+            max-height: 650px;
+            background: #172B2E;
+            border-radius: 12px;
+        }
+
+        .water-video figcaption {
+            padding: 14px 5px 4px;
+            color: var(--muted);
+            font: 10px/1.8 "JetBrains Mono", monospace;
+        }
+
+        /* =====================================
+           CONTRIBUTIONS AND CHALLENGES
+        ===================================== */
+
+        .water-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .water-info-card {
+            padding: 23px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .water-info-card h3 {
+            margin-bottom: 9px;
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        .water-info-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.85;
+            text-align: justify;
+        }
+
+        /* =====================================
+           OUTCOMES
+        ===================================== */
+
+        .water-outcome {
+            padding: 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .water-outcome p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .water-outcome p + p {
+            margin-top: 15px;
+        }
+
+        /* =====================================
+           BOTTOM NAVIGATION
+        ===================================== */
+
+        .water-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 45px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .water-bottom a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .water-bottom span {
+            color: var(--accent);
+        }
+
+        .water-footer {
+            padding: 24px 6%;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font: 10px "JetBrains Mono", monospace;
+            letter-spacing: 1px;
+        }
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (max-width: 1000px) {
+
+            .water-page {
+                width: 90%;
+            }
+
+            .water-hero {
+                gap: 25px;
+            }
+
+            .water-feature {
+                gap: 25px;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .water-page {
+                padding-top: 25px;
+                padding-bottom: 60px;
+            }
+
+            .water-title {
+                font-size: clamp(37px, 10vw, 55px);
+                letter-spacing: -2px;
+            }
+
+            .water-intro {
+                font-size: 14px;
+            }
+
+            .water-meta {
+                gap: 20px;
+            }
+
+            .water-hero {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 55px;
+            }
+
+            .water-hero-copy h2 {
+                font-size: 30px;
+            }
+
+            .water-section {
+                padding: 45px 0;
+            }
+
+            .water-heading {
+                gap: 12px;
+            }
+
+            .water-heading h2 {
+                font-size: 29px;
+            }
+
+            .water-copy {
+                font-size: 14px;
+            }
+
+            .water-feature,
+            .water-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .water-feature.reverse .water-figure,
+            .water-feature.reverse .water-feature-copy {
+                order: initial;
+            }
+
+            .water-feature-copy h3 {
+                font-size: 25px;
+            }
+
+            .water-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .water-figure {
+                padding: 8px;
+                border-radius: 14px;
+            }
+
+            .water-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =====================================
+         NAVIGATION
+    ===================================== -->
+
+    <header class="navbar">
+
+        <a href="../index.html" class="logo">
+            BAHAA <span>NASR</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html#research">Research</a>
+            <a href="../index.html#work">Work</a>
+            <a href="../index.html#experience">Experience</a>
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <main class="water-page">
+
+        <a href="../index.html#work" class="water-back">
+            <span>←</span>
+            Back to Selected Work
+        </a>
+
+
+        <!-- =====================================
+             PROJECT INTRODUCTION
+        ===================================== -->
+
+        <section id="introduction">
+
+            <p class="water-kicker">
+                CONTROL SYSTEMS ENGINEERING · DECEMBER 2024
+            </p>
+
+            <h1 class="water-title">
+                Closed-Loop Feedback
+                <span>Water Level Control System</span>
+            </h1>
+
+            <p class="water-intro">
+                Designed, modeled, and implemented a closed-loop
+                water-level control system capable of automatically
+                regulating the height of water in a reservoir
+                through real-time feedback.
+
+                The project integrated DC motor and pump modeling,
+                fluid-system dynamics, PID controller design,
+                MATLAB/Simulink simulation, stability analysis,
+                and embedded hardware implementation.
+            </p>
+
+            <div class="water-meta">
+
+                <div class="water-meta-item">
+                    <span class="water-meta-label">PROJECT DATE</span>
+                    <span class="water-meta-value">December 2024</span>
+                </div>
+
+                <div class="water-meta-item">
+                    <span class="water-meta-label">INSTITUTION</span>
+                    <span class="water-meta-value">Lebanese American University</span>
+                </div>
+
+                <div class="water-meta-item">
+                    <span class="water-meta-label">PROJECT TYPE</span>
+                    <span class="water-meta-value">Control Systems Engineering</span>
+                </div>
+
+                <div class="water-meta-item">
+                    <span class="water-meta-label">TEAM</span>
+                    <span class="water-meta-value">Three-member engineering team</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             HERO
+        ===================================== -->
+
+        <section class="water-hero">
+
+            <figure class="water-hero-visual">
+
+                <img
+                    src="../assets/images/water-level/water-level-prototype.jpg"
+                    alt="Physical closed-loop water level control prototype"
+                    loading="eager"
+                >
+
+                <figcaption>
+                    WATER LEVEL CONTROL — Physical prototype implementation
+                </figcaption>
+
+            </figure>
+
+
+            <div class="water-hero-copy">
+
+                <p class="water-kicker">
+                    FEEDBACK CONTROL · PID · EMBEDDED SYSTEMS
+                </p>
+
+                <h2>
+                    Translating mathematical control theory into a functioning physical system.
+                </h2>
+
+                <p>
+                    The project investigated how a feedback
+                    controller can maintain a desired water
+                    level by continuously measuring the
+                    reservoir height and adjusting pump
+                    operation.
+                </p>
+
+                <p>
+                    The development process extended from
+                    mathematical modeling of the coupled
+                    electrical, mechanical, and fluid
+                    dynamics to controller optimization,
+                    simulation, and physical integration.
+                </p>
+
+                <div class="water-tags">
+                    <span>MATLAB</span>
+                    <span>Simulink</span>
+                    <span>PID Control</span>
+                    <span>NI myRIO</span>
+                    <span>Ultrasonic Sensing</span>
+                    <span>Transfer Functions</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             01 — MOTIVATION
+        ===================================== -->
+
+        <section class="water-section" id="motivation">
+
+            <div class="water-heading">
+                <span class="water-number">01</span>
+                <h2>Motivation and problem definition</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    Automated water-level regulation is
+                    important in industrial processes,
+                    water-management infrastructure,
+                    storage tanks, and reservoir
+                    operations.
+                </p>
+
+                <p>
+                    Maintaining a desired water level
+                    requires continuous monitoring
+                    and adjustment of fluid flow.
+                    Without automatic regulation,
+                    variations in inlet flow and
+                    operating conditions can cause
+                    deviations from the desired
+                    reservoir level.
+                </p>
+
+                <p>
+                    The objective was to develop
+                    a closed-loop feedback system
+                    that continuously compares
+                    the measured water height
+                    against a reference level
+                    and adjusts pump operation
+                    through PID control.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             02 — SYSTEM CONCEPT
+        ===================================== -->
+
+        <section class="water-section" id="system-concept">
+
+            <div class="water-heading">
+                <span class="water-number">02</span>
+                <h2>System concept and architecture</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    The initial concept consisted
+                    of a reservoir equipped with
+                    an ultrasonic level sensor,
+                    a water inlet, and a motor-driven
+                    pump responsible for discharging
+                    water from the tank.
+                </p>
+
+                <p>
+                    The ultrasonic sensor measures
+                    the water height and provides
+                    feedback to the controller.
+                    The controller compares this
+                    measurement with the desired
+                    level and determines the
+                    appropriate pump command.
+                </p>
+
+                <p>
+                    The inlet flow was represented
+                    as an external disturbance
+                    in the mathematical model,
+                    allowing the system to be
+                    evaluated under changing
+                    fluid-input conditions.
+                </p>
+
+            </div>
+
+
+            <div class="water-feature">
+
+                <figure class="water-figure">
+
+                    <img
+                        src="../assets/images/water-level/water-level-system-sketch.png"
+                        alt="Initial water level control system engineering sketch"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 01 — Initial water-level control system concept
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="water-feature-copy">
+
+                    <h3>Initial system configuration</h3>
+
+                    <p>
+                        The initial engineering
+                        concept established
+                        the arrangement of the
+                        reservoir, ultrasonic
+                        sensor, pump holder,
+                        motor pump, inlet,
+                        and outlet.
+                    </p>
+
+                    <p>
+                        This configuration
+                        provided the physical
+                        basis for developing
+                        the mathematical model
+                        and subsequent
+                        control architecture.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <figure class="water-figure water-wide">
+
+                <img
+                    src="../assets/images/water-level/water-level-block-diagram.png"
+                    alt="Closed-loop water-level control system block diagram"
+                    loading="lazy"
+                >
+
+                <figcaption>
+                    FIG. 02 — Closed-loop water-level control architecture
+                </figcaption>
+
+            </figure>
+
+
+            <div class="water-copy" style="margin-top:25px;">
+
+                <p>
+                    The block diagram represents
+                    the complete feedback-control
+                    structure. The reference
+                    water level is compared
+                    with the measured output
+                    to generate an error signal.
+                    This error is processed
+                    by the PID controller,
+                    which determines the
+                    motor-pump command.
+                </p>
+
+                <p>
+                    The pump discharge influences
+                    the tank dynamics, while
+                    the inlet flow acts as
+                    an external disturbance.
+                    The resulting water level
+                    is continuously fed back
+                    to the controller.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             03 — MATHEMATICAL MODELING
+        ===================================== -->
+
+        <section class="water-section" id="modeling">
+
+            <div class="water-heading">
+                <span class="water-number">03</span>
+                <h2>Mathematical modeling and transfer functions</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    A mathematical model was
+                    developed to describe
+                    the coupled electrical,
+                    mechanical, and fluid
+                    dynamics of the system.
+                </p>
+
+                <p>
+                    The modeling process
+                    was divided into three
+                    interconnected subsystems:
+                    the DC motor, the pump,
+                    and the fluid reservoir.
+                    Each subsystem was
+                    represented using
+                    differential equations
+                    and transfer functions
+                    to establish the
+                    overall dynamic model.
+                </p>
+
+            </div>
+
+
+            <div class="water-cards">
+
+                <article class="water-card">
+
+                    <h3>DC motor dynamics</h3>
+
+                    <p>
+                        The electrical and
+                        mechanical behavior
+                        of the motor was
+                        modeled to relate
+                        the applied voltage
+                        to rotational speed.
+                    </p>
+
+                </article>
+
+
+                <article class="water-card">
+
+                    <h3>Pump dynamics</h3>
+
+                    <p>
+                        The motor-driven pump
+                        was modeled to relate
+                        rotational speed
+                        to the volumetric
+                        discharge flow rate.
+                    </p>
+
+                </article>
+
+
+                <article class="water-card">
+
+                    <h3>Fluid dynamics</h3>
+
+                    <p>
+                        Conservation of mass
+                        was applied to describe
+                        changes in reservoir
+                        water height as a
+                        function of inlet
+                        and outlet flow rates.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="water-subsection">
+
+                <div class="water-heading">
+                    <span class="water-number">03.1</span>
+                    <h2>Coupled system modeling</h2>
+                </div>
+
+                <div class="water-copy">
+
+                    <p>
+                        The fluid subsystem
+                        was developed using
+                        conservation of mass,
+                        relating the rate
+                        of change of stored
+                        water to the difference
+                        between inlet and
+                        outlet volumetric
+                        flow rates.
+                    </p>
+
+                    <p>
+                        The motor model
+                        incorporated the
+                        electrical resistance,
+                        inductance, rotor
+                        inertia, friction
+                        coefficient, and
+                        motor constants.
+                        The pump model then
+                        connected motor
+                        rotational speed
+                        to water discharge.
+                    </p>
+
+                    <p>
+                        Combining these
+                        relationships provided
+                        a mathematical
+                        representation of
+                        the overall motor-pump-tank
+                        system for subsequent
+                        controller design.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             04 — PID CONTROL
+        ===================================== -->
+
+        <section class="water-section" id="pid-control">
+
+            <div class="water-heading">
+                <span class="water-number">04</span>
+                <h2>PID controller design and tuning</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    A PID controller was
+                    designed to regulate
+                    the water level by
+                    processing the difference
+                    between the desired
+                    reference and the
+                    measured reservoir height.
+                </p>
+
+                <p>
+                    Controller tuning
+                    focused on balancing
+                    response speed, overshoot,
+                    settling behavior,
+                    and steady-state accuracy.
+                    The proportional and
+                    integral gains were
+                    adjusted to investigate
+                    their influence on
+                    the system response.
+                </p>
+
+                <p>
+                    The derivative gain
+                    was set to zero in
+                    the configurations
+                    documented in the
+                    project.
+                </p>
+
+            </div>
+
+
+            <div class="water-subsection">
+
+                <div class="water-heading">
+                    <span class="water-number">04.1</span>
+                    <h2>Controller gain optimization</h2>
+                </div>
+
+                <div class="water-copy">
+
+                    <p>
+                        Multiple controller
+                        configurations were
+                        evaluated in MATLAB/Simulink
+                        to investigate how
+                        changes in proportional
+                        and integral gains
+                        influenced transient
+                        response and steady-state
+                        behavior.
+                    </p>
+
+                    <p>
+                        The following comparisons
+                        illustrate the tuning
+                        process and the selection
+                        of the final simulation
+                        configuration.
+                    </p>
+
+                </div>
+
+
+                <div class="water-feature">
+
+                    <figure class="water-figure">
+
+                        <img
+                            src="../assets/images/water-level/water-level-tuning-p.png"
+                            alt="Water level response with proportional controller gain"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            FIG. 03 — Proportional control: Kp = 300
+                        </figcaption>
+
+                    </figure>
+
+
+                    <div class="water-feature-copy">
+
+                        <h3>Proportional control</h3>
+
+                        <p>
+                            The first configuration
+                            investigated proportional
+                            control without integral
+                            or derivative action.
+                        </p>
+
+                        <p>
+                            This provided a reference
+                            for examining the
+                            transient behavior
+                            of the system before
+                            introducing a higher
+                            integral contribution.
+                        </p>
+
+                        <div class="water-tags">
+                            <span>Kp = 300</span>
+                            <span>Ki = 0</span>
+                            <span>Kd = 0</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="water-feature reverse">
+
+                    <figure class="water-figure">
+
+                        <img
+                            src="../assets/images/water-level/water-level-tuning-pi-high.png"
+                            alt="Water level response with increased integral controller gain"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            FIG. 04 — Increased integral gain: Ki = 400
+                        </figcaption>
+
+                    </figure>
+
+
+                    <div class="water-feature-copy">
+
+                        <h3>Increasing integral action</h3>
+
+                        <p>
+                            Integral action
+                            was introduced
+                            to investigate
+                            its influence
+                            on the controller
+                            response.
+                        </p>
+
+                        <p>
+                            Increasing the
+                            integral gain
+                            changed the transient
+                            behavior, providing
+                            a basis for comparison
+                            with the other
+                            configurations.
+                        </p>
+
+                        <div class="water-tags">
+                            <span>Kp = 180</span>
+                            <span>Ki = 400</span>
+                            <span>Kd = 0</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="water-feature">
+
+                    <figure class="water-figure">
+
+                        <img
+                            src="../assets/images/water-level/water-level-tuning-optimal.png"
+                            alt="Selected water level PI controller tuning response"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            FIG. 05 — Selected simulation configuration
+                        </figcaption>
+
+                    </figure>
+
+
+                    <div class="water-feature-copy">
+
+                        <h3>Selected controller configuration</h3>
+
+                        <p>
+                            The selected configuration
+                            used a proportional gain
+                            of 180 and an integral
+                            gain of 180, with
+                            derivative action
+                            disabled.
+                        </p>
+
+                        <p>
+                            This was the preferred
+                            configuration according
+                            to the project's
+                            controller evaluation,
+                            balancing the response
+                            characteristics
+                            considered during tuning.
+                        </p>
+
+                        <div class="water-tags">
+                            <span>Kp = 180</span>
+                            <span>Ki = 180</span>
+                            <span>Kd = 0</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="water-subsection">
+
+                <div class="water-heading">
+                    <span class="water-number">04.2</span>
+                    <h2>Simulation and hardware controller parameters</h2>
+                </div>
+
+                <div class="water-copy">
+
+                    <p>
+                        Different controller
+                        gain values were used
+                        for the mathematical
+                        simulation and physical
+                        implementation.
+                        These configurations
+                        are presented separately
+                        because the simulated
+                        model and the actual
+                        hardware implementation
+                        represent different
+                        operating environments.
+                    </p>
+
+                </div>
+
+
+                <div class="water-cards">
+
+                    <article class="water-gain">
+
+                        <h3>MATLAB / Simulink</h3>
+
+                        <div class="water-gain-values">
+                            <span>Kp = 180</span>
+                            <span>Ki = 180</span>
+                            <span>Kd = 0</span>
+                        </div>
+
+                        <p>
+                            Selected simulation
+                            configuration for
+                            the mathematical
+                            control model.
+                        </p>
+
+                    </article>
+
+
+                    <article class="water-gain">
+
+                        <h3>Physical hardware</h3>
+
+                        <div class="water-gain-values">
+                            <span>Kp = 1.1</span>
+                            <span>Ki = 0.001</span>
+                            <span>Kd = 0</span>
+                        </div>
+
+                        <p>
+                            Controller gains
+                            documented for
+                            the physical
+                            prototype implementation.
+                        </p>
+
+                    </article>
+
+
+                    <article class="water-gain">
+
+                        <h3>Control strategy</h3>
+
+                        <div class="water-gain-values">
+                            <span>Feedback</span>
+                            <span>PI</span>
+                            <span>Reference tracking</span>
+                        </div>
+
+                        <p>
+                            Continuous measurement
+                            and correction of
+                            water-level deviations
+                            through pump control.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             05 — STABILITY ANALYSIS
+        ===================================== -->
+
+        <section class="water-section" id="stability">
+
+            <div class="water-heading">
+                <span class="water-number">05</span>
+                <h2>Stability and frequency-domain analysis</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    Stability analysis was
+                    performed to investigate
+                    the dynamic behavior
+                    of the modeled system
+                    and assess its response
+                    under different operating
+                    conditions.
+                </p>
+
+                <p>
+                    Root locus and Bode
+                    diagrams were generated
+                    using MATLAB to examine
+                    the system's pole
+                    behavior and frequency
+                    response.
+                </p>
+
+            </div>
+
+
+            <div class="water-feature">
+
+                <figure class="water-figure">
+
+                    <img
+                        src="../assets/images/water-level/water-level-root-locus.png"
+                        alt="Root locus analysis of the water level control system"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 06 — Root locus analysis
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="water-feature-copy">
+
+                    <h3>Root locus analysis</h3>
+
+                    <p>
+                        Root locus analysis
+                        was used to investigate
+                        how the closed-loop
+                        pole locations change
+                        as system gain varies.
+                    </p>
+
+                    <p>
+                        This provided insight
+                        into the system's
+                        dynamic characteristics
+                        and supported the
+                        stability assessment
+                        during controller
+                        development.
+                    </p>
+
+                    <div class="water-tags">
+                        <span>MATLAB</span>
+                        <span>Closed-loop poles</span>
+                        <span>Stability</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="water-feature reverse">
+
+                <figure class="water-figure">
+
+                    <img
+                        src="../assets/images/water-level/water-level-bode-diagram.png"
+                        alt="Bode magnitude and phase response of the water level system"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 07 — Bode magnitude and phase response
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="water-feature-copy">
+
+                    <h3>Frequency-domain analysis</h3>
+
+                    <p>
+                        Bode analysis was
+                        performed to examine
+                        the system's magnitude
+                        and phase response
+                        over a range of
+                        frequencies.
+                    </p>
+
+                    <p>
+                        The frequency-domain
+                        representation provided
+                        an additional perspective
+                        on the dynamic
+                        characteristics
+                        of the modeled
+                        control system.
+                    </p>
+
+                    <div class="water-tags">
+                        <span>Frequency Response</span>
+                        <span>Magnitude</span>
+                        <span>Phase</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             06 — SIMULATION
+        ===================================== -->
+
+        <section class="water-section" id="simulation">
+
+            <div class="water-heading">
+                <span class="water-number">06</span>
+                <h2>MATLAB/Simulink simulation and response analysis</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    The complete mathematical
+                    model was implemented
+                    in MATLAB/Simulink
+                    to evaluate the behavior
+                    of the closed-loop
+                    system under different
+                    reference inputs.
+                </p>
+
+                <p>
+                    Step and ramp inputs
+                    were used to investigate
+                    the controller's ability
+                    to track changes in
+                    the desired water level
+                    and examine the resulting
+                    transient response.
+                </p>
+
+            </div>
+
+
+            <div class="water-feature">
+
+                <figure class="water-figure">
+
+                    <img
+                        src="../assets/images/water-level/water-level-step-response.png"
+                        alt="Simulated step response of the water level control system"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 08 — Step-input simulation response
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="water-feature-copy">
+
+                    <h3>Step-response evaluation</h3>
+
+                    <p>
+                        The step-response
+                        simulation investigated
+                        how the system reacted
+                        to a sudden change
+                        in the desired
+                        water level.
+                    </p>
+
+                    <p>
+                        The documented
+                        simulation included
+                        a reference transition
+                        from 10 to 8,
+                        allowing the
+                        response to be
+                        examined during
+                        a change in
+                        operating conditions.
+                    </p>
+
+                    <p>
+                        The report recorded
+                        an approximate rise
+                        time of 0.3 seconds
+                        and settling time
+                        of 1.2 seconds
+                        for the specified
+                        step-response
+                        evaluation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="water-feature reverse">
+
+                <figure class="water-figure">
+
+                    <img
+                        src="../assets/images/water-level/water-level-ramp-response.png"
+                        alt="Simulated ramp-input response of the water level system"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 09 — Ramp-input simulation response
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="water-feature-copy">
+
+                    <h3>Ramp-input response</h3>
+
+                    <p>
+                        Ramp-input simulation
+                        was used to investigate
+                        system behavior under
+                        a continuously changing
+                        reference signal.
+                    </p>
+
+                    <p>
+                        Unlike a step input,
+                        a ramp signal allows
+                        the evaluation of
+                        the system's response
+                        to a reference
+                        that changes
+                        progressively
+                        over time.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             07 — EMBEDDED IMPLEMENTATION
+        ===================================== -->
+
+        <section class="water-section" id="implementation">
+
+            <div class="water-heading">
+                <span class="water-number">07</span>
+                <h2>Physical implementation and embedded integration</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    Following mathematical
+                    modeling and simulation,
+                    the control strategy
+                    was implemented on
+                    a physical water-level
+                    regulation prototype.
+                </p>
+
+                <p>
+                    The hardware configuration
+                    integrated an HC-SR04
+                    ultrasonic sensor,
+                    an NI myRIO controller,
+                    a DC motor-driven
+                    water pump, and
+                    associated electronic
+                    connections.
+                </p>
+
+                <p>
+                    The ultrasonic sensor
+                    provided water-level
+                    measurements, while
+                    the embedded controller
+                    processed the feedback
+                    and generated the
+                    corresponding pump
+                    control command.
+                </p>
+
+            </div>
+
+
+            <div class="water-feature">
+
+                <figure class="water-figure">
+
+                    <img
+                        src="../assets/images/water-level/water-level-prototype.jpg"
+                        alt="Assembled physical water-level control prototype"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        FIG. 10 — Physical prototype and hardware integration
+                    </figcaption>
+
+                </figure>
+
+
+                <div class="water-feature-copy">
+
+                    <h3>Hardware integration</h3>
+
+                    <p>
+                        The physical prototype
+                        brought together
+                        the reservoir,
+                        water inlet,
+                        pump assembly,
+                        ultrasonic sensor,
+                        and embedded
+                        electronics.
+                    </p>
+
+                    <p>
+                        This stage translated
+                        the mathematical
+                        control architecture
+                        into a physical
+                        electromechanical
+                        system capable
+                        of demonstrating
+                        automatic water-level
+                        regulation.
+                    </p>
+
+                    <div class="water-tags">
+                        <span>NI myRIO</span>
+                        <span>HC-SR04</span>
+                        <span>DC Motor Pump</span>
+                        <span>Embedded Electronics</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REAL-TIME VIDEO -->
+
+            <div class="water-subsection">
+
+                <div class="water-heading">
+                    <span class="water-number">07.1</span>
+                    <h2>Real-time system demonstration</h2>
+                </div>
+
+                <div class="water-copy">
+
+                    <p>
+                        The physical demonstration
+                        illustrates the operation
+                        of the assembled
+                        water-level control
+                        system, including
+                        the interaction
+                        between the reservoir,
+                        sensing arrangement,
+                        pump, and control
+                        electronics.
+                    </p>
+
+                    <p>
+                        The video provides
+                        a direct view of
+                        the implemented
+                        prototype and its
+                        real-world operation,
+                        complementing
+                        the mathematical
+                        and simulation
+                        results presented
+                        earlier.
+                    </p>
+
+                </div>
+
+
+                <figure class="water-video">
+
+                    <video
+                        controls
+                        preload="metadata"
+                        playsinline
+                        poster="../assets/images/water-level/water-level-prototype.jpg"
+                    >
+
+                        <source
+                            src="../assets/videos/water-level/water-level-control-demo.mp4"
+                            type="video/mp4"
+                        >
+
+                        Your browser does not support HTML5 video.
+
+                    </video>
+
+                    <figcaption>
+                        VIDEO 01 — Physical water-level control system demonstration
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             08 — VALIDATION
+        ===================================== -->
+
+        <section class="water-section" id="validation">
+
+            <div class="water-heading">
+                <span class="water-number">08</span>
+                <h2>Testing, validation and engineering evaluation</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    The evaluation process
+                    combined mathematical
+                    analysis, simulation,
+                    controller tuning,
+                    and physical
+                    prototype operation.
+                </p>
+
+                <p>
+                    The simulation results
+                    were used to investigate
+                    the theoretical behavior
+                    of the modeled system,
+                    while the physical
+                    demonstration provided
+                    an opportunity to
+                    observe the integrated
+                    hardware implementation.
+                </p>
+
+                <p>
+                    Particular attention
+                    was given to reference
+                    tracking, transient
+                    response, controller
+                    tuning, sensor feedback,
+                    and the differences
+                    between idealized
+                    mathematical models
+                    and physical
+                    operating conditions.
+                </p>
+
+            </div>
+
+
+            <div class="water-cards">
+
+                <article class="water-card">
+
+                    <h3>Dynamic response</h3>
+
+                    <p>
+                        Step and ramp
+                        simulations were
+                        used to investigate
+                        the response of
+                        the modeled
+                        closed-loop system.
+                    </p>
+
+                </article>
+
+
+                <article class="water-card">
+
+                    <h3>Stability assessment</h3>
+
+                    <p>
+                        Root locus and
+                        Bode analysis
+                        supported the
+                        evaluation of
+                        the system's
+                        dynamic behavior.
+                    </p>
+
+                </article>
+
+
+                <article class="water-card">
+
+                    <h3>Physical integration</h3>
+
+                    <p>
+                        The hardware
+                        demonstration
+                        illustrated the
+                        integration of
+                        sensing, control,
+                        and pump actuation.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             09 — PERSONAL CONTRIBUTIONS
+        ===================================== -->
+
+        <section class="water-section" id="contributions">
+
+            <div class="water-heading">
+                <span class="water-number">09</span>
+                <h2>Personal contributions and engineering challenges</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    As part of a
+                    three-member engineering
+                    team, I contributed
+                    to the development
+                    of the mathematical
+                    model, controller
+                    design, stability
+                    analysis, simulation,
+                    and physical
+                    implementation
+                    of the water-level
+                    control system.
+                </p>
+
+            </div>
+
+
+            <div class="water-grid">
+
+                <article class="water-info-card">
+
+                    <h3>Mathematical modeling</h3>
+
+                    <p>
+                        Developed the
+                        dynamic representation
+                        of the DC motor,
+                        pump, and fluid
+                        reservoir, connecting
+                        their individual
+                        behaviors into
+                        an overall
+                        mathematical model.
+                    </p>
+
+                </article>
+
+
+                <article class="water-info-card">
+
+                    <h3>PID controller design</h3>
+
+                    <p>
+                        Designed and
+                        tuned the feedback
+                        controller to
+                        regulate the
+                        desired water
+                        level while
+                        evaluating transient
+                        response and
+                        steady-state
+                        accuracy.
+                    </p>
+
+                </article>
+
+
+                <article class="water-info-card">
+
+                    <h3>Stability analysis</h3>
+
+                    <p>
+                        Generated and
+                        analyzed root
+                        locus and Bode
+                        diagrams to
+                        investigate
+                        system stability
+                        and frequency-domain
+                        behavior.
+                    </p>
+
+                </article>
+
+
+                <article class="water-info-card">
+
+                    <h3>MATLAB/Simulink simulation</h3>
+
+                    <p>
+                        Developed the
+                        closed-loop
+                        simulation model
+                        and evaluated
+                        system response
+                        under step
+                        and ramp
+                        reference inputs.
+                    </p>
+
+                </article>
+
+
+                <article class="water-info-card">
+
+                    <h3>Embedded hardware integration</h3>
+
+                    <p>
+                        Participated
+                        in integrating
+                        the ultrasonic
+                        sensor, NI myRIO
+                        controller,
+                        motor-driven
+                        pump, and
+                        associated
+                        electronics.
+                    </p>
+
+                </article>
+
+
+                <article class="water-info-card">
+
+                    <h3>Experimental evaluation</h3>
+
+                    <p>
+                        Participated
+                        in prototype
+                        testing and
+                        system integration
+                        to examine
+                        the behavior
+                        of the implemented
+                        feedback-control
+                        system.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="water-subsection">
+
+                <div class="water-heading">
+                    <span class="water-number">09.1</span>
+                    <h2>Challenges faced</h2>
+                </div>
+
+
+                <div class="water-grid">
+
+                    <article class="water-info-card">
+
+                        <h3>Dynamic system modeling</h3>
+
+                        <p>
+                            Representing
+                            the coupled
+                            electrical,
+                            mechanical,
+                            and fluid
+                            dynamics
+                            through
+                            a simplified
+                            mathematical
+                            model.
+                        </p>
+
+                    </article>
+
+
+                    <article class="water-info-card">
+
+                        <h3>Controller optimization</h3>
+
+                        <p>
+                            Balancing
+                            response speed,
+                            overshoot,
+                            settling behavior,
+                            and steady-state
+                            accuracy through
+                            controller
+                            gain adjustments.
+                        </p>
+
+                    </article>
+
+
+                    <article class="water-info-card">
+
+                        <h3>Sensor reliability</h3>
+
+                        <p>
+                            Addressing
+                            ultrasonic
+                            measurement
+                            noise and
+                            feedback delays
+                            during real-time
+                            system operation.
+                        </p>
+
+                    </article>
+
+
+                    <article class="water-info-card">
+
+                        <h3>Simulation-to-hardware transition</h3>
+
+                        <p>
+                            Accounting
+                            for differences
+                            between idealized
+                            simulation
+                            behavior and
+                            actual hardware
+                            operating
+                            conditions.
+                        </p>
+
+                    </article>
+
+
+                    <article class="water-info-card">
+
+                        <h3>System integration</h3>
+
+                        <p>
+                            Coordinating
+                            sensor measurements,
+                            controller
+                            calculations,
+                            and pump
+                            actuation
+                            to maintain
+                            feedback
+                            operation.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             10 — TECHNOLOGIES
+        ===================================== -->
+
+        <section class="water-section" id="technologies">
+
+            <div class="water-heading">
+                <span class="water-number">10</span>
+                <h2>Technologies and engineering tools</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    The project combined
+                    classical control
+                    theory, mathematical
+                    modeling, simulation
+                    software, embedded
+                    electronics, and
+                    physical sensing
+                    and actuation
+                    hardware.
+                </p>
+
+            </div>
+
+
+            <div class="water-cards">
+
+                <article class="water-card">
+
+                    <h3>Modeling and simulation</h3>
+
+                    <div class="water-tags">
+                        <span>MATLAB</span>
+                        <span>Simulink</span>
+                        <span>Transfer Functions</span>
+                    </div>
+
+                </article>
+
+
+                <article class="water-card">
+
+                    <h3>Control engineering</h3>
+
+                    <div class="water-tags">
+                        <span>PID Control</span>
+                        <span>Root Locus</span>
+                        <span>Bode Analysis</span>
+                    </div>
+
+                </article>
+
+
+                <article class="water-card">
+
+                    <h3>Embedded hardware</h3>
+
+                    <div class="water-tags">
+                        <span>NI myRIO</span>
+                        <span>HC-SR04</span>
+                        <span>DC Motor</span>
+                        <span>Water Pump</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             11 — OUTCOMES
+        ===================================== -->
+
+        <section class="water-section" id="outcomes">
+
+            <div class="water-heading">
+                <span class="water-number">11</span>
+                <h2>Outcomes and conclusions</h2>
+            </div>
+
+            <div class="water-copy">
+
+                <p>
+                    The project successfully
+                    developed and implemented
+                    a closed-loop PID-controlled
+                    water-level regulation
+                    system, combining
+                    mathematical modeling,
+                    controller design,
+                    simulation, and
+                    physical hardware
+                    integration.
+                </p>
+
+                <p>
+                    The developed model
+                    provided a framework
+                    for investigating
+                    the coupled behavior
+                    of the DC motor,
+                    pump, and fluid
+                    reservoir, while
+                    MATLAB/Simulink
+                    supported controller
+                    development and
+                    response evaluation.
+                </p>
+
+                <p>
+                    Root locus and Bode
+                    analysis were used
+                    to investigate system
+                    stability, and
+                    controller tuning
+                    was performed
+                    to evaluate the
+                    transient and
+                    steady-state
+                    characteristics.
+                </p>
+
+                <p>
+                    The physical prototype
+                    demonstrated the
+                    integration of
+                    ultrasonic sensing,
+                    embedded control,
+                    and motor-driven
+                    pump actuation
+                    in a practical
+                    feedback-control
+                    application.
+                </p>
+
+            </div>
+
+
+            <div class="water-cards">
+
+                <article class="water-card">
+
+                    <h3>Control development</h3>
+
+                    <p>
+                        Designed and
+                        evaluated
+                        a feedback
+                        controller
+                        for automatic
+                        water-level
+                        regulation.
+                    </p>
+
+                </article>
+
+
+                <article class="water-card">
+
+                    <h3>System analysis</h3>
+
+                    <p>
+                        Investigated
+                        dynamic behavior
+                        using transfer
+                        functions,
+                        root locus,
+                        Bode diagrams,
+                        and simulations.
+                    </p>
+
+                </article>
+
+
+                <article class="water-card">
+
+                    <h3>Physical implementation</h3>
+
+                    <p>
+                        Integrated
+                        sensing,
+                        embedded
+                        control,
+                        and pump
+                        actuation
+                        into a
+                        functional
+                        prototype.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="water-outcome" style="margin-top:25px;">
+
+                <p>
+                    Overall, the project
+                    demonstrated how
+                    classical feedback-control
+                    principles can
+                    be translated
+                    into a functioning
+                    electromechanical
+                    system.
+                </p>
+
+                <p>
+                    It provided practical
+                    engineering experience
+                    in dynamic modeling,
+                    PID controller
+                    development,
+                    stability analysis,
+                    simulation,
+                    embedded integration,
+                    and physical
+                    system evaluation.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             BOTTOM NAVIGATION
+        ===================================== -->
+
+        <div class="water-bottom">
+
+            <a href="project-03.html">
+                <span>←</span>
+                Previous Project: Machine Learning
+            </a>
+
+            <a href="../index.html#work">
+                Back to Selected Work
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+    ===================================== -->
+
+    <footer class="water-footer">
+        BAHAA NASR · CONTROL SYSTEMS · MECHATRONICS · EMBEDDED SYSTEMS
+    </footer>
+
+
+</body>
+
+</html>
