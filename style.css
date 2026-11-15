@@ -1209,3 +1209,34 @@ a {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* =========================================
+   ONGOING PROJECT BADGE
+========================================= */
+
+.project-status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 9px 13px;
+    border: 1px solid rgba(45, 183, 163, 0.35);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--accent);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 650px) {
+    .project-status {
+        top: 15px;
+        right: 15px;
+        padding: 8px 10px;
+        font-size: 8px;
+    }
+}
+
