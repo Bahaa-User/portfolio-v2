@@ -33,6 +33,7 @@
             color: var(--muted);
             text-decoration: none;
             font-size: 14px;
+            transition: color .3s ease;
         }
 
         .s-back:hover {
@@ -67,6 +68,27 @@
             text-align: justify;
         }
 
+        .s-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 8px 13px;
+            border: 1px solid rgba(45,183,163,.35);
+            border-radius: 30px;
+            background: rgba(45,183,163,.09);
+            color: var(--accent);
+            font: 600 10px "JetBrains Mono", monospace;
+            letter-spacing: .7px;
+        }
+
+        .s-status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
         .s-meta {
             display: flex;
             flex-wrap: wrap;
@@ -90,27 +112,6 @@
             color: var(--text);
             font-size: 14px;
             font-weight: 600;
-        }
-
-        .s-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            width: fit-content;
-            padding: 8px 13px;
-            border: 1px solid rgba(45,183,163,.35);
-            border-radius: 30px;
-            background: rgba(45,183,163,.09);
-            color: var(--accent);
-            font: 600 10px "JetBrains Mono", monospace;
-            letter-spacing: .7px;
-        }
-
-        .s-status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--accent);
         }
 
         /* =====================================
@@ -157,14 +158,14 @@
         }
 
         .s-subheading {
-            margin: 40px 0 17px;
+            margin: 38px 0 17px;
             color: var(--text);
-            font-size: 24px;
+            font-size: 23px;
             letter-spacing: -.7px;
         }
 
         /* =====================================
-           HERO VISUAL
+           PROJECT INTRODUCTION
         ===================================== */
 
         .s-hero {
@@ -172,7 +173,7 @@
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             align-items: center;
             gap: 45px;
-            margin-bottom: 75px;
+            margin: 45px 0 75px;
         }
 
         .s-hero-visual {
@@ -211,6 +212,10 @@
             text-align: justify;
         }
 
+        .s-hero-copy p + p {
+            margin-top: 14px;
+        }
+
         /* =====================================
            TAGS
         ===================================== */
@@ -232,7 +237,7 @@
         }
 
         /* =====================================
-           ARCHITECTURE DIAGRAM
+           ARCHITECTURE
         ===================================== */
 
         .s-architecture {
@@ -246,12 +251,12 @@
         .s-architecture-title {
             margin-bottom: 25px;
             color: var(--text);
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 700;
         }
 
         .s-track {
-            padding: 22px;
+            padding: 23px;
             border: 1px solid var(--border);
             border-radius: 15px;
             background: var(--background);
@@ -271,7 +276,7 @@
         .s-track h3 {
             margin-bottom: 18px;
             color: var(--text);
-            font-size: 19px;
+            font-size: 20px;
         }
 
         .s-flow {
@@ -281,7 +286,7 @@
         }
 
         .s-flow-box {
-            min-height: 85px;
+            min-height: 90px;
             padding: 16px 10px;
             display: flex;
             flex-direction: column;
@@ -313,7 +318,7 @@
         }
 
         .s-common-output {
-            margin-top: 23px;
+            margin-top: 20px;
             padding: 21px;
             text-align: center;
             border: 1px solid rgba(45,183,163,.4);
@@ -331,7 +336,7 @@
         .s-common-output p {
             color: var(--muted);
             font-size: 12px;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         .s-note {
@@ -352,13 +357,9 @@
             margin-top: 30px;
         }
 
-        .s-track-feature + .s-track-feature {
-            margin-top: 50px;
-        }
-
         .s-track-visual {
             min-width: 0;
-            padding: 20px;
+            padding: 22px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 17px;
@@ -395,7 +396,7 @@
         }
 
         /* =====================================
-           SENSOR / SPECIFICATION CARDS
+           SPECIFICATION CARDS
         ===================================== */
 
         .s-cards {
@@ -410,6 +411,13 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 15px;
+            transition: border-color .3s ease,
+                        transform .3s ease;
+        }
+
+        .s-card:hover {
+            border-color: rgba(45,183,163,.45);
+            transform: translateY(-3px);
         }
 
         .s-card h3 {
@@ -431,7 +439,7 @@
         }
 
         /* =====================================
-           INVESTIGATION STATUS
+           INVESTIGATION CARDS
         ===================================== */
 
         .s-investigation {
@@ -477,7 +485,20 @@
         }
 
         /* =====================================
-           CHALLENGES / OUTCOMES
+           PERSONAL CONTRIBUTIONS
+        ===================================== */
+
+        .s-contribution-intro {
+            max-width: 1050px;
+            margin-bottom: 28px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        /* =====================================
+           CHALLENGES AND OUTCOMES
         ===================================== */
 
         .s-list {
@@ -493,16 +514,6 @@
             border: 1px solid var(--border);
             border-radius: 17px;
             background: var(--surface);
-        }
-
-        .s-outcome p {
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .s-outcome p + p {
-            margin-top: 14px;
         }
 
         /* =====================================
@@ -549,6 +560,7 @@
             font-size: 13px;
             font-weight: 600;
             text-decoration: none;
+            transition: color .3s ease;
         }
 
         .s-bottom a:hover {
@@ -608,8 +620,9 @@
             }
 
             .s-hero {
+                grid-template-columns: 1fr;
                 gap: 25px;
-                margin-bottom: 50px;
+                margin: 35px 0 50px;
             }
 
             .s-meta {
@@ -645,8 +658,27 @@
                 padding: 15px;
             }
 
+            .s-track-visual {
+                padding: 16px;
+            }
+
             .s-bottom {
                 flex-direction: column;
+            }
+
+        }
+
+        /* =====================================
+           REDUCED MOTION
+        ===================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .s-card,
+            .s-back,
+            .s-document-link,
+            .s-bottom a {
+                transition: none;
             }
 
         }
@@ -681,16 +713,16 @@
 
     <main class="sorbonne-page">
 
-        <a href="../index.html#work" class="s-back">
-            ← Back to Selected Engineering Projects
-        </a>
-
 
         <!-- =====================================
              PROJECT INTRODUCTION
         ===================================== -->
 
         <section id="overview">
+
+            <a href="../index.html#work" class="s-back">
+                ← Back to Selected Engineering Projects
+            </a>
 
             <p class="s-kicker">
                 MASTER'S ENGINEERING PROJECT · SORBONNE UNIVERSITÉ · PING
@@ -743,7 +775,7 @@
 
                 <div class="s-meta-item">
                     <span class="s-meta-label">TEAM</span>
-                    <span class="s-meta-value">Multidisciplinary engineering team</span>
+                    <span class="s-meta-value">Multidisciplinary Engineering Team</span>
                 </div>
 
             </div>
@@ -817,14 +849,14 @@
 
 
         <!-- =====================================
-             01 — MOTIVATION
+             01 — MOTIVATION AND OVERVIEW
         ===================================== -->
 
         <section class="s-section" id="motivation">
 
             <div class="s-heading">
                 <span class="s-number">01</span>
-                <h2>Motivation and problem definition</h2>
+                <h2>Motivation and project overview</h2>
             </div>
 
             <div class="s-copy">
@@ -856,13 +888,23 @@
                     and intelligent directional guidance.
                 </p>
 
+                <p>
+                    The development considers both
+                    smartphone-integrated sensing
+                    and an independent external
+                    hardware platform, allowing
+                    the team to investigate different
+                    technical configurations
+                    and their feasibility.
+                </p>
+
             </div>
 
         </section>
 
 
         <!-- =====================================
-             02 — OVERALL ARCHITECTURE
+             02 — SYSTEM ARCHITECTURE
         ===================================== -->
 
         <section class="s-section" id="architecture">
@@ -1223,18 +1265,45 @@
 
                 <div class="s-track-visual">
 
-                    <h3>Selected LiDAR hardware</h3>
+                    <h3>External sensing platform</h3>
 
-                    <img
-                        src="../assets/images/sorbonne/steval-vl53l9-board.png"
-                        alt="STEVAL-VL53L9 evaluation board"
-                        style="display:block;width:100%;height:auto;object-fit:contain;"
-                    >
+                    <div class="s-flow" style="grid-template-columns:1fr 1fr;">
 
-                    <p style="margin-top:12px;">
-                        STMicroelectronics STEVAL-VL53L9
-                        evaluation board based on the
-                        VL53L9CX sensor.
+                        <div class="s-flow-box">
+                            <strong>LiDAR</strong>
+                            <span>Selected evaluation board</span>
+                        </div>
+
+                        <div class="s-flow-box">
+                            <strong>IMU</strong>
+                            <span>Candidate under evaluation</span>
+                        </div>
+
+                        <div class="s-flow-box">
+                            <strong>Camera</strong>
+                            <span>Selection under investigation</span>
+                        </div>
+
+                        <div class="s-flow-box">
+                            <strong>Embedded Electronics</strong>
+                            <span>Architecture under development</span>
+                        </div>
+
+                    </div>
+
+                    <div class="s-flow-arrow">↓</div>
+
+                    <div class="s-common-output">
+                        <strong>External Processing Platform</strong>
+                        <p>
+                            Sensor interfacing · Power management ·
+                            Data acquisition · Wireless communication
+                        </p>
+                    </div>
+
+                    <p class="s-note">
+                        Conceptual subsystem representation,
+                        not a finalized hardware design.
                     </p>
 
                 </div>
@@ -1242,7 +1311,11 @@
 
                 <div class="s-track-copy">
 
-                    <h3>External environmental sensing</h3>
+                    <p class="s-kicker">
+                        HARDWARE AND EMBEDDED SYSTEMS
+                    </p>
+
+                    <h3>Developing a smartphone-independent sensing platform</h3>
 
                     <p>
                         The selected LiDAR evaluation
@@ -1254,17 +1327,19 @@
                     </p>
 
                     <p>
-                        Its compatibility with
-                        different host platforms
-                        provides flexibility for
-                        development and evaluation.
+                        The remaining sensing components,
+                        including the camera and IMU,
+                        are being evaluated alongside
+                        the requirements for embedded
+                        processing, battery operation
+                        and communication.
                     </p>
 
                     <div class="s-tags">
                         <span>STMicroelectronics</span>
                         <span>VL53L9CX</span>
                         <span>Direct ToF</span>
-                        <span>3D LiDAR</span>
+                        <span>Embedded Systems</span>
                     </div>
 
                 </div>
@@ -1273,7 +1348,7 @@
 
 
             <h3 class="s-subheading">
-                Hardware architecture under investigation
+                Hardware development considerations
             </h3>
 
             <div class="s-cards">
@@ -1355,7 +1430,7 @@
 
 
         <!-- =====================================
-             05 — LIDAR SPECIFICATIONS
+             05 — LIDAR HARDWARE
         ===================================== -->
 
         <section class="s-section" id="lidar">
@@ -1499,46 +1574,49 @@
 
 
         <!-- =====================================
-             06 — SENSOR FUSION
+             06 — CAMERA / SENSOR FUSION / SLAM
         ===================================== -->
 
         <section class="s-section" id="sensor-fusion">
 
             <div class="s-heading">
                 <span class="s-number">06</span>
-                <h2>Camera integration and multisensor fusion</h2>
+                <h2>Camera integration, sensor fusion and SLAM</h2>
             </div>
 
             <div class="s-copy">
 
                 <p>
-                    Camera integration is another
-                    important area being
-                    investigated across
-                    the two development
-                    tracks.
-                </p>
-
-                <p>
+                    Camera integration is an important
+                    research direction across
+                    the two development tracks.
                     Visual information may
                     complement LiDAR depth
                     measurements and inertial
                     motion data, providing
                     additional information
                     for environmental
-                    interpretation and
-                    localization.
+                    interpretation and localization.
                 </p>
 
                 <p>
                     The investigation considers
-                    the requirements associated
-                    with combining measurements
-                    from different sensing
-                    modalities, including
+                    the technical requirements
+                    associated with combining
+                    measurements from different
+                    sensing modalities, including
                     calibration, synchronization
                     and coordinate-frame
                     relationships.
+                </p>
+
+                <p>
+                    The team is also studying
+                    LiDAR-, visual- and
+                    IMU-based SLAM approaches
+                    to evaluate their suitability
+                    for indoor mapping
+                    and localization.
                 </p>
 
             </div>
@@ -1547,8 +1625,11 @@
             <div class="s-investigation">
 
                 <article class="s-investigation-card">
+
                     <span class="s-state">UNDER INVESTIGATION</span>
+
                     <h3>Camera–LiDAR integration</h3>
+
                     <p>
                         Evaluating how visual
                         information and
@@ -1557,12 +1638,16 @@
                         each other during
                         environmental perception.
                     </p>
+
                 </article>
 
 
                 <article class="s-investigation-card">
+
                     <span class="s-state">UNDER INVESTIGATION</span>
+
                     <h3>Inertial measurements</h3>
+
                     <p>
                         Investigating the use
                         of IMU measurements
@@ -1570,24 +1655,33 @@
                         and their contribution
                         to localization.
                     </p>
+
                 </article>
 
 
                 <article class="s-investigation-card">
+
                     <span class="s-state">UNDER INVESTIGATION</span>
-                    <h3>Sensor calibration</h3>
+
+                    <h3>Sensor calibration and synchronization</h3>
+
                     <p>
                         Studying the spatial
                         and temporal relationships
-                        between sensing
-                        components.
+                        between camera,
+                        LiDAR and inertial
+                        measurements.
                     </p>
+
                 </article>
 
 
                 <article class="s-investigation-card">
+
                     <span class="s-state">UNDER INVESTIGATION</span>
+
                     <h3>Multisensor SLAM</h3>
+
                     <p>
                         Exploring approaches
                         combining visual,
@@ -1596,6 +1690,7 @@
                         for mapping
                         and localization.
                     </p>
+
                 </article>
 
             </div>
@@ -1644,8 +1739,11 @@
             <div class="s-investigation">
 
                 <article class="s-investigation-card">
+
                     <span class="s-state">CONCEPT UNDER INVESTIGATION</span>
+
                     <h3>Wearable haptic bracelet</h3>
+
                     <p>
                         Investigating wearable
                         vibration-based
@@ -1654,12 +1752,16 @@
                         directional
                         navigation cues.
                     </p>
+
                 </article>
 
 
                 <article class="s-investigation-card">
+
                     <span class="s-state">CONCEPT UNDER INVESTIGATION</span>
+
                     <h3>Custom 3D-printed interface</h3>
+
                     <p>
                         Exploring the possibility
                         of developing a
@@ -1668,12 +1770,16 @@
                         wearable feedback
                         interface.
                     </p>
+
                 </article>
 
 
                 <article class="s-investigation-card">
+
                     <span class="s-state">CONCEPT UNDER INVESTIGATION</span>
+
                     <h3>Pneumatic tactile feedback</h3>
+
                     <p>
                         Investigating controlled
                         pressure-based
@@ -1683,12 +1789,16 @@
                         navigation
                         instructions.
                     </p>
+
                 </article>
 
 
                 <article class="s-investigation-card">
+
                     <span class="s-state">ALTERNATIVE APPROACH</span>
+
                     <h3>Audio or multimodal feedback</h3>
+
                     <p>
                         Evaluating auditory
                         guidance and the
@@ -1696,6 +1806,7 @@
                         of different
                         feedback channels.
                     </p>
+
                 </article>
 
             </div>
@@ -1720,25 +1831,146 @@
 
 
         <!-- =====================================
-             08 — CHALLENGES
+             08 — CONTRIBUTIONS AND CHALLENGES
         ===================================== -->
 
-        <section class="s-section" id="challenges">
+        <section class="s-section" id="contributions">
 
             <div class="s-heading">
                 <span class="s-number">08</span>
-                <h2>Engineering challenges and current investigations</h2>
+                <h2>Personal contributions and engineering challenges</h2>
             </div>
+
+            <p class="s-contribution-intro">
+
+                Contributing to the multidisciplinary
+                investigation and development
+                of the indoor navigation system,
+                with involvement across
+                sensing hardware, software,
+                embedded electronics,
+                system integration and
+                human–machine interaction.
+
+            </p>
+
+
+            <div class="s-cards">
+
+                <article class="s-card">
+                    <h3>System architecture</h3>
+                    <p>
+                        Participating in the
+                        investigation of
+                        the two complementary
+                        sensing approaches
+                        and their integration
+                        requirements.
+                    </p>
+                </article>
+
+
+                <article class="s-card">
+                    <h3>LiDAR hardware</h3>
+                    <p>
+                        Evaluating the selected
+                        external LiDAR board
+                        and investigating
+                        its integration
+                        into the sensing
+                        architecture.
+                    </p>
+                </article>
+
+
+                <article class="s-card">
+                    <h3>Camera integration</h3>
+                    <p>
+                        Investigating camera
+                        selection, interfacing
+                        and its potential
+                        contribution to
+                        environmental perception.
+                    </p>
+                </article>
+
+
+                <article class="s-card">
+                    <h3>IMU and sensor fusion</h3>
+                    <p>
+                        Evaluating inertial
+                        sensing approaches
+                        and investigating
+                        multisensor integration
+                        and calibration.
+                    </p>
+                </article>
+
+
+                <article class="s-card">
+                    <h3>SLAM and navigation software</h3>
+                    <p>
+                        Studying mapping,
+                        localization and
+                        navigation algorithms
+                        suitable for
+                        indoor environments.
+                    </p>
+                </article>
+
+
+                <article class="s-card">
+                    <h3>Embedded systems</h3>
+                    <p>
+                        Investigating electronics,
+                        processing architecture,
+                        battery operation
+                        and wireless
+                        communication.
+                    </p>
+                </article>
+
+
+                <article class="s-card">
+                    <h3>Human–Machine Interaction</h3>
+                    <p>
+                        Exploring wearable
+                        haptic, pneumatic
+                        and alternative
+                        feedback concepts
+                        for assistive navigation.
+                    </p>
+                </article>
+
+
+                <article class="s-card">
+                    <h3>Research and feasibility</h3>
+                    <p>
+                        Studying existing
+                        navigation and
+                        SLAM approaches,
+                        evaluating technologies
+                        and assessing
+                        technical constraints.
+                    </p>
+                </article>
+
+            </div>
+
+
+            <h3 class="s-subheading">
+                Key engineering challenges
+            </h3>
 
             <div class="s-copy">
 
                 <p>
-                    The project involves coordinating
+                    The project requires coordinating
                     several engineering disciplines
                     within a unified navigation
                     architecture. Its development
-                    requires evaluating both
-                    algorithmic and hardware-related
+                    involves evaluating algorithmic,
+                    hardware and human-centered
                     constraints.
                 </p>
 
@@ -1753,14 +1985,13 @@
                         Investigating reliable
                         positioning in indoor
                         environments without
-                        dependence on conventional
-                        GPS.
+                        dependence on conventional GPS.
                     </p>
                 </article>
 
 
                 <article class="s-investigation-card">
-                    <h3>Sensor fusion</h3>
+                    <h3>Sensor fusion reliability</h3>
                     <p>
                         Coordinating LiDAR,
                         visual and inertial
@@ -1772,53 +2003,25 @@
 
 
                 <article class="s-investigation-card">
-                    <h3>SLAM reliability</h3>
-                    <p>
-                        Studying localization
-                        and mapping behavior
-                        in environments
-                        containing moving
-                        obstacles and
-                        changing conditions.
-                    </p>
-                </article>
-
-
-                <article class="s-investigation-card">
                     <h3>Hardware portability</h3>
                     <p>
                         Considering size,
                         weight, power
                         consumption and
                         comfort for an
-                        external sensing
-                        device.
+                        external sensing device.
                     </p>
                 </article>
 
 
                 <article class="s-investigation-card">
-                    <h3>Wireless communication</h3>
+                    <h3>System integration</h3>
                     <p>
-                        Investigating robust
-                        communication
-                        between external
-                        sensing hardware
-                        and smartphone
-                        software.
-                    </p>
-                </article>
-
-
-                <article class="s-investigation-card">
-                    <h3>Navigation interaction</h3>
-                    <p>
-                        Evaluating how
-                        spatial information
-                        can be converted
-                        into clear,
-                        understandable
-                        guidance.
+                        Coordinating sensing,
+                        localization, navigation,
+                        communication and
+                        feedback within
+                        a unified system.
                     </p>
                 </article>
 
@@ -1828,119 +2031,14 @@
 
 
         <!-- =====================================
-             09 — PERSONAL CONTRIBUTIONS
-        ===================================== -->
-
-        <section class="s-section" id="contributions">
-
-            <div class="s-heading">
-                <span class="s-number">09</span>
-                <h2>Engineering contributions and responsibilities</h2>
-            </div>
-
-            <div class="s-copy">
-
-                <p>
-                    Contributing as part of
-                    a multidisciplinary
-                    engineering team,
-                    with involvement
-                    across system architecture,
-                    sensor integration,
-                    research and navigation
-                    development.
-                </p>
-
-            </div>
-
-
-            <div class="s-cards">
-
-                <article class="s-card">
-                    <h3>System architecture</h3>
-                    <p>
-                        Participating in the
-                        development of the
-                        two complementary
-                        sensing approaches.
-                    </p>
-                </article>
-
-
-                <article class="s-card">
-                    <h3>LiDAR integration</h3>
-                    <p>
-                        Working with the
-                        selected external
-                        LiDAR evaluation
-                        board and investigating
-                        its integration
-                        requirements.
-                    </p>
-                </article>
-
-
-                <article class="s-card">
-                    <h3>IMU and camera research</h3>
-                    <p>
-                        Investigating suitable
-                        sensing components
-                        and their potential
-                        integration with
-                        LiDAR.
-                    </p>
-                </article>
-
-
-                <article class="s-card">
-                    <h3>SLAM and sensor fusion</h3>
-                    <p>
-                        Studying available
-                        approaches for
-                        multisensor mapping
-                        and localization.
-                    </p>
-                </article>
-
-
-                <article class="s-card">
-                    <h3>Embedded systems</h3>
-                    <p>
-                        Participating in
-                        the investigation
-                        of electronics,
-                        power and
-                        communication
-                        architecture.
-                    </p>
-                </article>
-
-
-                <article class="s-card">
-                    <h3>Human–Machine Interaction</h3>
-                    <p>
-                        Exploring wearable
-                        haptic and alternative
-                        feedback concepts
-                        for assistive
-                        navigation.
-                    </p>
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================
-             10 — EXPECTED OUTCOMES
+             09 — EXPECTED OUTCOMES
         ===================================== -->
 
         <section class="s-section" id="outcomes">
 
             <div class="s-heading">
-                <span class="s-number">10</span>
-                <h2>Expected outcomes and project objectives</h2>
+                <span class="s-number">09</span>
+                <h2>Expected outcomes and current development</h2>
             </div>
 
             <div class="s-copy">
@@ -1953,6 +2051,19 @@
                     sensing, localization
                     and accessible
                     human–machine interaction.
+                </p>
+
+                <p>
+                    The two development tracks
+                    will be investigated
+                    according to their
+                    technical feasibility,
+                    hardware requirements
+                    and software integration
+                    needs. Their final
+                    configurations may
+                    evolve as development
+                    progresses.
                 </p>
 
             </div>
@@ -1977,9 +2088,8 @@
                     <li>
                         Establish wireless
                         communication between
-                        external sensing
-                        hardware and
-                        smartphone software.
+                        external sensing hardware
+                        and smartphone software.
                     </li>
 
                     <li>
@@ -2000,47 +2110,49 @@
 
                     <li>
                         Evaluate obstacle
-                        detection and
-                        navigation behavior
-                        in environments
-                        containing moving
-                        obstacles.
+                        detection and navigation
+                        behavior in environments
+                        containing moving obstacles.
                     </li>
 
                     <li>
                         Investigate intuitive
-                        auditory and
-                        wearable haptic
-                        feedback approaches.
+                        auditory and wearable
+                        haptic feedback approaches.
                     </li>
 
                     <li>
-                        Evaluate the
-                        feasibility of
-                        the two sensing
-                        architectures
-                        and their
-                        potential
-                        applications.
+                        Evaluate the feasibility
+                        of the two sensing
+                        architectures and
+                        their potential applications.
                     </li>
 
                 </ul>
 
             </div>
 
-        </section>
 
+            <div class="s-copy" style="margin-top:28px;">
 
-        <!-- =====================================
-             11 — TECHNOLOGIES
-        ===================================== -->
+                <p>
+                    The project remains under
+                    active development.
+                    Its final system architecture,
+                    sensing configuration
+                    and feedback mechanism
+                    will be determined
+                    through continued
+                    research, implementation
+                    and feasibility evaluation.
+                </p>
 
-        <section class="s-section" id="technologies">
-
-            <div class="s-heading">
-                <span class="s-number">11</span>
-                <h2>Technologies and research areas</h2>
             </div>
+
+
+            <h3 class="s-subheading">
+                Technologies and research areas
+            </h3>
 
             <div class="s-tags">
 
@@ -2067,57 +2179,6 @@
                 integrated smartphone components and
                 research areas currently under investigation.
             </p>
-
-        </section>
-
-
-        <!-- =====================================
-             12 — PROJECT CONCLUSION
-        ===================================== -->
-
-        <section class="s-section" id="conclusion">
-
-            <div class="s-heading">
-                <span class="s-number">12</span>
-                <h2>Current project direction</h2>
-            </div>
-
-            <div class="s-copy">
-
-                <p>
-                    The project is currently focused
-                    on investigating two complementary
-                    approaches to multisensor indoor
-                    navigation: a software-oriented
-                    smartphone-integrated solution
-                    and a dedicated external
-                    sensing platform.
-                </p>
-
-                <p>
-                    By exploring LiDAR, IMU and
-                    camera integration alongside
-                    SLAM, localization and
-                    accessible feedback mechanisms,
-                    the project addresses
-                    both the technical
-                    requirements of autonomous
-                    environmental perception
-                    and the practical needs
-                    of human-centered navigation.
-                </p>
-
-                <p>
-                    The final system architecture,
-                    hardware configuration
-                    and feedback mechanism
-                    will be determined
-                    through ongoing research,
-                    implementation and
-                    feasibility evaluation.
-                </p>
-
-            </div>
 
         </section>
 
